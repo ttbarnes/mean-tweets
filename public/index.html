@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Mean example</title>
+    <link rel="stylesheet" href="css/style.css"> 
+
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/angular-route/angular-route.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/controllers/main.js"></script>
+    <script src="js/controllers/nerd.js"></script>
+    <script src="js/services/nerd.js"></script>
+
+  </head>
+  <body ng-app="sampleApp">
+
+    <div class="wrapper">
+
+      <header>
+        <h1>Mean example</h1>
+        <ul>
+          <li><a href="/nerds">Nerds</a></li>
+        </ul>
+      </header>
+
+      <div ng-view></div>
+
+    </div>
+
+
+
+  </body>
+</html>
