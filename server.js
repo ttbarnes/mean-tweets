@@ -29,7 +29,7 @@ var router = express.Router();              // get an instance of the express Ro
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
-    console.log('Something is happening');
+    console.log('Something is happening to the api');
     next(); // make sure we go to the next routes and don't stop here
 });
 
@@ -63,6 +63,51 @@ router.route('/bears')
               res.send(err);
 
           res.json(bears);
+      });
+  });
+
+router.route('/bears/:bear_id')
+
+  // get the bear with that id
+  .get(function(req, res) {
+      Bear.findById(req.params.bear_id, function(err, bear) {
+          if (err)
+              res.send(err);
+          res.json(bear);
+      });
+  })
+
+   // update the bear with this id
+  .put(function(req, res) {
+
+      // use our bear model to find the bear we want
+      Bear.findById(req.params.bear_id, function(err, bear) {
+
+          if (err)
+              res.send(err);
+
+          bear.name = req.body.name;  // update the bears info
+
+          // save the bear
+          bear.save(function(err) {
+              if (err)
+                  res.send(err);
+
+              res.json({ message: 'Bear updated!' });
+          });
+
+      });
+  })
+
+   // delete the bear with this id
+  .delete(function(req, res) {
+      Bear.remove({
+          _id: req.params.bear_id
+      }, function(err, bear) {
+          if (err)
+              res.send(err);
+
+          res.json({ message: 'Successfully deleted' });
       });
   });
 
