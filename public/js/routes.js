@@ -24,12 +24,12 @@ angular.module('meanExampleRoutes', ['ui.router'])
       .state(states.nerds.name, {
         url: '/nerds',
         templateUrl: 'views/nerd.html',
-        controller: 'NerdController'
+        controller: 'NerdCtrl'
       })
       .state(states.geeks.name, {
         url: '/geeks',
         templateUrl: 'views/geek.html',
-        controller: 'GeekController'
+        controller: 'GeekCtrl'
       })
 
     $locationProvider.html5Mode(true);
