@@ -1,19 +1,22 @@
-angular.module('routes', []).config(['$routeProvider', '$locationProvider', 
-  function($routeProvider, $locationProvider) {
+angular.module('meanExampleRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
   $routeProvider
+
+    // home page
     .when('/', {
-        templateUrl: '../views/home.html',
-        controller: 'MainCtrl'
+      templateUrl: 'views/home.html'
     })
+
     .when('/nerds', {
-        templateUrl: '../views/nerd2.html',
-        controller: 'NerdCtrl'
+      templateUrl: 'views/nerd.html',
+      controller: 'NerdController'
+    })
+
+    .when('/geeks', {
+      templateUrl: 'views/geek.html',
+      controller: 'GeekController'  
     });
 
-  $locationProvider.html5Mode({
-    enabled: true,
-    requireBase: false
-  });
+  $locationProvider.html5Mode(true);
 
 }]);
