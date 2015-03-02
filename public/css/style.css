@@ -1,3 +1,18 @@
+body {
+  font-family:sans-serif;
+  color:#333;
+}
+
+a {
+  text-decoration:none;
+  color:#333;
+}
+
+a:hover,
+a:focus {
+  text-decoration:underline;
+}
+
 .wrapper {
   margin:0 auto;
   max-width:800px;

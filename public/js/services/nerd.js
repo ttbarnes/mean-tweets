@@ -1,4 +1,4 @@
-angular.module('NerdService', []).factory('Nerd', ['$http', function($http) {
+angular.module('meanExampleApp', []).factory('Nerd', ['$http', function($http) {
 
     return {
         //call to get all nerds

@@ -1,1 +1,3 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl']);
+angular.module('meanExampleApp', [
+  'ngRoute', 
+  'routes']);
