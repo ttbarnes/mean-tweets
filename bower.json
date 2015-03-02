@@ -1,8 +1,9 @@
 {
-	"name": "mean-example",
-	"version": "1.0.0",
-	"dependencies": {
-		"angular": "latest",
-		"angular-route": "latest"
-	}
+  "name": "mean-example",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-ui-router": "~0.2.13"
+  }
 }

@@ -1,1 +1,7 @@
-angular.module('sampleApp', ['ngRoute', 'meanExampleRoutes', 'NerdCtrl', 'GeekCtrl']);
+angular.module('sampleApp', [
+  'ngRoute',
+  'ui.router',
+  'meanExampleRoutes',
+  'NerdCtrl',
+  'GeekCtrl'
+]);

@@ -1,22 +1,38 @@
-angular.module('meanExampleRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+angular.module('meanExampleRoutes', ['ui.router'])
 
-  $routeProvider
+  .constant('states', {
+    home: {
+      name: 'home'
+    },
+    nerds: {
+      name: 'nerds'
+    },
+    geeks: {
+      name: 'geeks'
+    }
+  })
 
-    // home page
-    .when('/', {
-      templateUrl: 'views/home.html'
-    })
+  .config(function($stateProvider, $urlRouterProvider, states, $locationProvider) {
 
-    .when('/nerds', {
-      templateUrl: 'views/nerd.html',
-      controller: 'NerdController'
-    })
+    $urlRouterProvider.otherwise('/');
 
-    .when('/geeks', {
-      templateUrl: 'views/geek.html',
-      controller: 'GeekController'  
-    });
+    $stateProvider
+      .state(states.home.name, {
+        url: '/',
+        templateUrl: 'views/home.html'
+      })
+      .state(states.nerds.name, {
+        url: '/nerds',
+        templateUrl: 'views/nerd.html',
+        controller: 'NerdController'
+      })
+      .state(states.geeks.name, {
+        url: '/geeks',
+        templateUrl: 'views/geek.html',
+        controller: 'GeekController'
+      })
 
-  $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
-}]);
+
+});
