@@ -4,11 +4,11 @@ angular.module('meanExampleRoutes', ['ui.router'])
     home: {
       name: 'home'
     },
-    nerds: {
-      name: 'nerds'
+    timeline: {
+      name: 'timeline'
     },
-    geeks: {
-      name: 'geeks'
+    notifications: {
+      name: 'notifications'
     }
   })
 
@@ -21,15 +21,15 @@ angular.module('meanExampleRoutes', ['ui.router'])
         url: '/',
         templateUrl: 'views/home.html'
       })
-      .state(states.nerds.name, {
-        url: '/nerds',
-        templateUrl: 'views/nerd.html',
-        controller: 'NerdCtrl'
+      .state(states.timeline.name, {
+        url: '/timeline',
+        templateUrl: 'views/timeline.html',
+        controller: 'TimelineCtrl'
       })
-      .state(states.geeks.name, {
-        url: '/geeks',
-        templateUrl: 'views/geek.html',
-        controller: 'GeekCtrl'
+      .state(states.notifications.name, {
+        url: '/notifications',
+        templateUrl: 'views/notifications.html',
+        controller: 'NotificationsCtrl'
       })
 
     $locationProvider.html5Mode(true);
