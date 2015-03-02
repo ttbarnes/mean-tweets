@@ -21,10 +21,25 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
+// ROUTES FOR OUR API
+// =============================================================================
+var router = express.Router();              // get an instance of the express Router
+
+// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
+router.get('/', function(req, res) {
+    res.json({ message: 'welcome to the api' });   
+});
+
+// more routes for our API will happen here
+
+// REGISTER OUR ROUTES -------------------------------
+// all of our routes will be prefixed with /api
+app.use('/api', router);
+
 // routes ==================================================
 require('./app/routes')(app); // pass our application into our routes
 
 // start app ===============================================
-app.listen(port);	
-console.log('Server running on port ' + port); 			// shoutout to the user
-exports = module.exports = app; 						// expose app
+app.listen(port);
+console.log('Server running on port ' + port);
+exports = module.exports = app;  // expose app
