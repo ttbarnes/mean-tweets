@@ -31,3 +31,15 @@ header li {
 header li a {
   padding:10px 20px;
 }
+
+
+ul,
+ol,
+dl {
+  margin:0;
+  padding:0;
+}
+
+h4 {
+  margin:0;
+}
