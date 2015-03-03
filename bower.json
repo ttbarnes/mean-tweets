@@ -4,6 +4,7 @@
   "dependencies": {
     "angular": "latest",
     "angular-route": "latest",
-    "angular-ui-router": "~0.2.13"
+    "angular-ui-router": "~0.2.13",
+    "restangular": "~1.4.0"
   }
 }
