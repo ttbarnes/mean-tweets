@@ -4,7 +4,6 @@ angular.module('meanExampleApp').controller('TimelineCtrl',
     $http({ method: 'GET', url: 'api/bears' }).
       success(function(data, status, headers, config) {
         $scope.bears = data;
-        console.log($scope.bears);
       });
 
 
