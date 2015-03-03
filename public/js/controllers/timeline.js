@@ -1,10 +1,12 @@
 angular.module('meanExampleApp').controller('TimelineCtrl', 
-  function($scope, $http) {
+  function($scope, Restangular) {
 
-    $http({ method: 'GET', url: 'api/bears' }).
-      success(function(data, status, headers, config) {
-        $scope.bears = data;
-      });
+    var bears = Restangular.all('api/bears');
+
+    bears.getList().then(function(bears) {
+      $scope.bears = bears;
+    });
+
 
 
 });
