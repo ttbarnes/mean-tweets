@@ -1,6 +1,16 @@
 <h3>Timeline</h3>
 
-<div ng-repeat="bear in bears track by $index" style="border:solid 1px #CCC;margin-bottom:20px;padding:10px;">
+<br/>
+<p>Post something</p>
+<form>
+  <input type="text" ng-model="tweet.content" style="padding:10px;width:300px;font-size:14px;" />
+  <input type="submit" value="Submit post" ng-click="postTweet(tweet)" />
+</form>
+
+<br/>
+<br/>
+
+<div ng-repeat="bear in bears track by $index" style="border:solid 1px #CCC;border-left-width:6px;margin-bottom:20px;padding:10px;">
   <h4>{{bear.name}}</h4>
-  <p>{{bear._id}}</p>
+  <p><small>{{bear._id}}</small></p>
 </div>
