@@ -1,13 +1,13 @@
 angular.module('meanExampleApp').controller('TimelineCtrl', 
   function($scope, Restangular) {
 
-    var baseBears = Restangular.all('api/bears');
+    var baseTweets = Restangular.all('api/tweets');
 
-    baseBears.getList().then(function(bears) {
-      $scope.bears = bears;
+    baseTweets.getList().then(function(tweets) {
+      $scope.tweets = tweets;
     });
 
-    $scope.bears = baseBears.getList().$object;
+    $scope.tweets = baseTweets.getList().$object;
 
     $scope.postTweet = function(tweet){
 
@@ -15,7 +15,7 @@ angular.module('meanExampleApp').controller('TimelineCtrl',
         name: tweet.content
       };
 
-      baseBears.post(newTweet);
+      baseTweets.post(newTweet);
     };
 
 

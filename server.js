@@ -10,7 +10,7 @@ var methodOverride = require('method-override');
 // config files
 var db = require('./config/db');
 
-var Bear = require('./app/models/bear');
+var Tweet = require('./app/models/tweet');
 
 var port = process.env.PORT || 2000; // set our port
 mongoose.connect(db.url); // connect to our mongoDB database
@@ -39,71 +39,71 @@ router.get('/', function(req, res) {
     res.json({ message: 'welcome to the api' });   
 });
 
-router.route('/bears')
-  // create a bear
+router.route('/tweets')
+  // create a tweet
   .post(function(req, res) {
       
-      var bear = new Bear();      // create a new instance of the Bear model
-      bear.name = req.body.name;  // set the bears name (comes from the request)
+      var tweet = new Tweet();      // create a new instance of the Tweet model
+      tweet.name = req.body.name;  // set the tweets name (comes from the request)
 
-      // save the bear and check for errors
-      bear.save(function(err) {
+      // save the tweet and check for errors
+      tweet.save(function(err) {
           if (err)
               res.send(err);
 
-          res.json({ message: 'Bear created!' });
+          res.json({ message: 'Tweet created!' });
       });
       
   })
 
-   // get all the bears
+   // get all the tweets
   .get(function(req, res) {
-      Bear.find(function(err, bears) {
+      Tweet.find(function(err, tweets) {
           if (err)
               res.send(err);
 
-          res.json(bears);
+          res.json(tweets);
       });
   });
 
-router.route('/bears/:bear_id')
+router.route('/tweets/:tweet_id')
 
-  // get the bear with that id
+  // get the tweet with that id
   .get(function(req, res) {
-      Bear.findById(req.params.bear_id, function(err, bear) {
+      Tweet.findById(req.params.tweet_id, function(err, tweet) {
           if (err)
               res.send(err);
-          res.json(bear);
+          res.json(tweet);
       });
   })
 
-   // update the bear with this id
+   // update the tweet with this id
   .put(function(req, res) {
 
-      // use our bear model to find the bear we want
-      Bear.findById(req.params.bear_id, function(err, bear) {
+      // use our tweet model to find the tweet we want
+      Tweet.findById(req.params.tweet_id, function(err, tweet) {
 
           if (err)
               res.send(err);
 
-          bear.name = req.body.name;  // update the bears info
+          tweet.name = req.body.name;  // update the tweets info
 
-          // save the bear
-          bear.save(function(err) {
+          // save the tweet
+          tweet.save(function(err) {
               if (err)
                   res.send(err);
 
-              res.json({ message: 'Bear updated!' });
+              res.json({ message: 'Tweet updated!' });
           });
 
       });
   })
 
-   // delete the bear with this id
+   // delete the tweet with this id
   .delete(function(req, res) {
-      Bear.remove({
-          _id: req.params.bear_id
-      }, function(err, bear) {
+      Tweet.remove({
+          _id: req.params.tweet_id
+      }, function(err, tweet) {
           if (err)
               res.send(err);
 
