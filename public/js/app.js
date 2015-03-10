@@ -1,3 +1,5 @@
+//var meanExampleApp = angular.module('meanExampleApp');
+
 angular.module('meanExampleApp', [
   'ngCookies',
   'auth0',
@@ -9,14 +11,11 @@ angular.module('meanExampleApp', [
   'angular-jwt'
 ])
 
-
-angular.module('meanExampleApp').config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider) {
-
-  //$locationProvider.hashPrefix('!');
+.config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider) {
 
   authProvider.init({
-    domain: 'contoso.auth0.com',
-    clientID: 'DyG9nCwIEofSy66QM3oo5xU6NFs3TmvT',
+    domain: 'ttbarnesmeanexample.auth0.com',
+    clientID: 'w7iwHAmXIe34YoncwwoP2ivXAjGoTmqh',
     loginUrl: '/login'
   });
 
@@ -28,7 +27,9 @@ angular.module('meanExampleApp').config(function (authProvider, $httpProvider, $
   // NOTE: in case you are calling APIs which expect a token signed with a different secret, you might
   // want to check the delegation-token example
   $httpProvider.interceptors.push('jwtInterceptor');
-}).run(function($rootScope, auth, store, jwtHelper, $location) {
+})
+
+.run(function($rootScope, auth, store, jwtHelper, $location) {
   $rootScope.$on('$locationChangeStart', function() {
     if (!auth.isAuthenticated) {
       var token = store.get('token');
