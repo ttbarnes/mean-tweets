@@ -9,6 +9,9 @@ angular.module('meanExampleRoutes', ['ui.router'])
     },
     notifications: {
       name: 'notifications'
+    },
+    profile: {
+      name: 'profile'
     }
   })
 
@@ -30,6 +33,10 @@ angular.module('meanExampleRoutes', ['ui.router'])
         url: '/notifications',
         templateUrl: 'views/notifications.html',
         controller: 'NotificationsCtrl'
+      })
+      .state(states.profile.name, {
+        url: '/profile',
+        templateUrl: 'views/profile.html'
       })
 
     $locationProvider.html5Mode(true);
