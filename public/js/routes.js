@@ -12,6 +12,12 @@ angular.module('meanExampleRoutes', ['ui.router'])
     },
     profile: {
       name: 'profile'
+    },
+    logout: {
+      name: 'logout'
+    },
+    login: {
+      name: 'login'
     }
   })
 
@@ -37,6 +43,16 @@ angular.module('meanExampleRoutes', ['ui.router'])
       .state(states.profile.name, {
         url: '/profile',
         templateUrl: 'views/profile.html'
+      })
+      .state(states.logout.name, {
+        url: '/logout',
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl'
+      })
+      .state(states.login.name, {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
 
     $locationProvider.html5Mode(true);
