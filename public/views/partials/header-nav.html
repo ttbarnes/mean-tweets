@@ -1,11 +1,13 @@
 <header>
   <h1><a ui-sref="home">Mean example</a></h1>
-  <ul>
+  <ul style="float:left;">
     <li><a ui-sref="timeline">timeline</a></li>
     <li><a ui-sref="notifications">notifications</a></li>
     <li ng-show="auth.profile"><a ui-sref="profile">profile</a></li>
   </ul>
-  <ul style="float:right;">
+  <ul style="float:right;text-align:right;">
+    <li ng-if="auth.profile" style="font-size:14px;"><strong>Welcome {{auth.profile.email}}!</strong></li>
+    <br/>
     <li ng-hide="auth.profile"><a ui-sref="login">login</a></li>
     <li ng-show="auth.profile"><a ui-sref="logout">logout</a></li>
   </ul>
