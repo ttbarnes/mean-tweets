@@ -1,17 +1,19 @@
 angular.module('meanExampleApp').controller('TimelineCtrl', 
   function($scope, Restangular) {
 
-    var baseTweets = Restangular.all('api/tweets');
+    (function getAllTweets(){
+      baseTweets = Restangular.all('api/tweets');
+    })();
 
     baseTweets.getList().then(function(tweets) {
       $scope.tweets = tweets;
     });
 
-    function getTheTweets() { 
+    function tweetsObject() { 
       $scope.tweets = baseTweets.getList().$object;
     };
 
-    setInterval(getTheTweets, 10000);
+    setInterval(tweetsObject, 10000);
 
     $scope.postTweet = function(tweet){
 
@@ -21,7 +23,6 @@ angular.module('meanExampleApp').controller('TimelineCtrl',
 
       baseTweets.post(newTweet);
     };
-
 
 
 });
