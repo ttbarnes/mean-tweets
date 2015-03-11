@@ -7,7 +7,11 @@ angular.module('meanExampleApp').controller('TimelineCtrl',
       $scope.tweets = tweets;
     });
 
-    $scope.tweets = baseTweets.getList().$object;
+    function getTheTweets() { 
+      $scope.tweets = baseTweets.getList().$object;
+    };
+
+    setInterval(getTheTweets, 10000);
 
     $scope.postTweet = function(tweet){
 
