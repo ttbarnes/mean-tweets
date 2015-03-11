@@ -3,10 +3,10 @@
   <ul>
     <li><a ui-sref="timeline">timeline</a></li>
     <li><a ui-sref="notifications">notifications</a></li>
-    <!--<li><a ui-sref="profile">profile</a></li>-->
+    <li ng-show="auth.profile"><a ui-sref="profile">profile</a></li>
   </ul>
   <ul style="float:right;">
-    <!--<li><a ui-sref="login">login</a></li>-->
-    <!--<li><a ui-sref="logout">logout</a></li>-->
+    <li ng-hide="auth.profile"><a ui-sref="login">login</a></li>
+    <li ng-show="auth.profile"><a ui-sref="logout">logout</a></li>
   </ul>
 </header>
