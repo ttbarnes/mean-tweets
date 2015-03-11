@@ -1,6 +1,8 @@
 body {
   font-family:sans-serif;
   color:#333;
+  margin:0;
+  padding:0;
 }
 
 a {
@@ -20,7 +22,24 @@ a:focus {
 }
 
 header {
+  float:left;
+  width:100%;
+
   margin-bottom:60px;
+}
+
+.logo {
+  float:left;
+  margin-top:0;
+  margin-left:-15px;
+  font-size:26px;
+}
+
+.logo a {
+  display:inline-block;
+  background:#D5E5FF;
+  padding:10px 15px;
+
 }
 
 header li {
