@@ -4,9 +4,6 @@ angular.module('meanExampleRoutes', ['ui.router'])
     home: {
       name: 'home'
     },
-    timeline: {
-      name: 'timeline'
-    },
     notifications: {
       name: 'notifications'
     },
@@ -30,11 +27,6 @@ angular.module('meanExampleRoutes', ['ui.router'])
         url: '/',
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
-      })
-      .state(states.timeline.name, {
-        url: '/timeline',
-        templateUrl: 'views/timeline.html',
-        controller: 'TimelineCtrl'
       })
       .state(states.notifications.name, {
         url: '/notifications',

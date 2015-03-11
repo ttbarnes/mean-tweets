@@ -1,5 +1,5 @@
-angular.module('meanExampleApp').controller('TimelineCtrl', 
-  function($scope, Restangular) {
+angular.module('meanExampleApp').controller('PostTweetCtrl', 
+  function ($scope) {
 
     $scope.postTweet = function(tweet){
 
@@ -9,6 +9,5 @@ angular.module('meanExampleApp').controller('TimelineCtrl',
 
       baseTweets.post(newTweet);
     };
-
 
 });
