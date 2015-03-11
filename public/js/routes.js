@@ -28,7 +28,8 @@ angular.module('meanExampleRoutes', ['ui.router'])
     $stateProvider
       .state(states.home.name, {
         url: '/',
-        templateUrl: 'views/home.html'
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
       })
       .state(states.timeline.name, {
         url: '/timeline',
