@@ -6,18 +6,3 @@
   <input type="text" ng-model="tweet.content" style="padding:10px;width:300px;font-size:14px;" />
   <input type="submit" value="Submit post" ng-click="postTweet(tweet)" />
 </form>
-
-<br/>
-<br/>
-
-
-<div ng-show="loadingTweets" style="padding:20px;text-align:center;">
-  <img src="img/svg/gears.svg" alt="loading" style="width:30px;display:block;margin:0 auto 20px auto;"/>
-  <p><small>Loading...</small></p>
-</div>
-
-
-<div ng-repeat="tweet in tweets track by $index" style="border:solid 1px #CCC;border-left-width:6px;margin-bottom:20px;padding:10px;">
-  <h4>{{tweet.name}}</h4>
-  <p><small>{{tweet._id}}</small></p>
-</div>
