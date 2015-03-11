@@ -1,6 +1,7 @@
 // modules =================================================
 var express        = require('express');
 var app            = express();
+var morgan         = require('morgan')
 var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
@@ -110,6 +111,10 @@ router.route('/tweets/:tweet_id')
           res.json({ message: 'Successfully deleted' });
       });
   });
+
+
+//enable server logging
+app.use(morgan('combined'))
 
 
 // REGISTER OUR ROUTES -------------------------------
