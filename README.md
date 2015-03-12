@@ -7,7 +7,7 @@ Soon there will be a real readme file, for the time being here are some notes:
 
 1) Install the dependencies: `npm install && bower install`
 
-2) Run the server: `node server.js` (port 2000)
+2) Run the server: `grunt` or `node server.js` (port 2000)
 
 
 ##tech
@@ -19,3 +19,4 @@ Soon there will be a real readme file, for the time being here are some notes:
 - Mongoose (elegant MongoDB object modeling)
 - Mongolab hosted DB
 - Auth0 authentication
+- Grunt
