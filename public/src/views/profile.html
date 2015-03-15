@@ -5,4 +5,5 @@
 <p><strong>Nickname: </strong>{{auth.profile.nickname}}</p>
 
 <p><strong>Email: </strong>{{auth.profile.email}}</p>
-<p><small>Verified email? </small>{{auth.profile.email_verified}}</p>
+
+<p ng-if="!auth.profile.email_verified">Your email has not been verified. <br/>Please check your email and verify your address to fully benefit from Mean Example.</p>
