@@ -40,9 +40,12 @@ angular.module('meanExampleApp', [
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {
           auth.authenticate(store.get('profile'), token);
-        } else {
+        } 
+        /*
+        else {
           $location.path('/login');
         }
+        */
       }
     }
   });
