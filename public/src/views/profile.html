@@ -1,1 +1,8 @@
 <h3>Profile</h3>
+
+<img ng-src="{{auth.profile.picture}}" alt="{{auth.profile.email}}" />
+
+<p><strong>Nickname: </strong>{{auth.profile.nickname}}</p>
+
+<p><strong>Email: </strong>{{auth.profile.email}}</p>
+<p><small>Verified email? </small>{{auth.profile.email_verified}}</p>
