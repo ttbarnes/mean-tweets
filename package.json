@@ -10,10 +10,15 @@
   },
   "devDependencies": {
     "grunt": "*",
+    "grunt-concurrent": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
+    "grunt-karma": "^0.10.1",
     "grunt-nodemon": "*",
-    "grunt-concurrent": "*"
+    "jasmine-core": "^2.2.0",
+    "karma": "*",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5"
   }
 }
