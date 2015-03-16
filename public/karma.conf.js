@@ -15,8 +15,22 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'src/bower_components/lodash/dist/lodash.js',
+      'src/bower_components/angular/angular.js',
+      'src/bower_components/angular-mocks/angular-mocks.js',
+      'src/bower_components/angular-route/angular-route.js',
+      'src/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'src/bower_components/auth0.js/build/auth0.js',
+      'src/bower_components/a0-angular-storage/dist/angular-storage.js',
+      'src/bower_components/angular-jwt/dist/angular-jwt.js',
+      'src/bower_components/angular-cookies/angular-cookies.js',
+      'src/bower_components/auth0-angular/src/auth0-angular.js',
+      'src/bower_components/restangular/dist/restangular.js',
       'src/js/*.js',
-      'src/js/**/*.js'
+      'src/js/**/*.js',
+      'src/views/*.html',
+      'src/views/partials/*.html',
+      'test/unit/**/*.js'
     ],
 
 
@@ -51,7 +65,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
