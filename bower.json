@@ -5,6 +5,8 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-ui-router": "~0.2.13",
-    "restangular": "~1.4.0"
+    "restangular": "~1.4.0",
+    "auth0-angular": "~4.0.1",
+    "angular-jwt": "~0.0.6"
   }
 }
