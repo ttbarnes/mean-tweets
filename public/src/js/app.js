@@ -3,12 +3,12 @@
 angular.module('meanExampleApp', [
   'ngCookies',
   'auth0',
+  'angular-storage',
+  'angular-jwt',
   'ngRoute',
   'ui.router',
   'meanExampleRoutes',
-  'restangular',
-  'angular-storage',
-  'angular-jwt'
+  'restangular'
 ])
 
 .config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider) {
