@@ -20,3 +20,10 @@ Soon there will be a real readme file, for the time being here are some notes:
 - Mongolab hosted DB
 - Auth0 authentication
 - Grunt
+- Karma
+- Jasmine
+
+
+##quick notes
+
+- Run unit tests: `grunt karma` or `karma start public/karma.conf.js`
