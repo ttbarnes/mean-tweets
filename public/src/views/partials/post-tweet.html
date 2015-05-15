@@ -1,7 +1,9 @@
 <div ng-controller="PostTweetCtrl">
   <p style="float:left;margin-right:15px;">Post something</p>
   <form>
-    <input type="text" ng-model="tweet.content" style="padding:10px;width:300px;font-size:14px;" />
+    <input type="text" ng-model="tweet.content" maxlength="{{maxCharLength}}" style="padding:10px;width:300px;font-size:14px;" />
     <input type="submit" value="Submit post" ng-click="postTweet(tweet)" />
   </form>
+  <br/>
+  <p><small>{{maxCharLength - tweet.content.length}} characters remaining...</small></p>
 </div>
