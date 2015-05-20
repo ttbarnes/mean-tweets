@@ -11,7 +11,6 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
       $scope.tweets = tweets;
     });
 
-
     $scope.postTweet = function(tweet){
 
       var newTweet = {
