@@ -1,13 +1,9 @@
 angular.module('meanExampleApp').controller('TweetsCtrl', 
-  function ($scope, Restangular) {
+  function ($scope, Restangular, tweetsService) {
 
     $scope.maxCharLength = 140;
 
-    (function getAllTweets(){
-      baseTweets = Restangular.all('api/tweets');
-    })();
-
-    baseTweets.getList().then(function(tweets) {
+    tweetsService.tweets.getList().then(function (tweets){
       $scope.tweets = tweets;
     });
 
@@ -17,10 +13,12 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
         name: tweet.content
       };
 
-      baseTweets.post(newTweet);
-      console.info('posted a tweet...');
+      tweetsService.tweets.post(newTweet).then(function(){
+        console.info('posted a tweet');
+        //todo: clear the form input
+      });
 
-      baseTweets.getList().then(function(tweets) {
+      tweetsService.tweets.getList().then(function (tweets){
         $scope.tweets = tweets;
         console.info('got new tweets');
       });
