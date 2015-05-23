@@ -20,7 +20,7 @@
   <br/>
   <p><small>{{maxCharLength - tweet.content.length}} characters remaining...</small></p>
 
-  <div ng-repeat="tweet in tweets track by $index" 
+  <div ng-repeat="tweet in tweets.slice().reverse()" 
        style="border:solid 1px #CCC;border-left-width:6px;margin-bottom:20px;padding:10px;">
     <h4>{{tweet.name}}</h4>
     <!--temp username conditional for dev-->
