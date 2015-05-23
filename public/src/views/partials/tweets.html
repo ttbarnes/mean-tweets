@@ -5,23 +5,25 @@
 
 <div ng-controller="TweetsCtrl">
 
-  <p style="float:left;margin-right:15px;">Post something</p>
-  <form name="postTweetForm">
-    <input type="text" 
-           name="tweet"
-           ng-model="tweet.content" 
-           maxlength="{{maxCharLength}}" 
-           style="padding:10px;width:300px;font-size:14px;" />
-    <input type="submit" 
-           value="Submit post" 
-           ng-disabled="postTweetForm.$invalid || !tweet.content.length > 0"
-           ng-click="postTweet(tweet)" />
-  </form>
-  <br/>
-  <p><small>{{maxCharLength - tweet.content.length}} characters remaining...</small></p>
+  <div ng-if="auth.isAuthenticated">
+    <p style="float:left;margin-right:15px;">Post something</p>
+    <form name="postTweetForm">
+      <input type="text" 
+             name="tweet"
+             ng-model="tweet.content" 
+             maxlength="{{maxCharLength}}" 
+             style="padding:10px;width:300px;font-size:14px;" />
+      <input type="submit" 
+             value="Submit post" 
+             ng-disabled="postTweetForm.$invalid || !tweet.content.length > 0"
+             ng-click="postTweet(tweet)" />
+    </form>
+    <br/>
+    <p><small>{{maxCharLength - tweet.content.length}} characters remaining...</small></p>
+  </div>
 
   <div ng-repeat="tweet in tweets.slice().reverse()" 
-       style="border:solid 1px #CCC;border-left-width:6px;margin-bottom:20px;padding:10px;">
+       style="clear:both;border:solid 1px #CCC;border-left-width:6px;margin-bottom:20px;padding:10px;">
     <h4>{{tweet.name}}</h4>
     <!--temp username conditional for dev-->
     <p ng-if="tweet.username">@{{tweet.username}}</p>
