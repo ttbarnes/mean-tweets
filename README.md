@@ -14,11 +14,11 @@ Soon there will be a real readme file, for the time being here are some notes:
 
 - MEAN stack: MongoDB, Express, Angular, Node.js
 - Angular sevices: 
-  - ui-router for routing
-  - restangular for RESTful API 
+  - ui-router
+  - restangular (RESTful api)
 - Mongoose (elegant MongoDB object modeling)
-- Mongolab hosted DB
-- Auth0 authentication
+- Mongolab
+- Auth0
 - Grunt
 - Karma
 - Jasmine
