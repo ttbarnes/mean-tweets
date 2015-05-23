@@ -46,6 +46,7 @@ router.route('/tweets')
       
       var tweet = new Tweet();      // create a new instance of the Tweet model
       tweet.name = req.body.name;  // set the tweets name (comes from the request)
+      tweet.username = req.body.username;  // set the tweets username (comes from the request)
 
       // save the tweet and check for errors
       tweet.save(function(err) {

@@ -23,6 +23,8 @@
   <div ng-repeat="tweet in tweets track by $index" 
        style="border:solid 1px #CCC;border-left-width:6px;margin-bottom:20px;padding:10px;">
     <h4>{{tweet.name}}</h4>
-    <p><small>{{tweet._id}}</small></p>
+    <!--temp username conditional for dev-->
+    <p ng-if="tweet.username">@{{tweet.username}}</p>
+    <p>#<small>{{tweet._id}}</small></p>
   </div>
 </div>

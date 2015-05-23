@@ -1,5 +1,5 @@
 angular.module('meanExampleApp').controller('TweetsCtrl', 
-  function ($scope, Restangular, tweetsService) {
+  function (auth, $scope, Restangular, tweetsService) {
 
     $scope.maxCharLength = 140;
 
@@ -10,11 +10,12 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
     $scope.postTweet = function(tweet){
 
       var newTweet = {
-        name: tweet.content
+        name: tweet.content,
+        username: auth.profile.nickname
       };
 
       tweetsService.tweets.post(newTweet).then(function(){
-        console.info('posted a tweet');
+        console.info('posted a tweet', newTweet);
         //todo: clear the form input
       });
 
