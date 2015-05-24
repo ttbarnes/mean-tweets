@@ -35,7 +35,8 @@ angular.module('meanExampleRoutes', ['ui.router'])
       })
       .state(states.profile.name, {
         url: '/profile',
-        templateUrl: 'views/profile.html'
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
       })
       .state(states.logout.name, {
         url: '/logout',
