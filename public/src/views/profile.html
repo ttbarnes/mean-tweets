@@ -11,7 +11,8 @@
 </div>
 
 <div style="float:right;width:70%;">
-  <div ng-repeat="tweet in tweets.slice().reverse()" 
+
+  <div ng-repeat="tweet in tweets.slice().reverse() | filter : {username: auth.profile.nickname}"
        style="clear:both;border:solid 1px #CCC;border-left-width:6px;margin-bottom:20px;padding:10px;">
     <h4>{{tweet.name}}</h4>
     <!--temp username conditional for dev-->
