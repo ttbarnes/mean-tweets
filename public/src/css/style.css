@@ -66,3 +66,15 @@ dl {
 h4 {
   margin:0;
 }
+
+
+
+
+.tweets .tweet {
+  clear:both;
+  border:solid 1px #CCC;
+  border-left-width:6px;
+  margin-bottom:20px;
+  padding:10px;
+}
+
