@@ -2,3 +2,4 @@ node_modules
 public/src/bower_components
 public/dist
 public/dist/*/*
+.env
