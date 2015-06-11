@@ -4,6 +4,7 @@
     <li ng-if="auth.profile" style="font-size:14px;padding:10px 0;"><strong>Welcome {{auth.profile.email}}!</strong></li>
     <br/>
     <li ng-hide="auth.profile"><a ui-sref="login">login</a></li>
+    <li ng-hide="auth.profile"><a ui-sref="signup">signup</a></li>
     <li ng-show="auth.profile"><a ui-sref="logout">logout</a></li>
   </ul>
   <ul style="float:left;clear:left;">

@@ -10,11 +10,14 @@ angular.module('meanExampleRoutes', ['ui.router'])
     profile: {
       name: 'profile'
     },
-    logout: {
-      name: 'logout'
+    signup: {
+      name: 'signup'
     },
     login: {
       name: 'login'
+    },
+    logout: {
+      name: 'logout'
     }
   })
 
@@ -38,15 +41,20 @@ angular.module('meanExampleRoutes', ['ui.router'])
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       })
-      .state(states.logout.name, {
-        url: '/logout',
-        templateUrl: 'views/logout.html',
-        controller: 'LogoutCtrl'
+      .state(states.signup.name, {
+        url: '/signup',
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl'
       })
       .state(states.login.name, {
         url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
+      })
+      .state(states.logout.name, {
+        url: '/logout',
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl'
       })
 
     $locationProvider.html5Mode(true);
