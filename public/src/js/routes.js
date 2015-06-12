@@ -10,9 +10,6 @@ angular.module('meanExampleRoutes', ['ui.router'])
     profile: {
       name: 'profile'
     },
-    signup: {
-      name: 'signup'
-    },
     login: {
       name: 'login'
     },
@@ -40,11 +37,6 @@ angular.module('meanExampleRoutes', ['ui.router'])
         url: '/profile',
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
-      })
-      .state(states.signup.name, {
-        url: '/signup',
-        templateUrl: 'views/signup.html',
-        controller: 'SignupCtrl'
       })
       .state(states.login.name, {
         url: '/login',
