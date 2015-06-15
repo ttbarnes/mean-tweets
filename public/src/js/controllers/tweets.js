@@ -3,9 +3,15 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
 
     $scope.maxCharLength = 140;
 
-    tweetsService.tweets.getList().then(function (tweets){
-      $scope.tweets = tweets;
-    });
+    function getTweets() {
+      //todo: handle errors
+      tweetsService.tweets.getList().then(function (tweets){
+        $scope.tweets = tweets;
+        console.info('got new tweets');
+      });
+    };
+
+    getTweets();
 
     $scope.postTweet = function(tweet){
       if(auth.isAuthenticated) {
@@ -19,17 +25,11 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
           //todo: clear the form input
         });
 
-        //todo: handle errors
-
-        tweetsService.tweets.getList().then(function (tweets){
-          $scope.tweets = tweets;
-          console.info('got new tweets');
-        });
+        getTweets();
       }
       else {
         console.error('unable to post tweet - user is not authenticated');
       }
-
     };
 
 });
