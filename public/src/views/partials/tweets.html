@@ -25,7 +25,7 @@
          class="tweet">
       <h4>{{tweet.name}} &nbsp;<small style="font-weight:normal;font-size:12px;"><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
       <p>@{{tweet.username}}</p>
-      <p>#<small>{{tweet._id}}</small></p>
+      <p>#<small style="font-size:11px;">{{tweet._id | limitTo:10}}</small></p>
     </div>
   </div>
 
