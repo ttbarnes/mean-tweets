@@ -23,7 +23,7 @@
   </div>
 
   <div class="tweets">
-    <div ng-repeat="tweet in tweets.slice().reverse() | filter: { username: 'support2'}:true" 
+    <div ng-repeat="tweet in tweets.slice().reverse()" 
          class="tweet">
       <h4>{{tweet.name}}</h4>
       <p>@{{tweet.username}}</p>
