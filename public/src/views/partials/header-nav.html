@@ -3,10 +3,8 @@
   <ul style="float:right;text-align:right;">
     <li ng-if="auth.profile" style="font-size:14px;padding:10px 0;"><strong>Welcome {{auth.profile.email}}!</strong></li>
     <br/>
-    <li ng-show="auth.profile"><a ui-sref="logout">logout</a></li>
-  </ul>
-  <ul style="float:left;clear:left;">
-    <!--<li ng-show="auth.profile"><a ui-sref="notifications">notifications</a></li>-->
     <li ng-show="auth.profile"><a ui-sref="profile">profile</a></li>
+    <!--<li ng-show="auth.profile"><a ui-sref="notifications">notifications</a></li>-->
+    <li ng-show="auth.profile"><a ui-sref="logout">logout</a></li>
   </ul>
 </header>
