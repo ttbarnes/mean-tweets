@@ -1,8 +1,8 @@
 angular.module('meanExampleRoutes', ['ui.router'])
 
   .constant('states', {
-    tweets: {
-      name: 'tweets'
+    home: {
+      name: 'home'
     },
     notifications: {
       name: 'notifications'
@@ -23,10 +23,9 @@ angular.module('meanExampleRoutes', ['ui.router'])
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state(states.tweets.name, {
+      .state(states.home.name, {
         url: '/',
-        templateUrl: 'views/tweets.html',
-        controller: 'TweetsCtrl'
+        templateUrl: 'views/home.html'
       })
       .state(states.notifications.name, {
         url: '/notifications',

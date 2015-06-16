@@ -1,14 +1,12 @@
 <header>
-  <h1 class="logo"><a ui-sref="tweets">{{appName}}</a></h1>
+  <h1 class="logo"><a ui-sref="home">{{appName}}</a></h1>
   <ul style="float:right;text-align:right;">
     <li ng-if="auth.profile" style="font-size:14px;padding:10px 0;"><strong>Welcome {{auth.profile.email}}!</strong></li>
     <br/>
-    <li ng-hide="auth.profile"><a ui-sref="login">login</a></li>
-    <li ng-hide="auth.profile"><a ng-click="loginOrSignup()">signup</a></li>
     <li ng-show="auth.profile"><a ui-sref="logout">logout</a></li>
   </ul>
   <ul style="float:left;clear:left;">
-    <li><a ui-sref="notifications">notifications</a></li>
+    <!--<li ng-show="auth.profile"><a ui-sref="notifications">notifications</a></li>-->
     <li ng-show="auth.profile"><a ui-sref="profile">profile</a></li>
   </ul>
 </header>
