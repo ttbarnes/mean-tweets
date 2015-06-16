@@ -15,6 +15,9 @@ angular.module('meanExampleRoutes', ['ui.router'])
     },
     logout: {
       name: 'logout'
+    },
+    seeYouSoon: {
+      name: 'seeYouSoon'
     }
   })
 
@@ -46,6 +49,10 @@ angular.module('meanExampleRoutes', ['ui.router'])
         url: '/logout',
         templateUrl: 'views/logout.html',
         controller: 'LogoutCtrl'
+      })
+      .state(states.seeYouSoon.name, {
+        url: '/see-you-soon',
+        templateUrl: 'views/see-you-soon.html'
       })
 
     $locationProvider.html5Mode(true);

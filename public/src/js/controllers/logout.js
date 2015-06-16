@@ -3,5 +3,5 @@ angular.module('meanExampleApp').controller('LogoutCtrl', function (auth, $scope
   $scope.$parent.message = '';
   store.remove('profile');
   store.remove('token');
-  $location.path('/login');
+  $location.path('/see-you-soon');
 });
