@@ -8,7 +8,8 @@ angular.module('meanExampleApp', [
   'ngRoute',
   'ui.router',
   'meanExampleRoutes',
-  'restangular'
+  'restangular',
+  'angularMoment'
 ])
 
 .config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider) {

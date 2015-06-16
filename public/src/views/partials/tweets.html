@@ -23,7 +23,7 @@
   <div class="tweets">
     <div ng-repeat="tweet in tweets.slice().reverse()" 
          class="tweet">
-      <h4>{{tweet.name}}</h4>
+      <h4>{{tweet.name}} &nbsp;<small style="font-weight:normal;font-size:12px;"><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
       <p>@{{tweet.username}}</p>
       <p>#<small>{{tweet._id}}</small></p>
     </div>
