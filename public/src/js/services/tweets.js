@@ -9,8 +9,8 @@ angular.module('meanExampleApp').factory('tweetsService', function (Restangular)
 
     return {
       tweets: Restangular.all('api/tweets'),
-      search: function(searchstring) {
-        return Restangular.all('api/search/' + searchstring);
+      search: function(searchQuery) {
+        return Restangular.all('api/search/' + searchQuery);
       },
       userSpecificTweets: function(username) {
         return Restangular.all('api/tweets/' + username);

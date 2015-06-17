@@ -5,6 +5,13 @@
   <p><small>Loading...</small></p>
 </div>
 
+<br/>
+
+<input type="text" 
+       ng-model="search.query"
+       placeholder="Enter search criteria, eg #taken3"/>
+<button ng-click="getTweets(search.query)">Go</button>
+
 <div class="tweets">
   <div ng-repeat="tweet in tweets.slice().reverse()" 
        class="tweet">
