@@ -2,6 +2,8 @@
 //
 //tweetsService.tweetsTest.getList().then(function (tweets){ ... });
 //
+//tweetsService.search('someHashtag').getList().then(function (tweets){ ... });
+//
 //tweetsService.userSpecificTweets('support2').getList().then(function (tweets){ ... });
 //
 
