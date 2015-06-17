@@ -79,6 +79,14 @@ h4 {
   padding:10px;
 }
 
+.tweets .tweet-content small {
+  font-weight:normal;
+  font-size:12px;
+}
+
+.tweets .tweet-content .tweet-id small {
+  font-size:11px;
+}
 
 img {
   display:block;

@@ -7,6 +7,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
       //todo: handle errors
       tweetsService.tweets.getList().then(function (tweets){
         $scope.tweets = tweets;
+
         console.info('got new tweets');
       });
     };

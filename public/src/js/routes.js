@@ -4,6 +4,9 @@ angular.module('meanExampleRoutes', ['ui.router'])
     home: {
       name: 'home'
     },
+    search: {
+      name: 'search'
+    },
     notifications: {
       name: 'notifications'
     },
@@ -29,6 +32,11 @@ angular.module('meanExampleRoutes', ['ui.router'])
       .state(states.home.name, {
         url: '/',
         templateUrl: 'views/home.html'
+      })
+      .state(states.search.name, {
+        url: '/search',
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl'
       })
       .state(states.notifications.name, {
         url: '/notifications',

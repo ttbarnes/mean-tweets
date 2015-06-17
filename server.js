@@ -37,8 +37,25 @@ router.use(function(req, res, next) {
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-    res.json({ message: 'welcome to the api' });   
+    res.json({ message: 'welcome to the api' });
 });
+
+router.get('/search', function(req, res) {
+    res.json({ message: 'welcome to the search api' });
+});
+
+router.route('/search/:searchstring')
+
+  //search tweets
+  .get(function(req, res) {
+
+    Tweet.find({name: new RegExp(req.params.searchstring, "i")}, function(err, tweets) {
+      if (err)
+            res.send(err);
+        res.json(tweets);
+    });
+
+  });
 
 router.route('/tweets')
   // create a tweet

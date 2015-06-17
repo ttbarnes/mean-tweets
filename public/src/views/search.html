@@ -1,0 +1,15 @@
+<h3>Search</h3>
+
+<div ng-show="loadingTweets" style="padding:20px;text-align:center;">
+  <img src="img/svg/gears.svg" alt="loading" style="width:30px;display:block;margin:0 auto 20px auto;"/>
+  <p><small>Loading...</small></p>
+</div>
+
+<div class="tweets">
+  <div ng-repeat="tweet in tweets.slice().reverse()" 
+       class="tweet">
+    <h4 class="tweet-content">{{tweet.name}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
+    <p>@{{tweet.username}}</p>
+    <p>#<small>{{tweet._id | limitTo:10}}</small></p>
+  </div>
+</div>
