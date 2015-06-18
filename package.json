@@ -11,7 +11,10 @@
   "devDependencies": {
     "grunt": "*",
     "grunt-concurrent": "*",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-cssmin": "^0.12.3",
     "grunt-contrib-jshint": "*",
+    "grunt-contrib-sass": "^0.9.2",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-karma": "^0.10.1",

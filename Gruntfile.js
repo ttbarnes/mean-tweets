@@ -2,6 +2,8 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
+    pkg: grunt.file.readJSON('package.json'),
+
     //jshint: {
       //all: ['public/src/js/**/*.js'] 
     //},
@@ -9,7 +11,7 @@ module.exports = function(grunt) {
     uglify: {
       build: {
         files: {
-          'public/dist/js/app.min.js': ['public/src/js/**/*.js', 'public/src/js/*.js']
+          'public/src/dist/js/app.min.js': ['public/src/js/**/*.js', 'public/src/js/*.js']
         }
       }
     },
@@ -19,6 +21,36 @@ module.exports = function(grunt) {
         files: ['public/src/js/**/*.js'],
         //tasks: ['jshint', 'uglify']
         tasks: ['uglify']
+      },
+      css: {
+        files: ['public/src/scss/*.scss'],
+        tasks: ['sass', 'cssmin', 'clean']
+      }
+    },
+
+    sass: {
+      dist: {
+        files: {
+          'public/src/dist/css/main.css' : 'public/src/scss/main.scss'
+        }
+      }
+    },
+
+    cssmin: {
+      add_banner: {
+        files: [{
+          expand: true,
+          cwd: 'public/src/dist/css/',
+          src: ['main.css'],
+          dest: 'public/src/dist/css/',
+          ext: '.min.css'
+        }]
+      }
+    },
+
+    clean: {
+      build: {
+        src: ['.sass-cache/']
       }
     },
 
@@ -46,6 +78,9 @@ module.exports = function(grunt) {
   //grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-karma');
