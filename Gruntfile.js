@@ -8,6 +8,19 @@ module.exports = function(grunt) {
       //all: ['public/src/js/**/*.js'] 
     //},
 
+    nodemon: {
+      dev: {
+        script: 'server.js'
+      }
+    },
+
+    concurrent: {
+      options: {
+        logConcurrentOutput: true
+      },
+      tasks: ['nodemon', 'watch']
+    },
+
     uglify: {
       build: {
         files: {
@@ -52,19 +65,6 @@ module.exports = function(grunt) {
       build: {
         src: ['.sass-cache/']
       }
-    },
-
-    nodemon: {
-      dev: {
-        script: 'server.js'
-      }
-    },
-
-    concurrent: {
-      options: {
-        logConcurrentOutput: true
-      },
-      tasks: ['nodemon', 'watch']
     },
 
     karma: {
