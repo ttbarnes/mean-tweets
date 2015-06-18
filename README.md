@@ -45,6 +45,6 @@ PUT `/api/tweets/tweet_id` - update a tweet with the provided ID.
 DELETE `/api/tweets/tweet_id` - delete a tweet with the provided ID.
 
 
-GET `/search`
+GET `/api/search`
 
-GET `/search/someString` - searches and returns tweets containing someString.
+GET `/api/search/someString` - searches and returns tweets containing someString.
