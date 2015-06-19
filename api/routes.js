@@ -138,7 +138,14 @@ router.route('/profiles')
           if (!tweets.length) {
             res.status(500).send('No tweets found.');
           } else {
-            res.json(tweets);
+            res.json(
+              [
+                [{
+                  'otherProfileThings': 'etc'
+                }],
+                  tweets
+              ]
+            );
           }
       });
 
