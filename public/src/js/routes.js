@@ -64,7 +64,7 @@ angular.module('meanExampleRoutes', ['ui.router'])
         templateUrl: 'views/logout.html',
         controller: 'LogoutCtrl'
       })
-      .state('publicProfile', {
+      .state('profilePublic', {
         url: '/profiles/:profile',
         templateUrl: 'views/profile-public.html'
       })
