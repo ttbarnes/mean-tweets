@@ -122,4 +122,17 @@ router.route('/tweets/:tweet_id')
       });
   });
 
+
+router.route('/:profile')
+
+  .get(function(req, res) {
+    res.json({ message: 'public profile api' });
+  });
+
+
+
+
+
+
+
 module.exports = router;
