@@ -21,12 +21,15 @@ angular.module('meanExampleRoutes', ['ui.router'])
     },
     seeYouSoon: {
       name: 'seeYouSoon'
+    },
+    error: {
+      name: 'error'
     }
   })
 
   .config(function($stateProvider, $urlRouterProvider, states, $locationProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/error');
 
     $stateProvider
       .state(states.home.name, {
@@ -61,6 +64,10 @@ angular.module('meanExampleRoutes', ['ui.router'])
       .state(states.seeYouSoon.name, {
         url: '/see-you-soon',
         templateUrl: 'views/see-you-soon.html'
+      })
+      .state(states.error.name, {
+        url: '/error',
+        templateUrl: 'views/error.html'
       })
 
     $locationProvider.html5Mode(true);
