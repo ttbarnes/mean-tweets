@@ -12,6 +12,9 @@
        placeholder="Enter search criteria, eg #taken3"/>
 <button ng-click="getTweets(search.query)">Go</button>
 
+
+<p ng-show="errorMessage">{{errorMessage}}</p>
+
 <div class="tweets">
   <div ng-repeat="tweet in tweets.slice().reverse()" 
        class="tweet">

@@ -52,7 +52,11 @@ router.route('/search/:searchstring')
     Tweet.find({name: new RegExp(req.params.searchstring, "i")}, function(err, tweets) {
       if (err)
             res.send(err);
-        res.json(tweets);
+        if (!tweets.length) {
+          res.status(500).send('No tweets found with your search criteria. Please try something else.');
+        } else {
+          res.json(tweets);
+        }
     });
 
   });
