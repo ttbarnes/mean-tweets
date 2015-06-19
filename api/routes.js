@@ -123,11 +123,28 @@ router.route('/tweets/:tweet_id')
   });
 
 
-router.route('/:profile')
+router.route('/profiles')
 
   .get(function(req, res) {
     res.json({ message: 'public profile api' });
   });
+
+  router.route('/profiles/:profile')
+    .get(function(req, res) {
+
+      Tweet.find({username: new RegExp(req.params.profile, "i")}, function(err, tweets) {
+        if (err)
+              res.send(err);
+          if (!tweets.length) {
+            res.status(500).send('No tweets found.');
+          } else {
+            res.json(tweets);
+          }
+      });
+
+    });
+
+
 
 
 
