@@ -10,8 +10,11 @@ angular.module('meanExampleRoutes', ['ui.router'])
     notifications: {
       name: 'notifications'
     },
-    profile: {
-      name: 'profile'
+    profileEdit: {
+      name: 'profileEdit'
+    },
+    profilePublic: {
+      name: 'profilePublic'
     },
     login: {
       name: 'login'
@@ -46,9 +49,9 @@ angular.module('meanExampleRoutes', ['ui.router'])
         templateUrl: 'views/notifications.html',
         controller: 'NotificationsCtrl'
       })
-      .state(states.profile.name, {
-        url: '/profile',
-        templateUrl: 'views/profile.html',
+      .state(states.profileEdit.name, {
+        url: '/edit-profile',
+        templateUrl: 'views/profile-edit.html',
         controller: 'ProfileCtrl'
       })
       .state(states.login.name, {
@@ -60,6 +63,10 @@ angular.module('meanExampleRoutes', ['ui.router'])
         url: '/logout',
         templateUrl: 'views/logout.html',
         controller: 'LogoutCtrl'
+      })
+      .state('publicProfile', {
+        url: '/profiles/:profile',
+        templateUrl: 'views/profile-public.html'
       })
       .state(states.seeYouSoon.name, {
         url: '/see-you-soon',
