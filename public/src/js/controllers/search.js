@@ -9,7 +9,6 @@ angular.module('meanExampleApp').controller('SearchCtrl',
       }, function (reason){
         $scope.errorMessage = reason.data;
       });
-
     };
 
 });

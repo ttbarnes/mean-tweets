@@ -65,8 +65,9 @@ angular.module('meanExampleRoutes', ['ui.router'])
         controller: 'LogoutCtrl'
       })
       .state('profilePublic', {
-        url: '/profiles/:profile',
-        templateUrl: 'views/profile-public.html'
+        url: '/profiles/:username',
+        templateUrl: 'views/profile-public.html',
+        controller: 'ProfilePublicCtrl'
       })
       .state(states.seeYouSoon.name, {
         url: '/see-you-soon',
@@ -76,7 +77,7 @@ angular.module('meanExampleRoutes', ['ui.router'])
         url: '/error',
         templateUrl: 'views/error.html'
       })
-
+ 
     $locationProvider.html5Mode(true);
 
 
