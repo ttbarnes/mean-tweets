@@ -21,13 +21,13 @@ module.exports = function(grunt) {
       tasks: ['nodemon', 'watch']
     },
 
-    uglify: {
-      build: {
-        files: {
-          'public/src/dist/js/app.min.js': ['public/src/js/**/*.js', 'public/src/js/*.js']
-        }
-      }
-    },
+//    uglify: {
+//      build: {
+//        files: {
+//          'public/src/dist/js/app.min.js': ['public/src/js/**/*.js', 'public/src/js/*.js']
+//        }
+//      }
+//    },
 
     watch: {
       js: {
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
   });
 
   //grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  //grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -86,6 +86,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
 
   //grunt.registerTask('default', ['jshint', 'uglify', 'concurrent']);
-  grunt.registerTask('default', [ 'uglify', 'concurrent']);
+  grunt.registerTask('default', ['concurrent']);
 
 };
