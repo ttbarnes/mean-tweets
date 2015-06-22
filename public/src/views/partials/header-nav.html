@@ -4,7 +4,7 @@
     <li ng-if="auth.profile" style="font-size:14px;padding:10px 0;"><strong>Welcome {{auth.profile.email}}!</strong></li>
     <br/>
     <li ng-show="auth.profile"><a ui-sref="profileEdit">edit profile</a></li>
-    <li ng-show="auth.profile"><a ui-sref="profilePublic">view profile</a></li>
+    <li ng-show="auth.profile"><a ui-sref="profilePublic({username: auth.profile.nickname})">view profile</a></li>
     <!--<li ng-show="auth.profile"><a ui-sref="notifications">notifications</a></li>-->
     <li ng-show="auth.profile"><a ui-sref="logout">logout</a></li>
   </ul>

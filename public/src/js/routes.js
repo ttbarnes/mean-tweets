@@ -39,35 +39,35 @@ angular.module('meanExampleRoutes', ['ui.router'])
         url: '/',
         templateUrl: 'views/home.html'
       })
+      .state(states.login.name, {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
       .state(states.search.name, {
         url: '/search',
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl'
       })
-      .state(states.notifications.name, {
-        url: '/notifications',
-        templateUrl: 'views/notifications.html',
-        controller: 'NotificationsCtrl'
+      .state(states.profilePublic.name, {
+        url: '/profiles/:username',
+        templateUrl: 'views/profile-public.html',
+        controller: 'ProfilePublicCtrl'
       })
       .state(states.profileEdit.name, {
         url: '/edit-profile',
         templateUrl: 'views/profile-edit.html',
         controller: 'ProfileCtrl'
       })
-      .state(states.login.name, {
-        url: '/login',
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+      .state(states.notifications.name, {
+        url: '/notifications',
+        templateUrl: 'views/notifications.html',
+        controller: 'NotificationsCtrl'
       })
       .state(states.logout.name, {
         url: '/logout',
         templateUrl: 'views/logout.html',
         controller: 'LogoutCtrl'
-      })
-      .state('profilePublic', {
-        url: '/profiles/:username',
-        templateUrl: 'views/profile-public.html',
-        controller: 'ProfilePublicCtrl'
       })
       .state(states.seeYouSoon.name, {
         url: '/see-you-soon',
