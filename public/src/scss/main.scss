@@ -93,3 +93,23 @@ img {
   max-width:100%;
 }
 
+button {
+  border:0 none;
+  -webkit-appearance:none;
+  padding:10px;
+  width:100%;
+  margin-bottom:20px;
+  font-size:13px;
+  cursor:pointer;
+  @media (min-width:600px) {
+    width:auto;
+  }
+  &.blue {
+    background:#3498D4;
+    color:#FFF;
+  }
+}
+
+
+
+
