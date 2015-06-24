@@ -1,18 +1,15 @@
-<p>{{message.text}}</p>
-<div id="login-container">
+<div class="row form-wrap">
   <form ng-submit="submit()">
-    <fieldset>
-      <input type="text" name="user" ng-model="user" ng-disabled="loading" />
-      <br>
-      <input type="password" name="pass" ng-model="pass" ng-disabled="loading" />
-      <br>
-      <button type="submit" ng-disabled="loading">submit</button>
-    </fieldset>
+    <input type="text" name="user" ng-model="user" placeholder="example@test.com" ng-disabled="loading" autofocus/>
+    <br>
+    <input type="password" name="pass" ng-model="pass" placeholder="password" ng-disabled="loading" />
+    <br>
+    <button type="submit" ng-disabled="loading">submit</button>
   </form>
 
-  <!-- <a href="" ng-click="reset()">Reset</a> -->
+  <p ng-show="message.text">{{message.text}}</p>
 
-  <div id="login-container">
-    <a href="" ng-click="doGoogleAuthWithPopup()">Login with Google</a><br/>
-  </div>
+  <!-- <a href="" ng-click="reset()">Reset</a> -->
+  <a href="" ng-click="doGoogleAuthWithPopup()">Login with Google</a><br/>
+
 </div>
