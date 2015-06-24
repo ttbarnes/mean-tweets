@@ -5,15 +5,14 @@ var morgan             = require('morgan')
 var mongoose           = require('mongoose');
 var bodyParser         = require('body-parser');
 var methodOverride     = require('method-override');
+var dotenv             = require('dotenv').load();
 
 // configuration ===========================================
 
-// config files
-var db = require('./config/db');
 var routes         = require('./api/routes');
 
-var port = process.env.PORT || 2000; // set our port
-mongoose.connect(db.url); // connect to our mongoDB database
+var port = process.env.port;
+mongoose.connect(process.env.db_url);
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
