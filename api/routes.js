@@ -1,5 +1,6 @@
 var express     = require('express');
 var Tweet       = require('../app/models/tweet');
+var Profile       = require('../app/models/profile');
 var router      = express.Router();
 
 // middleware to use for all requests
@@ -132,12 +133,65 @@ router.route('/profiles')
   router.route('/profiles/:profile')
     .get(function(req, res) {
 
-      Tweet.find({username: new RegExp(req.params.profile, "i")}, function(err, tweets) {
+      Profile.find({username: new RegExp(req.params.profile, "i")}, function(err, profile) {
+        if (err)
+              res.send(err);
+          if (!profile.length) {
+            res.status(404).send('No-one found with the username \'' + req.params.profile + '\'');
+          } else {
+            /*
+            res.json(
+              [
+                [{
+                  'otherProfileThings': 'etc'
+                }],
+                  profile
+              ]
+            );
+            */
+            res.json([
+              profile
+            ]);
+          }
+      });
+
+
+    })
+
+    .post(function(req, res) {
+
+          Profile.find({username: new RegExp(req.params.profile, "i")}, function(err, profile) {
+            if (!profile.length) {
+              //res.status(404).send('No-one found with the username \'' + req.params.profile + '\'');
+              res.send('No-one found with the username \'' + req.params.profile + '\'');
+              console.log('post new user');
+
+              var profile = new Profile();
+              profile.username = req.body.username;
+//            profile.userFollower = req.body.userFollower;
+//            profile.userFollowing = req.body.userFollowing;
+
+              profile.save(function(err) {
+                  console.log('User added to db!');
+                  if (err)
+                      res.send(err);
+              })
+
+            }
+          });
+
+    });
+
+  router.route('/profiles/:username/tweets')
+    .get(function(req, res) {
+
+      Tweet.find({username: new RegExp(req.params.username, "i")}, function(err, tweets) {
         if (err)
               res.send(err);
           if (!tweets.length) {
             res.status(500).send('No tweets found.');
           } else {
+            /*
             res.json(
               [
                 [{
@@ -146,8 +200,28 @@ router.route('/profiles')
                   tweets
               ]
             );
+            */
+            res.json(tweets);
           }
       });
+
+
+    });
+
+  router.route('/profiles/:profile/following')
+
+    .get(function (req, res) {
+
+    })
+
+    .post(function (req, res) {
+
+      //todo:
+      //
+      //post new username I am following
+      //
+      //(I think..) post my username to the new username's 'followers' list
+      //
 
     });
 

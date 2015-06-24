@@ -1,7 +1,7 @@
 <h3 ng-if="username">{{username}}</h3>
 
 <button ng-hide="usersOwnProfile" 
-        ng-click="followUser(username)"
+        ng-click="followUser(profileUsername, username)"
         class="blue">Follow @{{username}}</button>
 
 <br/>

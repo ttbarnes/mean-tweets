@@ -15,7 +15,7 @@ angular.module('meanExampleApp').factory('tweetsService', function (Restangular)
         return Restangular.all('api/search/' + searchQuery);
       },
       userSpecificTweets: function(username) {
-        return Restangular.all('api/tweets/' + username);
+        return Restangular.all('api/profiles/' + username + '/tweets' );
       }
     }
 

@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('LoginCtrl', function (auth, $scope, $location, store) {
+angular.module('meanExampleApp').controller('LoginCtrl', function (auth, $scope, $location, store, Restangular) {
   $scope.user = '';
   $scope.pass = '';
   $scope.message = {text: ''};
@@ -9,6 +9,17 @@ angular.module('meanExampleApp').controller('LoginCtrl', function (auth, $scope,
     store.set('token', token);
     $location.path('/');
     $scope.loading = false;
+
+    var newUser = {
+      username: auth.profile.nickname
+    };
+
+    Restangular.all('api/profiles/' + newUser.username).post(newUser).then(function(){
+      console.info('posted a new user: ', newUser.username);
+    }, function (reason){
+      console.info('user has logged in previously.');
+    });
+
   }
 
   function onLoginFailed() {
