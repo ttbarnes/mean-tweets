@@ -71,7 +71,8 @@ angular.module('meanExampleRoutes', ['ui.router'])
       })
       .state(states.seeYouSoon.name, {
         url: '/see-you-soon',
-        templateUrl: 'views/see-you-soon.html'
+        templateUrl: 'views/see-you-soon.html',
+        controller: 'SeeYouSoonCtrl'
       })
       .state(states.error.name, {
         url: '/error',
