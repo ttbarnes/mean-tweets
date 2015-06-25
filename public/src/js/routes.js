@@ -2,31 +2,40 @@ angular.module('meanExampleRoutes', ['ui.router'])
 
   .constant('states', {
     home: {
-      name: 'home'
+      name: 'home',
+      pageTitle: 'Home'
     },
     search: {
-      name: 'search'
+      name: 'search',
+      pageTitle: 'Search'
     },
     notifications: {
-      name: 'notifications'
+      name: 'notifications',
+      pageTitle: 'Notifications'
     },
     profileEdit: {
-      name: 'profileEdit'
+      name: 'profileEdit',
+      pageTitle: 'Edit Profile'
     },
     profilePublic: {
-      name: 'profilePublic'
+      name: 'profilePublic',
+      pageTitle: 'Temp page title'
     },
     login: {
-      name: 'login'
+      name: 'login',
+      pageTitle: 'Login'
     },
     logout: {
-      name: 'logout'
+      name: 'logout',
+      pageTitle: 'Logout'
     },
     seeYouSoon: {
-      name: 'seeYouSoon'
+      name: 'seeYouSoon',
+      pageTitle: 'See you soon'
     },
     error: {
-      name: 'error'
+      name: 'error',
+      pageTitle: 'Error'
     }
   })
 
@@ -37,46 +46,73 @@ angular.module('meanExampleRoutes', ['ui.router'])
     $stateProvider
       .state(states.home.name, {
         url: '/',
-        templateUrl: 'views/home.html'
+        templateUrl: 'views/home.html',
+        resolve: {
+          $title: function() { return states.home.pageTitle; }
+        }
       })
       .state(states.login.name, {
         url: '/login',
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        resolve: {
+          $title: function() { return states.login.pageTitle; }
+        }
       })
       .state(states.search.name, {
         url: '/search',
         templateUrl: 'views/search.html',
-        controller: 'SearchCtrl'
+        controller: 'SearchCtrl',
+        resolve: {
+          $title: function() { return states.search.pageTitle; }
+        }
       })
       .state(states.profilePublic.name, {
         url: '/profiles/:username',
         templateUrl: 'views/profile-public.html',
-        controller: 'ProfilePublicCtrl'
+        controller: 'ProfilePublicCtrl',
+        resolve: {
+          $title: function() { return states.profilePublic.pageTitle; }
+        }
       })
       .state(states.profileEdit.name, {
         url: '/edit-profile',
         templateUrl: 'views/profile-edit.html',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl',
+        resolve: {
+          $title: function() { return states.profileEdit.pageTitle; }
+        }
       })
       .state(states.notifications.name, {
         url: '/notifications',
         templateUrl: 'views/notifications.html',
-        controller: 'NotificationsCtrl'
+        controller: 'NotificationsCtrl',
+        resolve: {
+          $title: function() { return states.notifications.pageTitle; }
+        }
       })
       .state(states.logout.name, {
         url: '/logout',
         templateUrl: 'views/logout.html',
-        controller: 'LogoutCtrl'
+        controller: 'LogoutCtrl',
+        resolve: {
+          $title: function() { return states.logout.pageTitle; }
+        }
       })
       .state(states.seeYouSoon.name, {
         url: '/see-you-soon',
         templateUrl: 'views/see-you-soon.html',
-        controller: 'SeeYouSoonCtrl'
+        controller: 'SeeYouSoonCtrl',
+        resolve: {
+          $title: function() { return states.seeYouSoon.pageTitle; }
+        }
       })
       .state(states.error.name, {
         url: '/error',
-        templateUrl: 'views/error.html'
+        templateUrl: 'views/error.html',
+        resolve: {
+          $title: function() { return states.error.pageTitle; }
+        }
       })
  
     $locationProvider.html5Mode(true);

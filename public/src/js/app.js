@@ -7,6 +7,7 @@ angular.module('meanExampleApp', [
   'angular-jwt',
   'ngRoute',
   'ui.router',
+  'ui.router.title',
   'meanExampleRoutes',
   'restangular',
   'angularMoment'
