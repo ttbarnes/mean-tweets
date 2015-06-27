@@ -154,6 +154,17 @@ input[type="submit"] {
 
 
 
+.page-home {
+  overflow:hidden;
+  .wrapper {
+    max-width:100%;
+    padding:0;
+  }
+  header {
+    display:none;
+  }
+}
+
 .home-welcome {
   position:relative;
   display:inline-block;
@@ -162,25 +173,66 @@ input[type="submit"] {
   height:100%;
   img {
     position:absolute;
-    top:0;
-    left:0;
-    width:100%;
+    max-width:initial;
     z-index:1;
+    top:-25%;
+    left:-25%;
+    @media (min-width:768px) {
+      top:0;
+      left:-15%;
+    }
+    @media (min-width:1000px) {
+      top:0;
+      left:0;
+    }
+    @media (min-width:1200px) {
+      width:100%;
+      max-width:100%;
+    }
   }
   .box {
     z-index:2;
     position:relative;
     margin:10% auto;
-    background:#CCC;
-    width:300px;
     padding:10px;
     text-align:center;
+    color:#FFF;
+    @media (min-width:600px) {
+      width:550px;
+    }
+    @media (min-width:768px) {
+      margin:15% auto;
+    }
+  }
+  h3 {
+    text-shadow:0 3px 10px #9A9A9A;
+    font:{
+      weight:normal;
+      size:1.5em;
+    }
+    @media (min-width:600px) {
+      font-size:2.5em;
+    }
   }
   p {
     margin-bottom:0;
+    color:#1D110F;
+    font:{
+      weight:bold;
+      size:1em;
+    }
+    @media (min-width:600px) {
+      font-size:1.2em;
+    }
+  }
+  a {
+    cursor:pointer;
+    padding:0 0.2em;
+    color:#1D110F;
   }
 
 }
+
 
 
 
