@@ -123,6 +123,9 @@ input {
 
 button {
   border:0 none;
+  @media (min-width:600px) {
+    width:auto;
+  }
 }
 
 input {
