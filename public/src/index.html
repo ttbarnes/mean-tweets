@@ -37,7 +37,7 @@
     <script src="js/services/tweets.js"></script>
     <!--<script src="dist/js/app.min.js"></script>-->
   </head>
-  <body ng-class="page{{$title}}">
+  <body class="page-{{$title | lowercase}}">
     <div class="wrapper" ng-controller="GlobalCtrl">
       
       <ng-include src="'views/partials/header-nav.html'"></ng-include>
