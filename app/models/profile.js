@@ -2,7 +2,9 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var ProfileSchema   = new Schema({
-    username: String
+    username: String,
+    following: [{username: String}],
+    followers: [{username: String}]
 });
 /* 
 {
@@ -12,4 +14,3 @@ var ProfileSchema   = new Schema({
 
 module.exports = mongoose.model('Profile', ProfileSchema);
 
- 

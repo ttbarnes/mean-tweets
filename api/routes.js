@@ -1,6 +1,6 @@
 var express     = require('express');
 var Tweet       = require('../app/models/tweet');
-var Profile       = require('../app/models/profile');
+var Profile     = require('../app/models/profile');
 var router      = express.Router();
 
 // middleware to use for all requests
@@ -133,7 +133,7 @@ router.route('/profiles')
   router.route('/profiles/:profile')
     .get(function(req, res) {
 
-      Profile.find({username: new RegExp(req.params.profile, "i")}, function(err, profile) {
+      Profile.find({username: new RegExp(req.params.profile, "i")}, function (err, profile) {
         if (err)
               res.send(err);
           if (!profile.length) {
@@ -185,7 +185,7 @@ router.route('/profiles')
   router.route('/profiles/:username/tweets')
     .get(function(req, res) {
 
-      Tweet.find({username: new RegExp(req.params.username, "i")}, function(err, tweets) {
+      Tweet.find({username: new RegExp(req.params.username, "i")}, function (err, tweets) {
         if (err)
               res.send(err);
           if (!tweets.length) {
@@ -208,26 +208,21 @@ router.route('/profiles')
 
     });
 
-  router.route('/profiles/:profile/following')
-
-    .get(function (req, res) {
-
-    })
+  router.route('/profiles/:username/following')
 
     .post(function (req, res) {
 
-      //todo:
-      //
-      //post new username I am following
-      //
-      //(I think..) post my username to the new username's 'followers' list
-      //
+      userWhoFollows = req.params.username;
+      userToFollow   = req.body.username;
+
+      Profile.update({username: userWhoFollows, $pushAll: {following:[{username:userToFollow}]}},function (err){
+          console.log('User ' + userWhoFollows + ' is now following' + userToFollow);
+          if (err)
+              res.send(err);
+          res.json({ message: 'Now following ' + userToFollow + '.'});
+      });
 
     });
-
-
-
-
 
 
 

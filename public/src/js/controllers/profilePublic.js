@@ -19,20 +19,14 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth,
 
       console.log(userFollower + ' wants to follow ' + userFollowing);
 
-      /*
-      var bla = {
-        userFollower: userFollower,
-        userFollowing: userFollowing
+      var newFollowings = {
+        username: userFollowing
       };
 
-      Restangular.all('api/profiles/' + userFollowing).post(bla).then(function(){
-        console.info(userFollowing + ' has a new follower:  ' + userFollower);
-      });
 
-      Restangular.all('api/profiles/' + userFollower).post(bla).then(function(){
+      Restangular.all('api/profiles/' + userFollower + '/following').post(newFollowings).then(function(){
         console.info(userFollower + ' followed ' + userFollowing);
       });
-      */
 
     }
     else {
