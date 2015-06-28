@@ -72,12 +72,35 @@ dl {
   padding:0;
 }
 
+h3 {
+  margin:0;
+}
+
 h4 {
   margin:0;
 }
 
 
+.col-30,
+.col-70 {
+  @media(min-width:768px) {
+    float:left;
+  }
+}
 
+.col-70 {
+  @media(min-width:768px) {
+    width:70%;
+    padding-right:15px;
+  }
+}
+
+.col-30 {
+  @media(min-width:768px) {
+    width:30%;
+    padding-left:15px;
+  }
+}
 
 .tweets .tweet {
   clear:both;

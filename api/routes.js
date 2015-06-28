@@ -149,9 +149,7 @@ router.route('/profiles')
               ]
             );
             */
-            res.json([
-              profile
-            ]);
+            res.json(profile);
           }
       });
 

@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth, $stateParams, $scope, Restangular, tweetsService) {
+angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth, $stateParams, $scope, Restangular, tweetsService, userProfileService) {
 
   $scope.username = $stateParams.username;
   $scope.profileUsername = auth.profile.nickname;
@@ -7,11 +7,19 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth,
     $scope.usersOwnProfile = true;
   }
 
-  //todo: add promise, errors, no user, etc - maybe use resolve() in routes?
+  //todo (server/api): combine into one api call. user: get everything.
+  //and think about add promise errors, no user, etc - maybe use resolve() in routes?
+
+  userProfileService.user('support').getList().then(function (user){ 
+    //todo: where/why is the response wrapped in an array?
+    //see difference in mongodb and response returned from api.
+    $scope.user = user[0];
+  });
 
   tweetsService.userSpecificTweets($stateParams.username).getList().then(function (tweets){
     $scope.tweets = tweets;
   });
+
 
 
   $scope.followUser = function(userFollower, userFollowing) {
