@@ -20,30 +20,28 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth,
     $scope.tweets = tweets;
   });
 
+
   $scope.followUser = function(userFollower, userFollowing) {
     if(auth.isAuthenticated) {
 
       console.log(userFollower + ' wants to follow ' + userFollowing);
 
       var newFollowings = {
+        userFollower: userFollower,
         userFollowing: userFollowing
       }
 
-      //PUT to logged-in user's following array
+      //PUT in logged-in user's following array
       Restangular.all('api/profiles/' + userFollower + '/following').customPUT(newFollowings).then(function () {
         console.info(userFollower + ' followed ' + userFollowing);
         console.log('posted to:' + 'api/profiles/' + userFollower + '/following');
       });
 
-      
-
-      /*
-      //todo: PUT to 'following' users's followers array
-      Restangular.all('api/profiles/' + userFollowing + '/followers').post(newFollowings).then(function(){
+      //PUT in 'following' users's followers array
+      Restangular.all('api/profiles/' + userFollowing + '/followers').customPUT(newFollowings).then(function () {
         console.info(userFollowing + ' has a new follower: ' + userFollower);
-        console.log('posted to:' + 'api/profiles/' + userFollowing + '/followers');
+        console.log('posted to:' + 'api/profiles/' + userFollowing + '/following');
       });
-      */
 
     }
     else {

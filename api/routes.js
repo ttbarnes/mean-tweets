@@ -179,14 +179,30 @@ router.route('/profiles')
 
     .put(function (req, res) {
 
-      userFollowing  = req.params.username;
-      userToFollow   = req.body.userFollowing;
+      userFollowing = req.params.username;
+      userToFollow  = req.body.userFollowing;
 
       Profile.findOneAndUpdate( {username: userFollowing},{ $push : {  following: { username: userToFollow } } }, function (err, profile) {
         if (err)
           res.send(err);
         res.json(profile);
         console.log('User ' + userFollowing + ' is now following ' + userToFollow);
+      });
+
+    });
+
+  router.route('/profiles/:username/followers')
+
+    .put(function (req, res) {
+
+      userFollowers = req.params.username;
+      userFollowing = req.body.userFollower;
+
+      Profile.findOneAndUpdate( {username: userFollowers},{ $push : {  followers: { username: userFollowing } } }, function (err, profile) {
+        if (err)
+          res.send(err);
+        res.json(profile);
+        console.log('User ' + userFollowers + ' has a new follower: ' + userFollowing);
       });
 
     });
