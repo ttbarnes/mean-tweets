@@ -17,9 +17,20 @@
 </div>
 
 <div class="col-30">
+
+  <h3>followers</h3>
+  <br/>
+  <ul>
+    <li ng-repeat="user in user.followers">{{user.username}}</li>
+  </ul>
+
+  <br/>
+  <br/>
+
   <h3>following</h3>
   <br/>
   <ul>
     <li ng-repeat="user in user.following">{{user.username}}</li>
   </ul>
+
 </div>
