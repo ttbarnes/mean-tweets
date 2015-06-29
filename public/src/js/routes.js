@@ -36,6 +36,10 @@ angular.module('meanExampleRoutes', ['ui.router'])
     error: {
       name: 'error',
       pageTitle: 'Error'
+    },
+    loginRequired: {
+      name: 'loginRequired',
+      pageTitle: 'Login required'
     }
   })
 
@@ -79,6 +83,11 @@ angular.module('meanExampleRoutes', ['ui.router'])
         url: '/edit-profile',
         templateUrl: 'views/profile-edit.html',
         controller: 'ProfileCtrl',
+        data: {
+          'auth': {
+            required: true
+          }
+        },
         resolve: {
           $title: function() { return states.profileEdit.pageTitle; }
         }
@@ -112,6 +121,13 @@ angular.module('meanExampleRoutes', ['ui.router'])
         templateUrl: 'views/error.html',
         resolve: {
           $title: function() { return states.error.pageTitle; }
+        }
+      })
+      .state(states.loginRequired.name, {
+        url: '/login-required',
+        templateUrl: 'views/login-required.html',
+        resolve: {
+          $title: function() { return states.loginRequired.pageTitle; }
         }
       })
  
