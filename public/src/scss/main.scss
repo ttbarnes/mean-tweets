@@ -14,6 +14,10 @@ body {
   width:100%;
 }
 
+p {
+  margin:0 0 15px 0;
+}
+
 a {
   text-decoration:none;
   font-weight:bold;
@@ -110,13 +114,30 @@ h4 {
   padding:10px;
 }
 
-.tweets .tweet-content small {
+.tweets .img-wrap {
+  max-height:350px;
+  overflow:hidden;
+}
+
+.tweets img {
+  width:100%;
+}
+
+.tweets .tweet-copy,
+.tweets .img-wrap {
+  margin-bottom:15px;
+}
+
+.tweets .tweet-copy small {
   font-weight:normal;
   font-size:12px;
 }
 
-.tweets .tweet-content .tweet-id small {
-  font-size:11px;
+.tweets .tweet-copy .tweet-id {
+  margin-bottom:0;
+  small {
+    font-size:11px;
+  }
 }
 
 img {
@@ -173,6 +194,9 @@ input[type="submit"] {
   input[type="text"] {
     width:300px;
   }
+  input[type="url"] {
+    width:100px;
+  }
   input[type="submit"] {
     width:auto;
   }
@@ -182,7 +206,7 @@ input[type="submit"] {
 
 .page-home {
   background:#1D110F;
-  overflow:hidden;
+  overflow-x:hidden;
   .wrapper {
     max-width:100%;
     padding:0;

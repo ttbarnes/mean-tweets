@@ -16,12 +16,17 @@
   </style>
 
   <div class="post-something">
-    <p>Post something</p>
     <form name="postTweetForm">
       <input type="text" 
-             name="tweet"
+             name="content"
+             placeholder="Post something"
              ng-model="tweet.content" 
              maxlength="{{maxCharLength}}" />
+      <input type="url" 
+             name="imageUrl"
+             placeholder="Image URL"
+             ng-model="tweet.imageUrl" />
+
       <input type="submit" 
              value="Submit post" 
              ng-disabled="postTweetForm.$invalid || !tweet.content.length > 0"
@@ -34,7 +39,10 @@
   <div class="tweets">
     <div ng-repeat="tweet in tweets.slice().reverse()" 
          class="tweet">
-      <h4 class="tweet-content">{{tweet.name}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
+      <h4 class="tweet-copy">{{tweet.name}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
+      <div ng-if="tweet.imageUrl" class="img-wrap">
+        <img ng-src="{{tweet.imageUrl}}" alt="{{tweet.imageUrl}}" />
+      </div>
       <p>@{{tweet.username}}</p>
       <p>#<small>{{tweet._id | limitTo:10}}</small></p>
     </div>
