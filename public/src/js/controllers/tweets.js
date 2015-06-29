@@ -19,7 +19,9 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
         var newTweet = {
           username: auth.profile.nickname,
           copy: tweet.copy,
-          imageUrl: tweet.imageUrl
+          image:{
+            url: tweet.image.url
+          }
         };
 
         tweetsService.tweets.post(newTweet).then(function(){

@@ -4,7 +4,9 @@ var Schema       = mongoose.Schema;
 var TweetSchema   = new Schema({
     username: String,
     copy: String,
-    imageUrl: String,
+    image:{
+      url:String
+    },
     timestamp: String
 });
 

@@ -11,8 +11,8 @@
   <div ng-repeat="tweet in tweets.slice().reverse()" 
        class="tweet">
     <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
-    <div ng-if="tweet.imageUrl" class="img-wrap">
-      <img ng-src="{{tweet.imageUrl}}" alt="{{tweet.imageUrl}}" />
+    <div ng-if="tweet.image.url" class="img-wrap">
+      <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
     </div>
     <p>@{{tweet.username}}</p>
     <p>#<small>{{tweet._id | limitTo:10}}</small></p>

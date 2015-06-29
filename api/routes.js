@@ -42,7 +42,7 @@ router.route('/tweets')
     var tweet = new Tweet();  //create a new instance of the Tweet model
     tweet.username = req.body.username;  //set the tweets username (comes from the request)
     tweet.copy = req.body.copy;  //set the tweets name (comes from the request)
-    tweet.imageUrl = req.body.imageUrl;
+    tweet.image.url = req.body.image.url;
     tweet.timestamp = new Date().toISOString(); //create new date
 
     //save the tweet and check for errors
