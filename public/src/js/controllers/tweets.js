@@ -18,7 +18,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
       if(auth.isAuthenticated) {
         var newTweet = {
           username: auth.profile.nickname,
-          name: tweet.content,
+          copy: tweet.copy,
           imageUrl: tweet.imageUrl
         };
 

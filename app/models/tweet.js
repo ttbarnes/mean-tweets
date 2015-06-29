@@ -3,7 +3,7 @@ var Schema       = mongoose.Schema;
 
 var TweetSchema   = new Schema({
     username: String,
-    name: String,
+    copy: String,
     imageUrl: String,
     timestamp: String
 });
