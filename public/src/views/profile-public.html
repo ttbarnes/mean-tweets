@@ -1,6 +1,6 @@
 <h3 ng-if="profileUsername">{{profileUsername}}</h3>
 
-<button ng-hide="usersOwnProfile" 
+<button ng-hide="usersOwnProfile || loggedInUserFollows" 
         ng-click="followUser(loggedInUser, profileUsername)"
         class="blue">Follow @{{username}}</button>
 
@@ -34,6 +34,9 @@
   <ul>
     <li ng-repeat="user in user.following">{{user.username}}</li>
   </ul>
+
+  <br/>
+  <br/>
 
   <h3>tweets</h3>
   <p>{{tweets.length}}</p>

@@ -7,6 +7,33 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth,
     $scope.usersOwnProfile = true;
   }
 
+  $scope.loggedInUserFollows = false;
+
+  ////////////////////////////////////////////////////////
+  //current user things - should be service or something
+  //actually, this query should be done with API - find X username in Y profile. Return true/false
+  ////////////////////////////////////////////////////////
+
+  userProfileService.user($scope.loggedInUser).getList().then(function (user){ 
+    console.log('got list');
+    //todo: where/why is the response wrapped in an array?
+    //see difference in mongodb and response returned from api.
+    var loggedInUserUserFollowing = user[0].following;
+
+    angular.forEach(loggedInUserUserFollowing, function (value) {
+      if(value.username === $scope.profileUsername) {
+        $scope.loggedInUserFollows = true;
+      }
+    });
+
+  });
+
+
+  ////////////////////////////////////////////////////////
+  //public profile specifics
+  ////////////////////////////////////////////////////////
+
+
   //todo (server/api): combine into one api call. user: get everything.
   //and think about add promise errors, no user, etc - maybe use resolve() in routes?
 
@@ -19,7 +46,6 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth,
   tweetsService.userSpecificTweets($scope.profileUsername).getList().then(function (tweets){
     $scope.tweets = tweets;
   });
-
 
   $scope.followUser = function(userFollower, userFollowing) {
     if(auth.isAuthenticated) {
