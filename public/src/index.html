@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <base href="/">
 
-    <title>Mean example</title>
+    <title ng-bind="$title + ' - Mean Example'"></title>
 
     <link rel="stylesheet" href="dist/css/main.min.css">
+
+    <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
 
     <script src="bower_components/lodash/dist/lodash.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-ui-router-title/src/angular-ui-router-title.js"></script>
     <script src="bower_components/auth0.js/build/auth0.js"></script>
     <script src="bower_components/a0-angular-storage/dist/angular-storage.js" type="text/javascript"></script>
     <script src="bower_components/angular-jwt/dist/angular-jwt.js" type="text/javascript"></script>
@@ -23,6 +26,7 @@
 
     <script src="js/app.js"></script>
     <script src="js/routes.js"></script>
+
     <script src="js/controllers/global.js"></script>
     <script src="js/controllers/login.js"></script>
     <script src="js/controllers/logout.js"></script>
@@ -31,19 +35,21 @@
     <script src="js/controllers/notifications.js"></script>
     <script src="js/controllers/tweets.js"></script>
     <script src="js/controllers/search.js"></script>
+    <script src="js/controllers/seeYouSoon.js"></script>
+
     <script src="js/services/copyGlobal.js"></script>
+    <script src="js/services/userProfile.js"></script>
     <script src="js/services/tweets.js"></script>
+
     <!--<script src="dist/js/app.min.js"></script>-->
+
   </head>
-  <body>
+  <body class="page-{{$title | lowercase}}">
     <div class="wrapper" ng-controller="GlobalCtrl">
       
       <ng-include src="'views/partials/header-nav.html'"></ng-include>
 
-      <br/>
-      <br/>
-
-      <div ui-view></div>
+      <div class="row" ui-view></div>
 
     </div>
   </body>

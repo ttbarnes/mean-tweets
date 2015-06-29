@@ -1,16 +1,42 @@
-<h3 ng-if="username">{{username}}</h3>
+<h3 ng-if="profileUsername">{{profileUsername}}</h3>
 
 <button ng-hide="usersOwnProfile" 
-        ng-click="followUser(username)"
+        ng-click="followUser(loggedInUser, profileUsername)"
         class="blue">Follow @{{username}}</button>
 
 <br/>
 
-<div class="tweets">
-    <div ng-repeat="tweet in tweets.slice().reverse()" 
-         class="tweet">
-      <h4 class="tweet-content">{{tweet.name}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
-      <p>@{{tweet.username}}</p>
-      <p>#<small>{{tweet._id | limitTo:10}}</small></p>
-    </div>
+
+<div class="col-70 tweets">
+  <div ng-repeat="tweet in tweets.slice().reverse()" 
+       class="tweet">
+    <h4 class="tweet-content">{{tweet.name}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
+    <p>@{{tweet.username}}</p>
+    <p>#<small>{{tweet._id | limitTo:10}}</small></p>
   </div>
+</div>
+
+<div class="col-30">
+
+  <h3>followers</h3>
+  <p>{{user.followers.length}}</p>
+  <br/>
+  <ul>
+    <li ng-repeat="user in user.followers">{{user.username}}</li>
+  </ul>
+
+  <br/>
+  <br/>
+
+  <h3>following</h3>
+  <p>{{user.following.length}}</p>
+  <br/>
+  <ul>
+    <li ng-repeat="user in user.following">{{user.username}}</li>
+  </ul>
+
+  <h3>tweets</h3>
+  <p>{{tweets.length}}</p>
+
+
+</div>

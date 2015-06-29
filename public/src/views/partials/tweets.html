@@ -3,20 +3,31 @@
   <p><small>Loading...</small></p>
 </div>
 
-<div ng-controller="TweetsCtrl">
+<div ng-controller="TweetsCtrl" style="background:#FFF;">
 
-  <p style="float:left;margin-right:15px;">Post something</p>
-  <form name="postTweetForm">
-    <input type="text" 
-           name="tweet"
-           ng-model="tweet.content" 
-           maxlength="{{maxCharLength}}" 
-           style="padding:10px;width:300px;font-size:14px;" />
-    <input type="submit" 
-           value="Submit post" 
-           ng-disabled="postTweetForm.$invalid || !tweet.content.length > 0"
-           ng-click="postTweet(tweet)" />
-  </form>
+  <!-- temp styles until landing/home views and auth updated -->
+  <style>
+  header {
+    display:inline-block !important;
+    background:#FFF;
+    margin-bottom:0;
+    padding-bottom:60x;
+  }
+  </style>
+
+  <div class="post-something">
+    <p>Post something</p>
+    <form name="postTweetForm">
+      <input type="text" 
+             name="tweet"
+             ng-model="tweet.content" 
+             maxlength="{{maxCharLength}}" />
+      <input type="submit" 
+             value="Submit post" 
+             ng-disabled="postTweetForm.$invalid || !tweet.content.length > 0"
+             ng-click="postTweet(tweet)" />
+    </form>
+  </div>
   <br/>
   <p><small>{{maxCharLength - tweet.content.length}} characters remaining...</small></p>
 

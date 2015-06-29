@@ -5,12 +5,12 @@
   <p><small>Loading...</small></p>
 </div>
 
-<br/>
-
-<input type="text" 
-       ng-model="search.query"
-       placeholder="Enter search criteria, eg #taken3"/>
-<button ng-click="getTweets(search.query)">Go</button>
+<div class="row form-wrap">
+  <input type="text" 
+         ng-model="search.query"
+         placeholder="Enter search criteria, eg #taken3"/>
+  <button ng-click="getTweets(search.query)">Go</button>
+</div>
 
 
 <p ng-show="errorMessage">{{errorMessage}}</p>
