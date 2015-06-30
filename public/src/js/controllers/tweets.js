@@ -20,7 +20,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
           username: auth.profile.nickname,
           copy: tweet.copy,
           image:{
-            url: tweet.image.url
+            url:((tweet.image) ? tweet.image.url : '')
           }
         };
 
