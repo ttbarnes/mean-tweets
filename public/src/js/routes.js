@@ -9,10 +9,6 @@ angular.module('meanExampleRoutes', ['ui.router'])
       name: 'search',
       pageTitle: 'Search'
     },
-    notifications: {
-      name: 'notifications',
-      pageTitle: 'Notifications'
-    },
     profileEdit: {
       name: 'profileEdit',
       pageTitle: 'Edit Profile'
@@ -73,7 +69,7 @@ angular.module('meanExampleRoutes', ['ui.router'])
       })
       .state(states.profilePublic.name, {
         url: '/profiles/:username',
-        templateUrl: 'views/profile-public.html',
+        templateUrl: 'views/profile/public.html',
         controller: 'ProfilePublicCtrl',
         resolve: {
           $title: function() { return states.profilePublic.pageTitle; }
@@ -81,7 +77,7 @@ angular.module('meanExampleRoutes', ['ui.router'])
       })
       .state(states.profileEdit.name, {
         url: '/edit-profile',
-        templateUrl: 'views/profile-edit.html',
+        templateUrl: 'views/profile/edit.html',
         controller: 'ProfileCtrl',
         data: {
           'auth': {
@@ -90,14 +86,6 @@ angular.module('meanExampleRoutes', ['ui.router'])
         },
         resolve: {
           $title: function() { return states.profileEdit.pageTitle; }
-        }
-      })
-      .state(states.notifications.name, {
-        url: '/notifications',
-        templateUrl: 'views/notifications.html',
-        controller: 'NotificationsCtrl',
-        resolve: {
-          $title: function() { return states.notifications.pageTitle; }
         }
       })
       .state(states.logout.name, {
