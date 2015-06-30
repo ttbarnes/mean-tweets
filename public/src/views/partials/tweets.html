@@ -16,7 +16,7 @@
   </style>
 
   <div class="post-something">
-    <form name="postTweetForm">
+    <form name="postTweetForm" ng-submit="postTweet(tweet)">
       <input type="text" 
              name="copy"
              placeholder="Post something"
@@ -29,8 +29,7 @@
 
       <input type="submit" 
              value="Submit post" 
-             ng-disabled="postTweetForm.$invalid || !tweet.copy.length > 0"
-             ng-click="postTweet(tweet)" />
+             ng-disabled="postTweetForm.$invalid || !tweet.copy.length > 0" />
     </form>
   </div>
   <br/>

@@ -26,7 +26,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
 
         tweetsService.tweets.post(newTweet).then(function(){
           console.info('posted a tweet', newTweet);
-          //todo: clear the form input
+          $scope.tweet = '';
         });
 
         getTweets();
