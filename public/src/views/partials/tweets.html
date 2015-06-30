@@ -11,7 +11,7 @@
     display:inline-block !important;
     background:#FFF;
     margin-bottom:0;
-    padding-bottom:60x;
+    padding-bottom:60px;
   }
   </style>
 
@@ -40,11 +40,15 @@
     <div ng-repeat="tweet in tweets.slice().reverse()" 
          class="tweet">
       <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
+      <p>@{{tweet.username}}</p>
       <div ng-if="tweet.image.url" class="img-wrap">
         <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
       </div>
-      <p>@{{tweet.username}}</p>
-      <p>#<small>{{tweet._id | limitTo:10}}</small></p>
+      <div class="social">
+        <i class="fi-torsos-male-female"></i>
+        <i class="fi-star"></i>
+        <i class="fi-loop"></i>
+      </div>
     </div>
   </div>
 

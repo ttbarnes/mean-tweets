@@ -20,6 +20,13 @@
        class="tweet">
     <h4 class="tweet-content">{{tweet.name}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
     <p>@{{tweet.username}}</p>
-    <p>#<small>{{tweet._id | limitTo:10}}</small></p>
+    <div ng-if="tweet.image.url" class="img-wrap">
+      <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
+    </div>
+    <div class="social">
+      <i class="fi-torsos-male-female"></i>
+      <i class="fi-star"></i>
+      <i class="fi-loop"></i>
+    </div>
   </div>
 </div>
