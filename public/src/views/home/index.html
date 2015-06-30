@@ -1,2 +1,2 @@
-<div ng-if="!auth.isAuthenticated" ng-include="'views/home/landing.html'"></div>
-<div ng-if="auth.isAuthenticated" ng-include="'views/home/tweets.html'"></div>
+<ng-include ng-if="!auth.isAuthenticated" src="'views/home/landing.html'"></ng-include>
+<ng-include ng-if="auth.isAuthenticated" src="'views/home/tweets.html'"></ng-include>
