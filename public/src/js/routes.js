@@ -50,7 +50,7 @@ angular.module('meanExampleRoutes', ['ui.router'])
     $stateProvider
       .state(states.home.name, {
         url: '/',
-        templateUrl: 'views/home.html',
+        templateUrl: 'views/home/index.html',
         resolve: {
           $title: function() { return states.home.pageTitle; }
         }
