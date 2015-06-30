@@ -6,6 +6,8 @@
 //
 //tweetsService.userSpecificTweets('support2').getList().then(function (tweets){ ... });
 //
+//tweetsService.singleTweet(5576b67fbb1c7b10c2dc65e1).getList().then(function (tweet){ ... });
+//
 
 angular.module('meanExampleApp').factory('tweetsService', function (Restangular){
 
@@ -16,7 +18,11 @@ angular.module('meanExampleApp').factory('tweetsService', function (Restangular)
       },
       userSpecificTweets: function(username) {
         return Restangular.all('api/profiles/' + username + '/tweets' );
+      },
+      singleTweet: function(tweetId) {
+        return Restangular.one('api/tweets/' + tweetId);
       }
+
     }
 
   });
