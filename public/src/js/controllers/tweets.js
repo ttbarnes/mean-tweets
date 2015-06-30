@@ -1,5 +1,7 @@
 angular.module('meanExampleApp').controller('TweetsCtrl', 
-  function (auth, $scope, Restangular, tweetsService) {
+  function (auth, $stateParams, $scope, Restangular, tweetsService) {
+
+    $scope.loggedInUser = auth.profile.nickname;
 
     $scope.maxCharLength = 140;
 
@@ -39,12 +41,17 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
 
 
 
-    $scope.favouriteTweet = function(tweet) {
+    $scope.favouriteTweet = function(tweetId) {
       if(auth.isAuthenticated) {
 
-        console.log('want to favourite tweet');
-        //console.log('logged in user - add to this users favourites: ', asdfsadf);
-        //console.log('the tweets id - add logged in username to the tweets favouritee/favourited',fdsafd);
+        var newFavourite = {
+          username: $scope.loggedInUser
+        }
+
+        Restangular.all('api/tweets/' + tweetId + '/favourites').customPUT(newFavourite).then(function () {
+          console.log('posted new favourite to: ' + 'api/tweets/' + tweetId + '/favourites');
+        });
+
 
       }
 

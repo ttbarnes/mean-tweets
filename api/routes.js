@@ -109,6 +109,24 @@ router.route('/tweets/:tweet_id')
     });
   });
 
+router.route('/tweets/:tweet_id/favourites')
+
+  .put(function (req, res) {
+
+    tweetId        = req.params.tweet_id;
+    userFavoriting = req.body.username;
+
+    Tweet.findOneAndUpdate( {_id: tweetId }, { $push : {  favourites: { username: userFavoriting } } }, function (err, tweet) {
+      if (err)
+        res.send(err);
+      res.json(tweet);
+      console.log('User ' + userFavoriting + ' favourited ' + tweet.username +  '\'s tweet: \n' 
+                          + tweetId + '\n' 
+                          + 'tweet copy: ' + '\'' + tweet.copy + '\'');
+    });
+
+
+  });
 
 router.route('/profiles')
 
