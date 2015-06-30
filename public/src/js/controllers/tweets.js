@@ -39,6 +39,12 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
     };
 
 
+    $scope.favourited = null;
+
+    $scope.setFavourited = function (favourited) {
+       $scope.favourited = favourited;
+    };
+
     $scope.favouriteTweet = function(tweetId) {
       if(auth.isAuthenticated) {
 
@@ -54,6 +60,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
         //PUT tweet id in loggedInUser's profile favourites object
         Restangular.all('api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId).customPUT(newFavourite).then(function () {
           console.log('posted new favourite tweet id to: ' + 'api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId);
+          $scope.setFavourited(tweetId);
         });
 
       }

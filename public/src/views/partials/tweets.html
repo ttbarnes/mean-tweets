@@ -20,7 +20,7 @@
       </button>
       -->
       <button ng-click="favouriteTweet(tweet._id)">
-        <i class="fi-star"></i>
+        <i class="fi-star" ng-class="{active: tweet._id === favourited}"></i>
       </button>
       <button ng-click="doStuff()">
         <i class="fi-loop"></i>
