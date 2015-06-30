@@ -7,23 +7,29 @@
 
   <div class="post-something">
     <form name="postTweetForm" ng-submit="postTweet(tweet)">
-      <input type="text" 
-             name="copy"
-             placeholder="Post something"
-             ng-model="tweet.copy" 
-             maxlength="{{maxCharLength}}" />
-      <input type="url" 
-             name="imageUrl"
-             placeholder="Image URL"
-             ng-model="tweet.image.url" />
-
-      <input type="submit" 
-             value="Submit post" 
+      <div class="col-70">
+        <input type="text" 
+               name="copy"
+               placeholder="Tweet something"
+               ng-model="tweet.copy" 
+               maxlength="{{maxCharLength}}" />
+        <div class="add-image">
+          <p class="add-image-copy" ng-click="addImage = !addImage">add image</p>
+          <p class="char-counter"><small>{{maxCharLength - tweet.copy.length}} characters</small></p>
+          <input ng-show="addImage"
+                 type="url" 
+                 name="imageUrl"
+                 placeholder="Image URL"
+                 ng-model="tweet.image.url" />
+        </div>
+      </div>
+      <div class="col-30">
+        <input type="submit" 
+             value="Tweet" 
              ng-disabled="postTweetForm.$invalid || !tweet.copy.length > 0" />
+      </div>
     </form>
   </div>
-  <br/>
-  <p><small>{{maxCharLength - tweet.copy.length}} characters remaining...</small></p>
 
   <div class="tweets">
     <div ng-repeat="tweet in tweets.slice().reverse()" 
