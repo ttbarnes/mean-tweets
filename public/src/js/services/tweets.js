@@ -1,6 +1,6 @@
 //usage eg:
 //
-//tweetsService.tweetsTest.getList().then(function (tweets){ ... });
+//tweetsService.tweets.getList().then(function (tweets){ ... });
 //
 //tweetsService.search('someHashtag').getList().then(function (tweets){ ... });
 //

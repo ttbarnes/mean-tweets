@@ -64,20 +64,6 @@ router.route('/tweets')
     });
   });
 
-
-router.route('/tweets/:username')
-
-  //get tweets with that user id
-  .get(function (req, res) {
-    Tweet.find({ username: req.params.username }).find(function (err, userTweets) {
-      if (err)
-        res.send(err);
-
-      res.json(userTweets);
-    });
-  });
-
-
 router.route('/tweets/:tweet_id')
 
   //get the tweet with that tweet id
