@@ -13,13 +13,13 @@
       <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
     </div>
     <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
-    <div class="social">
+    <div ng-if="auth.isAuthenticated" class="social">
       <!--
       <button ng-click="doStuff()">
         <i class="fi-torsos-male-female"></i>
       </button>
       -->
-      <button ng-click="doStuff()">
+      <button ng-click="favouriteTweet()">
         <i class="fi-star"></i>
       </button>
       <button ng-click="doStuff()">

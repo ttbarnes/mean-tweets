@@ -36,4 +36,26 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
       }
     };
 
+
+
+
+    $scope.favouriteTweet = function(tweet) {
+      if(auth.isAuthenticated) {
+
+        console.log('want to favourite tweet');
+        //console.log('logged in user - add to this users favourites: ', asdfsadf);
+        //console.log('the tweets id - add logged in username to the tweets favouritee/favourited',fdsafd);
+
+      }
+
+    };
+
+
+
+
+
+
+
+
+
 });

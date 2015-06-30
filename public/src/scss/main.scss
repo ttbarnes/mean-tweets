@@ -142,6 +142,9 @@ h4 {
   .social {
     i {
       font-size:1.3em;
+      &.active {
+        color:#BADA55;
+      }
     }
     button {
       width:auto;
