@@ -1,56 +1,63 @@
-<h3 ng-if="profileUsername">{{profileUsername}}</h3>
+<div class="row">
+  <h3 ng-if="profileUsername">{{profileUsername}}</h3>
 
-<button ng-hide="usersOwnProfile || loggedInUserFollows" 
+  <button ng-hide="usersOwnProfile || loggedInUserFollows" 
         ng-click="followUser(loggedInUser, profileUsername)"
         class="blue">Follow @{{profileUsername}}</button>
 
-<br/>
+</div>
 
+<div class="row">
 
-<div class="col-70 tweets" ng-if="tweets.length">
-  <div ng-repeat="tweet in tweets.slice().reverse()" 
-       class="tweet">
-    <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
-    <p>@{{tweet.username}}</p>
-    <div ng-if="tweet.image.url" class="img-wrap">
-      <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
+  <div class="col-70">
+
+    <div class="row tweets" ng-if="tweets.length">
+      <div ng-repeat="tweet in tweets.slice().reverse()" 
+           class="tweet">
+        <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
+        <p>@{{tweet.username}}</p>
+        <div ng-if="tweet.image.url" class="img-wrap">
+          <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
+        </div>
+        <div class="social">
+          <i class="fi-torsos-male-female"></i>
+          <i class="fi-star"></i>
+          <i class="fi-loop"></i>
+        </div>
+      </div>
     </div>
-    <div class="social">
-      <i class="fi-torsos-male-female"></i>
-      <i class="fi-star"></i>
-      <i class="fi-loop"></i>
+
+    <div class="row tweets" ng-if="!tweets.length">
+      <p>{{profileUsername}} hasn't tweeted anything yet.</p>
     </div>
+
   </div>
-</div>
 
-<div class="col-70 tweets" ng-if="!tweets.length">
-  <p>{{profileUsername}} hasn't tweeted anything yet.</p>
-</div>
+  <div class="col-30">
+    <h3>followers</h3>
+    <p>{{user.followers.length}}</p>
+    <br/>
+    <ul>
+      <li ng-repeat="user in user.followers">{{user.username}}</li>
+    </ul>
 
-<div class="col-30">
+    <br/>
+    <br/>
 
-  <h3>followers</h3>
-  <p>{{user.followers.length}}</p>
-  <br/>
-  <ul>
-    <li ng-repeat="user in user.followers">{{user.username}}</li>
-  </ul>
+    <h3>following</h3>
+    <p>{{user.following.length}}</p>
+    <br/>
+    <ul>
+      <li ng-repeat="user in user.following">{{user.username}}</li>
+    </ul>
 
-  <br/>
-  <br/>
+    <br/>
+    <br/>
 
-  <h3>following</h3>
-  <p>{{user.following.length}}</p>
-  <br/>
-  <ul>
-    <li ng-repeat="user in user.following">{{user.username}}</li>
-  </ul>
-
-  <br/>
-  <br/>
-
-  <h3>tweets</h3>
-  <p>{{tweets.length}}</p>
+    <h3>tweets</h3>
+    <p>{{tweets.length}}</p>
+  </div>
 
 
 </div>
+

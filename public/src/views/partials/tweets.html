@@ -1,11 +1,6 @@
-<div ng-show="loadingTweets" style="padding:20px;text-align:center;">
-  <img src="img/svg/gears.svg" alt="loading" style="width:30px;display:block;margin:0 auto 20px auto;"/>
-  <p><small>Loading...</small></p>
-</div>
-
 <div ng-controller="TweetsCtrl">
 
-  <div class="post-something">
+  <div class="row post-something">
     <form name="postTweetForm" ng-submit="postTweet(tweet)">
       <div class="col-70">
         <input type="text" 
@@ -31,20 +26,36 @@
     </form>
   </div>
 
-  <div class="tweets">
-    <div ng-repeat="tweet in tweets.slice().reverse()" 
-         class="tweet">
-      <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
-      <p>@{{tweet.username}}</p>
-      <div ng-if="tweet.image.url" class="img-wrap">
-        <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
+  <div class="row">
+
+    <div class="col-70">
+      <div ng-show="loadingTweets" style="padding:20px;text-align:center;">
+        <img src="img/svg/gears.svg" alt="loading" style="width:30px;display:block;margin:0 auto 20px auto;"/>
+        <p><small>Loading...</small></p>
       </div>
-      <div class="social">
-        <i class="fi-torsos-male-female"></i>
-        <i class="fi-star"></i>
-        <i class="fi-loop"></i>
+
+      <div class="row tweets">
+        <div ng-repeat="tweet in tweets.slice().reverse()" 
+             class="tweet">
+          <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
+          <p>@{{tweet.username}}</p>
+          <div ng-if="tweet.image.url" class="img-wrap">
+            <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
+          </div>
+          <div class="social">
+            <i class="fi-torsos-male-female"></i>
+            <i class="fi-star"></i>
+            <i class="fi-loop"></i>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="col-30">
+      <p>more content here</p>
+    </div>
+
   </div>
 
 </div>
+
