@@ -180,6 +180,22 @@ router.route('/profiles')
       });
     });
 
+  router.route('/profiles/:username/tweets/favourites/:tweet_id')
+
+    .put(function (req, res) {
+
+      userFavoriting = req.body.username;
+      tweetId        = req.params.tweet_id;
+
+      Profile.findOneAndUpdate( {username: userFavoriting }, { $push : {  favourites: { tweetId: tweetId } } }, function (err, profile) {
+        if (err)
+          res.send(err);
+        res.json(profile);
+        console.log('User ' + userFavoriting + ' favourited a tweet witht the id: ' + tweetId);
+      });
+
+    });
+
   router.route('/profiles/:username/following')
 
     .put(function (req, res) {

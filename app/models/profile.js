@@ -4,7 +4,8 @@ var Schema       = mongoose.Schema;
 var ProfileSchema   = new Schema({
     username: String,
     following: [{username: String}],
-    followers: [{username: String}]
+    followers: [{username: String}],
+    favourites: [{tweetId: String}]
 });
 /* 
 {
