@@ -26,8 +26,13 @@
         <i class="fi-torsos-male-female"></i>
       </button>
       -->
-      <button ng-click="favouriteTweet(tweet._id);setFavourited = true">
-        <i class="fi-star" ng-class="{active: setFavourited || tweet.alreadyFavourited}"></i>
+      <button ng-click="favouriteTweet(tweet._id);newFavouriteTweet = true" 
+              ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
+              <i class="fi-star"></i>
+      </button>
+      <button ng-click="unFavouriteTweet(tweet._id);newFavouriteTweet = false" 
+              ng-show="newFavouriteTweet || tweet.alreadyFavourited">
+              <i class="fi-star active"></i>
       </button>
       <button ng-click="doStuff()">
         <i class="fi-loop"></i>

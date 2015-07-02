@@ -78,6 +78,22 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
       }
     };
 
+    $scope.unFavouriteTweet = function(tweetId) {
+      console.log('todo: unfavouriteTweet');
+      if(auth.isAuthenticated) {
+
+        var newUnfavourite = {
+          username: $scope.loggedInUser
+        }
+
+
+        //REMOVE the newUnfavourite username/object from the tweet's favourite array
+
+        //REMOVE tweet id in loggedInUser's profile favourites object
+      }
+
+    };
+
 
 
 });
