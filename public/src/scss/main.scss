@@ -112,10 +112,25 @@ h4 {
 
 .tweet {
   clear:both;
+  position:relative;
   border:solid 1px #CCC;
   border-left-width:6px;
   margin-bottom:20px;
   padding:10px;
+
+  .dev-info {
+    position:absolute;
+    background:#DDD;
+    color:#333;
+    padding:10px;
+    top:3%;
+    right:-15%;
+    font-size:0.8em;
+    box-shadow:0 1px 3px #818181;
+    p {
+      margin:0;
+    }
+  }
 
   .img-wrap {
     max-height:350px;
@@ -151,6 +166,7 @@ h4 {
       padding:10px;
       margin-bottom:0;
       background:transparent;
+      outline:0 none;
     }
   }
 

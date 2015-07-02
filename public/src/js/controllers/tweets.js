@@ -7,11 +7,31 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
 
     function getTweets() {
       //todo: handle errors
+
       tweetsService.tweets.getList().then(function (tweets){
-        $scope.tweets = tweets;
 
         console.info('got new tweets');
+
+        $scope.tweets = tweets;
+
+        //for each tweet, check to see if any of the username fields (in favourites array)
+        //equal $scope.loggedInUser.
+        //if a match is found in one tweet,
+        //add an extra field to the tweet: alreadyFavourited
+        angular.forEach(tweets, function (tweet) {
+
+          angular.forEach(tweet.favourites, function (favourites) {
+
+              if(favourites.username === $scope.loggedInUser) {
+                tweet.alreadyFavourited = true;
+              }
+
+          });
+
+        });
+
       });
+
     };
 
     getTweets();
@@ -38,13 +58,6 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
       }
     };
 
-
-    $scope.favourited = null;
-
-    $scope.setFavourited = function (favourited) {
-       $scope.favourited = favourited;
-    };
-
     $scope.favouriteTweet = function(tweetId) {
       if(auth.isAuthenticated) {
 
@@ -60,18 +73,10 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
         //PUT tweet id in loggedInUser's profile favourites object
         Restangular.all('api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId).customPUT(newFavourite).then(function () {
           console.log('posted new favourite tweet id to: ' + 'api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId);
-          $scope.setFavourited(tweetId);
         });
 
       }
-
     };
-
-
-
-
-
-
 
 
 

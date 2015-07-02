@@ -13,14 +13,21 @@
       <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
     </div>
     <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
+
     <div ng-if="auth.isAuthenticated" class="social">
+      <div class="dev-info"  ng-show="tweet.alreadyFavourited">
+        <p ng-show="tweet.alreadyFavourited">already favourited</p>
+        <p ng-repeat="tweet in tweet.favourites">
+          <small>{{tweet.username}}</small>
+        </p>
+      </div>
       <!--
       <button ng-click="doStuff()">
         <i class="fi-torsos-male-female"></i>
       </button>
       -->
-      <button ng-click="favouriteTweet(tweet._id)">
-        <i class="fi-star" ng-class="{active: tweet._id === favourited}"></i>
+      <button ng-click="favouriteTweet(tweet._id);setFavourited = true">
+        <i class="fi-star" ng-class="{active: setFavourited || tweet.alreadyFavourited}"></i>
       </button>
       <button ng-click="doStuff()">
         <i class="fi-loop"></i>
