@@ -24,30 +24,26 @@
   </div>
 
   <div class="col-30">
-    <h3>followers</h3>
-    <p>{{user.followers.length}}</p>
-    <br/>
-    <ul>
-      <li ng-repeat="user in user.followers">{{user.username}}</li>
-    </ul>
-
-    <br/>
-    <br/>
-
-    <h3>following</h3>
-    <p>{{user.following.length}}</p>
-    <br/>
-    <ul>
-      <li ng-repeat="user in user.following">{{user.username}}</li>
-    </ul>
-
-    <br/>
-    <br/>
-
-    <h3>tweets</h3>
-    <p>{{tweets.length}}</p>
+    <div class="placeholder-box">
+      <h5>followers</h5>
+      <p>{{user.followers.length}}</p>
+      <br/>
+      <ul>
+        <li ng-repeat="user in user.followers">{{user.username}}</li>
+      </ul>
+    </div>
+    <div class="placeholder-box">
+      <h5>following</h5>
+      <p>{{user.following.length}}</p>
+      <br/>
+      <ul>
+        <li ng-repeat="user in user.following">{{user.username}}</li>
+      </ul>
+    </div>
+    <div class="placeholder-box">
+      <h5>tweets</h5>
+      <p>{{tweets.length}}</p>
+    </div>
   </div>
 
-
 </div>
-

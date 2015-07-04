@@ -87,8 +87,13 @@ h3 {
   margin:0 0 10px 0;
 }
 
-h4 {
+h4,
+h5 {
   margin:0;
+}
+
+h5 {
+  font-size:1em;
 }
 
 
@@ -397,5 +402,14 @@ textarea {
     -webkit-transform: scale(0.0);
     
   }
+}
+
+
+
+.placeholder-box {
+  padding:15px;
+  min-height:100px;
+  margin-bottom:30px;
+  background:#DDD;
 }
 
