@@ -16,9 +16,6 @@ describe('TweetsCtrl', function() {
 
   });
 
-  it('should have max char length variable of 140', function(){
-    expect(scope.maxCharLength).toBeDefined();
-    expect(scope.maxCharLength).toEqual(140);
-  });
+
 
 });

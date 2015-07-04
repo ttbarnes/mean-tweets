@@ -20,10 +20,5 @@ describe('GlobalCtrl', function() {
     expect(scope.appName).toEqual('Mean example');
   });
 
-  it('should have an auth object', function(){
-    expect(scope.auth).toBeDefined();
-    expect(scope.auth.init).toBeDefined();
-    expect(scope.auth.isAuthenticated).toBeDefined();
-  });
 
 });

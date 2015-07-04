@@ -1,4 +1,4 @@
-// Karma configuration
+  // Karma configuration
 // Generated on Mon Mar 16 2015 21:57:26 GMT+0000 (GMT)
 
 module.exports = function(config) {
@@ -20,12 +20,15 @@ module.exports = function(config) {
       'src/bower_components/angular-mocks/angular-mocks.js',
       'src/bower_components/angular-route/angular-route.js',
       'src/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'src/bower_components/angular-ui-router-title/src/angular-ui-router-title.js',
       'src/bower_components/auth0.js/build/auth0.js',
       'src/bower_components/a0-angular-storage/dist/angular-storage.js',
       'src/bower_components/angular-jwt/dist/angular-jwt.js',
       'src/bower_components/angular-cookies/angular-cookies.js',
       'src/bower_components/auth0-angular/src/auth0-angular.js',
       'src/bower_components/restangular/dist/restangular.js',
+      'src/bower_components/moment/moment.js',
+      'src/bower_components/angular-moment/angular-moment.js',
       'src/js/*.js',
       'src/js/**/*.js',
       'src/views/*.html',

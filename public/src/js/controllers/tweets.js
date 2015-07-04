@@ -3,7 +3,9 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
 
     //todo: improve error handling
 
-    $scope.loggedInUser = auth.profile.nickname;
+    if(auth.profile && auth.profile.nickname) {
+      $scope.loggedInUser = auth.profile.nickname;
+    }
 
     function getTweets() {
 
