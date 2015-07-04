@@ -239,13 +239,26 @@ router.route('/profiles')
 
     .put(function (req, res) {
 
-      //find and post
-      /*
-      if (err)
-          res.send(err);
-        res.json(details);
-        console.log('user ' + username + ' profile details posted: \n' + details );
-      */
+      username = req.params.username;
+      detailWebsiteUrl = req.body.websiteUrl;
+      detailLocation = req.body.location;
+      detailAbout = req.body.about;
+
+
+      //Profile.update({_id: tweetId }, {$pull: {favourites: {_id: favTweetId }}}, function (err, favourite) {
+
+      //Profile.findOneAndUpdate( {username: username},{ $set : {  
+      Profile.update( {username: username},{ $set : {  
+                                 details: { 
+                                   websiteUrl: detailWebsiteUrl,
+                                   location: detailLocation,
+                                   about: detailAbout,
+                                 } } }, function (err, details) {
+        if (err)
+            res.send(err);
+          res.json(details);
+          console.log('user ' + username + ' profile details posted');
+      });
 
 
     });
