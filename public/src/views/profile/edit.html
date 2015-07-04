@@ -20,7 +20,8 @@
       <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" max-length="100" ng-maxlength="100"></textarea>
       <char-counter input-elm="profileDetails.about.length" max-length="100"></char-counter>
       <input type="submit" 
-             value="Save" 
+             value="Save"
+             class="button blue"
              ng-disabled="profileDetailsForm.$invalid || profileDetailsForm.$pristine" />
     </form>
   </div>

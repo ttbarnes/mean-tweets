@@ -1,9 +1,11 @@
 <header class="row">
-  <h1 class="logo"><a ui-sref="home">{{appName}}</a></h1>
-  <ul style="float:right;text-align:right;">
-    <li ng-if="auth.profile" style="font-size:14px;padding:10px 0;"><strong>@{{auth.profile.nickname}}</strong></li>
-    <li ng-show="auth.profile"><a ui-sref="profilePublic({username: auth.profile.nickname})"><i class="fa fa-user"></i></a></li>
-    <!--<li ng-show="auth.profile"><a ui-sref="notifications">notifications</a></li>-->
-    <li ng-show="auth.profile"><a ui-sref="logout"><i class="fa fa-sign-out"></i></a></li>
-  </ul>
+  <div class="wrapper-max-width">
+    <h1 class="logo"><a ui-sref="home">{{appName}}</a></h1>
+    <ul style="float:right;text-align:right;">
+      <li ng-if="auth.profile" style="font-size:14px;padding:10px 0;"><strong>@{{auth.profile.nickname}}</strong></li>
+      <li ng-show="auth.profile"><a ui-sref="profilePublic({username: auth.profile.nickname})"><i class="fa fa-user"></i></a></li>
+      <!--<li ng-show="auth.profile"><a ui-sref="notifications">notifications</a></li>-->
+      <li ng-show="auth.profile"><a ui-sref="logout"><i class="fa fa-sign-out"></i></a></li>
+    </ul>
+  </div>
 </header>

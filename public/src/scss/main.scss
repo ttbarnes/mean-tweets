@@ -7,6 +7,7 @@ body {
   color:#333;
   margin:0;
   padding:0;
+  background:rgba(67, 102, 159, 0.31);
 }
 
 .row {
@@ -34,21 +35,24 @@ a:focus {
 }
 
 .wrapper {
-  margin:0 auto;
-  max-width:800px;
   padding:0 20px;
+}
+
+.wrapper-max-width {
+  max-width:800px;
+  margin:0 auto;
 }
 
 header {
   display:inline-block;
   vertical-align:top;
   margin-bottom:60px;
+  background:#FFF;
 }
 
 .logo {
   float:left;
-  margin-top:0;
-  margin-left:-15px;
+  margin:0;
   font-size:19px;
   @media (min-width:600px) {
     font-size:26px;
@@ -58,7 +62,8 @@ header {
 .logo a {
   display:inline-block;
   padding:10px 15px;
-  background:#D5E5FF;
+  //background:#D5E5FF;
+  background:rgba(67, 102, 159, 0.35);
   color:#333;
 }
 
@@ -121,10 +126,20 @@ h5 {
 .tweet {
   clear:both;
   position:relative;
-  border:solid 1px #CCC;
-  border-left-width:6px;
   margin-bottom:20px;
-  padding:10px;
+  padding:0.9em;
+  background:#F5F5F5;
+  border-radius:0.75em;
+  border-bottom:solid 6px rgba(67, 102, 159, 0.35);
+
+  @media (min-width:768px) {
+    transition:all 0.3s ease;
+    &:hover {
+      border-bottom-color:rgba(67, 102, 159, 0.75);
+      border-top-left-radius:2em;
+      border-bottom-right-radius:2em;
+    }
+  }
 
   .dev-info {
     position:absolute;
@@ -410,6 +425,6 @@ textarea {
   padding:15px;
   min-height:100px;
   margin-bottom:30px;
-  background:#DDD;
+  background:#F5F5F5;
 }
 
