@@ -64,20 +64,6 @@ router.route('/tweets')
     });
   });
 
-
-router.route('/tweets/:username')
-
-  //get tweets with that user id
-  .get(function (req, res) {
-    Tweet.find({ username: req.params.username }).find(function (err, userTweets) {
-      if (err)
-        res.send(err);
-
-      res.json(userTweets);
-    });
-  });
-
-
 router.route('/tweets/:tweet_id')
 
   //get the tweet with that tweet id
@@ -123,6 +109,48 @@ router.route('/tweets/:tweet_id')
     });
   });
 
+router.route('/tweets/:tweet_id/favourites')
+
+  .put(function (req, res) {
+
+    tweetId        = req.params.tweet_id;
+    userFavoriting = req.body.username;
+
+    Tweet.findOneAndUpdate( {_id: tweetId }, { $push : {  favourites: { username: userFavoriting } } }, function (err, tweet) {
+      if (err)
+        res.send(err);
+      res.json(tweet);
+      console.log('User ' + userFavoriting + ' favourited ' + tweet.username +  '\'s tweet: \n' 
+                          + tweetId + '\n' 
+                          + 'tweet copy: ' + '\'' + tweet.copy + '\'');
+    });
+
+
+  });
+
+//from client side, restangular remove() method sends an empty payload object.
+//see: https://github.com/mgonto/restangular/issues/78
+//none of the solutions work. Maybe missing something.
+//
+//as a workaround, we send a tweet's favourite id via param.
+
+router.route('/tweets/:tweet_id/favourites/:fav_tweet_id')
+
+  .delete(function (req, res) {
+
+    tweetId = req.params.tweet_id;
+    favTweetId = req.params.fav_tweet_id;
+
+    Tweet.update({_id: tweetId }, {$pull: {favourites: {_id: favTweetId }}}, function (err, favourite) {
+
+      if (err)
+        res.send(err);
+      res.json(favourite);
+      console.log('removed favourite tweet: ' + favTweetId);
+
+    });
+
+  });
 
 router.route('/profiles')
 
@@ -174,6 +202,37 @@ router.route('/profiles')
             res.json(tweets);
           }
       });
+    });
+
+  router.route('/profiles/:username/tweets/favourites/:tweet_id')
+
+    .put(function (req, res) {
+
+      userFavoriting = req.body.username;
+      tweetId        = req.params.tweet_id;
+
+      Profile.findOneAndUpdate( {username: userFavoriting }, { $push : {  favourites: { tweetId: tweetId } } }, function (err, profile) {
+        if (err)
+          res.send(err);
+        res.json(profile);
+        console.log('User ' + userFavoriting + ' favourited a tweet with the id: ' + tweetId);
+      });
+
+    })
+
+    .delete(function (req, res) {
+
+      username = req.params.username;
+      favTweetId = req.params.tweet_id;
+
+      Profile.update({username: username }, {$pull: {favourites: {tweetId: favTweetId }}}, function (err, favourite) {
+
+        if (err)
+          res.send(err);
+        res.json(favourite);
+        console.log('removed favourite tweet: ' + favTweetId) + ' from ' + username + '\'s profile';
+      });
+
     });
 
   router.route('/profiles/:username/following')

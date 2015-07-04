@@ -7,7 +7,9 @@ var TweetSchema   = new Schema({
     image:{
       url:String
     },
-    timestamp: String
+    timestamp: String,
+    favourites: [{username: String}],
+    retweets: [{username: String}]
 });
 
 module.exports = mongoose.model('Tweet', TweetSchema);

@@ -8,14 +8,36 @@
   <div ng-repeat="tweet in tweets.slice().reverse()" 
        class="tweet">
     <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
-    <p>@{{tweet.username}}</p>
+    <p><a ui-sref="profilePublic({username: tweet.username})">@{{tweet.username}}</a></p>
     <div ng-if="tweet.image.url" class="img-wrap">
       <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
     </div>
-    <div class="social">
-      <i class="fi-torsos-male-female"></i>
-      <i class="fi-star"></i>
-      <i class="fi-loop"></i>
+    <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
+    <textarea>{{tweet | json}}</textarea>
+
+    <div ng-if="auth.isAuthenticated" class="social">
+      <div class="dev-info"  ng-show="tweet.alreadyFavourited">
+        <p ng-show="tweet.alreadyFavourited">already favourited</p>
+        <p ng-repeat="tweet in tweet.favourites">
+          <small>{{tweet.username}}</small>
+        </p>
+      </div>
+      <!--
+      <button ng-click="doStuff()">
+        <i class="fi-torsos-male-female"></i>
+      </button>
+      -->
+      <button ng-click="favouriteTweet(tweet._id);newFavouriteTweet = true" 
+              ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
+              <i class="fi-star"></i>
+      </button>
+      <button ng-click="unFavouriteTweet(tweet._id, tweet.usersFavId);newFavouriteTweet = false; tweet.alreadyFavourited = false" 
+              ng-show="newFavouriteTweet || tweet.alreadyFavourited">
+              <i class="fi-star active"></i>
+      </button>
+      <button ng-click="doStuff()">
+        <i class="fi-loop"></i>
+      </button>
     </div>
   </div>
 

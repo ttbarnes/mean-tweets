@@ -110,17 +110,66 @@ h4 {
   }
 }
 
-.tweets .tweet {
+.tweet {
   clear:both;
+  position:relative;
   border:solid 1px #CCC;
   border-left-width:6px;
   margin-bottom:20px;
   padding:10px;
-}
 
-.tweets .img-wrap {
-  max-height:350px;
-  overflow:hidden;
+  .dev-info {
+    position:absolute;
+    background:#DDD;
+    color:#333;
+    padding:10px;
+    top:3%;
+    right:-15%;
+    font-size:0.8em;
+    box-shadow:0 1px 3px #818181;
+    p {
+      margin:0;
+    }
+  }
+
+  .img-wrap {
+    max-height:350px;
+    overflow:hidden;
+  }
+
+  .tweet-copy,
+  .img-wrap {
+    margin-bottom:15px;
+  }
+
+  .tweet-copy small {
+    font-weight:normal;
+    font-size:12px;
+  }
+
+  .tweet-id {
+    margin-bottom:0;
+    small {
+      font-size:11px;
+    }
+  }
+
+  .social {
+    i {
+      font-size:1.3em;
+      &.active {
+        color:#BADA55;
+      }
+    }
+    button {
+      width:auto;
+      padding:10px;
+      margin-bottom:0;
+      background:transparent;
+      outline:0 none;
+    }
+  }
+
 }
 
 /*
@@ -129,22 +178,6 @@ h4 {
 }
 */
 
-.tweets .tweet-copy,
-.tweets .img-wrap {
-  margin-bottom:15px;
-}
-
-.tweets .tweet-copy small {
-  font-weight:normal;
-  font-size:12px;
-}
-
-.tweets .tweet-copy .tweet-id {
-  margin-bottom:0;
-  small {
-    font-size:11px;
-  }
-}
 
 img {
   display:block;
@@ -190,6 +223,11 @@ input[type="submit"] {
     background:#3498D4;
     color:#FFF;
   }
+}
+
+textarea {
+  width:100%;
+  min-height:100px;
 }
 
 .post-something {

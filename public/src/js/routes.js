@@ -5,6 +5,10 @@ angular.module('meanExampleRoutes', ['ui.router'])
       name: 'home',
       pageTitle: 'Home'
     },
+    tweetSingle: {
+      name: 'tweetSingle',
+      pageTitle: 'Tweet'
+    },
     search: {
       name: 'search',
       pageTitle: 'Search'
@@ -49,6 +53,14 @@ angular.module('meanExampleRoutes', ['ui.router'])
         templateUrl: 'views/home/index.html',
         resolve: {
           $title: function() { return states.home.pageTitle; }
+        }
+      })
+      .state(states.tweetSingle.name, {
+        url: '/tweets/:tweetId',
+        templateUrl: 'views/tweet-single.html',
+        controller: 'TweetSingleCtrl',
+        resolve: {
+          $title: function() { return states.tweetSingle.pageTitle; }
         }
       })
       .state(states.login.name, {
