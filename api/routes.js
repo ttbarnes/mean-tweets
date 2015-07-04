@@ -235,6 +235,21 @@ router.route('/profiles')
 
     });
 
+  router.route('/profiles/:username/details')
+
+    .put(function (req, res) {
+
+      //find and post
+      /*
+      if (err)
+          res.send(err);
+        res.json(details);
+        console.log('user ' + username + ' profile details posted: \n' + details );
+      */
+
+
+    });
+
   router.route('/profiles/:username/following')
 
     .put(function (req, res) {

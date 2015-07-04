@@ -6,5 +6,17 @@ angular.module('meanExampleApp').controller('ProfileCtrl', function (auth, $stat
     $state.go('loginRequired');
   }
 
+  $scope.updateProfileDetails = function(data) {
+
+    var profileDetails = {
+      websiteUrl : data.websiteUrl,
+      location   : data.location,
+      about      : data.about
+    };
+
+    console.log(profileDetails);
+
+  }
+
 
 });
