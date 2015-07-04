@@ -17,7 +17,8 @@
     <form name="profileDetailsForm" ng-submit="updateProfileDetails(profileDetails)">
       <input type="text" name="websiteUrl" ng-model="profileDetails.websiteUrl" placeholder="Website URL" />
       <input type="text" name="location" ng-model="profileDetails.location" placeholder="Location" />
-      <textarea name="about" ng-model="profileDetails.about" placeholder="Short description"></textarea>
+      <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" max-length="100"></textarea>
+      <char-counter input-elm="profileDetails.about.length" max-length="100"></char-counter>
       <input type="submit" 
              value="Save" 
              ng-disabled="profileDetailsForm.$invalid || profileDetailsForm.$pristine" />
