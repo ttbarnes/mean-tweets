@@ -30,7 +30,6 @@ angular.module('meanExampleApp', [
   //Simple interceptor that will fetch all requests and add the jwt token to its authorization header.
   $httpProvider.interceptors.push('jwtInterceptor');
 
-
 })
 
 .run(function ($rootScope, auth, store, jwtHelper, $location, Restangular) {
@@ -50,13 +49,14 @@ angular.module('meanExampleApp', [
     }
   });
 
-  //restangular inerceptor 
-  //allows us to show a loading indicator
-  Restangular.addRequestInterceptor(function(element) {
+  //restangular inerceptors
+  //show/hide loading indicator
+  Restangular.addRequestInterceptor(function (element) {
     $rootScope.loadingTweets = true;
     return element;
   });
-  Restangular.addResponseInterceptor(function(data) {
+
+  Restangular.addResponseInterceptor(function (data) {
     $rootScope.loadingTweets = false;
     return data;
   });

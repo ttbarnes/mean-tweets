@@ -13,6 +13,7 @@
       <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
     </div>
     <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
+    <textarea>{{tweet | json}}</textarea>
 
     <div ng-if="auth.isAuthenticated" class="social">
       <div class="dev-info"  ng-show="tweet.alreadyFavourited">
@@ -30,7 +31,7 @@
               ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
               <i class="fi-star"></i>
       </button>
-      <button ng-click="unFavouriteTweet(tweet._id);newFavouriteTweet = false" 
+      <button ng-click="unFavouriteTweet(tweet._id, tweet.usersFavId);newFavouriteTweet = false; tweet.alreadyFavourited = false" 
               ng-show="newFavouriteTweet || tweet.alreadyFavourited">
               <i class="fi-star active"></i>
       </button>

@@ -1,17 +1,17 @@
 angular.module('meanExampleApp').controller('TweetsCtrl', 
   function (auth, $stateParams, $scope, Restangular, tweetsService) {
 
+    //todo: improve error handling
+
     $scope.loggedInUser = auth.profile.nickname;
 
     $scope.maxCharLength = 140;
 
     function getTweets() {
-      //todo: handle errors
 
       tweetsService.tweets.getList().then(function (tweets){
 
         console.info('got new tweets');
-
         $scope.tweets = tweets;
 
         //for each tweet, check to see if any of the username fields (in favourites array)
@@ -22,9 +22,10 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
 
           angular.forEach(tweet.favourites, function (favourites) {
 
-              if(favourites.username === $scope.loggedInUser) {
-                tweet.alreadyFavourited = true;
-              }
+            if(favourites.username === $scope.loggedInUser) {
+              tweet.alreadyFavourited = true;
+              tweet.usersFavId = favourites._id;
+            }
 
           });
 
@@ -78,20 +79,16 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
       }
     };
 
-    $scope.unFavouriteTweet = function(tweetId) {
-      console.log('todo: unfavouriteTweet');
+    $scope.unFavouriteTweet = function(tweetId, favouriteId) {
       if(auth.isAuthenticated) {
 
-        var newUnfavourite = {
-          username: $scope.loggedInUser
-        }
+        //REMOVE the username's fav ID from the tweet's favourite array
+        Restangular.all('api/tweets/' + tweetId + '/favourites/' + favouriteId).remove().then(function () {
+          console.log('removed user from favourites: ' + 'api/tweets/' + tweetId + '/favourites/' + favouriteId);
 
+        });
 
-        //REMOVE the newUnfavourite username/object from the tweet's favourite array
-
-        //REMOVE tweet id in loggedInUser's profile favourites object
       }
-
     };
 
 

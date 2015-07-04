@@ -45,6 +45,8 @@ POST   `/api/tweets` - post a single tweet. Accepts: copy, username, image.url. 
 
 PUT    `/api/tweets/tweet_id/favourites` - post a new user/username object to the tweet's favourite array.
 
+DELETE    `/api/tweets/tweet_id/favourites/fav_tweet_id` - delete a tweet's favourite/username object
+
 
 GET    `/api/search`
 
@@ -60,6 +62,8 @@ PUT    '/api/profiles/username/following' - post a new following with username p
 PUT    '/api/profiles/username/followers' - post a new follower with username param.
 
 PUT    `api/profiles/username/tweets/favourites` - post a new tweet id object to the user's favourite array.
+
+DELETE    `api/profiles/username/tweets/favourites/fav_tweet_id` - delete a favourite tweet id
 
 
 

@@ -128,6 +128,30 @@ router.route('/tweets/:tweet_id/favourites')
 
   });
 
+//from client side, restangular remove() method sends an empty payload object.
+//see: https://github.com/mgonto/restangular/issues/78
+//none of the solutions work. Maybe missing something.
+//
+//as a workaround, we send a tweet's favourite id via param.
+
+router.route('/tweets/:tweet_id/favourites/:fav_tweet_id')
+
+  .delete(function (req, res) {
+
+    tweetId = req.params.tweet_id;
+    favTweetId = req.params.fav_tweet_id;
+
+    Tweet.update({_id: tweetId }, {$pull: {favourites: {_id: favTweetId }}}, function (err, favourite) {
+
+      if (err)
+        res.send(err);
+      res.json(favourite);
+      console.log('removed favourite tweet: ' + favTweetId);
+
+    });
+
+  });
+
 router.route('/profiles')
 
   .get(function (req, res) {

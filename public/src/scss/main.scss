@@ -225,6 +225,11 @@ input[type="submit"] {
   }
 }
 
+textarea {
+  width:100%;
+  min-height:100px;
+}
+
 .post-something {
   display:inline-block;
   vertical-align:top;
