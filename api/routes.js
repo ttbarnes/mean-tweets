@@ -215,7 +215,22 @@ router.route('/profiles')
         if (err)
           res.send(err);
         res.json(profile);
-        console.log('User ' + userFavoriting + ' favourited a tweet witht the id: ' + tweetId);
+        console.log('User ' + userFavoriting + ' favourited a tweet with the id: ' + tweetId);
+      });
+
+    })
+
+    .delete(function (req, res) {
+
+      username = req.params.username;
+      favTweetId = req.params.tweet_id;
+
+      Profile.update({username: username }, {$pull: {favourites: {tweetId: favTweetId }}}, function (err, favourite) {
+
+        if (err)
+          res.send(err);
+        res.json(favourite);
+        console.log('removed favourite tweet: ' + favTweetId) + ' from ' + username + '\'s profile';
       });
 
     });

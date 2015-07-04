@@ -85,7 +85,11 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
         //REMOVE the username's fav ID from the tweet's favourite array
         Restangular.all('api/tweets/' + tweetId + '/favourites/' + favouriteId).remove().then(function () {
           console.log('removed user from favourites: ' + 'api/tweets/' + tweetId + '/favourites/' + favouriteId);
+        });
 
+        //REMOVE the tweet ID from the user's profile favourites array
+        Restangular.all('api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId).remove().then(function () {
+          console.log('removed tweet from the users profile favourites: ' + 'api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId);
         });
 
       }
