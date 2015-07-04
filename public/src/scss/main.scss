@@ -188,18 +188,21 @@ img {
 }
 
 .form-wrap {
-  background:#EEE;
-  padding:10px;
   text-align:center;
   @media(min-width:768px) {
     width:50%;
     text-align:left;
   } 
+  &.bg-grey {
+    background:#EEE;
+    padding:10px;
+  }
 }
 
 button,
 .button,
-input {
+input,
+textarea {
   width:100%;
   padding:10px;
   margin-bottom:20px;
@@ -223,7 +226,8 @@ button,
   }
 }
 
-input {
+input,
+textarea {
   border:solid 2px #D0D0D0;
 }
 
@@ -239,8 +243,9 @@ input[type="submit"] {
 }
 
 textarea {
-  width:100%;
+  max-width:100%;
   min-height:100px;
+  //resize:none; //enable for dev
 }
 
 .post-something {
@@ -248,11 +253,6 @@ textarea {
   vertical-align:top;
   width:100%;
   margin-bottom:40px;
-  /*
-  @media (min-width:768px) {
-    max-width:600px;
-  }
-  */
   .add-image-copy {
     float:left;
   }

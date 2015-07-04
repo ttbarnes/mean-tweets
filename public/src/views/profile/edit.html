@@ -12,8 +12,15 @@
   <p ng-if="!auth.profile.email_verified">Your email has not been verified. <br/>Please check your email and verify your address to fully benefit from Mean Example.</p>
 
   <br/>
-
-  
-
+  <div class="form-wrap">
+    <form name="profileDetailsForm" ng-submit="updateProfileDetails(profileDetails)">
+      <input type="text" name="profileDetails.websiteUrl" ng-model="websiteUrl" placeholder="Website URL" />
+      <input type="text" name="profileDetails.location" ng-model="location" placeholder="Location" />
+      <textarea name="about" ng-model="about" placeholder="Short description"></textarea>
+      <input type="submit" 
+             value="Save" 
+             ng-disabled="profileDetailsForm.$invalid" />
+    </form>
+  </div>
 
 </div>
