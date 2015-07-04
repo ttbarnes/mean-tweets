@@ -244,10 +244,6 @@ router.route('/profiles')
       detailLocation = req.body.location;
       detailAbout = req.body.about;
 
-
-      //Profile.update({_id: tweetId }, {$pull: {favourites: {_id: favTweetId }}}, function (err, favourite) {
-
-      //Profile.findOneAndUpdate( {username: username},{ $set : {  
       Profile.update( {username: username},{ $set : {  
                                  details: { 
                                    websiteUrl: detailWebsiteUrl,
@@ -259,7 +255,6 @@ router.route('/profiles')
           res.json(details);
           console.log('user ' + username + ' profile details posted');
       });
-
 
     });
 
