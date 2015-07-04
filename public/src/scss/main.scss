@@ -49,7 +49,10 @@ header {
   float:left;
   margin-top:0;
   margin-left:-15px;
-  font-size:26px;
+  font-size:19px;
+  @media (min-width:600px) {
+    font-size:26px;
+  }
 }
 
 .logo a {
