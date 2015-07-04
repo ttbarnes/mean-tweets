@@ -1,7 +1,7 @@
 # mean-example
 
 
-WIP - soon there will be a real readme file, for the time being here are some notes:
+WIP - soon there will be a real readme file, for the time being here are some notes.
 
 ##quick start
 
@@ -13,16 +13,18 @@ WIP - soon there will be a real readme file, for the time being here are some no
 ##tech
 
 - MEAN stack: MongoDB, Express, Angular, Node.js
-- Angular sevices: 
+- Angular services/modules
   - ui-router
   - restangular (RESTful api)
+  - angular-moment
+  - ui-router-title
 - Mongoose (elegant MongoDB object modeling)
 - Mongolab
 - Auth0
 - Grunt
 - Karma
 - Jasmine
-
+- Foundation icon fonts
 
 ##quick notes
 
@@ -53,13 +55,13 @@ GET    `/api/search`
 GET    `/api/search/someString` - searches and returns tweets containing someString.
 
 
-GET    '/api/profiles/username' - return a single user with the provided username param.
+GET    `/api/profiles/username` - return a single user with the provided username param.
 
-POST   '/api/profiles/username' - post a new user object: username: String, following: [{ username: String }], followers: [{ username: String }]
+POST   `/api/profiles/username` - post a new user object: username: String, following: `[{ username: String }], followers: [{ username: String }]`
 
-PUT    '/api/profiles/username/following' - post a new following with username param.
+PUT    `/api/profiles/username/following` - post a new following with username param.
 
-PUT    '/api/profiles/username/followers' - post a new follower with username param.
+PUT    `/api/profiles/username/followers` - post a new follower with username param.
 
 PUT    `api/profiles/username/tweets/favourites` - post a new tweet id object to the user's favourite array.
 
