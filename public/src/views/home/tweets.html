@@ -10,7 +10,8 @@
                maxlength="{{maxCharLength}}" />
         <div class="add-image">
           <p class="add-image-copy" ng-click="addImage = !addImage">add image</p>
-          <p class="char-counter"><small>{{maxCharLength - tweet.copy.length}} characters</small></p>
+          <char-counter input-elm="tweet.copy.length" max-length="150"></char-counter>
+
           <input ng-show="addImage"
                  type="url" 
                  name="imageUrl"
@@ -39,4 +40,3 @@
   </div>
 
 </div>
-
