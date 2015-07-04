@@ -5,8 +5,6 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
 
     $scope.loggedInUser = auth.profile.nickname;
 
-    $scope.maxCharLength = 140;
-
     function getTweets() {
 
       tweetsService.tweets.getList().then(function (tweets){
