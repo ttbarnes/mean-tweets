@@ -31,14 +31,14 @@
       -->
       <button ng-click="favouriteTweet(tweet._id);newFavouriteTweet = true" 
               ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
-              <i class="fi-star"></i>
+              <i class="fa fa-star"></i>
       </button>
       <button ng-click="unFavouriteTweet(tweet._id, tweet.usersFavId);newFavouriteTweet = false; tweet.alreadyFavourited = false" 
               ng-show="newFavouriteTweet || tweet.alreadyFavourited">
-              <i class="fi-star active"></i>
+              <i class="fa fa-star active"></i>
       </button>
       <button ng-click="doStuff()">
-        <i class="fi-loop"></i>
+        <i class="fa fa-refresh"></i>
       </button>
     </div>
   </div>
