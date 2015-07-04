@@ -65,7 +65,7 @@ header li {
 }
 
 header li a {
-  padding:10px 20px;
+  padding:10px;
 }
 
 header li:first-child a {
@@ -81,7 +81,7 @@ dl {
 }
 
 h3 {
-  margin:0;
+  margin:0 0 10px 0;
 }
 
 h4 {
@@ -195,19 +195,28 @@ img {
 }
 
 button,
+.button,
 input {
   width:100%;
   padding:10px;
   margin-bottom:20px;
-  font-size:13px;
+  font:{
+    size:13px;
+    weight:normal;
+  }
+  text-decoration:none;
   -webkit-appearance:none;
 }
 
 
-button {
+button,
+.button {
   border:0 none;
+  display:block;
   @media (min-width:600px) {
     width:auto;
+    display:inline-block;
+    vertical-align:middle;
   }
 }
 
@@ -216,6 +225,7 @@ input {
 }
 
 button,
+.button,
 input[type="submit"] {
   cursor:pointer;
   

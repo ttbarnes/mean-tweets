@@ -2,8 +2,12 @@
   <h3 ng-if="profileUsername">{{profileUsername}}</h3>
 
   <button ng-hide="usersOwnProfile || loggedInUserFollows" 
-        ng-click="followUser(loggedInUser, profileUsername)"
-        class="blue">Follow @{{profileUsername}}</button>
+          ng-click="followUser(loggedInUser, profileUsername)"
+          class="blue">Follow @{{profileUsername}}</button>
+
+  <a ng-if="usersOwnProfile" 
+     ui-sref="profileEdit"
+     class="button blue">Edit my profile</a>
 
 </div>
 
