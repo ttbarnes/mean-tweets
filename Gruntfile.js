@@ -86,6 +86,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
 
   //grunt.registerTask('default', ['jshint', 'uglify', 'concurrent']);
-  grunt.registerTask('default', ['concurrent']);
+  grunt.registerTask('default', ['sass', 'cssmin', 'clean', 'nodemon', 'watch']);
 
 };
