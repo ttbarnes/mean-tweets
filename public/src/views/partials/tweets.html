@@ -16,7 +16,6 @@
       <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
     </div>
     <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
-    <textarea>{{tweet | json}}</textarea>
 
     <div ng-if="auth.isAuthenticated" class="social">
       <div class="dev-info"  ng-show="tweet.alreadyFavourited">
