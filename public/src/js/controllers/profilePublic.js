@@ -1,7 +1,10 @@
 angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth, $stateParams, $scope, Restangular, tweetsService, userProfileService) {
 
   $scope.profileUsername = $stateParams.username;
-  $scope.loggedInUser = auth.profile.nickname;
+
+  if(auth.profile && auth.profile.nickname) {
+    $scope.loggedInUser = auth.profile.nickname; 
+  }
 
   if($stateParams.username === auth.profile.nickname){
     $scope.usersOwnProfile = true;
