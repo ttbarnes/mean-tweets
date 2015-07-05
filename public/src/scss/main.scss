@@ -1,3 +1,12 @@
+$blue-light-1:#C4CFE1;
+$blue-light-2:#B8C5D9;
+$blue-dark-1:#718BB6;
+
+$bp-sm:600px;
+$bp-md:768px;
+$bp-lg:1000px;
+$bp-xlg:$bp-lg + 200px;
+
 * {
   box-sizing:border-box;
 }
@@ -7,7 +16,7 @@ body {
   color:#333;
   margin:0;
   padding:0;
-  background:rgba(67, 102, 159, 0.31);
+  background:$blue-light-1;
 }
 
 .row {
@@ -54,7 +63,7 @@ header {
   float:left;
   margin:0;
   font-size:19px;
-  @media (min-width:600px) {
+  @media (min-width:$bp-sm) {
     font-size:26px;
   }
 }
@@ -102,20 +111,20 @@ h5 {
 
 .col-30,
 .col-70 {
-  @media(min-width:768px) {
+  @media(min-width:$bp-md) {
     float:left;
   }
 }
 
 .col-70 {
-  @media(min-width:768px) {
+  @media(min-width:$bp-md) {
     width:70%;
     padding-right:15px;
   }
 }
 
 .col-30 {
-  @media(min-width:768px) {
+  @media(min-width:$bp-md) {
     width:30%;
     padding-left:15px;
   }
@@ -126,16 +135,19 @@ h5 {
   position:relative;
   margin-bottom:20px;
   padding:0.9em;
-  background:#F5F5F5;
+  background:rgba(255, 255, 255, 1);
   border-radius:0.75em;
-  border-bottom:solid 6px rgba(67, 102, 159, 0.35);
+  border-bottom:solid 6px $blue-light-2;
 
-  @media (min-width:768px) {
-    transition:all 0.3s ease;
-    &:hover {
-      border-bottom-color:rgba(67, 102, 159, 0.75);
-      border-top-left-radius:2em;
-      border-bottom-right-radius:2em;
+  .tweets &  {
+    @media (min-width:$bp-md) {
+      transition:all 0.3s ease;
+      background:rgba(255, 255, 255, 0.9);
+      &:hover {
+        background:rgba(255, 255, 255, 1);
+        border-bottom-color:$blue-dark-1;
+        border-bottom-right-radius:2em;
+      }
     }
   }
 
@@ -188,7 +200,6 @@ h5 {
       padding:10px;
       margin-bottom:0;
       background:transparent;
-      outline:0 none;
     }
   }
 
@@ -208,7 +219,7 @@ img {
 
 .form-wrap {
   text-align:center;
-  @media(min-width:768px) {
+  @media(min-width:$bp-md) {
     width:50%;
     text-align:left;
   } 
@@ -229,6 +240,7 @@ textarea {
     size:13px;
     weight:normal;
   }
+  border:0 none;
   text-decoration:none;
   -webkit-appearance:none;
 }
@@ -238,16 +250,11 @@ button,
 .button {
   border:0 none;
   display:block;
-  @media (min-width:600px) {
+  @media (min-width:$bp-sm) {
     width:auto;
     display:inline-block;
     vertical-align:middle;
   }
-}
-
-input,
-textarea {
-  border:solid 2px #D0D0D0;
 }
 
 button,
@@ -258,6 +265,15 @@ input[type="submit"] {
   &.blue {
     background:#3498D4;
     color:#FFF;
+  }
+}
+
+a,
+button,
+input,
+textarea {
+  &:focus {
+    outline:solid 2px $blue-dark-1;
   }
 }
 
@@ -279,7 +295,7 @@ textarea {
     float:right;
   }
   input[type="submit"] {
-    @media (min-width:768px) {
+    @media (min-width:$bp-md) {
       width:auto;
     }
   }
@@ -313,15 +329,15 @@ textarea {
     z-index:1;
     top:-25%;
     left:-25%;
-    @media (min-width:768px) {
+    @media (min-width:$bp-md) {
       top:0;
       left:-15%;
     }
-    @media (min-width:1000px) {
+    @media (min-width:$bp-lg) {
       top:0;
       left:0;
     }
-    @media (min-width:1200px) {
+    @media (min-width:$bp-xlg) {
       width:100%;
       max-width:100%;
     }
@@ -333,10 +349,10 @@ textarea {
     padding:10px;
     text-align:center;
     color:#FFF;
-    @media (min-width:600px) {
+    @media (min-width:$bp-sm) {
       width:550px;
     }
-    @media (min-width:768px) {
+    @media (min-width:$bp-md) {
       margin:15% auto;
     }
   }
@@ -347,7 +363,7 @@ textarea {
       weight:normal;
       size:1.7em;
     }
-    @media (min-width:600px) {
+    @media (min-width:$bp-sm) {
       font-size:2.7em;
     }
   }
@@ -358,7 +374,7 @@ textarea {
       weight:bold;
       size:1em;
     }
-    @media (min-width:600px) {
+    @media (min-width:$bp-sm) {
       font-size:1.2em;
     }
   }
@@ -381,7 +397,7 @@ textarea {
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: #333;
+  background-color: #F5F5F5;
 
   border-radius: 100%;
   display: inline-block;
