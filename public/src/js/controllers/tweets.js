@@ -55,9 +55,8 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
         tweetsService.tweets.post(newTweet).then(function(){
           console.info('posted a tweet', newTweet);
           $scope.tweet = '';
+          getTweets();
         });
-
-        getTweets();
       }
       else {
         console.error('unable to post tweet - user is not authenticated');
