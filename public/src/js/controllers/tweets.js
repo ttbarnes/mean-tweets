@@ -68,8 +68,8 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
       if(currentUserFactory.isAuth) {
 
         var urls = {
-          usernameInTweetFavs  : apiRoute.tweets + tweetId + '/favourites',
-          tweetIdInProfileFavs : apiRoute.profiles + currentUserFactory.username + '/tweets/favourites/' + tweetId
+          usernameTweetFavs  : apiRoute.tweets + tweetId + '/favourites',
+          tweetIdProfileFavs : apiRoute.profiles + currentUserFactory.username + '/tweets/favourites/' + tweetId
         }
 
         var newFavourite = {
@@ -77,12 +77,12 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
         }
 
         //PUT the newFavourite username into the tweet's favourite array
-        Restangular.all(urls.usernameInTweetFavs).customPUT(newFavourite).then(function () {
-          console.log('posted new favourite to: ' + urls.usernameInTweetFavs);
+        Restangular.all(urls.usernameTweetFavs).customPUT(newFavourite).then(function () {
+          console.log('posted new favourite to: ' + urls.usernameTweetFavs);
         });
 
         //PUT tweet id in loggedInUser's profile favourites object
-        Restangular.all(urls.tweetIdInProfileFavs).customPUT(newFavourite).then(function () {
+        Restangular.all(urls.tweetIdProfileFavs).customPUT(newFavourite).then(function () {
           console.log('posted new favourite tweet id to: ' + 'api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId);
         });
 
@@ -92,13 +92,18 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
     $scope.unFavouriteTweet = function(tweetId, favouriteId) {
       if(currentUserFactory.isAuth) {
 
+        var urls = {
+          usernameTweetFavId : apiRoute.tweets + tweetId + '/favourites/' + favouriteId,
+          tweetIdProfileFav  : apiRoute.profiles + currentUserFactory.username + '/tweets/favourites/' + tweetId
+        }
+
         //REMOVE the username's fav ID from the tweet's favourite array
-        Restangular.all('api/tweets/' + tweetId + '/favourites/' + favouriteId).remove().then(function () {
-          console.log('removed user from favourites: ' + 'api/tweets/' + tweetId + '/favourites/' + favouriteId);
+        Restangular.all(urls.usernameTweetFavId).remove().then(function () {
+          console.log('removed user from favourites: ' + urls.usernameTweetFavId);
         });
 
         //REMOVE the tweet ID from the user's profile favourites array
-        Restangular.all('api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId).remove().then(function () {
+        Restangular.all(urls.tweetIdProfileFav).remove().then(function () {
           console.log('removed tweet from the users profile favourites: ' + 'api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId);
         });
 
