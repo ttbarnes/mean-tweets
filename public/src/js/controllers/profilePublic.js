@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth, currentUserFactory, $stateParams, $scope, Restangular, tweetsService, userProfileService) {
+angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsService, userProfileService) {
 
   $scope.profileUsername = $stateParams.username;
   $scope.loggedInUserFollows = false;
