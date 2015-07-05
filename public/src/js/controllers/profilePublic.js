@@ -18,7 +18,6 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth,
   ////////////////////////////////////////////////////////
 
   userProfileService.user($scope.loggedInUser).getList().then(function (user){ 
-    console.log('got list');
     //todo: where/why is the response wrapped in an array?
     //see difference in mongodb and response returned from api.
     var loggedInUserUserFollowing = user[0].following;

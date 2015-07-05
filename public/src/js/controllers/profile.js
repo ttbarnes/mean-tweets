@@ -1,7 +1,7 @@
-angular.module('meanExampleApp').controller('ProfileCtrl', function (auth, $state, $stateParams, $scope, Restangular, userProfileService) {
+angular.module('meanExampleApp').controller('ProfileCtrl', function (auth, currentUserFactory, $state, $stateParams, $scope, Restangular, userProfileService) {
 
   //temp solution to redirect if user is not auth
-  if(!auth.isAuthenticated && $state.$current.data.auth.required === true) {
+  if(!currentUserFactory.isAuth && $state.$current.data.auth.required === true) {
     $state.go('loginRequired');
   }
 
@@ -14,7 +14,7 @@ angular.module('meanExampleApp').controller('ProfileCtrl', function (auth, $stat
 
   $scope.updateProfileDetails = function(data) {
 
-    if(auth.isAuthenticated) {
+    if(currentUserFactory.isAuth) {
 
       var profileDetails = {
         websiteUrl : data.websiteUrl,
@@ -24,9 +24,9 @@ angular.module('meanExampleApp').controller('ProfileCtrl', function (auth, $stat
 
       console.log(profileDetails);
 
-      Restangular.all('api/profiles/' + $scope.loggedInUser + '/details').customPUT(profileDetails).then(function () {
-        console.log($scope.loggedInUser + 'just updated their profile details');
-        console.log('posted to: ' + 'api/profiles/' + $scope.loggedInUser + '/details');
+      Restangular.all('api/profiles/' + currentUserFactory.username + '/details').customPUT(profileDetails).then(function () {
+        console.log(currentUserFactory.username + ' just updated their profile details');
+        console.log('posted to: ' + 'api/profiles/' + currentUserFactory.username + '/details');
       });
     }
 
