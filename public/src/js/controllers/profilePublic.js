@@ -1,23 +1,24 @@
-angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth, $stateParams, $scope, Restangular, tweetsService, userProfileService) {
+angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth, currentUserFactory, $stateParams, $scope, Restangular, tweetsService, userProfileService) {
 
   $scope.profileUsername = $stateParams.username;
-
-  if(auth.profile && auth.profile.nickname) {
-    $scope.loggedInUser = auth.profile.nickname; 
-  }
-
-  if($stateParams.username === auth.profile.nickname){
-    $scope.usersOwnProfile = true;
-  }
-
   $scope.loggedInUserFollows = false;
+
+  if(currentUserFactory.isAuth) {
+
+    $scope.loggedInUser = currentUserFactory.username;
+
+    if($stateParams.username === currentUserFactory.username){
+      $scope.usersOwnProfile = true;
+    }
+
+  }
 
   ////////////////////////////////////////////////////////
   //current user things - should be service or something
   //actually, this query should be done with API - find X username in Y profile. Return true/false
   ////////////////////////////////////////////////////////
 
-  userProfileService.user($scope.loggedInUser).getList().then(function (user){ 
+  userProfileService.user(currentUserFactory.username).getList().then(function (user){ 
     //todo: where/why is the response wrapped in an array?
     //see difference in mongodb and response returned from api.
     var loggedInUserUserFollowing = user[0].following;
@@ -50,7 +51,7 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (auth,
   });
 
   $scope.followUser = function(userFollower, userFollowing) {
-    if(auth.isAuthenticated) {
+    if(currentUserFactory.isAuth) {
 
       console.log(userFollower + ' wants to follow ' + userFollowing);
 
