@@ -7,6 +7,11 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
       $scope.loggedInUser = currentUserFactory.username;
     }
 
+    var apiRoute = {
+      tweets   : 'api/tweets/',
+      profiles : 'api/profiles/'
+    }
+
     function getTweets() {
 
       tweetsService.tweets.getList().then(function (tweets){
@@ -62,17 +67,22 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
     $scope.favouriteTweet = function(tweetId) {
       if(currentUserFactory.isAuth) {
 
+        var urls = {
+          usernameInTweetFavs  : apiRoute.tweets + tweetId + '/favourites',
+          tweetIdInProfileFavs : apiRoute.profiles + currentUserFactory.username + '/tweets/favourites/' + tweetId
+        }
+
         var newFavourite = {
           username: $scope.loggedInUser
         }
 
         //PUT the newFavourite username into the tweet's favourite array
-        Restangular.all('api/tweets/' + tweetId + '/favourites').customPUT(newFavourite).then(function () {
-          console.log('posted new favourite to: ' + 'api/tweets/' + tweetId + '/favourites');
+        Restangular.all(urls.usernameInTweetFavs).customPUT(newFavourite).then(function () {
+          console.log('posted new favourite to: ' + urls.usernameInTweetFavs);
         });
 
         //PUT tweet id in loggedInUser's profile favourites object
-        Restangular.all('api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId).customPUT(newFavourite).then(function () {
+        Restangular.all(urls.tweetIdInProfileFavs).customPUT(newFavourite).then(function () {
           console.log('posted new favourite tweet id to: ' + 'api/profiles/' + $scope.loggedInUser + '/tweets/favourites/' + tweetId);
         });
 
