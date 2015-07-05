@@ -11,11 +11,19 @@ body {
   width:100%;
 }
 
-.wrapper {
-  padding:0 20px;
-}
-
 .wrapper-max-width {
   max-width:800px;
   margin:0 auto;
+}
+
+.main-wrapper {
+  padding:0 20px;
+  margin-top:70px;
+  z-index:1;
+  @media (min-width:$bp-sm) {
+    margin-top:80px;
+  }
+  @media (min-width:$bp-md) {
+    margin-top:100px;
+  }
 }

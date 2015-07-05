@@ -1,14 +1,24 @@
 header {
   display:inline-block;
   vertical-align:top;
-  margin-bottom:60px;
   background:#FFF;
+  border-bottom:solid 3px $blue-light-2;
+  position:fixed;
+  z-index:2;
+  top:0;
+  left:0;
+  @media (min-width:$bp-sm) {
+    border-bottom-width:5px;
+  }
 
   li {
     display:inline-block;
     vertical-align:middle;
     a {
-      padding:10px;
+      padding:13px 0;
+      @media (min-width:$bp-sm) {
+        padding:17px 0;
+      }
     }
     &:first-child a {
       padding:10px;
