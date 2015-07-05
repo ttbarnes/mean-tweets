@@ -90,7 +90,7 @@ angular.module('meanExampleRoutes', ['ui.router'])
       .state(states.profileEdit.name, {
         url: '/edit-profile',
         templateUrl: 'views/profile/edit.html',
-        controller: 'ProfileCtrl',
+        controller: 'ProfileEditCtrl',
         data: {
           'auth': {
             required: true
