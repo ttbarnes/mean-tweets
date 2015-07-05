@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').factory('copyGlobalService', function (){
+angular.module('meanExampleApp').factory('copyGlobalFactory', function (){
 
     var factory = {};
 

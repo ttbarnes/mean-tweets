@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsService, userProfileService) {
+angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory) {
 
   $scope.profileUsername = $stateParams.username;
   $scope.loggedInUserFollows = false;
@@ -18,7 +18,7 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
   //actually, this query should be done with API - find X username in Y profile. Return true/false
   ////////////////////////////////////////////////////////
 
-  userProfileService.user(currentUserFactory.username).getList().then(function (user){ 
+  userProfileFactory.user(currentUserFactory.username).getList().then(function (user){ 
     //todo: where/why is the response wrapped in an array?
     //see difference in mongodb and response returned from api.
     var loggedInUserUserFollowing = user[0].following;
@@ -40,13 +40,13 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
   //todo (server/api): combine into one api call. user: get everything.
   //and think about add promise errors, no user, etc - maybe use resolve() in routes?
 
-  userProfileService.user($scope.profileUsername).getList().then(function (user){ 
+  userProfileFactory.user($scope.profileUsername).getList().then(function (user){ 
     //todo: where/why is the response wrapped in an array?
     //see difference in mongodb and response returned from api.
     $scope.user = user[0];
   });
 
-  tweetsService.userSpecificTweets($scope.profileUsername).getList().then(function (tweets){
+  tweetsFactory.userSpecificTweets($scope.profileUsername).getList().then(function (tweets){
     $scope.tweets = tweets;
   });
 

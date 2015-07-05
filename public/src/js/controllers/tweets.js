@@ -1,5 +1,5 @@
 angular.module('meanExampleApp').controller('TweetsCtrl', 
-  function (currentUserFactory, $stateParams, $scope, Restangular, tweetsService) {
+  function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory) {
 
     //todo: improve error handling
 
@@ -14,7 +14,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
 
     function getTweets() {
 
-      tweetsService.tweets.getList().then(function (tweets){
+      tweetsFactory.tweets.getList().then(function (tweets){
 
         console.info('got new tweets');
         $scope.tweets = tweets;
@@ -52,7 +52,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
           }
         };
 
-        tweetsService.tweets.post(newTweet).then(function(){
+        tweetsFactory.tweets.post(newTweet).then(function(){
           console.info('posted a tweet', newTweet);
           $scope.tweet = '';
           getTweets();

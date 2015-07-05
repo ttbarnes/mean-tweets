@@ -1,6 +1,6 @@
-angular.module('meanExampleApp').controller('GlobalCtrl', function (auth, $scope, $location, store, copyGlobalService) {
+angular.module('meanExampleApp').controller('GlobalCtrl', function (auth, $scope, $location, store, copyGlobalFactory) {
 
-  $scope.appName = copyGlobalService.appName;
+  $scope.appName = copyGlobalFactory.appName;
   $scope.auth = auth;
 
   $scope.loginOrSignup = function() {

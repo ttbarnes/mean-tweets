@@ -1,15 +1,15 @@
 //usage eg:
 //
-//tweetsService.tweets.getList().then(function (tweets){ ... });
+//tweetsFactory.tweets.getList().then(function (tweets){ ... });
 //
-//tweetsService.search('someHashtag').getList().then(function (tweets){ ... });
+//tweetsFactory.search('someHashtag').getList().then(function (tweets){ ... });
 //
-//tweetsService.userSpecificTweets('support2').getList().then(function (tweets){ ... });
+//tweetsFactory.userSpecificTweets('support2').getList().then(function (tweets){ ... });
 //
-//tweetsService.singleTweet(5576b67fbb1c7b10c2dc65e1).getList().then(function (tweet){ ... });
+//tweetsFactory.singleTweet(5576b67fbb1c7b10c2dc65e1).getList().then(function (tweet){ ... });
 //
 
-angular.module('meanExampleApp').factory('tweetsService', function (Restangular){
+angular.module('meanExampleApp').factory('tweetsFactory', function (Restangular){
 
     return {
       tweets: Restangular.all('api/tweets'),

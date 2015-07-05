@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('ProfileEditCtrl', function (currentUserFactory, $state, $stateParams, $scope, Restangular, userProfileService) {
+angular.module('meanExampleApp').controller('ProfileEditCtrl', function (currentUserFactory, $state, $stateParams, $scope, Restangular, userProfileFactory) {
 
   //temp solution to redirect if user is not auth
   if(!currentUserFactory.isAuth && $state.$current.data.auth.required === true) {
@@ -7,7 +7,7 @@ angular.module('meanExampleApp').controller('ProfileEditCtrl', function (current
 
   $scope.loggedInUser = currentUserFactory.username;
 
-  userProfileService.user($scope.loggedInUser).getList().then(function (profile){
+  userProfileFactory.user($scope.loggedInUser).getList().then(function (profile){
     $scope.profile = profile;
     $scope.profileDetails = $scope.profile[0].details[0];
   });
