@@ -1,10 +1,10 @@
 angular.module('meanExampleApp').controller('TweetsCtrl', 
-  function (auth, $stateParams, $scope, Restangular, tweetsService) {
+  function (currentUserFactory, $stateParams, $scope, Restangular, tweetsService) {
 
     //todo: improve error handling
 
-    if(auth.profile && auth.profile.nickname) {
-      $scope.loggedInUser = auth.profile.nickname;
+    if(currentUserFactory.isAuth) {
+      $scope.loggedInUser = currentUserFactory.username;
     }
 
     function getTweets() {
@@ -38,9 +38,9 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
     getTweets();
 
     $scope.postTweet = function(tweet){
-      if(auth.isAuthenticated) {
+      if(currentUserFactory.isAuth) {
         var newTweet = {
-          username: auth.profile.nickname,
+          username: currentUserFactory.username,
           copy: tweet.copy,
           image:{
             url:((tweet.image) ? tweet.image.url : '')
@@ -60,7 +60,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
     };
 
     $scope.favouriteTweet = function(tweetId) {
-      if(auth.isAuthenticated) {
+      if(currentUserFactory.isAuth) {
 
         var newFavourite = {
           username: $scope.loggedInUser
@@ -80,7 +80,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
     };
 
     $scope.unFavouriteTweet = function(tweetId, favouriteId) {
-      if(auth.isAuthenticated) {
+      if(currentUserFactory.isAuth) {
 
         //REMOVE the username's fav ID from the tweet's favourite array
         Restangular.all('api/tweets/' + tweetId + '/favourites/' + favouriteId).remove().then(function () {
