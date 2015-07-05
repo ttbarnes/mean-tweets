@@ -15,9 +15,10 @@ header {
     display:inline-block;
     vertical-align:middle;
     a {
-      padding:13px 0;
+      padding:13px 10px;
+      display:block;
       @media (min-width:$bp-sm) {
-        padding:17px 0;
+        padding:16px 10px;
       }
     }
     &:first-child a {
