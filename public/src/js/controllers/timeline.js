@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('TweetsCtrl', 
+angular.module('meanExampleApp').controller('TimelineCtrl', 
   function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory) {
 
     //todo: improve error handling
@@ -14,6 +14,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
 
     function getTweets() {
 
+      /*
       tweetsFactory.tweets.getList().then(function (tweets){
 
         console.info('got new tweets');
@@ -37,6 +38,7 @@ angular.module('meanExampleApp').controller('TweetsCtrl',
         });
 
       });
+      */
 
     };
 
