@@ -1,0 +1,32 @@
+header {
+  display:inline-block;
+  vertical-align:top;
+  margin-bottom:60px;
+  background:#FFF;
+
+  li {
+    display:inline-block;
+    vertical-align:middle;
+    a {
+      padding:10px;
+    }
+    &:first-child a {
+      padding:10px;
+    }
+  }
+}
+
+.logo {
+  float:left;
+  margin:0;
+  font-size:19px;
+  @media (min-width:$bp-sm) {
+    font-size:26px;
+  }
+}
+
+.logo a {
+  display:inline-block;
+  padding:10px 15px;
+  color:#333;
+}

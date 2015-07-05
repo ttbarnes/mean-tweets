@@ -1,0 +1,37 @@
+h3 {
+  margin:0 0 10px 0;
+}
+
+h4,
+h5 {
+  margin:0;
+}
+
+h5 {
+  font-size:1em;
+}
+
+p {
+  margin:0 0 15px 0;
+}
+
+small {
+  font-size:0.8em;
+}
+
+a {
+  text-decoration:none;
+  font-weight:bold;
+  color:#3498D4;
+  &:hover,
+  &:focus {
+    text-decoration:underline;
+  }
+}
+
+ul,
+ol,
+dl {
+  margin:0;
+  padding:0;
+}

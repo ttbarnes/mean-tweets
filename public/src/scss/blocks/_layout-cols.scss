@@ -1,0 +1,20 @@
+.col-30,
+.col-70 {
+  @media(min-width:$bp-md) {
+    float:left;
+  }
+}
+
+.col-70 {
+  @media(min-width:$bp-md) {
+    width:70%;
+    padding-right:15px;
+  }
+}
+
+.col-30 {
+  @media(min-width:$bp-md) {
+    width:30%;
+    padding-left:15px;
+  }
+}

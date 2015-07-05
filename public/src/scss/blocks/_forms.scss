@@ -1,0 +1,65 @@
+.form-wrap {
+  text-align:center;
+  @media(min-width:$bp-md) {
+    width:50%;
+    text-align:left;
+  } 
+  &.bg-grey {
+    background:#EEE;
+    padding:10px;
+  }
+}
+
+button,
+.button,
+input,
+textarea {
+  width:100%;
+  padding:10px;
+  margin-bottom:20px;
+  font:{
+    size:13px;
+    weight:normal;
+  }
+  border:0 none;
+  text-decoration:none;
+  -webkit-appearance:none;
+}
+
+
+button,
+.button {
+  border:0 none;
+  display:block;
+  @media (min-width:$bp-sm) {
+    width:auto;
+    display:inline-block;
+    vertical-align:middle;
+  }
+}
+
+button,
+.button,
+input[type="submit"] {
+  cursor:pointer;
+  
+  &.blue {
+    background:#3498D4;
+    color:#FFF;
+  }
+}
+
+a,
+button,
+input,
+textarea {
+  &:focus {
+    outline:solid 2px $blue-dark-1;
+  }
+}
+
+textarea {
+  max-width:100%;
+  min-height:100px;
+  //resize:none; //enable for dev
+}

@@ -1,0 +1,74 @@
+.tweet {
+  clear:both;
+  position:relative;
+  margin-bottom:20px;
+  padding:0.9em;
+  background:rgba(255, 255, 255, 1);
+  border-radius:0.75em;
+  border-bottom:solid 6px $blue-light-2;
+
+  .tweets &  {
+    @media (min-width:$bp-md) {
+      transition:all 0.3s ease;
+      background:rgba(255, 255, 255, 0.9);
+      &:hover {
+        background:rgba(255, 255, 255, 1);
+        border-bottom-color:$blue-dark-1;
+        border-bottom-right-radius:2em;
+      }
+    }
+  }
+
+  .dev-info {
+    display:none;
+    position:absolute;
+    background:#DDD;
+    color:#333;
+    padding:10px;
+    top:3%;
+    right:-15%;
+    font-size:0.8em;
+    box-shadow:0 1px 3px #818181;
+    p {
+      margin:0;
+    }
+  }
+
+  .img-wrap {
+    max-height:350px;
+    overflow:hidden;
+  }
+
+  .tweet-copy,
+  .img-wrap {
+    margin-bottom:15px;
+  }
+
+  .tweet-copy small {
+    font-weight:normal;
+    font-size:12px;
+  }
+
+  .tweet-id {
+    margin-bottom:0;
+    small {
+      font-size:11px;
+    }
+  }
+
+  .social {
+    i {
+      font-size:1.3em;
+      &.active {
+        color:#BADA55;
+      }
+    }
+    button {
+      width:auto;
+      padding:10px;
+      margin-bottom:0;
+      background:transparent;
+    }
+  }
+
+}

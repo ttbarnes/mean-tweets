@@ -1,0 +1,21 @@
+body {
+  font-family:sans-serif;
+  color:#333;
+  margin:0;
+  padding:0;
+  background:$blue-light-1;
+}
+
+.row {
+  clear:both;
+  width:100%;
+}
+
+.wrapper {
+  padding:0 20px;
+}
+
+.wrapper-max-width {
+  max-width:800px;
+  margin:0 auto;
+}
