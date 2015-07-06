@@ -1,7 +1,10 @@
 angular.module('meanExampleApp').controller('TimelineCtrl', 
-  function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory) {
+  function (currentUserFactory, userProfileFactory, $stateParams, $scope, Restangular, tweetsFactory) {
 
-    //todo: improve error handling
+    //todo:
+    //handle no followers
+    //handle no tweets from existing user
+    //improve error handling
 
     if(currentUserFactory.isAuth) {
       $scope.loggedInUser = currentUserFactory.username;
@@ -14,31 +17,45 @@ angular.module('meanExampleApp').controller('TimelineCtrl',
 
     function getTweets() {
 
-      /*
-      tweetsFactory.tweets.getList().then(function (tweets){
+      userProfileFactory.user(currentUserFactory.username).getList().then(function (currentUser) {
 
-        console.info('got new tweets');
-        $scope.tweets = tweets;
+        //get user's following usernames, push to array
+        var userFollowing = [];
 
-        //for each tweet, check to see if any of the username fields (in favourites array)
-        //equal $scope.loggedInUser.
-        //if a match is found in one tweet,
-        //add an extra field to the tweet: alreadyFavourited
-        angular.forEach(tweets, function (tweet) {
+        angular.forEach(currentUser[0].following, function (user) {
+          userFollowing.push(user.username);
+        });
 
-          angular.forEach(tweet.favourites, function (favourites) {
+        //create object for restangular
+        var currentUserFollowing = {
+          userFollowing
+        };
 
-            if(favourites.username === $scope.loggedInUser) {
-              tweet.alreadyFavourited = true;
-              tweet.usersFavId = favourites._id;
-            }
+        //query the api - get only these users's tweets
+        tweetsFactory.timeline(currentUserFollowing).then(function (tweets) {
+          console.info('got timeline tweets')
+          $scope.tweets = tweets;
+
+          //for each tweet, check to see if any of the username fields (in favourites array)
+          //equal $scope.loggedInUser.
+          //if a match is found in one tweet,
+          //add an extra field to the tweet: alreadyFavourited
+          angular.forEach(tweets, function (tweet) {
+
+            angular.forEach(tweet.favourites, function (favourites) {
+
+              if(favourites.username === $scope.loggedInUser) {
+                tweet.alreadyFavourited = true;
+                tweet.usersFavId = favourites._id;
+              }
+
+            });
 
           });
 
         });
 
       });
-      */
 
     };
 

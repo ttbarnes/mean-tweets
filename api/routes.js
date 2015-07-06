@@ -152,6 +152,26 @@ router.route('/tweets/:tweet_id/favourites/:fav_tweet_id')
 
   });
 
+//temporary route - need to refactor other routes.
+router.route('/tweetsTimeline')
+
+  .get(function (req, res) {
+
+    //todo: add own tweets
+
+    var userFollowing = req.query.userFollowing;
+    console.log('current user follows ' + userFollowing.length + ' people: \n' + userFollowing);
+
+    Tweet.find( { username: { $in: userFollowing  } }, function (err, tweets) {
+      console.log('finding tweets with these usernames only');
+      if (err)
+        res.send(err);
+      res.json(tweets)
+      console.log('found ' + tweets.length + ' tweets');
+    });
+
+  });
+
 router.route('/profiles')
 
   .get(function (req, res) {

@@ -13,6 +13,9 @@ angular.module('meanExampleApp').factory('tweetsFactory', function (Restangular)
 
     return {
       tweets: Restangular.all('api/tweets'),
+      timeline: function(userFollowing) {
+        return Restangular.all('api/').customGET('tweetsTimeline',  userFollowing);
+      },
       search: function(searchQuery) {
         return Restangular.all('api/search/' + searchQuery);
       },
