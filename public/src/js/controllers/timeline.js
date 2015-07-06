@@ -26,6 +26,10 @@ angular.module('meanExampleApp').controller('TimelineCtrl',
           userFollowing.push(user.username);
         });
 
+        //push current username so they appear in timeline too 
+        //it doesn't matter if this user hasn't tweeted yet.
+        userFollowing.push(currentUserFactory.username);
+
         //create object for restangular
         var currentUserFollowing = {
           userFollowing

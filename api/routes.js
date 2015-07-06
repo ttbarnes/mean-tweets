@@ -157,17 +157,16 @@ router.route('/tweetsTimeline')
 
   .get(function (req, res) {
 
-    //todo: add own tweets
-
     var userFollowing = req.query.userFollowing;
-    console.log('current user follows ' + userFollowing.length + ' people: \n' + userFollowing);
+
+    console.log('current user follows ' + userFollowing.length + ' people: \n' + userFollowing + ' \n (this includes themself)');
 
     Tweet.find( { username: { $in: userFollowing  } }, function (err, tweets) {
       console.log('finding tweets with these usernames only');
       if (err)
         res.send(err);
-      res.json(tweets)
       console.log('found ' + tweets.length + ' tweets');
+      res.json(tweets);
     });
 
   });
@@ -211,17 +210,19 @@ router.route('/profiles')
     });
 
   router.route('/profiles/:username/tweets')
+
     .get(function (req, res) {
 
       Tweet.find({username: new RegExp(req.params.username, "i")}, function (err, tweets) {
         if (err)
             res.send(err);
           if (!tweets.length) {
-            res.status(500).send('No tweets found.');
+            res.status(404).send('The user \'' + req.params.username + '\'' + ' has not tweeted yet.');
           } else {
             res.json(tweets);
           }
       });
+
     });
 
   router.route('/profiles/:username/tweets/favourites/:tweet_id')
