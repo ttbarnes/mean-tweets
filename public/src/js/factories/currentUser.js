@@ -1,3 +1,8 @@
+//usage eg:
+//
+//currentUserFactory.username
+//
+
 angular.module('meanExampleApp').factory('currentUserFactory', function (auth){
 
     var isAuth = false;

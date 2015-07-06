@@ -1,10 +1,7 @@
 angular.module('meanExampleApp').controller('TimelineCtrl', 
   function (currentUserFactory, userProfileFactory, $stateParams, $scope, Restangular, tweetsFactory) {
 
-    //todo:
-    //handle no followers
-    //handle no tweets from existing user
-    //improve error handling
+    //todo: improve error handling
 
     if(currentUserFactory.isAuth) {
       $scope.loggedInUser = currentUserFactory.username;

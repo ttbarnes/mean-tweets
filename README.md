@@ -17,16 +17,15 @@ WIP - soon there will be a real readme file, for the time being here are some no
 - MEAN stack: MongoDB, Express, Angular, Node.js
 - Angular services/modules
   - ui-router
-  - restangular (RESTful api)
+  - restangular
   - angular-moment
   - ui-router-title
-- Mongoose (elegant MongoDB object modeling)
-- Mongolab
+- MongoDB, Mongoose
 - Auth0
 - Grunt
 - Karma
 - Jasmine
-- Foundation icon fonts
+- Font awesome
 
 
 ##quick notes

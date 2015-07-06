@@ -31,13 +31,9 @@
   .box {
     z-index:2;
     position:relative;
-    margin:10% auto;
+    margin:20% auto;
     padding:10px;
-    text-align:center;
     color:#FFF;
-    @media (min-width:$bp-sm) {
-      width:550px;
-    }
     @media (min-width:$bp-md) {
       margin:15% auto;
     }
