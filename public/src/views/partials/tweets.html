@@ -8,6 +8,9 @@
     </div>
   </div>
 
+  <p ng-if="userNoFollowings">you're not following anyone right now</p>
+
+
   <div ng-repeat="tweet in tweets.slice().reverse()" 
        class="tweet">
     <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>

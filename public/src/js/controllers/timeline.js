@@ -19,14 +19,16 @@ angular.module('meanExampleApp').controller('TimelineCtrl',
 
       userProfileFactory.user(currentUserFactory.username).getList().then(function (currentUser) {
 
-        //get user's following usernames, push to array
         var userFollowing = [];
 
-        angular.forEach(currentUser[0].following, function (user) {
-          userFollowing.push(user.username);
-        });
+        //get user's following usernames, push to array
+        if (currentUser[0].following.length) {
+          angular.forEach(currentUser[0].following, function (user) {
+            userFollowing.push(user.username);
+          });
+        }
 
-        //push current username so they appear in timeline too 
+        //push current username to array so they appear in timeline too 
         //it doesn't matter if this user hasn't tweeted yet.
         userFollowing.push(currentUserFactory.username);
 
@@ -39,23 +41,28 @@ angular.module('meanExampleApp').controller('TimelineCtrl',
         tweetsFactory.timeline(currentUserFollowing).then(function (tweets) {
           console.info('got timeline tweets')
           $scope.tweets = tweets;
+          if(tweets.length) {
 
-          //for each tweet, check to see if any of the username fields (in favourites array)
-          //equal $scope.loggedInUser.
-          //if a match is found in one tweet,
-          //add an extra field to the tweet: alreadyFavourited
-          angular.forEach(tweets, function (tweet) {
+            //for each tweet, check to see if any of the username fields (in favourites array)
+            //equal $scope.loggedInUser.
+            //if a match is found in one tweet,
+            //add an extra field to the tweet: alreadyFavourited
+            angular.forEach(tweets, function (tweet) {
+              if(tweet.favourites) {
+                angular.forEach(tweet.favourites, function (favourites) {
 
-            angular.forEach(tweet.favourites, function (favourites) {
+                  if(favourites.username === $scope.loggedInUser) {
+                    tweet.alreadyFavourited = true;
+                    tweet.usersFavId = favourites._id;
+                  }
 
-              if(favourites.username === $scope.loggedInUser) {
-                tweet.alreadyFavourited = true;
-                tweet.usersFavId = favourites._id;
+                });
               }
 
             });
-
-          });
+          } else {
+            $scope.userNoFollowings = true;
+          }
 
         });
 

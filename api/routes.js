@@ -165,7 +165,6 @@ router.route('/tweetsTimeline')
       console.log('finding tweets with these usernames only');
       if (err)
         res.send(err);
-      console.log('found ' + tweets.length + ' tweets');
       res.json(tweets);
     });
 
