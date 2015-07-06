@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('GlobalCtrl', function (auth, $scope, $location, store, copyGlobalFactory) {
+angular.module('meanExampleApp').controller('GlobalCtrl', function (auth, $scope, $location, store, copyGlobalFactory, ngDialog) {
 
   $scope.appName = copyGlobalFactory.appName;
   $scope.auth = auth;
@@ -13,5 +13,8 @@ angular.module('meanExampleApp').controller('GlobalCtrl', function (auth, $scope
     });
   };
 
+  $scope.composeTweet = function () {
+    ngDialog.open({ template: '../views/partials/post-tweet.html' });
+  };
 
 });

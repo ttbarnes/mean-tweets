@@ -18,12 +18,9 @@ body {
 
 .main-wrapper {
   padding:0 20px;
-  margin-top:70px;
+  margin-top:100px;
   z-index:1;
-  @media (min-width:$bp-sm) {
-    margin-top:80px;
-  }
   @media (min-width:$bp-md) {
-    margin-top:100px;
+    margin-top:120px;
   }
 }

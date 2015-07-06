@@ -10,7 +10,8 @@ angular.module('meanExampleApp', [
   'ui.router.title',
   'meanExampleRoutes',
   'restangular',
-  'angularMoment'
+  'angularMoment',
+  'ngDialog'
 ])
 
 .config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider) {

@@ -22,3 +22,20 @@
   margin-bottom:30px;
   background:#F5F5F5;
 }
+
+
+body.ngdialog-open {
+  overflow:visible;
+}
+
+.ngdialog-overlay {
+  background:rgba(0,0,0,.6);
+}
+
+.ngdialog-content {
+  z-index:5;
+  position:relative;
+  max-width:600px;
+  margin:5% auto;
+  padding:15px;
+}

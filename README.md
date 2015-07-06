@@ -25,6 +25,7 @@ WIP - soon there will be a real readme file, for the time being here are some no
 - Grunt
 - Karma
 - Jasmine
+- ngDialog
 - Font awesome
 
 
