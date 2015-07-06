@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <p ng-if="userNoFollowings">You're not following anyone right now. :(</p>
+  <p ng-if="userNoFollowings" class="align-center">You're not following anyone right now. <br/><br/>:(</p>
 
   <div ng-repeat="tweet in tweets.slice().reverse()" 
        class="tweet">

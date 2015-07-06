@@ -163,9 +163,12 @@ router.route('/tweetsTimeline')
 
     Tweet.find( { username: { $in: userFollowing  } }, function (err, tweets) {
       console.log('finding tweets with these usernames only');
-      if (err)
+      if (err) {
         res.send(err);
-      res.json(tweets);
+      } else {
+        res.json(tweets);
+      }
+      
     });
 
   });
