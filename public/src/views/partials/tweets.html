@@ -1,6 +1,6 @@
 <div class="row tweets">
 
-  <div ng-show="loadingTweets || !tweets.length" style="padding:20px;text-align:center;">
+  <div ng-show="loadingTweets" class="row">
     <div class="spinner">
       <div class="bounce1"></div>
       <div class="bounce2"></div>
@@ -8,8 +8,7 @@
     </div>
   </div>
 
-  <p ng-if="userNoFollowings">you're not following anyone right now</p>
-
+  <p ng-if="userNoFollowings">You're not following anyone right now. :(</p>
 
   <div ng-repeat="tweet in tweets.slice().reverse()" 
        class="tweet">

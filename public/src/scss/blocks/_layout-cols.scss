@@ -2,6 +2,7 @@
 .col-70 {
   @media(min-width:$bp-md) {
     float:left;
+    min-height:1px;
   }
 }
 
