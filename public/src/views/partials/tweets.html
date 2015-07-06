@@ -2,10 +2,10 @@
 
   <ng-include src="'views/partials/loading-spinner.html'" ng-show="loadingTweets"></ng-include>
 
-  <p ng-if="userNoFollowings" class="align-center">You're not following anyone right now. <br/><br/>:(</p>
+  <p ng-if="userNoFollowings" class="panel align-center">You're not following anyone right now. <br/><br/>:(</p>
 
   <div ng-repeat="tweet in tweets.slice().reverse()" 
-       class="tweet">
+       class="panel tweet">
     <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
     <p><a ui-sref="profilePublic({username: tweet.username})">@{{tweet.username}}</a></p>
     <div ng-if="tweet.image.url" class="img-wrap">

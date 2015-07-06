@@ -1,11 +1,6 @@
 .tweet {
   clear:both;
   position:relative;
-  margin-bottom:20px;
-  padding:0.9em;
-  background:rgba(255, 255, 255, 1);
-  border-radius:0.75em;
-  border-bottom:solid 6px $blue-light-2;
 
   .tweets &  {
     @media (min-width:$bp-md) {

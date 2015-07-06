@@ -1,29 +1,32 @@
-<h3>Edit profile</h3>
+<div class="panel">
 
-<div>
-  <img ng-src="{{auth.profile.picture}}" alt="{{auth.profile.email}}" />
+  <h3>Edit profile</h3>
 
-  <br/>
+  <div>
+    <img ng-src="{{auth.profile.picture}}" alt="{{auth.profile.email}}" />
 
-  <p><strong>Nickname: </strong>{{auth.profile.nickname}}</p>
+    <br/>
 
-  <p><strong>Email: </strong>{{auth.profile.email}}</p>
+    <p><strong>Nickname: </strong>{{auth.profile.nickname}}</p>
 
-  <p ng-if="!auth.profile.email_verified">Your email has not been verified. <br/>Please check your email and verify your address to fully benefit from Mean Example.</p>
+    <p><strong>Email: </strong>{{auth.profile.email}}</p>
 
-  <br/>
+    <p ng-if="!auth.profile.email_verified">Your email has not been verified. <br/>Please check your email and verify your address to fully benefit from Mean Example.</p>
 
-  <div class="form-wrap">
-    <form name="profileDetailsForm" ng-submit="updateProfileDetails(profileDetails)">
-      <input type="text" name="websiteUrl" ng-model="profileDetails.websiteUrl" placeholder="Website URL" />
-      <input type="text" name="location" ng-model="profileDetails.location" placeholder="Location" />
-      <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" max-length="100" ng-maxlength="100"></textarea>
-      <char-counter input-elm="profileDetails.about.length" max-length="100"></char-counter>
-      <input type="submit" 
-             value="Save"
-             class="button blue"
-             ng-disabled="profileDetailsForm.$invalid || profileDetailsForm.$pristine" />
-    </form>
+    <br/>
+
+    <div class="form-wrap">
+      <form name="profileDetailsForm" ng-submit="updateProfileDetails(profileDetails)">
+        <input type="text" name="websiteUrl" ng-model="profileDetails.websiteUrl" placeholder="Website URL" />
+        <input type="text" name="location" ng-model="profileDetails.location" placeholder="Location" />
+        <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" max-length="100" ng-maxlength="100"></textarea>
+        <char-counter input-elm="profileDetails.about.length" max-length="100"></char-counter>
+        <input type="submit" 
+               value="Save"
+               class="button blue"
+               ng-disabled="profileDetailsForm.$invalid || profileDetailsForm.$pristine" />
+      </form>
+    </div>
+
   </div>
-
 </div>

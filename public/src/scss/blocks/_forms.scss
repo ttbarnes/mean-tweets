@@ -1,13 +1,8 @@
 .form-wrap {
-  text-align:center;
   @media(min-width:$bp-md) {
     width:50%;
     text-align:left;
   } 
-  &.bg-grey {
-    background:#EEE;
-    padding:10px;
-  }
 }
 
 button,

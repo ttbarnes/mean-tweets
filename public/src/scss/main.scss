@@ -8,6 +8,7 @@
 @import 'blocks/_layout-cols';
 @import 'blocks/_header';
 @import 'blocks/_forms';
+@import 'blocks/_panel';
 @import 'blocks/_post-something';
 
 @import 'elements/_loading-spinner';
@@ -15,12 +16,8 @@
 
 @import 'views/_home-welcome';
 
-
 .placeholder-box {
-  padding:15px;
   min-height:100px;
-  margin-bottom:30px;
-  background:#F5F5F5;
 }
 
 

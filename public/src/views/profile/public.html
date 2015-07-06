@@ -24,7 +24,7 @@
   </div>
 
   <div class="col-30">
-    <div class="placeholder-box">
+    <div class="panel placeholder-box">
       <h5>followers</h5>
       <p>{{user.followers.length}}</p>
       <br/>
@@ -32,7 +32,7 @@
         <li ng-repeat="user in user.followers">{{user.username}}</li>
       </ul>
     </div>
-    <div class="placeholder-box">
+    <div class="panel placeholder-box">
       <h5>following</h5>
       <p>{{user.following.length}}</p>
       <br/>
@@ -40,11 +40,11 @@
         <li ng-repeat="user in user.following">{{user.username}}</li>
       </ul>
     </div>
-    <div class="placeholder-box">
+    <div class="panel placeholder-box">
       <h5>favourite tweets</h5>
       <p>{{user.favourites.length}}</p>
     </div>
-    <div class="placeholder-box">
+    <div class="panel placeholder-box">
       <h5>tweets</h5>
       <p>{{tweets.length}}</p>
     </div>
