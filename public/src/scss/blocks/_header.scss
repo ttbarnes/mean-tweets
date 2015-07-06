@@ -17,6 +17,7 @@ header {
     a {
       padding:13px 10px;
       display:block;
+      color:$blue-dark-1;
       @media (min-width:$bp-sm) {
         padding:16px 10px;
       }
@@ -30,16 +31,29 @@ header {
 .logo {
   float:left;
   margin:0;
-  font-size:19px;
+  font:{
+    weight:normal;
+    size:19px;
+  }
   @media (min-width:$bp-sm) {
     font-size:26px;
   }
-}
+  a {
+    display:inline-block;
+    padding:10px 15px;
+    color:#333;
+    font-weight:normal;
+    text-decoration:none;
+    @media (min-width:$bp-md) {
+      transition:all 0.3s ease;
+      &:hover,
+      &:focus {
+        background:$blue-dark-1;
+        color:$white-full;
+      }
+    }
+  }
 
-.logo a {
-  display:inline-block;
-  padding:10px 15px;
-  color:#333;
 }
 
 
