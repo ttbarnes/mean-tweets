@@ -1,7 +1,5 @@
 <div class="row tweets">
 
-  <ng-include src="'views/partials/loading-spinner.html'" ng-show="loadingTweets"></ng-include>
-
   <p ng-if="userNoFollowings" class="panel align-center">You're not following anyone right now. <br/><br/>:(</p>
 
   <div ng-repeat="tweet in tweets.slice().reverse()" 
