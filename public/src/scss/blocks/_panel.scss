@@ -4,4 +4,11 @@
   padding:0.9em;
   border-radius:$border-radius-md;
   border-bottom:solid 6px $blue-light-2;
+
+  ul,
+  ol,
+  dl {
+    margin-left:15px;
+  }
+
 }

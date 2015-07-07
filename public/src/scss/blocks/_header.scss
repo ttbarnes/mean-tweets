@@ -3,12 +3,17 @@ header {
   vertical-align:top;
   background:#FFF;
   border-bottom:solid 3px $blue-light-2;
+  box-shadow:0 12px 42px $blue-light-2;
   position:fixed;
   z-index:2;
   top:0;
   left:0;
   @media (min-width:$bp-sm) {
     border-bottom-width:5px;
+  }
+
+  ul {
+    margin-bottom:0;
   }
 
   li {
