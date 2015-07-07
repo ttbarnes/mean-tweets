@@ -2,7 +2,6 @@ angular.module('meanExampleApp').controller('PostTweetCtrl',
   function ($scope, Restangular, currentUserFactory, tweetsFactory, ngDialog) {
 
     $scope.postTweet = function(tweet){
-      console.log('cliked postTweet!');
       if(currentUserFactory.isAuth) {
         var newTweet = {
           username: currentUserFactory.username,
@@ -20,7 +19,7 @@ angular.module('meanExampleApp').controller('PostTweetCtrl',
         });
       }
       else {
-        console.error('unable to post tweet - user is not authenticated');
+        console.error('unable to post tweet - user is not authenticated.');
       }
     };
 
