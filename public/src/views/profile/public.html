@@ -11,13 +11,22 @@
 
 </div>
 
+
 <div class="row">
 
   <div class="col-70">
 
+    <div class="row" ng-show="loadingTweets">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+
     <ng-include src="'views/partials/tweets.html'"></ng-include>
 
-    <div class="row tweets" ng-if="!tweets.length">
+    <div ng-if="!loadingTweets && !tweets.length" class="panel align-center">
       <p>{{profileUsername}} hasn't tweeted anything yet.</p>
     </div>
 

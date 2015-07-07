@@ -53,11 +53,13 @@ angular.module('meanExampleApp', [
   //restangular inerceptors
   //show/hide loading indicator
   Restangular.addRequestInterceptor(function (element) {
+    console.log('LOADING');
     $rootScope.loadingTweets = true;
     return element;
   });
 
   Restangular.addResponseInterceptor(function (data) {
+    console.log('not LOADING');
     $rootScope.loadingTweets = false;
     return data;
   });
