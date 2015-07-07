@@ -23,7 +23,7 @@ router.route('/search/:searchstring')
   //search tweets
   .get(function (req, res) {
 
-    Tweet.find({name: new RegExp(req.params.searchstring, "i")}, function (err, tweets) {
+    Tweet.find({copy: new RegExp(req.params.searchstring, "i")}, function (err, tweets) {
       if (err)
           res.send(err);
         if (!tweets.length) {
