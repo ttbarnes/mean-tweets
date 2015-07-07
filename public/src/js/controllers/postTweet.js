@@ -1,5 +1,5 @@
 angular.module('meanExampleApp').controller('PostTweetCtrl', 
-  function ($scope, Restangular, currentUserFactory, tweetsFactory) {
+  function ($scope, Restangular, currentUserFactory, tweetsFactory, ngDialog) {
 
     $scope.postTweet = function(tweet){
       console.log('cliked postTweet!');
@@ -15,6 +15,7 @@ angular.module('meanExampleApp').controller('PostTweetCtrl',
         tweetsFactory.tweets.post(newTweet).then(function(){
           console.info('posted a tweet', newTweet);
           $scope.tweet = '';
+          ngDialog.closeAll();
           //getTweets();
         });
       }

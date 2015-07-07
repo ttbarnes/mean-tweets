@@ -1,10 +1,5 @@
 angular.module('meanExampleApp').controller('TimelineCtrl', 
-  function (currentUserFactory, userProfileFactory, $stateParams, $scope, Restangular, tweetsFactory, ngDialog) {
-
-    $scope.clickToOpen = function () {
-      ngDialog.open({ template: '../views/partials/post-tweet.html' });
-    };
-
+  function (currentUserFactory, userProfileFactory, $stateParams, $scope, Restangular, tweetsFactory) {
 
     //todo: improve error handling
 
