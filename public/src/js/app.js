@@ -14,7 +14,7 @@ angular.module('meanExampleApp', [
   'ngDialog'
 ])
 
-.config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider) {
+.config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider, ngDialogProvider) {
 
   //auth0 config
   authProvider.init({
@@ -30,6 +30,10 @@ angular.module('meanExampleApp', [
 
   //Simple interceptor that will fetch all requests and add the jwt token to its authorization header.
   $httpProvider.interceptors.push('jwtInterceptor');
+
+  ngDialogProvider.setDefaults({
+    showClose: false
+  });
 
 })
 
