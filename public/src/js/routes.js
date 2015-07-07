@@ -18,8 +18,7 @@ angular.module('meanExampleRoutes', ['ui.router'])
       pageTitle: 'Edit Profile'
     },
     profilePublic: {
-      name: 'profilePublic',
-      pageTitle: 'Temp page title'
+      name: 'profilePublic'
     },
     login: {
       name: 'login',
@@ -84,7 +83,9 @@ angular.module('meanExampleRoutes', ['ui.router'])
         templateUrl: 'views/profile/public.html',
         controller: 'ProfilePublicCtrl',
         resolve: {
-          $title: function() { return states.profilePublic.pageTitle; }
+          $title: ['$stateParams', function($stateParams) {
+            return $stateParams.username;
+          }]
         }
       })
       .state(states.profileEdit.name, {
