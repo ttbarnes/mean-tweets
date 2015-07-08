@@ -1,8 +1,8 @@
-angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory, profileUsernameExists) {
+angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory, profileUsernameData) {
 
-  $scope.profileUsernameExists = profileUsernameExists;
+  $scope.profileUsernameData = profileUsernameData;
 
-  if($scope.profileUsernameExists.success === false) {
+  if($scope.profileUsernameData.success === false) {
     $scope.userNotFound = true;
   }
 
@@ -24,8 +24,7 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
   //actually, this query should be done with API - find X username in Y profile. Return true/false
   ////////////////////////////////////////////////////////
 
-  userProfileFactory.user(currentUserFactory.username).getList().then(function (user){ 
-    //todo: where/why is the response wrapped in an array?
+  userProfileFactory.user(currentUserFactory.username).getList().then(function (user){
     //see difference in mongodb and response returned from api.
     var loggedInUserUserFollowing = user[0].following;
 
@@ -37,27 +36,19 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
 
   });
 
+  //set user followers, following, favourites from profileUsernameData.
+  $scope.user = profileUsernameData.profile;
+  console.log($scope.user);
 
-  ////////////////////////////////////////////////////////
-  //public profile specifics
-  ////////////////////////////////////////////////////////
 
-
-  //todo (server/api): combine into one api call. user: get everything.
-  //and think about add promise errors, no user, etc - maybe use resolve() in routes?
-
-  userProfileFactory.user($scope.profileUsername).getList().then(function (user){ 
-    //todo: where/why is the response wrapped in an array?
-    //see difference in mongodb and response returned from api.
-    $scope.user = user[0];
-  });
-
+  //tweets
   tweetsFactory.userSpecificTweets($scope.profileUsername).getList().then(function (tweets){
     $scope.tweets = tweets;
   }, function (err){
     $scope.errorMessage = err.data;
   });
 
+  //follow user
   $scope.followUser = function(userFollower, userFollowing) {
     if(currentUserFactory.isAuth) {
 

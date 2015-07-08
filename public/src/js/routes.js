@@ -84,12 +84,12 @@ angular.module('meanExampleRoutes', ['ui.router'])
         controller: 'ProfilePublicCtrl',
         resolve: {
 
-          profileUsernameExists: function(Restangular, $stateParams){
+          profileUsernameData: function(Restangular, $stateParams){
             return Restangular.all('api/profiles/' + $stateParams.username ).getList().then(function (profile) {
 
               var theResponse = {
                 success: true,
-                profile: profile
+                profile: profile[0]
               }
               return theResponse;
 
