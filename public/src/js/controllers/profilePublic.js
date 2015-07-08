@@ -1,4 +1,10 @@
-angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory) {
+angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory, profileUsernameExists) {
+
+  $scope.profileUsernameExists = profileUsernameExists;
+
+  if($scope.profileUsernameExists.success === false) {
+    $scope.userNotFound = true;
+  }
 
   $scope.profileUsername = $stateParams.username;
   $scope.loggedInUserFollows = false;

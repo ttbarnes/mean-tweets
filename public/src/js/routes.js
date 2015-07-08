@@ -83,6 +83,24 @@ angular.module('meanExampleRoutes', ['ui.router'])
         templateUrl: 'views/profile/public.html',
         controller: 'ProfilePublicCtrl',
         resolve: {
+
+          profileUsernameExists: function(Restangular, $stateParams){
+            return Restangular.all('api/profiles/' + $stateParams.username ).getList().then(function (profile) {
+
+              var theResponse = {
+                success: true,
+                profile: profile
+              }
+              return theResponse;
+
+              }, function () {
+                console.warn('no user ' + $stateParams.username + ' exists.');
+                var theResponse = {
+                  success: false
+                }
+                return theResponse;
+              });
+          },
           $title: ['$stateParams', function($stateParams) {
             return $stateParams.username;
           }]

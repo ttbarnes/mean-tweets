@@ -16,6 +16,10 @@
 
   <div class="col-70">
 
+    <div ng-show="userNotFound" class="panel align-center">
+      <h5>Sorry, {{profileUsername}} doesn't exist.</h5>
+    </div>
+
     <ng-include src="'views/partials/tweets.html'"></ng-include>
 
     <div ng-if="!loadingTweets && errorMessage" class="panel align-center">
