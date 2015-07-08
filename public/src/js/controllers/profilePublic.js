@@ -2,38 +2,27 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
 
   $scope.profileUsernameData = profileUsernameData;
   $scope.profileUsername = $stateParams.username;
-  $scope.loggedInUserFollows = false;
-  $scope.user = profileUsernameData.profile; //user followers, following, favourites
-
+  $scope.profileUser = profileUsernameData.profile; //user followers, following, favourites
 
   if($scope.profileUsernameData.success === false) {
     $scope.userNotFound = true;
   }
+  else {
+    if(currentUserFactory.isAuth) {
+      $scope.loggedInUser = currentUserFactory.username;
 
-  if(currentUserFactory.isAuth) {
-    $scope.loggedInUser = currentUserFactory.username;
+      if($scope.profileUsername === $scope.loggedInUser){
+        $scope.usersOwnProfile = true;
+      }
 
-    if($scope.profileUsername === $scope.loggedInUser){
-      $scope.usersOwnProfile = true;
+      //check the profile's followers to see if the loggedInUser is already following
+      angular.forEach($scope.profileUser.followers, function (i) {
+        if(i.username === $scope.loggedInUser) {
+          $scope.loggedInUserFollows = true;
+        }
+      });
     }
   }
-
-  ////////////////////////////////////////////////////////
-  //current user things - should be service or something
-  //actually, this query should be done with API - find X username in Y profile. Return true/false
-  ////////////////////////////////////////////////////////
-
-  userProfileFactory.user(currentUserFactory.username).getList().then(function (user){
-    //see difference in mongodb and response returned from api.
-    var loggedInUserUserFollowing = user[0].following;
-
-    angular.forEach(loggedInUserUserFollowing, function (i) {
-      if(i.username === $scope.profileUsername) {
-        $scope.loggedInUserFollows = true;
-      }
-    });
-
-  });
 
   //tweets
   tweetsFactory.userSpecificTweets($scope.profileUsername).getList().then(function (tweets){
