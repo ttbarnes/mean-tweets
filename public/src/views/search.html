@@ -3,8 +3,10 @@
 <div class="row form-wrap bg-grey">
   <input type="text" 
          ng-model="search.query"
-         placeholder="Enter search criteria, eg #taken3"/>
-  <button ng-click="getTweets(search.query)">Go</button>
+         placeholder="Enter search criteria, eg #taken3"
+         autofocus/>
+  <button ng-click="getTweets(search.query)" 
+          class="blue">Go</button>
 </div>
 
 
