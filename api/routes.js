@@ -219,7 +219,7 @@ router.route('/profiles')
         if (err)
             res.send(err);
           if (!tweets.length) {
-            res.status(404).send('The user \'' + req.params.username + '\'' + ' has not tweeted yet.');
+            res.status(404).send(req.params.username + ' hasn\'t tweeted yet.');
           } else {
             res.json(tweets);
           }

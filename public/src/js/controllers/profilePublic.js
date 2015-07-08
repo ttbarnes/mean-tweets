@@ -48,6 +48,8 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
 
   tweetsFactory.userSpecificTweets($scope.profileUsername).getList().then(function (tweets){
     $scope.tweets = tweets;
+  }, function (err){
+    $scope.errorMessage = err.data;
   });
 
   $scope.followUser = function(userFollower, userFollowing) {

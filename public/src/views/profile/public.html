@@ -18,8 +18,8 @@
 
     <ng-include src="'views/partials/tweets.html'"></ng-include>
 
-    <div ng-if="!loadingTweets && !tweets.length" class="panel align-center">
-      <p>{{profileUsername}} hasn't tweeted anything yet.</p>
+    <div ng-if="!loadingTweets && errorMessage" class="panel align-center">
+      <p>{{errorMessage}}</p>
     </div>
 
   </div>
