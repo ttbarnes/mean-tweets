@@ -83,7 +83,6 @@ angular.module('meanExampleRoutes', ['ui.router'])
         templateUrl: 'views/profile/public.html',
         controller: 'ProfilePublicCtrl',
         resolve: {
-
           profileUsernameData: function(Restangular, $stateParams){
             return Restangular.all('api/profiles/' + $stateParams.username ).getList().then(function (profile) {
 
