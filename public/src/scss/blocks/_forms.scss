@@ -12,7 +12,7 @@ textarea {
   font-family:'Noto Sans', sans-serif;
   width:100%;
   padding:10px;
-  margin-bottom:20px;
+  margin-bottom:$form-elm-margin-bottom;
   font:{
     size:13px;
     weight:normal;

@@ -1,36 +1,31 @@
+<div class="profile-public">
 <div ng-show="userNotFound" class="col-70 no-float-margin-auto">
   <div class="panel align-center">
-    <h5>Sorry, {{profileUsername}} doesn't exist. <br/><br/> :(</h5>
+    <p><strong>Sorry, {{profileUsername}} doesn't exist. <br/><br/> :(</strong></p>
     <p><a ui-sref="search"><small>Try searching tweets?</small></a></p>
   </div>
 </div>
 
 <div ng-show="!userNotFound" class="row">
-  <h3 ng-if="profileUsername">{{profileUsername}}</h3>
+  <h3 class="page-title" ng-if="profileUsername">{{profileUsername}}</h3>
 
   <button ng-hide="usersOwnProfile || loggedInUserFollows" 
           ng-click="followUser(loggedInUser, profileUsername)"
-          class="blue">Follow @{{profileUsername}}</button>
+          class="blue">Follow</button>
 
   <a ng-if="usersOwnProfile" 
      ui-sref="profileEdit"
      class="button blue">Edit my profile</a>
-
 </div>
-
 
 <div ng-show="!userNotFound" class="row">
 
   <div class="col-70">
 
-    <div ng-show="userNotFound" class="panel align-center">
-      <h5>Sorry, {{profileUsername}} doesn't exist.</h5>
-    </div>
-
     <ng-include src="'views/partials/tweets.html'"></ng-include>
 
     <div ng-if="!loadingTweets && errorMessage" class="panel align-center">
-      <p>{{errorMessage}}</p>
+      <p><strong>{{errorMessage}}</strong></p>
     </div>
 
   </div>
@@ -50,14 +45,16 @@
         <li ng-repeat="user in user.following">{{user.username}}</li>
       </ul>
     </div>
-    <div class="panel placeholder-box">
+    <div ng-if="user.favourites.length" class="panel placeholder-box">
       <h5>favourite tweets</h5>
       <p>{{user.favourites.length}}</p>
     </div>
     <div class="panel placeholder-box">
       <h5>tweets</h5>
       <p>{{tweets.length}}</p>
+      <p ng-if="!tweets.length">0</p>
     </div>
   </div>
 
+</div>
 </div>

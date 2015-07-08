@@ -1,5 +1,6 @@
 
 @import 'modules/_config';
+@import 'modules/_mixins';
 
 @import '_typography';
 @import '_misc';
@@ -15,6 +16,7 @@
 @import 'elements/_tweet';
 
 @import 'views/_home-welcome';
+@import 'views/_profile-public';
 
 .placeholder-box {
   min-height:100px;
@@ -32,7 +34,12 @@ body.ngdialog-open {
 .ngdialog-content {
   z-index:5;
   position:relative;
-  max-width:600px;
+  max-width:90%;
   margin:5% auto;
   padding:15px;
+  border-radius:$border-radius-sm;
+  box-shadow:0 22px 60px $blue-dark-2;
+  @media (min-width:$bp-sm) {
+    max-width:600px;
+  }
 }

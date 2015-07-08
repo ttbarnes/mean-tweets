@@ -1,0 +1,14 @@
+.profile-public {
+  .page-title {
+    @media (min-width:$bp-sm) {
+      float:left;
+      margin-right:10px;
+      + button {
+        margin:{
+          top:-5px;
+          bottom:$form-elm-margin-bottom + 5px;
+        }
+      }
+    }
+  }
+}
