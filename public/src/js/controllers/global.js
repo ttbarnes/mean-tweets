@@ -14,12 +14,7 @@ angular.module('meanExampleApp').controller('GlobalCtrl', function (auth, $scope
   };
 
   $scope.composeTweet = function () {
-    if(currentUserFactory.isAuth) {
-      ngDialog.open({ template: '../views/partials/post-tweet.html' });
-    }
-    else {
-      console.error('unable to open composeTweet dialog - user is not authenticated.');
-    }
+    ngDialog.open({ template: '../views/partials/post-tweet.html' });
   };
 
 });
