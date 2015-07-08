@@ -1,8 +1,8 @@
 angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory, profileUsernameData) {
 
-  $scope.profileUsernameData = profileUsernameData;
-  $scope.profileUsername = $stateParams.username;
-  $scope.profileUser = profileUsernameData.profile; //user followers, following, favourites
+  $scope.profileUsernameData = profileUsernameData;  //public profilc data from routes resolve (success, profile data)
+  $scope.profileUser = profileUsernameData.profile;  //public profile user's followers, following, favourites
+  $scope.profileUsername = $stateParams.username;    //public profile username from $stateParams
 
   if($scope.profileUsernameData.success === false) {
     $scope.userNotFound = true;
@@ -21,6 +21,7 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
           $scope.loggedInUserFollows = true;
         }
       });
+
     }
   }
 
