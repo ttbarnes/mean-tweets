@@ -1,4 +1,10 @@
-<div class="row">
+<div ng-show="userNotFound" class="col-70 no-float-margin-auto">
+  <div class="panel align-center">
+    <h5>Sorry, {{profileUsername}} doesn't exist. <br/><br/> :(</h5>
+  </div>
+</div>
+
+<div ng-show="!userNotFound" class="row">
   <h3 ng-if="profileUsername">{{profileUsername}}</h3>
 
   <button ng-hide="usersOwnProfile || loggedInUserFollows" 
@@ -12,7 +18,7 @@
 </div>
 
 
-<div class="row">
+<div ng-show="!userNotFound" class="row">
 
   <div class="col-70">
 

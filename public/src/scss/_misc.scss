@@ -6,3 +6,8 @@ img {
   display:block;
   max-width:100%;
 }
+
+.no-float-margin-auto {
+  float:none;
+  margin:0 auto;
+}
