@@ -1,22 +1,21 @@
 angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory, profileUsernameData) {
 
   $scope.profileUsernameData = profileUsernameData;
+  $scope.profileUsername = $stateParams.username;
+  $scope.loggedInUserFollows = false;
+  $scope.user = profileUsernameData.profile; //user followers, following, favourites
+
 
   if($scope.profileUsernameData.success === false) {
     $scope.userNotFound = true;
   }
 
-  $scope.profileUsername = $stateParams.username;
-  $scope.loggedInUserFollows = false;
-
   if(currentUserFactory.isAuth) {
-
     $scope.loggedInUser = currentUserFactory.username;
 
-    if($stateParams.username === currentUserFactory.username){
+    if($scope.profileUsername === $scope.loggedInUser){
       $scope.usersOwnProfile = true;
     }
-
   }
 
   ////////////////////////////////////////////////////////
@@ -28,18 +27,13 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
     //see difference in mongodb and response returned from api.
     var loggedInUserUserFollowing = user[0].following;
 
-    angular.forEach(loggedInUserUserFollowing, function (value) {
-      if(value.username === $scope.profileUsername) {
+    angular.forEach(loggedInUserUserFollowing, function (i) {
+      if(i.username === $scope.profileUsername) {
         $scope.loggedInUserFollows = true;
       }
     });
 
   });
-
-  //set user followers, following, favourites from profileUsernameData.
-  $scope.user = profileUsernameData.profile;
-  console.log($scope.user);
-
 
   //tweets
   tweetsFactory.userSpecificTweets($scope.profileUsername).getList().then(function (tweets){
@@ -48,7 +42,9 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
     $scope.errorMessage = err.data;
   });
 
+
   //follow user
+  //todo: make individual component/controller/directive/something
   $scope.followUser = function(userFollower, userFollowing) {
     if(currentUserFactory.isAuth) {
 
