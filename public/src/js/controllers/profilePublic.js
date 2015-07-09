@@ -8,6 +8,9 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
     $scope.userNotFound = true;
   }
   else {
+    //user found
+
+    //loggedIn user specifics - follow/following this user etc
     if(currentUserFactory.isAuth) {
       $scope.loggedInUser = currentUserFactory.username;
 

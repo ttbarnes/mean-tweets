@@ -60,7 +60,6 @@ angular.module('meanExampleApp').controller('TweetsCtrl', function (currentUserF
       else {
 
         var userFollowing = [];
-
         currentUser = data; //user's following usernames
 
         if (currentUser[0].following && currentUser[0].following.length) {
@@ -90,13 +89,14 @@ angular.module('meanExampleApp').controller('TweetsCtrl', function (currentUserF
 
         }, function (err) {
           console.warn('oh no, something went wrong with the nested api call for timeline tweets! details: \n', err);
+
         });
 
       }
 
       }, function (err) {
         console.warn('oh no, something went wrong with top/parent level api call! details: \n', err);
-        $scope.userNotFound = true;
+        $scope.userNotTweeted = true;
       });
 
   };
