@@ -79,7 +79,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
         //query the api - get only these users's tweets
         tweetsFactory.timeline(currentUserFollowing).then(function (tweets) {
-          console.info('got timeline tweets')
+          console.info('got new tweets');
           $scope.tweets = tweets;
           if(tweets.length) {
             alreadyFavouritedCheck(tweets);
@@ -102,6 +102,12 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
   };
 
   getTweets();
+
+
+  $scope.$on('tweetPosted', function(event, args) {
+    console.info('getting new tweets');
+    getTweets();
+  });
 
 
   $scope.favouriteTweet = function(tweetId) {
@@ -149,7 +155,6 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
     }
   };
-
 
 
 });

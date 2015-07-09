@@ -1,5 +1,5 @@
 angular.module('meanTweetsApp').controller('PostTweetCtrl', 
-  function ($scope, Restangular, currentUserFactory, tweetsFactory, ngDialog) {
+  function ($rootScope, $scope, Restangular, currentUserFactory, tweetsFactory, ngDialog) {
 
     $scope.postTweet = function(tweet){
       if(currentUserFactory.isAuth) {
@@ -15,7 +15,7 @@ angular.module('meanTweetsApp').controller('PostTweetCtrl',
           console.info('posted a tweet', newTweet);
           $scope.tweet = '';
           ngDialog.closeAll();
-          //getTweets();
+          $rootScope.$broadcast('tweetPosted');
         });
       }
       else {
