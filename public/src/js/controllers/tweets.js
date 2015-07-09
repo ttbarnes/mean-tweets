@@ -94,9 +94,9 @@ angular.module('meanExampleApp').controller('TweetsCtrl', function (currentUserF
 
       }
 
-
       }, function (err) {
         console.warn('oh no, something went wrong with top/parent level api call! details: \n', err);
+        $scope.userNotFound = true;
       });
 
   };

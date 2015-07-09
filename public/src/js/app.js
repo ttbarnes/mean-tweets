@@ -69,18 +69,12 @@ angular.module('meanExampleApp', [
   //for some reason, if the api sends a 404 from api/profiles/username/tweets
   //the promise doesn't return. Therefore $rootScope.restLoading is still loading 
   //and the public profile promise errors aren't honoured.
-  //this ensures the 404 is honoured. Not the most elegant, require further investigation.
+  //this ensures the 404 is honoured. Not the most elegant - require further investigation.
   Restangular.setErrorInterceptor(function (response, deferred, responseHandler) {
     if(response.status === 404) {
       $rootScope.restLoading = false;
-      if($state.current.controller === 'ProfilePublicCtrl') {
-        $rootScope.userNotFound = true;
-        //$rootScope.errorMessage = 'This user doesn\'t exist.';
-      }
-        return false; // error handled
+      return true;
     }
-    return true; // error not handled
   });
-
 
 });
