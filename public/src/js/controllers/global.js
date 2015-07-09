@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('GlobalCtrl', function (auth, $scope, $location, store, copyGlobalFactory, ngDialog) {
+angular.module('meanTweetsApp').controller('GlobalCtrl', function (auth, $scope, $location, store, copyGlobalFactory, ngDialog) {
 
   $scope.appName = copyGlobalFactory.appName;
   $scope.auth = auth;

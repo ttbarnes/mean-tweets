@@ -1,5 +1,5 @@
 {
-  "name": "mean-example",
+  "name": "mean-tweets",
   "main": "server.js",
   "dependencies": {
     "body-parser": "~1.4.2",

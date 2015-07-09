@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('TweetSingleCtrl', 
+angular.module('meanTweetsApp').controller('TweetSingleCtrl', 
   function ($stateParams, $scope, Restangular, tweetsFactory) {
 
     var tweetId = $stateParams.tweetId;

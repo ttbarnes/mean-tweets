@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory, profileUsernameData) {
+angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory, profileUsernameData) {
 
   $scope.profileUsernameData = profileUsernameData;  //public profilc data from routes resolve (success, profile data)
   $scope.profileUser = profileUsernameData.profile;  //public profile user's followers, following, favourites

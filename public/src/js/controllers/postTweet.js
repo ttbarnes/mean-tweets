@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('PostTweetCtrl', 
+angular.module('meanTweetsApp').controller('PostTweetCtrl', 
   function ($scope, Restangular, currentUserFactory, tweetsFactory, ngDialog) {
 
     $scope.postTweet = function(tweet){

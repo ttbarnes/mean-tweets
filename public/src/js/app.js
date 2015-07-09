@@ -1,6 +1,6 @@
-//var meanExampleApp = angular.module('meanExampleApp');
+//var meanTweetsApp = angular.module('meanTweetsApp');
 
-angular.module('meanExampleApp', [
+angular.module('meanTweetsApp', [
   'ngCookies',
   'auth0',
   'angular-storage',
@@ -8,7 +8,7 @@ angular.module('meanExampleApp', [
   'ngRoute',
   'ui.router',
   'ui.router.title',
-  'meanExampleRoutes',
+  'meanTweetsRoutes',
   'restangular',
   'angularMoment',
   'ngDialog'

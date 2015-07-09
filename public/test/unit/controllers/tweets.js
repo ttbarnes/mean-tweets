@@ -5,7 +5,7 @@ describe('TweetsCtrl', function() {
   var target;
 
   beforeEach(function() {
-    module('meanExampleApp');
+    module('meanTweetsApp');
 
     inject(function($injector) {
       $q = $injector.get('$q');

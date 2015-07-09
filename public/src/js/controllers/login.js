@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('LoginCtrl', function (auth, $scope, $location, store, Restangular) {
+angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, $location, store, Restangular) {
   $scope.user = '';
   $scope.pass = '';
   $scope.message = {text: ''};

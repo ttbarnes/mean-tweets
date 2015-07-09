@@ -1,4 +1,4 @@
-angular.module('meanExampleRoutes', ['ui.router'])
+angular.module('meanTweetsRoutes', ['ui.router'])
 
   .constant('states', {
     home: {

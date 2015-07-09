@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').controller('SearchCtrl', 
+angular.module('meanTweetsApp').controller('SearchCtrl', 
   function ($scope, Restangular, tweetsFactory) {
 
     $scope.getTweets = function(searchQuery) {

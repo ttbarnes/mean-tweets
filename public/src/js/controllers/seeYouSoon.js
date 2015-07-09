@@ -1,3 +1,3 @@
-angular.module('meanExampleApp').controller('SeeYouSoonCtrl', function () {
+angular.module('meanTweetsApp').controller('SeeYouSoonCtrl', function () {
 
 });

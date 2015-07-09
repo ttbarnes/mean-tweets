@@ -3,7 +3,7 @@
 //currentUserFactory.username
 //
 
-angular.module('meanExampleApp').factory('currentUserFactory', function (auth){
+angular.module('meanTweetsApp').factory('currentUserFactory', function (auth){
 
     var isAuth = false;
     var user = false;

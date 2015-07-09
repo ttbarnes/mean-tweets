@@ -5,7 +5,7 @@ describe('GlobalCtrl', function() {
   var target;
 
   beforeEach(function() {
-    module('meanExampleApp');
+    module('meanTweetsApp');
 
     inject(function($injector) {
       $q = $injector.get('$q');
@@ -17,7 +17,7 @@ describe('GlobalCtrl', function() {
   });
 
   it('should have the correct app name', function(){
-    expect(scope.appName).toEqual('Mean example');
+    expect(scope.appName).toEqual('Mean tweets');
   });
 
 

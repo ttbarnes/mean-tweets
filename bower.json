@@ -1,5 +1,5 @@
 {
-  "name": "mean-example",
+  "name": "mean-tweets",
   "version": "1.0.0",
   "dependencies": {
     "angular": "latest",

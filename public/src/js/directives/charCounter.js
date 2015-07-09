@@ -1,4 +1,4 @@
-angular.module('meanExampleApp').directive('charCounter', function () {
+angular.module('meanTweetsApp').directive('charCounter', function () {
 
     return {
       restrict: 'E',

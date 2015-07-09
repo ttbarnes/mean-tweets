@@ -9,7 +9,7 @@
 //tweetsFactory.singleTweet(5576b67fbb1c7b10c2dc65e1).getList().then(function (tweet){ ... });
 //
 
-angular.module('meanExampleApp').factory('tweetsFactory', function (Restangular){
+angular.module('meanTweetsApp').factory('tweetsFactory', function (Restangular){
 
     return {
       tweets: Restangular.all('api/tweets'),

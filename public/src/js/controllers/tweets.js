@@ -1,6 +1,6 @@
 //this is used for timeline and public profile
 
-angular.module('meanExampleApp').controller('TweetsCtrl', function (currentUserFactory, $state, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory) {
+angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFactory, $state, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory) {
   
   $scope.profileUsername = $stateParams.username;    //public profile username from $stateParams
 
