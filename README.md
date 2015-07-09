@@ -3,7 +3,7 @@
 
 WIP - soon there will be a real readme file, for the time being here are some notes.
 
-<img src="http://g.recordit.co/Kx3mKhrPrU.gif" />
+<img src="http://g.recordit.co/Y97XFWSgPF.gif" />
 
 ##quick start
 
