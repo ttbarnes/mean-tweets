@@ -22,46 +22,38 @@ angular.module('meanExampleApp').controller('ProfilePublicCtrl', function (curre
         }
       });
 
+      //follow user
+      //todo: make individual component/controller/directive/something
+      $scope.followUser = function(userFollower, userFollowing) {
+        if(currentUserFactory.isAuth) {
+
+          console.log(userFollower + ' wants to follow ' + userFollowing);
+
+          var newFollowings = {
+            userFollower: userFollower,
+            userFollowing: userFollowing
+          }
+
+          //PUT in logged-in user's following array
+          Restangular.all('api/profiles/' + userFollower + '/following').customPUT(newFollowings).then(function () {
+            console.info(userFollower + ' followed ' + userFollowing);
+            console.log('posted to:' + 'api/profiles/' + userFollower + '/following');
+          });
+
+          //PUT in 'following' users's followers array
+          Restangular.all('api/profiles/' + userFollowing + '/followers').customPUT(newFollowings).then(function () {
+            console.info(userFollowing + ' has a new follower: ' + userFollower);
+            console.log('posted to:' + 'api/profiles/' + userFollowing + '/following');
+          });
+
+        }
+        else {
+          console.error('unable to follow user - current user is not authenticated');
+        }
+      };
+
+
     }
   }
-
-  //tweets
-  tweetsFactory.userSpecificTweets($scope.profileUsername).getList().then(function (tweets){
-    $scope.tweets = tweets;
-  }, function (err){
-    $scope.errorMessage = err.data;
-  });
-
-
-  //follow user
-  //todo: make individual component/controller/directive/something
-  $scope.followUser = function(userFollower, userFollowing) {
-    if(currentUserFactory.isAuth) {
-
-      console.log(userFollower + ' wants to follow ' + userFollowing);
-
-      var newFollowings = {
-        userFollower: userFollower,
-        userFollowing: userFollowing
-      }
-
-      //PUT in logged-in user's following array
-      Restangular.all('api/profiles/' + userFollower + '/following').customPUT(newFollowings).then(function () {
-        console.info(userFollower + ' followed ' + userFollowing);
-        console.log('posted to:' + 'api/profiles/' + userFollower + '/following');
-      });
-
-      //PUT in 'following' users's followers array
-      Restangular.all('api/profiles/' + userFollowing + '/followers').customPUT(newFollowings).then(function () {
-        console.info(userFollowing + ' has a new follower: ' + userFollower);
-        console.log('posted to:' + 'api/profiles/' + userFollowing + '/following');
-      });
-
-    }
-    else {
-      console.error('unable to follow user - current user is not authenticated');
-    }
-
-  };
 
 });
