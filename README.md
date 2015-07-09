@@ -1,4 +1,4 @@
-# mean-example
+# mean-tweets
 
 
 WIP - soon there will be a real readme file, for the time being here are some notes.
