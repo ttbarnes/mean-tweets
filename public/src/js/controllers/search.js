@@ -1,11 +1,12 @@
 angular.module('meanTweetsApp').controller('SearchCtrl', 
-  function ($rootScope, $scope, $stateParams, Restangular, tweetsFactory, resolveData) {
+  function ($rootScope, $scope, $stateParams, Restangular, tweetsFactory, searchResults) {
 
-    $scope.resolveData = resolveData;
+    $scope.searchResults = searchResults;
+    $scope.tweets = $scope.searchResults.data;
 
 
     //this should be in promise success
-    $rootScope.$broadcast('searchCompleted');
+    //$rootScope.$broadcast('searchBoxOkToClear');
 
     /*
     $scope.getTweets = function(searchQuery) {
@@ -18,5 +19,6 @@ angular.module('meanTweetsApp').controller('SearchCtrl',
       });
     };
     */
+
 
 });

@@ -27,7 +27,7 @@ router.route('/search/:searchstring')
       if (err)
           res.send(err);
         if (!tweets.length) {
-          res.status(500).send('No tweets found with your search criteria. Please try something else.');
+          res.status(404).send('No tweets found with your search criteria. Please try something else.');
         } else {
           res.json(tweets);
         }

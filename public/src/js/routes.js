@@ -87,28 +87,22 @@ angular.module('meanTweetsRoutes', ['ui.router'])
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl',
         resolve: {
-          resolveData: function(Restangular, $stateParams){
-            return $stateParams.searchParam
-          },
-          /*
-          profileUsernameData: function(Restangular, $stateParams){
-            return Restangular.all('api/profiles/' + $stateParams.username ).getList().then(function (profile) {
-
-              var theResponse = {
+          searchResults: function(Restangular, $stateParams) {
+            return Restangular.all('api/search/' + $stateParams.searchParam ).getList().then(function (data) {
+              var searchResults = {
                 success: true,
-                profile: profile[0]
+                data: data
               }
-              return theResponse;
+              return searchResults;
 
-              }, function () {
-                console.warn('no user ' + $stateParams.username + ' exists.');
-                var theResponse = {
-                  success: false
-                }
-                return theResponse;
-              });
+            }, function () {
+              console.warn('no search results found with the query ' + $stateParams.searchParam);
+              var searchResults = {
+                success: false
+              }
+              return searchResults;
+            });
           },
-          */
           $title: function() { return states.search.pageTitle; }
         }
       })
