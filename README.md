@@ -9,7 +9,16 @@ WIP - soon there will be a real readme file, for the time being here are some no
 
 1) Install the dependencies: `npm install && bower install`
 
-2) Run the server: `grunt` or `node server.js` (port 2000)
+2) Create .env file: `touch .env && open .env`
+
+3) Add DB URL to .env. eg:
+
+```
+port=2000
+db_url=username:asdf@1234.mongolab.com:6789/my-db
+```
+
+4) Run the server: `grunt` or `node server.js` (port 2000)
 
 
 ##tech
