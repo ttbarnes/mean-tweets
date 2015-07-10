@@ -7,6 +7,7 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
   if($scope.profileUsernameData.success === false) {
     $scope.userNotFound = true;
   }
+
   else {
     //user found
 

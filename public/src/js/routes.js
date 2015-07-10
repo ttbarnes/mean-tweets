@@ -13,6 +13,10 @@ angular.module('meanTweetsRoutes', ['ui.router'])
       name: 'search',
       pageTitle: 'Search'
     },
+    searchParam: {
+      name: 'searchParam',
+      pageTitle: 'Search'
+    },
     profileEdit: {
       name: 'profileEdit',
       pageTitle: 'Edit Profile'
@@ -75,6 +79,36 @@ angular.module('meanTweetsRoutes', ['ui.router'])
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl',
         resolve: {
+          $title: function() { return states.search.pageTitle; }
+        }
+      })
+      .state(states.searchParam.name, {
+        url: '/search/:searchParam',
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl',
+        resolve: {
+          resolveData: function(Restangular, $stateParams){
+            return $stateParams.searchParam
+          },
+          /*
+          profileUsernameData: function(Restangular, $stateParams){
+            return Restangular.all('api/profiles/' + $stateParams.username ).getList().then(function (profile) {
+
+              var theResponse = {
+                success: true,
+                profile: profile[0]
+              }
+              return theResponse;
+
+              }, function () {
+                console.warn('no user ' + $stateParams.username + ' exists.');
+                var theResponse = {
+                  success: false
+                }
+                return theResponse;
+              });
+          },
+          */
           $title: function() { return states.search.pageTitle; }
         }
       })
