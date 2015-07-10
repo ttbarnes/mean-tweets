@@ -21,6 +21,11 @@ temporary using duplicate tweets HTML,
 whilst we think/decide how to handle search tweets *with* or *without* TweetsCtrl
 -->
 
+
+<div ng-if="noSearchResults" class="panel align-center">
+  <p>No search results found with the query &lsquo;{{searchQuery}}&rsquo;. <br/><br/>:(</p>
+</div>
+
 <div class="row tweets">
 
   <div ng-if="userNoFollowings" class="panel align-center">
