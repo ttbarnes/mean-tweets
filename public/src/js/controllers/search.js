@@ -1,9 +1,13 @@
 angular.module('meanTweetsApp').controller('SearchCtrl', 
-  function ($scope, Restangular, tweetsFactory, resolveData) {
+  function ($rootScope, $scope, $stateParams, Restangular, tweetsFactory, resolveData) {
 
     $scope.resolveData = resolveData;
-    console.log($scope.resolveData);
 
+
+    //this should be in promise success
+    $rootScope.$broadcast('searchCompleted');
+
+    /*
     $scope.getTweets = function(searchQuery) {
       $scope.errorMessage = false;
       console.log('getting tweets with..', searchQuery);
@@ -13,5 +17,6 @@ angular.module('meanTweetsApp').controller('SearchCtrl',
         $scope.errorMessage = reason.data;
       });
     };
+    */
 
 });

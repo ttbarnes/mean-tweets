@@ -2,11 +2,10 @@
   <div class="wrapper-max-width">
     <h1 class="logo"><a ui-sref="home">{{appName}}</a></h1>
     <ul style="float:right;text-align:right;">
-      <li>
+      <li ng-controller="SearchBoxCtrl">
         <input type="text" 
                ng-model="search.query"
                placeholder="Search tweets" />
-        <!--<button ng-click="searchTweets(search.query)">Go</button>-->
         <a ui-sref="searchParam({searchParam:search.query})">Go</a>
       </li>
       <li ng-if="auth.profile"><a ui-sref="logout"><i class="fa fa-sign-out"></i></a></li>
