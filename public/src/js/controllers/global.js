@@ -13,6 +13,10 @@ angular.module('meanTweetsApp').controller('GlobalCtrl', function (auth, $scope,
     });
   };
 
+  $scope.searchTweets = function(searchQuery) {
+    console.log('searching with: ', searchQuery);
+  };
+
   $scope.composeTweet = function () {
     ngDialog.open({ template: '../views/partials/post-tweet.html' });
   };
