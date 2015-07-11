@@ -26,6 +26,10 @@ whilst we think/decide how to handle search tweets *with* or *without* TweetsCtr
   <p>No search results found with the query &lsquo;{{searchQuery}}&rsquo;. <br/><br/>:(</p>
 </div>
 
+<div ng-if="!noSearchResults">
+  <p><small>{{tweets.length}} tweets found with the query &lsquo;{{searchQuery}}&rsquo;.</small></p>
+</div>
+
 <div class="row tweets">
 
   <div ng-if="userNoFollowings" class="panel align-center">
