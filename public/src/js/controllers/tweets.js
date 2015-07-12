@@ -1,12 +1,12 @@
 //this is used for timeline and public profile
 
 angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFactory, $state, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory) {
-  
+
   $scope.profileUsername = $stateParams.username;    //public profile username from $stateParams
 
   //apiRoute object only used for favouriteTweet
   //todo: cleanup/re-use more - DRY
-  var apiRoute = {
+  this.apiRoute = {
     tweets   : 'api/tweets/',
     profiles : 'api/profiles/'
   }
