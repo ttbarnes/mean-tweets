@@ -87,5 +87,8 @@ module.exports = function(grunt) {
 
   //grunt.registerTask('default', ['jshint', 'uglify', 'concurrent']);
   grunt.registerTask('default', ['sass', 'cssmin', 'clean', 'concurrent']);
+  grunt.registerTask('test', ['karma']);
+  //grunt.registerTask('test:unit', ['karma']);
+  //grunt.registerTask('test:e2e', ['test:unit', 'protractor']);
 
 };
