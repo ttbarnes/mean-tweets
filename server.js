@@ -23,7 +23,7 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 app.use(express.static(__dirname + '/public/src')); // set the static files location
 
 //enable server logging
-app.use(morgan('combined'));
+app.use(morgan('dev'));
 
 // register api routes
 // all of our routes will be prefixed with /api
