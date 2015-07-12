@@ -41,7 +41,7 @@ whilst we think/decide how to handle search tweets *with* or *without* TweetsCtr
   </div>
 
 
-  <div ng-repeat="tweet in tweets.slice().reverse()" 
+  <div ng-repeat="tweet in tweets.slice().reverse() | filter: timestamp" 
        class="panel tweet">
     <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
     <p><a ui-sref="profilePublic({username: tweet.username})">@{{tweet.username}}</a></p>
