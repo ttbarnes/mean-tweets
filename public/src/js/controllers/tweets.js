@@ -30,21 +30,21 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
     });
   };
 
+  //if not public profile, it's timeline.
+  if($state.current.controller === 'ProfilePublicCtrl') {
+    this.apiEndpoint = tweetsFactory.userSpecificTweets($scope.profileUsername);
+    var statePublicProfile = true;
+  }
+  else {
+    this.apiEndpoint = userProfileFactory.user(currentUserFactory.username);
+  }
 
-  function getTweets() {
+  var endPoint = this.apiEndpoint;
 
-    var apiEndpoint;
+  $scope.getTweets = function() {
 
-    //if not public profile, it's timeline.
-    if($state.current.controller === 'ProfilePublicCtrl') {
-      apiEndpoint = tweetsFactory.userSpecificTweets($scope.profileUsername);
-      var statePublicProfile = true;
-    }
-    else {
-      apiEndpoint = userProfileFactory.user(currentUserFactory.username);
-    }
-
-    apiEndpoint.getList().then(function (data) {
+    endPoint.getList().then(function (data) {
+      console.info('got new tweets (p/profile\'s or currentUser\'s). the route: ' + endPoint.route);
 
       $scope.tweets = data;
 
@@ -79,7 +79,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
         //query the api - get only these users's tweets
         tweetsFactory.timeline(currentUserFollowing).then(function (tweets) {
-          console.info('got new tweets');
+          console.info('got new tweets (user following tweets): ' + currentUserFollowing.userFollowing.length + ' users');
           $scope.tweets = tweets;
           if(tweets.length) {
             alreadyFavouritedCheck(tweets);
@@ -89,7 +89,6 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
         }, function (err) {
           console.warn('oh no, something went wrong with the nested api call for timeline tweets! details: \n', err);
-
         });
 
       }
@@ -101,12 +100,11 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
   };
 
-  getTweets();
+  $scope.getTweets();
 
-
-  $scope.$on('tweetPosted', function(event, args) {
-    console.info('getting new tweets');
-    getTweets();
+  $scope.$on('tweetPosted', function () {
+    console.info('tweet posted - getting new tweets');
+    $scope.getTweets();
   });
 
 
