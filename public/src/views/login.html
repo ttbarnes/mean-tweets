@@ -4,12 +4,12 @@
     <br>
     <input type="password" name="pass" ng-model="pass" placeholder="password" ng-disabled="loading" />
     <br>
-    <button type="submit" ng-disabled="loading">submit</button>
+    <button type="submit" class="blue" ng-disabled="loading">submit</button>
   </form>
 
   <p ng-show="message.text">{{message.text}}</p>
 
   <!-- <a href="" ng-click="reset()">Reset</a> -->
-  <a href="" ng-click="doGoogleAuthWithPopup()">Login with Google</a><br/>
+  <a href="" ng-click="doGoogleAuthWithPopup()"><small>Login with Google</small></a>
 
 </div>

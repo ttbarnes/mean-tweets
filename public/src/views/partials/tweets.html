@@ -8,7 +8,6 @@
     <p>{{profileUsername}} hasn't tweeted yet. <br/><br/> :(</p>
   </div>
 
-
   <div ng-repeat="tweet in tweets.slice().reverse() | filter: timestamp" 
        class="panel tweet">
     <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
@@ -29,6 +28,10 @@
               ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
               <i class="fa fa-star"></i>
       </button>
+      <!--
+      <p ng-if="tweet.favourites.length"><small>favourites <br/>{{tweet.favourites.length}}</small></p>
+      <p ng-if="tweet.retweets.length"><small>retweets <br/>{{tweet.retweets.length}}</small></p>
+      -->
       <button ng-click="unFavouriteTweet(tweet._id, tweet.usersFavId);newFavouriteTweet = false; tweet.alreadyFavourited = false" 
               ng-show="newFavouriteTweet || tweet.alreadyFavourited">
               <i class="fa fa-star active"></i>
