@@ -6,12 +6,23 @@
 
   <div class="col-30">
     <div class="panel placeholder-box">
+      <div class="search-box" ng-controller="SearchBoxCtrl">
+        <form>
+          <input type="text" 
+                 ng-model="search.query"
+                 placeholder="Search tweets" />
+          <button ng-click="doQuery(search.query);"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel placeholder-box">
       <h5>random things for dev</h5>
       <ul>
         <li><a href="http://photo.net/photodb/random-photo?category=NoNudes" target="_blank">get random photo</a></li>
       </ul>
-
     </div>
+
   </div>
 
 </div>

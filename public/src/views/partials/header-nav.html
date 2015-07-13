@@ -2,16 +2,6 @@
   <div class="wrapper-max-width">
     <h1 class="logo"><a ui-sref="home">{{appName}}</a></h1>
     <ul style="float:right;text-align:right;">
-      <li ng-controller="SearchBoxCtrl">
-        <div class="search-box">
-          <form>
-            <input type="text" 
-                   ng-model="search.query"
-                   placeholder="Search tweets" />
-            <button ng-click="doQuery(search.query);"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
-      </li>
       <li ng-if="auth.profile" ng-click="showMenu = !showMenu" class="dropdown-menu-wrap">
         @{{auth.profile.nickname}}<i class="fa fa-user"></i>
         <ul ng-show="showMenu" class="dropdown-menu">
