@@ -76,8 +76,20 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    
+    browsers: ['Chrome_small'],
 
+    //'hide' the browser window: http://stackoverflow.com/a/28015614/1257504
+    //currently there is no method to minimise the browser to dock.
+    customLaunchers: {
+      Chrome_small: {
+        base: 'Chrome',
+        flags: [
+            '--window-size=400,400',
+            '--window-position=-400,0'
+        ]
+      }
+    },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
