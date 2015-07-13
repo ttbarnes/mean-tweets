@@ -1,0 +1,23 @@
+{  
+   "id":"00001",
+   "timestamp":"2015-07-06T15:21:40.835Z",
+   "copy":"my first tweet, better be a good one!",
+   "username":"steven",
+   "v":0,
+   "retweets":[  
+
+   ],
+   "favourites":[  
+      {  
+         "username":"phil",
+         "id":"559aad5a261b04656d018af7"
+      },
+      {  
+         "username":"chris",
+         "id":"559b014492f75441cce38a58"
+      }
+   ],
+   "image":{  
+      "url":"http://www.mrscottmcallister.com/images/javascript-logo.png"
+   }
+}

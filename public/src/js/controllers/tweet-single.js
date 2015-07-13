@@ -1,16 +1,16 @@
 angular.module('meanTweetsApp').controller('TweetSingleCtrl', 
   function ($stateParams, $scope, Restangular, tweetsFactory) {
 
-    var tweetId = $stateParams.tweetId;
+    this.tweetId = $stateParams.tweetId;
 
-    function getTweet() {
+    $scope.getTweet = function() {
       //todo: handle errors
-      tweetsFactory.singleTweet(tweetId).get().then(function (tweet){
+      tweetsFactory.singleTweet(this.tweetId).get().then(function (tweet){
         $scope.tweet = [ tweet ];
         console.info('got the tweet');
       });
     };
 
-    getTweet();
+    $scope.getTweet();
 
 });
