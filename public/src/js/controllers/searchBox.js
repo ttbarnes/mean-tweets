@@ -1,7 +1,7 @@
 angular.module('meanTweetsApp').controller('SearchBoxCtrl', function ($scope, $state) {
 
   $scope.doQuery = function(query){
-    $state.go('searchParam', {searchParam:query} );
+    $state.go('search', {searchParam:query} );
   };
 
   $scope.$on('searchBoxOkToClear', function() {

@@ -13,10 +13,6 @@ angular.module('meanTweetsRoutes', ['ui.router'])
       name: 'search',
       pageTitle: 'Search'
     },
-    searchParam: {
-      name: 'searchParam',
-      pageTitle: 'Search'
-    },
     profileEdit: {
       name: 'profileEdit',
       pageTitle: 'Edit Profile'
@@ -75,14 +71,6 @@ angular.module('meanTweetsRoutes', ['ui.router'])
         }
       })
       .state(states.search.name, {
-        url: '/search',
-        templateUrl: 'views/search.html',
-        controller: 'SearchCtrl',
-        resolve: {
-          $title: function() { return states.search.pageTitle; }
-        }
-      })
-      .state(states.searchParam.name, {
         url: '/search/:searchParam',
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl',
