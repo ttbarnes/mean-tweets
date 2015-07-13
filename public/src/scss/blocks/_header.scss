@@ -46,7 +46,7 @@ header {
   }
   a {
     display:inline-block;
-    padding:10px 15px;
+    padding:10px 19px;
     color:#333;
     font-weight:normal;
     text-decoration:none;
@@ -59,9 +59,16 @@ header {
       }
     }
   }
-
 }
 
+.col-right {
+  float:right;
+  text-align:right;
+  margin:5.5px 19px;
+  @media (min-width:$bp-sm) {
+    margin:10.5px 19px;
+  }
+}
 
 .compose-tweet {
   background-color:$blue-dark-1;
