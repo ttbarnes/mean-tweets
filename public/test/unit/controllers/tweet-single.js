@@ -52,19 +52,19 @@ describe('TweetSingleCtrl', function() {
     scope.getTweet();
     expect(scope.getTweet).toHaveBeenCalled();
     httpBackend.flush();
-    expect(scope.tweet[0]).toBeDefined();
+    expect(scope.tweet).toBeDefined();
   });
 
   it('should return some single tweet fields', function(){
     httpBackend.flush();
-    expect(scope.tweet[0]).toBeDefined();
-    expect(scope.tweet[0].id).toBeDefined();
-    expect(scope.tweet[0].copy).toBeDefined();
-    expect(scope.tweet[0].image).toBeDefined();
-    expect(scope.tweet[0].image.url).toBeDefined();
-    expect(scope.tweet[0].favourites).toBeDefined();
-    expect(scope.tweet[0].favourites[0].username).toBeTruthy();
-    expect(scope.tweet[0].favourites[0].id).toBeTruthy();
+    expect(scope.tweet).toBeDefined();
+    expect(scope.tweet.id).toBeDefined();
+    expect(scope.tweet.copy).toBeDefined();
+    expect(scope.tweet.image).toBeDefined();
+    expect(scope.tweet.image.url).toBeDefined();
+    expect(scope.tweet.favourites).toBeDefined();
+    expect(scope.tweet.favourites[0].username).toBeTruthy();
+    expect(scope.tweet.favourites[0].id).toBeTruthy();
   });
 
 });

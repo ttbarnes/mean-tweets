@@ -1,12 +1,11 @@
-<!-- how to get single object without array binding nicely with angular? (and avoid ng-repeat for single object? ) -->
-<div ng-repeat="tweet in tweet" class="row panel tweet">
+<div class="row panel tweet">
   <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
   <p>@{{tweet.username}}</p>
   <div ng-if="tweet.image.url" class="img-wrap">
     <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
   </div>
+  <!--
   <div ng-if="auth.isAuthenticated" class="social">
-    <!--
     <button ng-click="doStuff()">
       <i class="fi-torsos-male-female"></i>
     </button>
@@ -16,6 +15,6 @@
     <button ng-click="doStuff()">
       <i class="fi-loop"></i>
     </button>
-    -->
   </div>
+  -->
 </div>
