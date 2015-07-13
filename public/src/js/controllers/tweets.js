@@ -10,6 +10,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
     tweets   : 'api/tweets/',
     profiles : 'api/profiles/'
   }
+  var apiRoute = this.apiRoute;
 
   function alreadyFavouritedCheck(theTweets) {
     //for each tweet, check to see if any of the username fields (in favourites array)

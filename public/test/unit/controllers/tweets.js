@@ -1,26 +1,5 @@
 describe('TweetsCtrl', function() {
 
-  //utils
-  //apply "sanitizeRestangularOne" function to an array of items
-  //extracted and adapted from: https://github.com/mgonto/restangular/issues/98
-
-  function sanitizeRestangularAll(items) {
-    var all = _.map(items, function (item) {
-      return sanitizeRestangularOne(item);
-    });
-    return sanitizeRestangularOne(all);
-  }
-
-  //remove Restangular/AngularJS added methods in order to use Jasmine toEqual between the retrieve resource and the model
-  function sanitizeRestangularOne(item) {
-    return _.omit(item, "route", "parentResource", "getList", "get", "post", "put", "remove", "head", "trace", "options", "patch",
-      "$get", "$save", "$query", "$remove", "$delete", "$put", "$post", "$head", "$trace", "$options", "$patch",
-      "$then", "$resolved", "restangularCollection", "customOperation", "customGET", "customPOST",
-      "customPUT", "customDELETE", "customGETLIST", "$getList", "$resolved", "restangularCollection", "one", "all", "doGET", "doPOST",
-      "doPUT", "doDELETE", "doGETLIST", "addRestangularMethod", "getRestangularUrl", "getRequestedUrl", "clone", "reqParams",
-      "withHttpConfig", "plain", "several", "oneUrl", "allUrl", "fromServer", "getParentList", "save");
-  }
-
   beforeEach(function() {
     module('meanTweetsApp');
 
@@ -40,10 +19,12 @@ describe('TweetsCtrl', function() {
         currentUserFactory: currentUserFactory
       });
 
+      //prevents 'unexpected request: GET views/*/index.html' error
       httpBackend.whenGET(/views.*/).respond(200, '');
 
-      //httpBackend.expectGET('/api/profiles/undefined').respond({ hello: 'world'});
-      
+      var mockTweets = readJSON('test/unit/mock-data/tweets.json');
+
+      httpBackend.whenGET('/api/profiles/undefined').respond(mockTweets);
 
       ////////////
       //mocks
@@ -78,6 +59,7 @@ describe('TweetsCtrl', function() {
     });
 
   });
+
 
   describe('apiRoute object', function(){
 
@@ -120,24 +102,64 @@ describe('TweetsCtrl', function() {
 
   describe('get tweets', function(){
 
+    beforeEach(function(){
+      spyOn(Restangular, 'one').and.callThrough();
+      scope.getTweets();
+      httpBackend.flush();
+    });
+
     it('should have a function', function(){
       expect(scope.getTweets).toBeDefined();
     });
 
-    it('should asdf adsfasdf dsf', function(){
-      spyOn(Restangular, 'one').and.callThrough();
-      httpBackend.whenGET('/api/profiles/undefined').respond([{ hello: 'world'},{ hi: 'everyone'}]);
-      scope.getTweets();
-      httpBackend.flush();
+    it('should return some tweets', function(){
 
-      expect(sanitizeRestangularAll(scope.tweets)).toEqual( 
-          ({ 
-             0: Object({ hello: 'world' }), 
-             1: Object({ hi: 'everyone' })
-          })
-      );
+      expect(scope.tweets[0]).toBeDefined();
+      expect(scope.tweets[1]).toBeDefined();
+      expect(scope.tweets[2]).toBeDefined();
+    });
 
+    it('should return tweet id fields', function(){
+      expect(scope.tweets[0].id).toBeDefined();
+      expect(scope.tweets[1].id).toBeDefined();
+      expect(scope.tweets[2].id).toBeDefined();
+    });
 
+    it('should return tweet copy fields', function(){
+      expect(scope.tweets[0].copy).toBeDefined();
+      expect(scope.tweets[1].copy).toBeDefined();
+      expect(scope.tweets[2].copy).toBeDefined();
+      expect(scope.tweets[0].copy).not.toBe('');
+      expect(scope.tweets[1].copy).not.toBe('');
+      expect(scope.tweets[2].copy).not.toBe('');
+    });
+
+    it('should return tweet image/image url fields', function(){
+      expect(scope.tweets[0].image).toBeDefined();
+      expect(scope.tweets[0].image.url).toBeDefined();
+      expect(scope.tweets[0].image.url).toContain('http://');
+    });
+
+    it('should return tweet favourites array', function(){
+      expect(scope.tweets[0].favourites).toBeDefined();
+      expect(scope.tweets[1].favourites).toBeDefined();
+      expect(scope.tweets[2].favourites).toBeDefined();
+    });
+
+    it('should return tweet favourites array with nested objects', function(){
+      expect(scope.tweets[0].favourites[0]).toBeDefined();
+      expect(scope.tweets[1].favourites[0]).toBeDefined();
+    });
+
+    it('should return tweet favourites array with nested objects fields', function(){
+      expect(scope.tweets[0].favourites[0].username).toBeTruthy();
+      expect(scope.tweets[0].favourites[0].username).not.toBe('');
+      expect(scope.tweets[0].favourites[0].id).toBeTruthy();
+      expect(scope.tweets[0].favourites[0].id).not.toBe('');
+    });
+
+    it('should return tweet favourites array without nested objects', function(){
+      expect(scope.tweets[2].favourites[0]).toBeFalsy();
     });
 
   });
