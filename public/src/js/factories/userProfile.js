@@ -4,7 +4,6 @@
 //
 
 angular.module('meanTweetsApp').factory('userProfileFactory', function (Restangular){
-
     return {
       user: function(username) {
         return Restangular.all('api/profiles/' + username );

@@ -162,6 +162,10 @@ describe('TweetsCtrl', function() {
       expect(scope.tweets[2].favourites[0]).toBeFalsy();
     });
 
+    it('should have undefined userNotTweeted', function() {
+      expect(scope.userNotTweeted).toBeUndefined();
+    });
+
   });
 
 });
