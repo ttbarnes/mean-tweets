@@ -14,10 +14,6 @@ router.get('/', function(req, res) {
   res.json({ message: 'welcome to the api' });
 });
 
-router.get('/search', function(req, res) {
-  res.json({ message: 'welcome to the search api' });
-});
-
 router.route('/search/:searchstring')
 
   //search tweets
@@ -33,35 +29,6 @@ router.route('/search/:searchstring')
         }
     });
 
-  });
-
-router.route('/tweets')
-  //create a tweet
-  .post(function (req, res) {
-    
-    var tweet = new Tweet();  //create a new instance of the Tweet model
-    tweet.username = req.body.username;  //set the tweets username (comes from the request)
-    tweet.copy = req.body.copy;  //set the tweets name (comes from the request)
-    tweet.image.url = req.body.image.url;
-    tweet.timestamp = new Date().toISOString(); //create new date
-
-    //save the tweet and check for errors
-    tweet.save(function (err) {
-      if (err)
-        res.send(err);
-
-      res.json({ message: 'Tweet created!' });
-    });
-  })
-
-   //get all the tweets
-  .get(function (req, res) {
-    Tweet.find(function (err, tweets) {
-      if (err)
-        res.send(err);
-
-      res.json(tweets)
-    });
   });
 
 router.route('/tweets/:tweet_id')
@@ -171,12 +138,6 @@ router.route('/tweetsTimeline')
       
     });
 
-  });
-
-router.route('/profiles')
-
-  .get(function (req, res) {
-    res.json({ message: 'public profile api' });
   });
 
   router.route('/profiles/:profile')
