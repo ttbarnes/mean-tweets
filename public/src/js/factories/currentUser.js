@@ -23,5 +23,4 @@ angular.module('meanTweetsApp').factory('currentUserFactory', function (auth){
 
     return user;
 
-
   });
