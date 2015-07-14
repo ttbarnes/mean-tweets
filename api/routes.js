@@ -37,9 +37,10 @@ router.route('/tweets/:tweet_id')
   .get(function (req, res) {
     Tweet.findById(req.params.tweet_id, function (err, tweet) {
       if (err)
-        res.send(err);
+        res.status(404).send('tweet ID ' + req.params.tweet_id + ' could not be found.');
       res.json(tweet);
     });
+
   })
 
    //update the tweet with that tweet id
