@@ -1,4 +1,8 @@
-<div class="row panel tweet">
+<div ng-if="tweetNotFound" class="panel align-center">
+  <p>This tweet doesn't exist. <br/><br/>:(</p>
+</div>
+
+<div ng-if="tweet" class="row panel tweet">
   <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
   <p>@{{tweet.username}}</p>
   <div ng-if="tweet.image.url" class="img-wrap">
