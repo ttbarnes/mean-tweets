@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       js: {
         files: ['public/src/js/**/*.js'],
         //tasks: ['jshint', 'uglify']
-        //tasks: ['uglify']
+        tasks: ['karma']
       },
       css: {
         files: ['public/src/scss/*.scss', 'public/src/scss/**/*.scss'],

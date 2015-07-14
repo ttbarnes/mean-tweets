@@ -110,7 +110,6 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
     $scope.getTweets();
   });
 
-
   $scope.favouriteTweet = function(tweetId) {
     if(currentUserFactory.isAuth) {
 
@@ -156,6 +155,5 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
     }
   };
-
 
 });
