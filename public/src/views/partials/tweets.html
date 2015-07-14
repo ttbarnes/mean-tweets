@@ -17,7 +17,7 @@
     </div>
     <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
 
-    <div ng-if="auth.isAuthenticated" class="social">
+    <div ng-if="auth.isAuthenticated" class="actions">
       <div class="dev-info"  ng-show="tweet.alreadyFavourited">
         <p ng-show="tweet.alreadyFavourited">already favourited</p>
         <p ng-repeat="tweet in tweet.favourites">
@@ -38,6 +38,10 @@
       </button>
       <button ng-click="doStuff()">
         <i class="fa fa-refresh"></i>
+      </button>
+      <button ng-if="usersOwnProfile"
+              ng-click="deleteTweet(tweet._id)">
+              <i class="fa fa-trash"></i>
       </button>
     </div>
   </div>

@@ -11,7 +11,7 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
   else {
     //user found
 
-    //loggedIn user specifics - follow/following this user etc
+    //loggedIn user specifics - follow/following this user, delete tweet
     if(currentUserFactory.isAuth) {
       $scope.loggedInUser = currentUserFactory.username;
 
@@ -56,6 +56,12 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
         }
       };
 
+      $scope.deleteTweet = function(tweetId) {
+        console.log($scope.loggedInUser + ' want\'s to remove tweet: ' + tweetId);
+        tweetsFactory.singleTweet(tweetId).remove().then(function () {
+          console.info('removed tweet: ' + tweetId);
+        });
+      };
 
     }
   }

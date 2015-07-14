@@ -51,15 +51,20 @@
     }
   }
 
-  .social {
+  .actions {
     i {
       font-size:1.3em;
       &.active {
         color:#BADA55;
       }
+      &.fa-remove {
+        color:$red-1;
+      }
     }
     button {
       width:auto;
+      display:inline-block;
+      vertical-align:middle;
       padding:10px;
       margin-bottom:0;
       background:transparent;

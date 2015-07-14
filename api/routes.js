@@ -72,8 +72,8 @@ router.route('/tweets/:tweet_id')
     }, function (err, tweet) {
         if (err)
           res.send(err);
-
-        res.json({ message: 'Successfully deleted' });
+        res.json(tweet);
+        console.log('removed tweet: ' + req.params.tweet_id)
     });
   });
 
