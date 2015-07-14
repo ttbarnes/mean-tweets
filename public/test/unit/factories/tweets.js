@@ -20,7 +20,7 @@ describe('tweetsFactory', function(){
       expect(tweetsFactory.timeline).toBeDefined();
     }));
 
-    //how to test customGET route? 
+    //todo: test customGET route (how?)
 
   });
 

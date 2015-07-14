@@ -1,6 +1,6 @@
 describe('userProfileFactory', function() {
 
-  beforeEach(module(function ($provide) {
+  beforeEach(module(function() {
     module('meanTweetsApp');
     inject(function($injector) {
       httpBackend = $injector.get('$httpBackend');
