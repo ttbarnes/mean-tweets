@@ -1,59 +1,59 @@
 <div class="profile-public">
-<div ng-show="userNotFound" class="col-70 no-float-margin-auto">
-  <div class="panel align-center">
-    <p>Sorry, {{profileUsername}} doesn't exist. <br/><br/> :(</p>
-  </div>
-</div>
-
-<div ng-show="!userNotFound" class="row">
-  <h3 class="page-title" ng-if="profileUsername">{{profileUsername}}</h3>
-
-  <button ng-hide="usersOwnProfile || loggedInUserFollows" 
-          ng-click="followUser(loggedInUser, profileUsername)"
-          class="blue">Follow</button>
-
-  <a ng-if="usersOwnProfile" 
-     ui-sref="profileEdit"
-     class="button blue">Edit my profile</a>
-</div>
-
-<div ng-show="!userNotFound" class="row">
-
-  <div class="col-70">
-
-    <ng-include src="'views/partials/tweets.html'"></ng-include>
-
-    <div ng-if="!loadingTweets && errorMessage" class="panel align-center">
-      <p><strong>{{errorMessage}}</strong></p>
-    </div>
-
-  </div>
-
-  <div class="col-30">
-    <div class="panel placeholder-box">
-      <h5>followers</h5>
-      <p>{{profileUser.followers.length}}</p>
-      <ul>
-        <li ng-repeat="user in profileUser.followers">{{user.username}}</li>
-      </ul>
-    </div>
-    <div class="panel placeholder-box">
-      <h5>following</h5>
-      <p>{{user.following.length}}</p>
-      <ul>
-        <li ng-repeat="user in profileUser.following">{{user.username}}</li>
-      </ul>
-    </div>
-    <div ng-if="profileUser.favourites.length" class="panel placeholder-box">
-      <h5>favourite tweets</h5>
-      <p>{{profileUser.favourites.length}}</p>
-    </div>
-    <div class="panel placeholder-box">
-      <h5>tweets</h5>
-      <p>{{tweets.length}}</p>
-      <p ng-if="!tweets.length">0</p>
+  <div ng-show="userNotFound" class="col-70 no-float-margin-auto">
+    <div class="panel panel-notice align-center">
+      <p>Sorry, {{profileUsername}} doesn't exist. <br/><br/> :(</p>
     </div>
   </div>
 
-</div>
+  <div ng-show="!userNotFound" class="row">
+    <h3 class="page-title" ng-if="profileUsername">{{profileUsername}}</h3>
+
+    <button ng-hide="usersOwnProfile || loggedInUserFollows" 
+            ng-click="followUser(loggedInUser, profileUsername)"
+            class="blue">Follow</button>
+
+    <a ng-if="usersOwnProfile" 
+       ui-sref="profileEdit"
+       class="button blue">Edit my profile</a>
+  </div>
+
+  <div ng-show="!userNotFound" class="row">
+
+    <div class="col-70">
+
+      <ng-include src="'views/partials/tweets.html'"></ng-include>
+
+      <div ng-if="!loadingTweets && errorMessage" class="panel align-center">
+        <p><strong>{{errorMessage}}</strong></p>
+      </div>
+
+    </div>
+
+    <div class="col-30">
+      <div class="panel placeholder-box">
+        <h5>followers</h5>
+        <p>{{profileUser.followers.length}}</p>
+        <ul>
+          <li ng-repeat="user in profileUser.followers">{{user.username}}</li>
+        </ul>
+      </div>
+      <div class="panel placeholder-box">
+        <h5>following</h5>
+        <p>{{user.following.length}}</p>
+        <ul>
+          <li ng-repeat="user in profileUser.following">{{user.username}}</li>
+        </ul>
+      </div>
+      <div ng-if="profileUser.favourites.length" class="panel placeholder-box">
+        <h5>favourite tweets</h5>
+        <p>{{profileUser.favourites.length}}</p>
+      </div>
+      <div class="panel placeholder-box">
+        <h5>tweets</h5>
+        <p>{{tweets.length}}</p>
+        <p ng-if="!tweets.length">0</p>
+      </div>
+    </div>
+
+  </div>
 </div>
