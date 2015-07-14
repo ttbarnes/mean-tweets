@@ -8,8 +8,10 @@ describe('ProfilePublicCtrl', function() {
 
   var stateParamsUsername = state.params[0].username;
 
+  var currentUserUsername = 'phillip';
+
   //ui-router resolve data mocks: http://stackoverflow.com/a/21078955/1257504
-  var profileUsernameDataMock = {
+  var profileUsernameDataMockSuccess = {
     profile: [{
       details: [{
         _id: '1234',
@@ -21,14 +23,19 @@ describe('ProfilePublicCtrl', function() {
       followers: [],
       following: []
     }],
-    username: stateParamsUsername,
+    username: currentUserUsername,
     success: true
+  };
+
+  var currentUserFactoryMockSuccess = {
+    isAuth : true,
+    username : stateParamsUsername
   };
 
   beforeEach(function() {
 
     module('meanTweetsApp', function ($provide) {
-      $provide.value('profileUsernameData', profileUsernameDataMock = profileUsernameDataMock);
+      $provide.value('profileUsernameData', profileUsernameDataMockSuccess = profileUsernameDataMockSuccess);
     });
 
     inject(function($injector) {
@@ -43,10 +50,17 @@ describe('ProfilePublicCtrl', function() {
       userProfileFactory = $injector.get('userProfileFactory');
 
       ctrl = $controller('ProfilePublicCtrl', { 
-        $scope: scope
+        $scope: scope,
+        currentUserFactory: currentUserFactory
       });
 
+      currentUserFactory = currentUserFactoryMockSuccess;
+
       scope.profileUsername = stateParamsUsername;
+
+      scope.loggedInUser = currentUserFactory.username;
+
+      scope.usersOwnProfile;
 
     });
 
@@ -58,27 +72,8 @@ describe('ProfilePublicCtrl', function() {
       expect(scope.profileUsername).toEqual(stateParamsUsername);
     });
 
-    it('should render profileUsernameData in scope', function() {
-      expect(scope.profileUsernameData).toBeDefined();
-      expect(scope.profileUsernameData).toEqual(profileUsernameDataMock);
-      expect(scope.profileUsernameData.profile[0].details).toBeDefined();
-      expect(scope.profileUsernameData.profile[0].favourites).toBeDefined();
-      expect(scope.profileUsernameData.profile[0].followers).toBeDefined();
-      expect(scope.profileUsernameData.profile[0].following).toBeDefined();
-      expect(scope.profileUsernameData.success).toBeDefined();
-    });
-
-    it('should render profileUsernameData.profile in scope', function() {
-      expect(scope.profileUser).toEqual(profileUsernameDataMock.profile);
-      expect(scope.profileUser[0].details).toBeDefined();
-      expect(scope.profileUser[0].favourites).toBeDefined();
-      expect(scope.profileUser[0].followers).toBeDefined();
-      expect(scope.profileUser[0].following).toBeDefined();
-    });
-
-    it('should have the same username in state params and profileUsernameData', function() {
+    it('should have profileUsernameData username in scope', function() {
       expect(scope.profileUsernameData.username).toBeDefined();
-      expect(scope.profileUsernameData.username).toEqual(stateParamsUsername);
     });
 
     it('should have undefined userNotFound', function() {
@@ -87,12 +82,55 @@ describe('ProfilePublicCtrl', function() {
 
   });
 
-  describe('when/if user has not been found', function() {
-
-
-  });
+  //todo: test fof no user found.
+  //how to $provide ui-route resolve in jasmine describe blocks?
+  //describe('when/if user has not been found', function() {   });
 
   describe('when/if user has been found', function() {
+
+    it('should render profileUsernameData in scope', function() {
+
+      console.log('- - - - - - -- - - - ', currentUserFactory.isAuth);
+      expect(scope.profileUsernameData).toBeDefined();
+      expect(scope.profileUsernameData).toEqual(profileUsernameDataMockSuccess);
+      expect(scope.profileUsernameData.profile[0].details).toBeDefined();
+      expect(scope.profileUsernameData.profile[0].favourites).toBeDefined();
+      expect(scope.profileUsernameData.profile[0].followers).toBeDefined();
+      expect(scope.profileUsernameData.profile[0].following).toBeDefined();
+      expect(scope.profileUsernameData.success).toBeDefined();
+    });
+
+    it('should render profileUsernameData.profile in scope', function() {
+      expect(scope.profileUser).toEqual(profileUsernameDataMockSuccess.profile);
+      expect(scope.profileUser[0].details).toBeDefined();
+      expect(scope.profileUser[0].favourites).toBeDefined();
+      expect(scope.profileUser[0].followers).toBeDefined();
+      expect(scope.profileUser[0].following).toBeDefined();
+    });
+
+    describe('if current user is logged in', function() {
+
+      it('should have true isAuth', function() {
+        expect(currentUserFactory.isAuth).toBeTruthy();
+      });
+
+      it('should render the user\'s username in scope', function() {
+        expect(scope.loggedInUser).toEqual(currentUserFactory.username);
+      });
+
+      describe('if current logged in user is the same as public profile username ', function() {
+
+        //expect(scope.usersOwnProfile).toBeTruthy();
+
+        /*
+        it('should have the same username in state params and profileUsernameData', function() {
+          expect(scope.profileUsernameData.username).toEqual(stateParamsUsername);
+        });
+        */
+
+      });
+
+    });
 
 
   });
