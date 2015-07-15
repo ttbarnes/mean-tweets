@@ -15,7 +15,7 @@ angular.module('meanTweetsApp').controller('PostTweetCtrl',
           console.info('posted a tweet', newTweet);
           $scope.tweet = '';
           ngDialog.closeAll();
-          $rootScope.$broadcast('tweetPosted');
+          $rootScope.$broadcast('refreshTweets');
         });
       }
       else {

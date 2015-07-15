@@ -105,8 +105,8 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
   $scope.getTweets();
 
-  $scope.$on('tweetPosted', function () {
-    console.info('tweet posted - getting new tweets');
+  $scope.$on('refreshTweets', function () {
+    console.info('refreshTweets called - getting new tweets');
     $scope.getTweets();
   });
 

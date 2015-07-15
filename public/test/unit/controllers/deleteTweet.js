@@ -51,9 +51,13 @@ describe('DeleteTweetCtrl', function() {
       spyOn(Restangular, 'one').and.callThrough();
       httpBackend.flush();
       expect(tweetsFactory.singleTweet(scope.tweetId).route).toEqual('api/tweets/' + scope.tweetId);
+      scope.$digest();
     });
 
     //todo: how to test restangular remove promise?
+
+    //todo: test broadcast after deletion
+    //expect(scope.$broadcast).toHaveBeenCalledWith('refreshTweets');
 
   });
 
