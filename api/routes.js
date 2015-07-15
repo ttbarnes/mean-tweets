@@ -118,26 +118,52 @@ router.route('/tweets/:tweet_id/favourites')
 //from client side, restangular remove() method sends an empty payload object.
 //see: https://github.com/mgonto/restangular/issues/78
 //none of the solutions work. Maybe missing something.
-//
 //as a workaround, we send a tweet's favourite id via param.
 
 router.route('/tweets/:tweet_id/favourites/:fav_tweet_id')
 
   .delete(function (req, res) {
-
     tweetId = req.params.tweet_id;
     favTweetId = req.params.fav_tweet_id;
 
     Tweet.update({_id: tweetId }, {$pull: {favourites: {_id: favTweetId }}}, function (err, favourite) {
-
       if (err)
         res.send(err);
       res.json(favourite);
       console.log('removed favourite tweet: ' + favTweetId);
-
     });
-
   });
+
+
+router.route('/tweets/:tweet_id/retweets')
+
+  .put(function (req, res) {
+    tweetId        = req.params.tweet_id;
+    userRetweeting = req.body.username;
+
+    Tweet.findOneAndUpdate( {_id: tweetId }, { $push : {  retweets: { username: userRetweeting } } }, function (err, tweet) {
+      if (err)
+        res.send(err);
+      res.json(tweet);
+      console.log('User ' + userRetweeting + ' retweeted ' + tweet.username +  '\'s tweet: \n' 
+                          + tweetId + '\n' 
+                          + 'tweet copy: ' + '\'' + tweet.copy + '\'');
+    });
+  });
+
+router.route('/tweets/:tweet_id/retweets/:retweet_id')
+
+  .delete(function (req, res) {
+    tweetId = req.params.tweet_id;
+    retweetId = req.params.retweet_id;
+    Tweet.update({_id: tweetId }, {$pull: {favourites: {_id: retweetId }}}, function (err, retweet) {
+      if (err)
+        res.send(err);
+      res.json(retweet);
+      console.log('removed retweet: ' + retweetId);
+    });
+  });
+
 
 //temporary route - need to refactor other routes.
 router.route('/tweetsTimeline')
@@ -238,6 +264,38 @@ router.route('/tweetsTimeline')
       });
 
     });
+
+  router.route('/profiles/:username/tweets/retweets/:tweet_id')
+
+    .put(function (req, res) {
+
+      userRetweeting = req.body.username;
+      tweetId        = req.params.tweet_id;
+
+      Profile.findOneAndUpdate( {username: userRetweeting }, { $push : {  retweets: { tweetId: tweetId } } }, function (err, profile) {
+        if (err)
+          res.send(err);
+        res.json(profile);
+        console.log('User ' + userRetweeting + ' retweeted a tweet with the id: ' + tweetId);
+      });
+
+    })
+
+    .delete(function (req, res) {
+
+      username = req.params.username;
+      retweetId = req.params.tweet_id;
+
+      Profile.update({username: username }, {$pull: {retweets: {tweetId: retweetId }}}, function (err, retweet) {
+
+        if (err)
+          res.send(err);
+        res.json(retweet);
+        console.log('removed retweet: ' + retweetId) + ' from ' + username + '\'s profile';
+      });
+
+    });
+
 
   router.route('/profiles/:username/details')
 
