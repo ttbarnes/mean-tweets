@@ -1,4 +1,4 @@
-angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory, profileUsernameData) {
+angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory, profileUsernameData, ngDialog) {
 
   $scope.profileUsernameData = profileUsernameData;  //public profilc data from routes resolve (success, profile data)
   $scope.profileUser = profileUsernameData.profile;  //public profile user's followers, following, favourites
@@ -56,10 +56,17 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
         }
       };
 
-      $scope.deleteTweet = function(tweetId) {
+      $scope.deleteTweetDialog = function(tweetId) {
         console.log($scope.loggedInUser + ' want\'s to remove tweet: ' + tweetId);
-        tweetsFactory.singleTweet(tweetId).remove().then(function () {
-          console.info('removed tweet: ' + tweetId);
+        ngDialog.open({ 
+          scope: $scope,
+          template: '../views/partials/dialogs/delete-tweet.html',
+          controller: 'DeleteTweetCtrl',
+          resolve: {
+              tweetId: function depFactory() {
+                  return tweetId
+              }
+          }
         });
       };
 

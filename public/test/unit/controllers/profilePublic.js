@@ -89,8 +89,6 @@ describe('ProfilePublicCtrl', function() {
   describe('when/if user has been found', function() {
 
     it('should render profileUsernameData in scope', function() {
-
-      console.log('- - - - - - -- - - - ', currentUserFactory.isAuth);
       expect(scope.profileUsernameData).toBeDefined();
       expect(scope.profileUsernameData).toEqual(profileUsernameDataMockSuccess);
       expect(scope.profileUsernameData.profile[0].details).toBeDefined();
