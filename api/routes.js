@@ -222,7 +222,11 @@ router.route('/tweetsTimeline')
 
     .get(function (req, res) {
 
-      Tweet.find({username: new RegExp(req.params.username, "i")}, function (err, tweets) {
+      Tweet.find({
+        $or: [
+          {'retweets.username': req.params.username},
+          { username: req.params.username }
+        ]}, function (err, tweets) {
         if (err)
             res.send(err);
           if (!tweets.length) {
@@ -270,20 +274,20 @@ router.route('/tweetsTimeline')
     .put(function (req, res) {
 
       userRetweeting = req.body.username;
-      tweetId        = req.params.tweet_id;
+      retweetId      = req.params.tweet_id;
 
-      Profile.findOneAndUpdate( {username: userRetweeting }, { $push : {  retweets: { tweetId: tweetId } } }, function (err, profile) {
+      Profile.findOneAndUpdate( {username: userRetweeting }, { $push : {  retweets: { tweetId: retweetId } } }, function (err, profile) {
         if (err)
           res.send(err);
         res.json(profile);
-        console.log('User ' + userRetweeting + ' retweeted a tweet with the id: ' + tweetId);
+        console.log('User ' + userRetweeting + ' retweeted a tweet with the id: ' + retweetId);
       });
 
     })
 
     .delete(function (req, res) {
 
-      username = req.params.username;
+      username  = req.params.username;
       retweetId = req.params.tweet_id;
 
       Profile.update({username: username }, {$pull: {retweets: {tweetId: retweetId }}}, function (err, retweet) {

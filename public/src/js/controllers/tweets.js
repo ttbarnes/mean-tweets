@@ -4,6 +4,10 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
   $scope.profileUsername = $stateParams.username;    //public profile username from $stateParams
 
+  if(currentUserFactory && currentUserFactory.username) {
+    $scope.loggedInUser = currentUserFactory.username;
+  }
+
   //apiRoute object only used for favouriteTweet
   //todo: cleanup/re-use more - DRY
   this.apiRoute = {
@@ -24,6 +28,25 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
           if(favourites.username === $scope.loggedInUser) {
             tweet.alreadyFavourited = true;
             tweet.usersFavId = favourites._id;
+          }
+
+        });
+      }
+    });
+  };
+
+  function alreadyRetweetedCheck(theTweets) {
+    //for each tweet, check to see if any of the username fields (in retweets array)
+    //equal $scope.loggedInUser.
+    //if a match is found in one tweet,
+    //add an extra field to the tweet: alreadyRetweeted
+    angular.forEach(theTweets, function (tweet) {
+      if(tweet.retweets) {
+        angular.forEach(tweet.retweets, function (retweets) {
+
+          if(retweets.username === $scope.loggedInUser) {
+            tweet.alreadyRetweeted = true;
+            tweet.usersFavId = retweets._id;
           }
 
         });
@@ -52,6 +75,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
       //at this point, public profile only needs to check favourite tweets and return the data.
       if(statePublicProfile) {
         alreadyFavouritedCheck(data);
+        alreadyRetweetedCheck(data);
       }
 
       //timeline is more complex:
@@ -85,6 +109,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
           $scope.tweets = tweets;
           if(tweets.length) {
             alreadyFavouritedCheck(tweets);
+            alreadyRetweetedCheck(tweets);
           } else {
             $scope.userNoFollowings = true;
           }
@@ -95,6 +120,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
       }
       */
+      
 
       }, function (err) {
         console.warn('oh no, something went wrong with top/parent level api call! details: \n', err);
@@ -155,5 +181,31 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
     }
   };
+
+  $scope.retweetTweet = function(tweetId) {
+    if(currentUserFactory.isAuth) {
+
+      var urls = {
+        usernameTweetRetweets  : apiRoute.tweets + tweetId + '/retweets',
+        tweetIdProfileRetweets : apiRoute.profiles + currentUserFactory.username + '/tweets/retweets/' + tweetId
+      }
+
+      var newRetweet = {
+        username: $scope.loggedInUser
+      }
+
+      //PUT the newRetweet username into the tweet's retweets array
+      Restangular.all(urls.usernameTweetRetweets).customPUT(newRetweet).then(function () {
+        console.log('posted new retweet to: ' + urls.usernameTweetRetweets);
+      });
+
+      //PUT tweet id in loggedInUser's profile retweets object
+      Restangular.all(urls.tweetIdProfileRetweets).customPUT(newRetweet).then(function () {
+        console.log('posted new retweet id to: ' + 'api/profiles/' + currentUserFactory.username + '/tweets/retweets/' + tweetId);
+      });
+
+    }
+  };
+
 
 });

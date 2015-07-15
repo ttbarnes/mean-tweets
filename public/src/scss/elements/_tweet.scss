@@ -14,9 +14,25 @@
     }
   }
 
+  &.retweeted {
+    border-bottom-color:$green-dark-1;
+  }
+
+  .retweet-notice {
+    color:$grey-1;
+    .fa {
+      padding:5px;
+      margin-right:5px;
+      border-radius:$border-radius-sm;
+      background:$green-dark-1;
+      color:rgba(255, 255, 255, 0.9);
+    }
+  }
+
   .dev-info {
-    display:none;
+    display:block;
     position:absolute;
+    z-index:3;
     background:#DDD;
     color:#333;
     padding:10px;
@@ -25,7 +41,7 @@
     font-size:0.8em;
     box-shadow:0 1px 3px #818181;
     p {
-      margin:0;
+      margin:0 0 10px 0;
     }
   }
 
@@ -55,7 +71,7 @@
     i {
       font-size:1.3em;
       &.active {
-        color:#BADA55;
+        color:$green-dark-1;
       }
       &.fa-remove {
         color:$red-1;

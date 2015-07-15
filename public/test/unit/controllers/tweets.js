@@ -55,6 +55,38 @@ describe('TweetsCtrl', function() {
         route : tempApiRoutes.userProfile + currentUserFactory.username
       };
 
+    });
+
+  });
+
+  
+  describe('loggedInUser', function(){
+
+    describe('when unauthorized', function(){
+
+      beforeEach(function(){
+        ctrl.loggedInUser = currentUserFactory.username;
+      });
+
+      it('should be defined', function(){
+        expect(ctrl.loggedInUser).toBeDefined();
+      });
+
+      it('should match state params username ', function(){
+        expect(ctrl.loggedInUser).toEqual(state.params.username);
+      });
+
+    });
+
+    describe('when unauthorized', function(){
+
+      beforeEach(function(){
+        currentUserFactory = false;
+      });
+
+      it('should be false/undefined ', function(){
+        expect(ctrl.loggedInUser).toBeFalsy();
+      });
 
     });
 
@@ -113,7 +145,6 @@ describe('TweetsCtrl', function() {
     });
 
     it('should return some tweets', function(){
-
       expect(scope.tweets[0]).toBeDefined();
       expect(scope.tweets[1]).toBeDefined();
       expect(scope.tweets[2]).toBeDefined();
