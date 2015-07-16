@@ -50,7 +50,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
         angular.forEach(tweet.retweets, function (retweets) {
 
           if(retweets.username === $scope.loggedInUser) {
-            tweet.alreadyRetweeted = true;
+            tweet.loggedinUserRetweeted = true;
             tweet.usersFavId = retweets._id;
           }
 
@@ -131,7 +131,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
               angular.forEach(tweet.retweets, function (retweet) {
                 if(currentUserFollowing.userFollowing.indexOf(retweet.username) > -1) {
-                  tweet.alreadyRetweeted = true;  
+                  tweet.followingRetweeted = true;
                   tweet.followingAndRetweeted.push({username:retweet.username});
                   tweet.retweetedUsernames = tweet.followingAndRetweeted;
                 }

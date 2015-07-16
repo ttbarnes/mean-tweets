@@ -10,8 +10,8 @@
 
   <div ng-repeat="tweet in tweets.slice().reverse() | filter: timestamp" 
        class="panel tweet"
-       ng-class="{retweeted : tweet.alreadyRetweeted}">
-    <p ng-show="tweet.alreadyRetweeted" class="retweet-notice">
+       ng-class="{retweeted : tweet.followingRetweeted}">
+    <p ng-show="tweet.followingRetweeted" class="retweet-notice">
       <small><i class="fa fa-refresh"></i>Retweeted by 
         <span ng-repeat="retweeter in tweet.retweetedUsernames">{{retweeter.username}}</span>
       </small></p>
@@ -47,10 +47,10 @@
               <i class="fa fa-star active"></i>
       </button>
       <button ng-click="retweetTweet(tweet._id);newRetweet = true"
-              ng-hide="newFavouriteTweet || tweet.alreadyRetweeted">
+              ng-hide="newRetweet || tweet.loggedinUserRetweeted">
               <i class="fa fa-refresh"></i>
       </button>
-      <button ng-show="newRetweet || tweet.alreadyRetweeted">
+      <button ng-show="newRetweet || tweet.loggedinUserRetweeted">
               <i class="fa fa-refresh active"></i>
       </button>
       <button ng-if="usersOwnProfile"
