@@ -151,12 +151,12 @@ router.route('/tweets/:tweet_id/retweets')
     });
   });
 
-router.route('/tweets/:tweet_id/retweets/:retweet_id')
+router.route('/tweets/:tweet_id/retweets/:re_tweet_id')
 
   .delete(function (req, res) {
     tweetId = req.params.tweet_id;
-    retweetId = req.params.retweet_id;
-    Tweet.update({_id: tweetId }, {$pull: {favourites: {_id: retweetId }}}, function (err, retweet) {
+    retweetId = req.params.re_tweet_id;
+    Tweet.update({_id: tweetId }, {$pull: {retweets: {_id: retweetId }}}, function (err, retweet) {
       if (err)
         res.send(err);
       res.json(retweet);
@@ -283,23 +283,7 @@ router.route('/tweetsTimeline')
         console.log('User ' + userRetweeting + ' retweeted a tweet with the id: ' + retweetId);
       });
 
-    })
-
-    .delete(function (req, res) {
-
-      username  = req.params.username;
-      retweetId = req.params.tweet_id;
-
-      Profile.update({username: username }, {$pull: {retweets: {tweetId: retweetId }}}, function (err, retweet) {
-
-        if (err)
-          res.send(err);
-        res.json(retweet);
-        console.log('removed retweet: ' + retweetId) + ' from ' + username + '\'s profile';
-      });
-
     });
-
 
   router.route('/profiles/:username/details')
 

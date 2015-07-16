@@ -35,26 +35,29 @@
           <small>{{tweet.username}}</small>
         </p>
       </div>-->
-      <button ng-click="favouriteTweet(tweet._id);newFavouriteTweet = true" 
-              ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
-              <i class="fa fa-star"></i>
-      </button>
       <!--
       <p ng-if="tweet.favourites.length"><small>favourites <br/>{{tweet.favourites.length}}</small></p>
       <p ng-if="tweet.retweets.length"><small>retweets <br/>{{tweet.retweets.length}}</small></p>
       -->
+
+      <button ng-click="favouriteTweet(tweet._id);newFavouriteTweet = true" 
+              ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
+              <i class="fa fa-star"></i>
+      </button>
       <button ng-click="unFavouriteTweet(tweet._id, tweet.usersFavId);newFavouriteTweet = false; tweet.alreadyFavourited = false" 
               ng-show="newFavouriteTweet || tweet.alreadyFavourited">
               <i class="fa fa-star active"></i>
       </button>
+
       <button ng-click="retweetTweet(tweet._id);newRetweet = true"
               ng-hide="newRetweet || tweet.loggedinUserRetweeted">
               <i class="fa fa-refresh"></i>
       </button>
-      <button ng-click="removeRetweet(tweet._id, tweet.usersRetweetId)"
+      <button ng-click="removeRetweet(tweet._id, tweet.usersRetweetId);newRetweet = false;tweet.loggedinUserRetweeted = false;"
               ng-show="newRetweet || tweet.loggedinUserRetweeted">
               <i class="fa fa-refresh active"></i>
       </button>
+
       <button ng-if="usersOwnProfile"
               ng-click="deleteTweetDialog(tweet._id)">
               <i class="fa fa-trash"></i>

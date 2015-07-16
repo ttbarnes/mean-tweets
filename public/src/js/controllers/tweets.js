@@ -218,9 +218,8 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
   $scope.retweetTweet = function(tweetId) {
     if(currentUserFactory.isAuth) {
 
-      var urls = {
-        usernameTweetRetweets  : apiRoute.tweets + tweetId + '/retweets',
-        tweetIdProfileRetweets : apiRoute.profiles + currentUserFactory.username + '/tweets/retweets/' + tweetId
+      var url = {
+        tweetId  : apiRoute.tweets + tweetId + '/retweets',
       }
 
       var newRetweet = {
@@ -228,21 +227,24 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
       }
 
       //PUT the newRetweet username into the tweet's retweets array
-      Restangular.all(urls.usernameTweetRetweets).customPUT(newRetweet).then(function () {
-        console.log('posted new retweet to: ' + urls.usernameTweetRetweets);
-      });
-
-      //PUT tweet id in loggedInUser's profile retweets object
-      Restangular.all(urls.tweetIdProfileRetweets).customPUT(newRetweet).then(function () {
-        console.log('posted new retweet id to: ' + 'api/profiles/' + currentUserFactory.username + '/tweets/retweets/' + tweetId);
+      Restangular.all(url.tweetId).customPUT(newRetweet).then(function () {
+        console.log('posted new retweet to: ' + url.tweetId);
       });
 
     }
   };
 
   $scope.removeRetweet = function(tweetId, retweetId) {
-    console.log('todo: remove retweet \n' + 'tweetid: ' + tweetId + ' \nretweetId: ' + retweetId);
-  };
 
+    var url = {
+      tweetRetweetId  : apiRoute.tweets + tweetId + '/retweets/' + retweetId,
+    }
+
+    //REMOVE retweet from the tweet's retweets array
+    Restangular.all(url.tweetRetweetId).remove().then(function(){ 
+      console.log('removed retweet ' + retweetId + ' from tweet ' + tweetId);
+    });
+
+  };
 
 });
