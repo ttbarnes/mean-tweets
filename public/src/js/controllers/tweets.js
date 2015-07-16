@@ -51,7 +51,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
           if(retweets.username === $scope.loggedInUser) {
             tweet.loggedinUserRetweeted = true;
-            tweet.usersFavId = retweets._id;
+            tweet.usersRetweetId = retweets._id;
           }
 
         });
@@ -134,6 +134,10 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
                   tweet.followingRetweeted = true;
                   tweet.followingAndRetweeted.push({username:retweet.username});
                   tweet.retweetedUsernames = tweet.followingAndRetweeted;
+                }
+                if(retweet.username === $scope.loggedInUser) {
+                  tweet.loggedinUserRetweeted = true;
+                  tweet.usersRetweetId = retweet._id;
                 }
               });
             }
@@ -234,6 +238,10 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
       });
 
     }
+  };
+
+  $scope.removeRetweet = function(tweetId, retweetId) {
+    console.log('todo: remove retweet \n' + 'tweetid: ' + tweetId + ' \nretweetId: ' + retweetId);
   };
 
 

@@ -14,7 +14,8 @@
     <p ng-show="tweet.followingRetweeted" class="retweet-notice">
       <small><i class="fa fa-refresh"></i>Retweeted by 
         <span ng-repeat="retweeter in tweet.retweetedUsernames">{{retweeter.username}}</span>
-      </small></p>
+      </small>
+    </p>
 
     <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
     <p><a ui-sref="profilePublic({username: tweet.username})">@{{tweet.username}}</a></p>
@@ -50,7 +51,8 @@
               ng-hide="newRetweet || tweet.loggedinUserRetweeted">
               <i class="fa fa-refresh"></i>
       </button>
-      <button ng-show="newRetweet || tweet.loggedinUserRetweeted">
+      <button ng-click="removeRetweet(tweet._id, tweet.usersRetweetId)"
+              ng-show="newRetweet || tweet.loggedinUserRetweeted">
               <i class="fa fa-refresh active"></i>
       </button>
       <button ng-if="usersOwnProfile"
