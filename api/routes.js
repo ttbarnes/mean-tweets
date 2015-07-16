@@ -151,11 +151,11 @@ router.route('/tweets/:tweet_id/retweets')
     });
   });
 
-router.route('/tweets/:tweet_id/retweets/:re_tweet_id')
+router.route('/tweets/:tweet_id/retweets/:retweet_id')
 
   .delete(function (req, res) {
     tweetId = req.params.tweet_id;
-    retweetId = req.params.re_tweet_id;
+    retweetId = req.params.retweet_id;
     Tweet.update({_id: tweetId }, {$pull: {retweets: {_id: retweetId }}}, function (err, retweet) {
       if (err)
         res.send(err);
