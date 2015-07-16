@@ -11,7 +11,11 @@
   <div ng-repeat="tweet in tweets.slice().reverse() | filter: timestamp" 
        class="panel tweet"
        ng-class="{retweeted : tweet.alreadyRetweeted}">
-    <p ng-show="tweet.alreadyRetweeted" class="retweet-notice"><small><i class="fa fa-refresh"></i>Retweeted by {{profileUsername}}</small></p>
+    <p ng-show="tweet.alreadyRetweeted" class="retweet-notice">
+      <small><i class="fa fa-refresh"></i>Retweeted by 
+        <span ng-repeat="retweeter in tweet.retweetedUsernames">{{retweeter.username}}</span>
+      </small></p>
+
     <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
     <p><a ui-sref="profilePublic({username: tweet.username})">@{{tweet.username}}</a></p>
     <div ng-if="tweet.image.url" class="img-wrap">

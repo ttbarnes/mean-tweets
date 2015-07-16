@@ -27,6 +27,11 @@
       background:$green-dark-1;
       color:rgba(255, 255, 255, 0.9);
     }
+    span {
+      display:inline-block;
+      vertical-align:baseline;
+      margin-right:5px;
+    }
   }
 
   .dev-info {

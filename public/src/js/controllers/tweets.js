@@ -16,6 +16,11 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
   }
   var apiRoute = this.apiRoute;
 
+
+  //todo: somehow merge these two functions into one:
+  //alreadyFavouritedCheck
+  //alreadyRetweetedCheck
+
   function alreadyFavouritedCheck(theTweets) {
     //for each tweet, check to see if any of the username fields (in favourites array)
     //equal $scope.loggedInUser.
@@ -72,7 +77,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
       $scope.tweets = data;
 
-      //at this point, public profile only needs to check favourite tweets and return the data.
+      //at this point, public profile only needs to check favourite tweets, retweets and return the data.
       if(statePublicProfile) {
         alreadyFavouritedCheck(data);
         alreadyRetweetedCheck(data);
@@ -82,7 +87,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
       //get the currentUsers's following username's, push to array (include currentUser username)
       //get only these users's tweets, return data
       //check for favourites, return data
-      /*
+      
       else {
 
         var userFollowing = [];
@@ -109,7 +114,31 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
           $scope.tweets = tweets;
           if(tweets.length) {
             alreadyFavouritedCheck(tweets);
-            alreadyRetweetedCheck(tweets);
+
+            //remove currentUser from userFollowing for iterating retweets
+            //right now we don't want to display a currentUsers's *own retweets* in the timeline.
+            currentUserFollowing.userFollowing.pop();
+
+            //for each tweet, check if any of the retweet usernames
+            //equal a username in the current user's following array.
+            //if a match is found, push the username to a new array
+            //then we can display a list of retweets by users that I follow only.
+            //eg: 'retweeted by X Y and Z'
+            angular.forEach(tweets, function (tweet) {
+            if(tweet.retweets) {
+
+              tweet.followingAndRetweeted = [];
+
+              angular.forEach(tweet.retweets, function (retweet) {
+                if(currentUserFollowing.userFollowing.indexOf(retweet.username) > -1) {
+                  tweet.alreadyRetweeted = true;  
+                  tweet.followingAndRetweeted.push({username:retweet.username});
+                  tweet.retweetedUsernames = tweet.followingAndRetweeted;
+                }
+              });
+            }
+          });
+
           } else {
             $scope.userNoFollowings = true;
           }
@@ -119,7 +148,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
         });
 
       }
-      */
+      
       
 
       }, function (err) {
