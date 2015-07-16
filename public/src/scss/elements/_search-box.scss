@@ -17,7 +17,7 @@
     padding-right:30px;
     border:solid 2px $white-2;
     width:100%;
-    transition:all 0.2s ease;
+    @include transitionQuickest;
   }
 
   button {
@@ -31,7 +31,7 @@
   .fa {
     color:$black;
     transform:rotate(90deg);
-    transition:all 0.2s ease;
+    @include transitionQuickest;
     opacity:0.4;
   }
 

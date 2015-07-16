@@ -4,7 +4,7 @@
 
   .tweets &  {
     @media (min-width:$bp-md) {
-      transition:all 0.3s ease;
+      @include transitionQuick;
       background:rgba(255, 255, 255, 0.9);
       &:hover {
         background:rgba(255, 255, 255, 1);

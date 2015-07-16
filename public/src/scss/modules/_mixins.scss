@@ -1,0 +1,7 @@
+@mixin transitionQuickest {
+  transition:all 0.2s ease;
+}
+
+@mixin transitionQuick {
+  transition:all 0.3s ease;
+}

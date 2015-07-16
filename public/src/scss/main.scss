@@ -10,6 +10,7 @@
 @import 'blocks/_header';
 @import 'blocks/_forms';
 @import 'blocks/_panel';
+@import 'blocks/_dialog';
 @import 'blocks/_post-something';
 
 @import 'elements/_loading-spinner';
@@ -18,25 +19,3 @@
 
 @import 'views/_home-welcome';
 @import 'views/_profile-public';
-
-
-body.ngdialog-open {
-  overflow:visible;
-}
-
-.ngdialog-overlay {
-  background:rgba(0,0,0,.6);
-}
-
-.ngdialog-content {
-  z-index:5;
-  position:relative;
-  max-width:90%;
-  margin:5% auto;
-  padding:15px;
-  border-radius:$border-radius-sm;
-  box-shadow:0 22px 60px $blue-dark-2;
-  @media (min-width:$bp-sm) {
-    max-width:600px;
-  }
-}

@@ -51,7 +51,7 @@ header {
     font-weight:normal;
     text-decoration:none;
     @media (min-width:$bp-md) {
-      transition:all 0.3s ease;
+      @include transitionQuick;
       &:hover,
       &:focus {
         background:$blue-dark-1;
@@ -103,7 +103,7 @@ header {
     font-weight:normal;
     color:$black;
     @media (min-width:$bp-md) {
-      transition:all 0.3s ease;
+      @include transitionQuick;
       &:hover,
       &:focus {
         background:$white-2;

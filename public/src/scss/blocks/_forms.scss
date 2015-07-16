@@ -28,7 +28,7 @@ button,
 .button {
   border:0 none;
   display:block;
-  transition:all 0.3s ease;
+  @include transitionQuick;
   @media (min-width:$bp-sm) {
     width:auto;
     display:inline-block;
