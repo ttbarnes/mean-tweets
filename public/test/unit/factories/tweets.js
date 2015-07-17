@@ -63,4 +63,32 @@ describe('tweetsFactory', function(){
 
   });
 
+  describe('favourites endpoint', function(){
+
+    it('should be defined', inject(function (tweetsFactory) {
+      expect(tweetsFactory.favourites).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (tweetsFactory) {
+      var tweetId = '55890abc18923oix5579'
+      expect(tweetsFactory.favourites(tweetId).route).toEqual('api/tweets/' + tweetId + '/favourites');
+    }));
+
+  });
+
+  describe('singleFavourite endpoint', function(){
+
+    it('should be defined', inject(function (tweetsFactory) {
+      expect(tweetsFactory.singleFavourite).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (tweetsFactory) {
+      var tweetId = '55890abc18923oix5579'
+      var favouriteId = 'an12lj3l1md0890fdm'
+      expect(tweetsFactory.singleFavourite(tweetId, favouriteId).route).toEqual('api/tweets/' + tweetId + '/favourites/' + favouriteId);
+    }));
+
+
+  });
+
 });

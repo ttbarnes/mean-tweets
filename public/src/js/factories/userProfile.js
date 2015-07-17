@@ -12,7 +12,7 @@ angular.module('meanTweetsApp').factory('userProfileFactory', function (Restangu
       },
       favourites: function(username, tweetId) {
         return Restangular.all('api/profiles/' + username + '/tweets/favourites/' + tweetId );
-      },
+      }
     }
 
   });

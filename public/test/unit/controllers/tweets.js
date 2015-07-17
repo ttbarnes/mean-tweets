@@ -93,24 +93,6 @@ describe('TweetsCtrl', function() {
   });
 
 
-  describe('apiRoute object', function(){
-
-    it('should be defined', function(){
-      expect(ctrl.apiRoute).toBeDefined();
-    })
-
-    it('should have correct tweets endpoint', function(){
-      expect(ctrl.apiRoute.tweets).toBeDefined();
-      expect(ctrl.apiRoute.tweets).toEqual('api/tweets/');
-    });
-
-    it('should have correct profiles endpoint', function(){
-      expect(ctrl.apiRoute.profiles).toBeDefined();
-      expect(ctrl.apiRoute.profiles).toEqual('api/profiles/');
-    });
-
-  });
-
   describe('profile username', function(){
 
     it('should have correct username', function(){
