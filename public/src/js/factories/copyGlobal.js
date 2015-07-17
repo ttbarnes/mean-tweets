@@ -1,8 +1,11 @@
 angular.module('meanTweetsApp').factory('copyGlobalFactory', function (){
 
-    var factory = {};
+    var factory = {
+      appName : 'Mean tweets',
+      errorHeading : 'Whoops!',
+    };
 
-    factory.appName = 'Mean tweets';
+    
 
     return factory;
 

@@ -11,6 +11,7 @@
   <div ng-repeat="tweet in tweets.slice().reverse() | filter: timestamp" 
        class="panel tweet"
        ng-class="{retweeted : tweet.followingRetweeted}">
+
     <p ng-show="tweet.followingRetweeted" class="retweet-notice">
       <small><i class="fa fa-refresh"></i>Retweeted by 
         <span ng-repeat="retweeter in tweet.retweetedUsernames">{{retweeter.username}}</span>
@@ -19,26 +20,19 @@
 
     <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
     <p><a ui-sref="profilePublic({username: tweet.username})">@{{tweet.username}}</a></p>
+
     <div ng-if="tweet.image.url" class="img-wrap">
       <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
     </div>
+
+    <!--
+    <p ng-if="tweet.favourites.length"><small>favourites <br/>{{tweet.favourites.length}}</small></p>
+    <p ng-if="tweet.retweets.length"><small>retweets <br/>{{tweet.retweets.length}}</small></p>
+    -->
+
     <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
 
     <div ng-if="auth.isAuthenticated" class="actions">
-      <!--<div class="dev-info"  ng-show="tweet.alreadyFavourited || tweet.alreadyRetweeted">
-        <p ng-show="tweet.alreadyRetweeted">retweeted by {{profileUsername}}</p>
-        <p ng-repeat="tweet in tweet.retweets">
-          <small>{{tweet.username}}</small>
-        </p>
-        <p>already favourited</p>
-        <p ng-repeat="tweet in tweet.favourites">
-          <small>{{tweet.username}}</small>
-        </p>
-      </div>-->
-      <!--
-      <p ng-if="tweet.favourites.length"><small>favourites <br/>{{tweet.favourites.length}}</small></p>
-      <p ng-if="tweet.retweets.length"><small>retweets <br/>{{tweet.retweets.length}}</small></p>
-      -->
 
       <ng-include src="'views/partials/tweet-favourite.html'"></ng-include>
 
@@ -49,6 +43,7 @@
               <i class="fa fa-trash"></i>
       </button>
     </div>
+
   </div>
 
 </div>

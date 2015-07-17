@@ -6,4 +6,8 @@ describe('copyGlobalFactory', function(){
     expect(copyGlobalFactory.appName).toEqual('Mean tweets');
   }));
 
+  it('should have the correct error heading copy', inject(function (copyGlobalFactory){
+    expect(copyGlobalFactory.errorHeading).toEqual('Whoops!');
+  }));
+
 });

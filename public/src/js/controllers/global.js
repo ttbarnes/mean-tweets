@@ -1,6 +1,7 @@
 angular.module('meanTweetsApp').controller('GlobalCtrl', function (auth, $scope, $location, store, copyGlobalFactory, ngDialog) {
 
   $scope.appName = copyGlobalFactory.appName;
+  $scope.errorHeading = copyGlobalFactory.errorHeading;
   $scope.auth = auth;
 
   $scope.loginOrSignup = function() {

@@ -48,7 +48,7 @@ db_url=username:asdf@1234.mongolab.com:6789/my-db
 
 - test2@test.com
 
-Password is the obvious.
+password is the obvious.
 
 
 ###api
