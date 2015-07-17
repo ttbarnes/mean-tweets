@@ -1,15 +1,36 @@
 .profile-public {
-  .page-title {
-    @media (min-width:$bp-sm) {
-      float:left;
-      margin-right:10px;
-      + button,
-      + button + .button {
-        margin:{
-          top:-5px;
-          bottom:$form-elm-margin-bottom + 5px;
-        }
+
+  .col-left {
+    @media(min-width:$bp-md) {
+      padding:{
+        right:15px;
+        left:0;
       }
     }
   }
+
+  .col-right {
+    @media(min-width:$bp-md) {
+      padding:{
+        right:0;
+        left:15px;
+      }
+    }
+  }
+
+  .profile-details {
+    .fa {
+      margin-right:5px; 
+    }
+  }
+  
+  .stat {
+    padding:0px 6px;
+    text-align:center;
+    h6 {
+      font-size:16px;
+      margin:0 0 5px 0;
+    }
+  }
+
 }

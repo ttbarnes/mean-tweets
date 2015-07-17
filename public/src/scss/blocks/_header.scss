@@ -32,6 +32,15 @@ header {
     }
   }
 
+  .col-right {
+    float:right;
+    text-align:right;
+    margin:5.5px 19px;
+    @media (min-width:$bp-sm) {
+      margin:10.5px 19px;
+    }
+  }
+
 }
 
 .logo {
@@ -61,14 +70,6 @@ header {
   }
 }
 
-.col-right {
-  float:right;
-  text-align:right;
-  margin:5.5px 19px;
-  @media (min-width:$bp-sm) {
-    margin:10.5px 19px;
-  }
-}
 
 .btn-compose-tweet {
   background-color:$blue-dark-1;

@@ -1,8 +1,16 @@
+.col-25,
 .col-30,
 .col-70 {
   @media(min-width:$bp-md) {
     float:left;
     min-height:1px;
+  }
+}
+
+.col-70 {
+  @media(min-width:$bp-md) {
+    width:25%;
+    padding-right:15px;
   }
 }
 
