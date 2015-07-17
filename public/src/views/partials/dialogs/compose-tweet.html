@@ -1,9 +1,9 @@
-<div ng-controller="PostTweetCtrl" class="row post-something">
-  <form name="postTweetForm" ng-submit="postTweet(tweet)">
+<div ng-controller="ComposeTweetCtrl" class="row compose-tweet">
+  <form name="composeTweetForm" ng-submit="postTweet(tweet)">
     <div class="col-70">
       <input type="text" 
              name="copy"
-             placeholder="Tweet something"
+             placeholder="My tweet"
              ng-model="tweet.copy" 
              maxlength="140" />
       <div class="add-image">

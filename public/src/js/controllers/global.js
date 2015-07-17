@@ -15,7 +15,7 @@ angular.module('meanTweetsApp').controller('GlobalCtrl', function (auth, $scope,
   };
 
   $scope.composeTweet = function () {
-    ngDialog.open({ template: '../views/partials/post-tweet.html' });
+    ngDialog.open({ template: '../views/partials/dialogs/compose-tweet.html' });
   };
 
 });
