@@ -40,14 +40,7 @@
       <p ng-if="tweet.retweets.length"><small>retweets <br/>{{tweet.retweets.length}}</small></p>
       -->
 
-      <button ng-click="favouriteTweet(tweet._id);newFavouriteTweet = true" 
-              ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
-              <i class="fa fa-star"></i>
-      </button>
-      <button ng-click="unFavouriteTweet(tweet._id, tweet.usersFavId);newFavouriteTweet = false; tweet.alreadyFavourited = false" 
-              ng-show="newFavouriteTweet || tweet.alreadyFavourited">
-              <i class="fa fa-star active"></i>
-      </button>
+      <ng-include src="'views/partials/tweet-favourite.html'"></ng-include>
 
       <button ng-click="retweetTweet(tweet._id);newRetweet = true"
               ng-hide="newRetweet || tweet.loggedinUserRetweeted">
