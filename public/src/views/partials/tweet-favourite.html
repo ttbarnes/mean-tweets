@@ -1,10 +1,10 @@
 <span ng-controller="TweetFavouriteCtrl">
-<button ng-click="favouriteTweet(tweet._id);newFavouriteTweet = true" 
-        ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
-        <i class="fa fa-star"></i>
-</button>
-<button ng-click="unFavouriteTweet(tweet._id, tweet.usersFavId);newFavouriteTweet = false; tweet.alreadyFavourited = false" 
-        ng-show="newFavouriteTweet || tweet.alreadyFavourited">
-        <i class="fa fa-star active"></i>
-</button>
-<span>
+  <button ng-click="favouriteTweet(tweet._id);newFavouriteTweet = true" 
+          ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
+          <i class="fa fa-star"></i>
+  </button>
+  <button ng-click="unFavouriteTweet(tweet._id, tweet.usersFavId);newFavouriteTweet = false; tweet.alreadyFavourited = false" 
+          ng-show="newFavouriteTweet || tweet.alreadyFavourited">
+          <i class="fa fa-star active"></i>
+  </button>
+</span>
