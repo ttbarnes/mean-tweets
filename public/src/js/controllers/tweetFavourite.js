@@ -5,7 +5,7 @@ angular.module('meanTweetsApp').controller('TweetFavouriteCtrl', function (curre
 
       var newFavourite = {
         username: currentUserFactory.username
-      }
+      };
 
       //PUT the newFavourite username into the tweet's favourite array
       tweetsFactory.favourites(tweetId).customPUT(newFavourite).then(function () {

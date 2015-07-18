@@ -40,6 +40,6 @@ angular.module('meanTweetsApp').factory('tweetsFactory', function (Restangular){
         return Restangular.one('api/tweets/' + tweetId + '/favourites/' + favouriteId);
       }
 
-    }
+    };
 
   });

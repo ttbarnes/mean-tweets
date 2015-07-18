@@ -30,7 +30,7 @@ angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentU
       });
     }
 
-  }
+  };
 
 
 });

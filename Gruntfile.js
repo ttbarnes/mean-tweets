@@ -4,9 +4,9 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    //jshint: {
-      //all: ['public/src/js/**/*.js'] 
-    //},
+    jshint: {
+      all: ['public/src/js/**/*.js', 'public/test/**/**/*.js'],
+    },
 
     nodemon: {
       dev: {
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: ['public/src/js/**/*.js'],
-        //tasks: ['jshint', 'uglify']
+        tasks: ['jshint']
       },
       css: {
         files: ['public/src/scss/*.scss', 'public/src/scss/**/*.scss'],
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 
   });
 
-  //grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   //grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
 
   //grunt.registerTask('default', ['jshint', 'uglify', 'concurrent']);
-  grunt.registerTask('default', ['sass', 'cssmin', 'clean', 'concurrent']);
+  grunt.registerTask('default', ['jshint', 'sass', 'cssmin', 'clean', 'concurrent']);
   grunt.registerTask('test', ['karma']);
   //grunt.registerTask('test:unit', ['karma']);
   //grunt.registerTask('test:e2e', ['test:unit', 'protractor']);

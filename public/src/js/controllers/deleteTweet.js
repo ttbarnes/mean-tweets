@@ -1,11 +1,11 @@
 angular.module('meanTweetsApp').controller('DeleteTweetCtrl', 
-  function ($rootScope, $scope, Restangular, tweetsFactory, tweetId, ngDialog) {
+  function ($rootScope, $scope, tweetsFactory, tweetId, ngDialog) {
 
     $scope.deleteTweetConfirmation = function() {
-      tweetsFactory.singleTweet(tweetId).remove().then(function () {
+      tweetsFactory.singleTweet(tweetId).remove().then(function() {
         console.info('removed tweet: ' + tweetId);
         ngDialog.closeAll();
-        $rootScope.$broadcast('refreshTweets')
+        $rootScope.$broadcast('refreshTweets');
       });
     };
 

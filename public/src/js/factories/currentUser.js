@@ -12,12 +12,12 @@ angular.module('meanTweetsApp').factory('currentUserFactory', function (auth){
 
       authUsername = auth.profile.nickname;
 
-      console.info('currentUser: ' + authUsername)
+      console.info('currentUser: ' + authUsername);
 
       user = {
         isAuth : true,
         username : authUsername
-      }
+      };
 
     }
 

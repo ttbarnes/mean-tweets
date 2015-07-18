@@ -26,7 +26,7 @@ angular.module('meanTweetsApp', [
   //JWT/json web token config
   jwtInterceptorProvider.tokenGetter = function(store) {
     return store.get('token');
-  }
+  };
 
   //Simple interceptor that will fetch all requests and add the jwt token to its authorization header.
   $httpProvider.interceptors.push('jwtInterceptor');

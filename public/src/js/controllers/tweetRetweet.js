@@ -4,7 +4,7 @@ angular.module('meanTweetsApp').controller('TweetRetweetCtrl', function (current
   this.apiRoute = {
     tweets   : 'api/tweets/',
     profiles : 'api/profiles/'
-  }
+  };
   var apiRoute = this.apiRoute;
 
   $scope.retweetTweet = function(tweetId) {
@@ -12,11 +12,11 @@ angular.module('meanTweetsApp').controller('TweetRetweetCtrl', function (current
 
       var url = {
         tweetId  : apiRoute.tweets + tweetId + '/retweets',
-      }
+      };
 
       var newRetweet = {
         username: $scope.loggedInUser
-      }
+      };
 
       //PUT the newRetweet username into the tweet's retweets array
       Restangular.all(url.tweetId).customPUT(newRetweet).then(function () {
@@ -30,7 +30,7 @@ angular.module('meanTweetsApp').controller('TweetRetweetCtrl', function (current
 
     var url = {
       tweetRetweetId  : apiRoute.tweets + tweetId + '/retweets/' + retweetId,
-    }
+    };
 
     //REMOVE retweet from the tweet's retweets array
     Restangular.all(url.tweetRetweetId).remove().then(function(){ 

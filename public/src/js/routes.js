@@ -80,14 +80,14 @@ angular.module('meanTweetsRoutes', ['ui.router'])
               var searchResults = {
                 success: true,
                 data: data
-              }
+              };
               return searchResults;
 
             }, function () {
               console.warn('no search results found with the query ' + $stateParams.searchParam);
               var searchResults = {
                 success: false
-              }
+              };
               return searchResults;
             });
           },
@@ -105,14 +105,14 @@ angular.module('meanTweetsRoutes', ['ui.router'])
               var theResponse = {
                 success: true,
                 profile: profile[0]
-              }
+              };
               return theResponse;
 
               }, function () {
                 console.warn('no user ' + $stateParams.username + ' exists.');
                 var theResponse = {
                   success: false
-                }
+                };
                 return theResponse;
               });
           },
@@ -163,7 +163,7 @@ angular.module('meanTweetsRoutes', ['ui.router'])
         resolve: {
           $title: function() { return states.loginRequired.pageTitle; }
         }
-      })
+      });
  
     $locationProvider.html5Mode(true);
 

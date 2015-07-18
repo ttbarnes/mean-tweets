@@ -37,7 +37,7 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
           var newFollowings = {
             userFollower: userFollower,
             userFollowing: userFollowing
-          }
+          };
 
           //PUT in logged-in user's following array
           Restangular.all('api/profiles/' + userFollower + '/following').customPUT(newFollowings).then(function () {
@@ -65,7 +65,7 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
           controller: 'DeleteTweetCtrl',
           resolve: {
               tweetId: function depFactory() {
-                  return tweetId
+                  return tweetId;
               }
           }
         });

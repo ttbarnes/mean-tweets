@@ -60,7 +60,7 @@ describe('ProfilePublicCtrl', function() {
 
       scope.loggedInUser = currentUserFactory.username;
 
-      scope.usersOwnProfile;
+      //scope.usersOwnProfile;
 
     });
 

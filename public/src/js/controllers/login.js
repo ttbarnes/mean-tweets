@@ -33,7 +33,7 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
       password: 'hello',
       connection: 'Username-Password-Authentication'
     });
-  }
+  };
 
   $scope.submit = function () {
     $scope.message.text = 'loading...';

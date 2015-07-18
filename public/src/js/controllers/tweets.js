@@ -29,7 +29,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
         });
       }
     });
-  };
+  }
 
   function alreadyRetweetedCheck(theTweets) {
     //for each tweet, check to see if any of the username fields (in retweets array)
@@ -48,7 +48,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
         });
       }
     });
-  };
+  }
 
   //if not public profile, it's timeline.
   if($state.current.controller === 'ProfilePublicCtrl') {

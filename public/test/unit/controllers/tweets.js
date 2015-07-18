@@ -44,7 +44,7 @@ describe('TweetsCtrl', function() {
 
       tempFactoryRestangularCalls = {
         userProfileFactory : 'Restangular.all(\'api/profiles/\' + username );'
-      }
+      };
 
       //controller specific mocks
       ctrl.profileUsername = state.params.username;

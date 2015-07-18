@@ -44,7 +44,7 @@ describe('tweetsFactory', function(){
     }));
 
     it('should generate correct endpoint', inject(function (tweetsFactory) {
-      var username = 'humphrey'
+      var username = 'humphrey';
       expect(tweetsFactory.userSpecificTweets(username).route).toEqual('api/profiles/' + username + '/tweets');
     }));
 
@@ -57,7 +57,7 @@ describe('tweetsFactory', function(){
     }));
 
     it('should generate correct endpoint', inject(function (tweetsFactory) {
-      var tweetId = '55890abc18923oix5579'
+      var tweetId = '55890abc18923oix5579';
       expect(tweetsFactory.singleTweet(tweetId).route).toEqual('api/tweets/' + tweetId);
     }));
 
@@ -70,7 +70,7 @@ describe('tweetsFactory', function(){
     }));
 
     it('should generate correct endpoint', inject(function (tweetsFactory) {
-      var tweetId = '55890abc18923oix5579'
+      var tweetId = '55890abc18923oix5579';
       expect(tweetsFactory.favourites(tweetId).route).toEqual('api/tweets/' + tweetId + '/favourites');
     }));
 
@@ -83,8 +83,8 @@ describe('tweetsFactory', function(){
     }));
 
     it('should generate correct endpoint', inject(function (tweetsFactory) {
-      var tweetId = '55890abc18923oix5579'
-      var favouriteId = 'an12lj3l1md0890fdm'
+      var tweetId = '55890abc18923oix5579';
+      var favouriteId = 'an12lj3l1md0890fdm';
       expect(tweetsFactory.singleFavourite(tweetId, favouriteId).route).toEqual('api/tweets/' + tweetId + '/favourites/' + favouriteId);
     }));
 
