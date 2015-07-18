@@ -12,6 +12,10 @@
 //
 //tweetsFactory.singleFavouite(5576b67fbb1c7b10c2dc65e1, 4486b67fbb1c7b10c2dc6C0a)
 //
+//tweetsFactory.retweets(4486b67fbb1c7b10c2dc6C0a)
+//
+//tweetsFactory.singleRetweet(5576b67fbb1c7b10c2dc65e1, 4486b67fbb1c7b10c2dc6C0a)
+//
 
 angular.module('meanTweetsApp').factory('tweetsFactory', function (Restangular){
 
@@ -38,6 +42,12 @@ angular.module('meanTweetsApp').factory('tweetsFactory', function (Restangular){
       },
       singleFavourite: function(tweetId, favouriteId) {
         return Restangular.one('api/tweets/' + tweetId + '/favourites/' + favouriteId);
+      },
+      retweets: function(tweetId) {
+        return Restangular.one('api/tweets/' + tweetId + '/retweets/');
+      },
+      singleRetweet: function(tweetId, retweetId) {
+        return Restangular.one('api/tweets/' + tweetId + '/retweets/' + retweetId);
       }
 
     };
