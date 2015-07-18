@@ -78,7 +78,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
       //get the currentUsers's following username's, push to array (include currentUser username)
       //get only these users's tweets, return data
       //check for favourites, return data
-      
+      /*
       else {
 
         var userFollowing = [];
@@ -143,7 +143,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
         });
 
       }
-      
+      */
       
       
 

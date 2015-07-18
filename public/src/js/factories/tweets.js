@@ -44,7 +44,7 @@ angular.module('meanTweetsApp').factory('tweetsFactory', function (Restangular){
         return Restangular.one('api/tweets/' + tweetId + '/favourites/' + favouriteId);
       },
       retweets: function(tweetId) {
-        return Restangular.one('api/tweets/' + tweetId + '/retweets/');
+        return Restangular.one('api/tweets/' + tweetId + '/retweets');
       },
       singleRetweet: function(tweetId, retweetId) {
         return Restangular.one('api/tweets/' + tweetId + '/retweets/' + retweetId);

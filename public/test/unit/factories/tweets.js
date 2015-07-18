@@ -88,7 +88,34 @@ describe('tweetsFactory', function(){
       expect(tweetsFactory.singleFavourite(tweetId, favouriteId).route).toEqual('api/tweets/' + tweetId + '/favourites/' + favouriteId);
     }));
 
+  });
+
+  describe('retweets endpoint', function(){
+
+    it('should be defined', inject(function (tweetsFactory) {
+      expect(tweetsFactory.favourites).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (tweetsFactory) {
+      var tweetId = '55890abc18923oix5579';
+      expect(tweetsFactory.retweets(tweetId).route).toEqual('api/tweets/' + tweetId + '/retweets');
+    }));
 
   });
+
+  describe('singleRetweet endpoint', function(){
+
+    it('should be defined', inject(function (tweetsFactory) {
+      expect(tweetsFactory.singleRetweet).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (tweetsFactory) {
+      var tweetId = '55890abc18923oix5579';
+      var retweetId = 'an12lj3l1md0890fdm';
+      expect(tweetsFactory.singleRetweet(tweetId, retweetId).route).toEqual('api/tweets/' + tweetId + '/retweets/' + retweetId);
+    }));
+
+  });
+
 
 });
