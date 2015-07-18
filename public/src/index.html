@@ -7,13 +7,40 @@
     <title ng-bind="$title + ' - Mean tweets'"></title>
 
     <link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css"/>
-
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.min.css"/>
+
+    <!-- build:css css/main.min.css -->
     <link rel="stylesheet" href="dist/css/main.min.css"/>
+    <!-- endbuild -->
+
+
+
 
     <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
 
+  </head>
+  <body class="page-{{$title | lowercase}}">
+
+    <div ng-controller="GlobalCtrl">
+        <ng-include src="'views/partials/header-nav.html'"></ng-include>
+
+        <div class="main-wrapper wrapper-max-width">
+
+            <div class="row" ng-show="restLoading">
+              <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
+            </div>
+
+          <div class="row" ui-view ng-show="!restLoading"></div>
+
+        </div>
+    </div>
+
+    <!-- build:js js/vendor.js -->
     <script src="bower_components/lodash/dist/lodash.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
@@ -28,7 +55,9 @@
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
+    <!-- endbuild -->
 
+    <!-- build:js js/main.js -->
     <script src="js/app.js"></script>
     <script src="js/routes.js"></script>
 
@@ -53,28 +82,7 @@
     <script src="js/factories/currentUser.js"></script>
     <script src="js/factories/userProfile.js"></script>
     <script src="js/factories/tweets.js"></script>
+    <!-- endbuild -->
 
-    <!--<script src="dist/js/app.min.js"></script>-->
-
-  </head>
-  <body class="page-{{$title | lowercase}}">
-
-    <div ng-controller="GlobalCtrl">
-        <ng-include src="'views/partials/header-nav.html'"></ng-include>
-
-        <div class="main-wrapper wrapper-max-width">
-
-            <div class="row" ng-show="restLoading">
-              <div class="spinner">
-                <div class="bounce1"></div>
-                <div class="bounce2"></div>
-                <div class="bounce3"></div>
-              </div>
-            </div>
-
-          <div class="row" ui-view ng-show="!restLoading"></div>
-
-        </div>
-    </div>
   </body>
 </html>

@@ -1,24 +1,27 @@
 {
   "name": "mean-tweets",
   "version": "1.0.0",
+  "homepage": "https://github.com/ttbarnes/mean-tweets",
+  "authors": [
+    "ttbarnes <tony@tonybarnes.me>"
+  ],
+  "license": "MIT",
   "dependencies": {
     "angular": "latest",
-    "angular-route": "latest",
-    "angular-ui-router": "~0.2.13",
-    "restangular": "~1.4.0",
-    "auth0-angular": "~4.0.1",
-    "angular-jwt": "~0.0.6",
-    "angular-cookies": "~1.3.14",
     "a0-angular-storage": "~0.0.9",
-    "angular-mocks": "~1.3.14",
+    "angular-cookies": "~1.3.14",
+    "angular-jwt": "~0.0.6",
     "angular-moment": "~0.10.1",
+    "angular-mocks": "~1.3.14",
+    "angular-route": "*",
+    "angular-ui-router": "~0.2.13",
     "angular-ui-router-title": "~0.0.3",
+    "auth0-angular": "~4.0.1",
     "fontawesome": "~4.3.0",
+    "karma-jasmine": "~0.3.6",
+    "lodash": ">=1.3.0 <2.5.0",
     "ngDialog": "~0.4.0",
-    "lodash": "~3.10.0"
+    "restangular": "~1.4.0"
   },
-  "resolutions": {
-    "angular": "1.3.17",
-    "lodash": ">=1.3.0 <2.5.0"
-  }
+  "appPath": "public/src"
 }
