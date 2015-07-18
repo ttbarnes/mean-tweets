@@ -2,7 +2,9 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
 
   $scope.profileUsernameData = profileUsernameData;  //public profilc data from routes resolve (success, profile data)
   $scope.profileUser = profileUsernameData.profile;  //public profile user's followers, following, favourites
-  $scope.profileUserDetails = profileUsernameData.profile.details[0];  //public profile user's details
+  if(profileUsernameData.profile.details && profileUsernameData.profile.details[0]) {
+    $scope.profileUserDetails = profileUsernameData.profile.details[0];  //public profile user's details
+  }
   $scope.profileUsername = $stateParams.username;    //public profile username from $stateParams
 
   if($scope.profileUsernameData.success === false) {
