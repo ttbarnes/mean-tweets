@@ -26,7 +26,8 @@ describe('TweetRetweetCtrl', function() {
         currentUserFactory: currentUserFactory,
       });
 
-      tweetId = '1k2n4jn4mn5l1mn3km';
+      tweetId   = '1k2n4jn4mn5l1mn3k4';
+      retweetId = '9b7nh7e2j4w9x1m2w3';
 
       //prevents 'unexpected request: GET views/*/index.html' error
       httpBackend.whenGET(/views.*/).respond(200, '');
@@ -98,9 +99,38 @@ describe('TweetRetweetCtrl', function() {
         expect(tweetsFactory.retweets(tweetId).route).toEqual('api/tweets/' + tweetId + '/retweets');
       });
 
+      //todo: how to test restangular customPUT promise?
+
     });
 
     
+  });
+
+
+  describe('remove retweet', function(){
+
+    beforeEach(function(){
+      spyOn(scope, 'removeRetweet');
+      scope.removeRetweet(tweetId, retweetId);
+    });
+
+    describe('remove retweet REMOVE', function(){
+
+      beforeEach(function(){
+        spyOn(Restangular, 'one').and.callThrough();
+        httpBackend.flush();
+        scope.$digest();
+      });
+
+      it('should generate the correct endpoint', function(){
+        expect(tweetsFactory.singleRetweet(tweetId, retweetId).route).toEqual('api/tweets/' + tweetId + '/retweets/' + retweetId);
+      });
+
+      //todo: how to test restangular remove promise?
+
+    });
+
+
   });
 
 
