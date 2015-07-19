@@ -290,11 +290,13 @@ router.route('/tweetsTimeline')
     .put(function (req, res) {
 
       username = req.params.username;
+      avatarUrl = req.body.avatarUrl;
       detailWebsiteUrl = req.body.websiteUrl;
       detailLocation = req.body.location;
       detailAbout = req.body.about;
 
       Profile.update( {username: username},{ $set : {  
+                                 avatarUrl: avatarUrl,
                                  details: { 
                                    websiteUrl: detailWebsiteUrl,
                                    location: detailLocation,

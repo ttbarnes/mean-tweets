@@ -10,6 +10,16 @@
   dl {
     margin-left:15px;
   }
+  &.child-cols {
+    display:inline-block;
+    vertical-align:top;
+    .col-left {
+      padding-left:0;
+    }
+    .col-right {
+      padding-right:0;
+    }
+  }
 }
 
 .panel-notice p:last-child {

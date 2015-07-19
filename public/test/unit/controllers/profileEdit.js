@@ -65,32 +65,36 @@ describe('ProfileEditCtrl', function() {
       });
 
       it('should return profile data - username', function(){
-        expect(scope.profile[0].username).toBeDefined();
+        expect(scope.profile.username).toBeDefined();
+      });
+
+      it('should return profile data - avatar url', function(){
+        expect(scope.profile.avatarUrl).toBeDefined();
       });
 
       it('should return profile data - favourites', function(){
-        expect(scope.profile[0].favourites).toBeDefined();
+        expect(scope.profile.favourites).toBeDefined();
       });
       
       it('should return profile data - followers', function(){
-        expect(scope.profile[0].followers).toBeDefined();
+        expect(scope.profile.followers).toBeDefined();
       });
       
       it('should return profile data - following', function(){
-        expect(scope.profile[0].following).toBeDefined();
+        expect(scope.profile.following).toBeDefined();
       });
 
       it('should return profile data - retweets', function(){
-        expect(scope.profile[0].retweets).toBeDefined();
+        expect(scope.profile.retweets).toBeDefined();
       });
 
       it('should return profile data - details', function(){
-        expect(scope.profile[0].retweets).toBeDefined();
+        expect(scope.profile.retweets).toBeDefined();
       });
 
       it('should assign profile details to scope', function(){
         expect(scope.profileDetails).not.toBeUndefined();
-        expect(scope.profileDetails).toEqual(scope.profile[0].details[0]);
+        expect(scope.profileDetails).toEqual(scope.profile.details[0]);
       });
 
     });

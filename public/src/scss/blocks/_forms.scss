@@ -5,6 +5,19 @@
   } 
 }
 
+label {
+  display:inline-block;
+  width:100%;
+  font:{
+    weight:bold;
+    size:13px;
+  }
+  padding:0 0 5px 0;
+  @media (min-width:$bp-md) {
+    padding:0 10px 5px 10px;
+  }
+}
+
 button,
 .button,
 input,
@@ -63,5 +76,5 @@ textarea {
 textarea {
   max-width:100%;
   min-height:100px;
-  //resize:none; //enable for dev
+  resize:none;
 }

@@ -8,8 +8,8 @@ angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentU
   $scope.loggedInUser = currentUserFactory.username;
 
   userProfileFactory.user($scope.loggedInUser).getList().then(function (profile){
-    $scope.profile = profile;
-    $scope.profileDetails = $scope.profile[0].details[0];
+    $scope.profile = profile[0];
+    $scope.profileDetails = $scope.profile.details[0];
   });
 
   $scope.updateProfileDetails = function(data) {
@@ -17,12 +17,11 @@ angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentU
     if(currentUserFactory.isAuth) {
 
       var profileDetails = {
+        avatarUrl  : data.avatarUrl,
         websiteUrl : data.websiteUrl,
         location   : data.location,
         about      : data.about
       };
-
-      console.log(profileDetails);
 
       userProfileFactory.userDetails(currentUserFactory.username).customPUT(profileDetails).then(function () {
         console.log(currentUserFactory.username + ' just updated their profile details');
