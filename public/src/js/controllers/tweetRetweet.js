@@ -1,18 +1,18 @@
-angular.module('meanTweetsApp').controller('TweetRetweetCtrl', function (currentUserFactory, tweetsFactory, $scope, Restangular) {
+angular.module('meanTweetsApp').controller('TweetRetweetCtrl', function (currentUserFactory, tweetsFactory, $scope) {
 
   $scope.retweetTweet = function(tweetId) {
-    if(currentUserFactory.isAuth) {
 
-      var newRetweet = {
-        username: $scope.loggedInUser
-      };
+    this.newRetweet = {
+      username: currentUserFactory.username
+    };
 
-      //PUT the newRetweet username into the tweet's retweets array
-      tweetsFactory.retweets(tweetId).customPUT(newRetweet).then(function () {
-        console.log('posted new retweet to: ' + tweetId);
-      });
+    var newRetweet = this.newRetweet;
 
-    }
+    //PUT the newRetweet username into the tweet's retweets array
+    tweetsFactory.retweets(tweetId).customPUT(newRetweet).then(function () {
+      console.log('posted new retweet to: ' + tweetId);
+    });
+
   };
 
   $scope.removeRetweet = function(tweetId, retweetId) {
