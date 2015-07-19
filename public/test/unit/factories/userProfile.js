@@ -16,6 +16,14 @@ describe('userProfileFactory', function() {
     expect(endPoint.route).not.toEqual('api/profiles/' + username + '/');
   });
 
+  it('should generate correct user details endpoint with username', function(){
+    var username = 'humphrey';
+    var endPoint = userProfileFactory.userDetails(username);
+    expect(endPoint.route).toEqual('api/profiles/' + username + '/details');
+    expect(endPoint.route).not.toContain('/api');
+    expect(endPoint.route).not.toEqual('api/profiles/' + username + '/details/');
+  });
+
   it('should generate correct favourites endpoint with username', function(){
     var username = 'bob';
     var tweetId = 'an12lj3l1md0890fdm';

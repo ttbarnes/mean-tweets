@@ -24,7 +24,7 @@ angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentU
 
       console.log(profileDetails);
 
-      Restangular.all('api/profiles/' + currentUserFactory.username + '/details').customPUT(profileDetails).then(function () {
+      userProfileFactory.userDetails(currentUserFactory.username).customPUT(profileDetails).then(function () {
         console.log(currentUserFactory.username + ' just updated their profile details');
         console.log('posted to: ' + 'api/profiles/' + currentUserFactory.username + '/details');
       });

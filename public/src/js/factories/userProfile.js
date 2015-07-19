@@ -2,6 +2,8 @@
 //
 //userProfileFactory.user('support2')
 //
+//userProfileFactory.userDetails('support2')
+//
 //userProfileFactory.favourites('support2', '1a2b3c4d5e6f')
 //
 
@@ -9,6 +11,9 @@ angular.module('meanTweetsApp').factory('userProfileFactory', function (Restangu
     return {
       user: function(username) {
         return Restangular.all('api/profiles/' + username );
+      },
+      userDetails: function(username) {
+        return Restangular.all('api/profiles/' + username + '/details' );
       },
       favourites: function(username, tweetId) {
         return Restangular.all('api/profiles/' + username + '/tweets/favourites/' + tweetId );
