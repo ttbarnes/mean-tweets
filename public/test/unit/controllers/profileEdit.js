@@ -39,7 +39,7 @@ describe('ProfileEditCtrl', function() {
 
   });
 
-  describe('initilisation', function() {
+  describe('initilisation', function(){
 
     it('should apply currentUserFactory username to scope', function(){
       expect(currentUserFactory.username).toEqual(scope.loggedInUser);
@@ -95,10 +95,75 @@ describe('ProfileEditCtrl', function() {
 
     });
 
-
-
+    it('should not call update profile details', function(){
+      spyOn(scope, 'updateProfileDetails');
+      expect(scope.updateProfileDetails).not.toHaveBeenCalled();
+    });
 
   });
 
+  describe('update profile details', function(){
+
+    beforeEach(function(){
+      ctrl.mockData = {
+         websiteUrl : 'ryanNewSite.co.uk',
+         location : 'Liverpool',
+         about : 'Tweeting 24/7'
+      }
+
+      ctrl.profileDetails = {
+        websiteUrl : ctrl.mockData.websiteUrl,
+        location : ctrl.mockData.location,
+        about : ctrl.mockData.about
+      }
+
+      spyOn(scope, 'updateProfileDetails');
+      scope.updateProfileDetails(ctrl.mockData);
+    });
+
+    it('should call update profile details', function(){
+      expect(scope.updateProfileDetails).toHaveBeenCalled();
+    });
+
+    describe('profile details object', function(){
+
+      it('should generate profileDetails object', function(){
+        expect(ctrl.profileDetails).toBeDefined();
+      });
+
+      it('should generate correct websiteUrl property', function(){
+        expect(ctrl.profileDetails.websiteUrl).toBeDefined();
+        expect(ctrl.profileDetails.websiteUrl).toEqual(ctrl.mockData.websiteUrl);
+      });
+
+      it('should generate correct location property', function(){
+        expect(ctrl.profileDetails.location).toBeDefined();
+        expect(ctrl.profileDetails.location).toEqual(ctrl.mockData.location);
+      });
+
+      it('should generate correct about property', function(){
+        expect(ctrl.profileDetails.about).toBeDefined();
+        expect(ctrl.profileDetails.about).toEqual(ctrl.mockData.about);
+      });
+
+    });
+
+    describe('profile details PUT', function(){
+
+      beforeEach(function(){
+        spyOn(Restangular, 'all').and.callThrough();
+        httpBackend.flush();
+        scope.$digest();
+      });
+
+      it('should generate the correct endpoint', function(){
+        expect(userProfileFactory.userDetails(currentUserFactory.username).route).toEqual('api/profiles/' + currentUserFactory.username + '/details');
+      });
+
+      //todo: how to test restangular customPUT promise?
+
+    });
+
+  });
 
 });
