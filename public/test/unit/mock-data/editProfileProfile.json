@@ -1,0 +1,58 @@
+[
+   {
+   "id": "559acba8270da6be90903068",
+   "username": "ryan",
+   "v": 0,
+   "retweets": [ ],
+   "favourites": [
+      {
+         "tweetId": "559adb9bb02f181ba2123ac6",
+         "id": "559d56118765a80813498539"
+      },
+      {
+         "tweetId": "559e2fb209187ebf472e7ca8",
+         "id": "559e388564278b555b390a7b"
+      },
+      {
+         "tweetId": "559e878e7b3f99818ae35ace",
+         "id": "55a229aef02d3ebf1ad90a50"
+      }
+   ],
+   "followers": [
+      {
+         "username": "ben",
+         "id": "559afadfa65a4fcdc7e46612"
+      },
+      {
+         "username": "hellotest333",
+         "id": "559e6679adfd607b6e19e45f"
+      },
+      {
+         "username": "hellotest4444",
+         "id": "55a694d93533c5b21bc3ecc0"
+      }
+   ],
+   "following": [
+      {
+         "username": "ben",
+         "id": "559acbb5270da6be90903069"
+      },
+      {
+         "username": "hellotest333",
+         "id": "559e2cfd8e8b103946f4e58b"
+      },
+      {
+         "username": "hellotest4444",
+         "id": "55a22996f02d3ebf1ad90a4d"
+      }
+   ],
+   "details": [
+      {
+         "websiteUrl": "ryan.com",
+         "location": "london",
+         "about": "hey guys whats up!",
+         "id": "55ab8110a3f7f9d9b4411c9c"
+      }
+   ]
+   }
+]
