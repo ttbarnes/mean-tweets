@@ -3,5 +3,7 @@ angular.module('meanTweetsApp').controller('LogoutCtrl', function (auth, $scope,
   $scope.$parent.message = '';
   store.remove('profile');
   store.remove('token');
-  $location.path('/see-you-soon');
+
+  this.locationPath = '/see-you-soon';
+  $location.path(this.locationPath);
 });
