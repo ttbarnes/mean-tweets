@@ -33,7 +33,6 @@ describe('SearchCtrl', function() {
   describe('with successful results', function(){
 
     beforeEach(function(){
-      //scope.searchQuery = 'first tweet';
       stateParams = {
         searchParam : 'first tweet'
       };
@@ -64,6 +63,29 @@ describe('SearchCtrl', function() {
       scope.searchResults = mockTweets;
       scope.tweets = scope.searchResults[0].data;
       expect(scope.noSearchResults).toBeFalsy();
+    });
+
+  });
+
+describe('with no results', function(){
+
+    beforeEach(function(){
+      stateParams = {
+        searchParam : 'asdf'
+      };
+      scope.searchQuery = stateParams.searchParam;
+    });
+
+    it('should have state params search parameter/query defined', function(){
+      expect(stateParams.searchParam).toBeDefined();
+    })
+
+    it('should have the search parameter/query applied to scope', function(){
+      expect(scope.searchQuery).toEqual(stateParams.searchParam);
+    })
+
+    it('should have true noSearchResults', function(){
+      expect(scope.noSearchResults).toBeTruthy();
     });
 
   });
