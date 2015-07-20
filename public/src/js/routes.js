@@ -145,7 +145,6 @@ angular.module('meanTweetsRoutes', ['ui.router'])
       .state(states.seeYouSoon.name, {
         url: '/see-you-soon',
         templateUrl: 'views/see-you-soon.html',
-        controller: 'SeeYouSoonCtrl',
         resolve: {
           $title: function() { return states.seeYouSoon.pageTitle; }
         }
