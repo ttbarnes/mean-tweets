@@ -27,7 +27,7 @@
         <label for="location">Location</label>
         <input type="text" name="location" ng-model="profileDetails.location" placeholder="Location" />
         <label for="About">Short Description</label>
-        <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" max-length="100" ng-maxlength="100"></textarea>
+        <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" ng-trim="false" maxlength="100"></textarea>
         <char-counter input-elm="profileDetails.about.length" max-length="100"></char-counter>
         <input type="submit" 
                value="Save"
