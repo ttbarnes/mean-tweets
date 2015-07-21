@@ -10,12 +10,10 @@ describe('TweetSingleCtrl', function() {
       state = $injector.get('$state');
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
-      tweetsFactory = $injector.get('tweetsFactory');
       ctrl = $controller('TweetSingleCtrl', { 
         $scope: scope, 
         $state: state,
-        $httpBackend: httpBackend,
-        tweetsFactory: tweetsFactory
+        $httpBackend: httpBackend
       });
 
       //prevents 'unexpected request: GET views/*/index.html' error

@@ -18,11 +18,11 @@ describe('TweetRetweetCtrl', function() {
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
-      tweetsFactory = $injector.get('tweetsFactory');
+      apiEndpointFactory = $injector.get('apiEndpointFactory');
       ctrl = $controller('TweetRetweetCtrl', { 
         $scope: scope,
         $httpBackend: httpBackend,
-        tweetsFactory: tweetsFactory,
+        apiEndpointFactory: apiEndpointFactory,
         currentUserFactory: currentUserFactory,
       });
 
@@ -96,7 +96,7 @@ describe('TweetRetweetCtrl', function() {
       });
 
       it('should generate the correct endpoint', function(){
-        expect(tweetsFactory.retweets(tweetId).route).toEqual('api/tweets/' + tweetId + '/retweets');
+        expect(apiEndpointFactory.retweets(tweetId).route).toEqual('api/tweets/' + tweetId + '/retweets');
       });
 
       //todo: how to test restangular customPUT promise?
@@ -123,7 +123,7 @@ describe('TweetRetweetCtrl', function() {
       });
 
       it('should generate the correct endpoint', function(){
-        expect(tweetsFactory.singleRetweet(tweetId, retweetId).route).toEqual('api/tweets/' + tweetId + '/retweets/' + retweetId);
+        expect(apiEndpointFactory.singleRetweet(tweetId, retweetId).route).toEqual('api/tweets/' + tweetId + '/retweets/' + retweetId);
       });
 
       //todo: how to test restangular remove promise?

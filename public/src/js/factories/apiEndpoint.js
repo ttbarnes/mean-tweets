@@ -1,25 +1,7 @@
-//usage eg:
-//
-//tweetsFactory.tweets.getList()
-//
-//tweetsFactory.search('someHashtag').getList()
-//
-//tweetsFactory.userSpecificTweets('support2')
-//
-//tweetsFactory.singleTweet(5576b67fbb1c7b10c2dc65e1)
-//
-//tweetsFactory.favourites(4486b67fbb1c7b10c2dc6C0a)
-//
-//tweetsFactory.singleFavouite(5576b67fbb1c7b10c2dc65e1, 4486b67fbb1c7b10c2dc6C0a)
-//
-//tweetsFactory.retweets(4486b67fbb1c7b10c2dc6C0a)
-//
-//tweetsFactory.singleRetweet(5576b67fbb1c7b10c2dc65e1, 4486b67fbb1c7b10c2dc6C0a)
-//
-
-angular.module('meanTweetsApp').factory('tweetsFactory', function (Restangular){
+angular.module('meanTweetsApp').factory('apiEndpointFactory', function (Restangular){
 
     return {
+
       tweets: Restangular.all('api/tweets'),
 
       timeline: function(userFollowing) {
@@ -30,24 +12,40 @@ angular.module('meanTweetsApp').factory('tweetsFactory', function (Restangular){
         return Restangular.all('api/search/' + searchQuery);
       },
 
-      userSpecificTweets: function(username) {
-        return Restangular.all('api/profiles/' + username + '/tweets' );
-      },
-
       singleTweet: function(tweetId) {
         return Restangular.one('api/tweets/' + tweetId);
       },
+
       favourites: function(tweetId) {
         return Restangular.one('api/tweets/' + tweetId + '/favourites');
       },
+
       singleFavourite: function(tweetId, favouriteId) {
         return Restangular.one('api/tweets/' + tweetId + '/favourites/' + favouriteId);
       },
+
       retweets: function(tweetId) {
         return Restangular.one('api/tweets/' + tweetId + '/retweets');
       },
+
       singleRetweet: function(tweetId, retweetId) {
         return Restangular.one('api/tweets/' + tweetId + '/retweets/' + retweetId);
+      },
+
+      user: function(username) {
+        return Restangular.all('api/profiles/' + username );
+      },
+
+      userTweets: function(username) {
+        return Restangular.all('api/profiles/' + username + '/tweets' );
+      },
+
+      userDetails: function(username) {
+        return Restangular.all('api/profiles/' + username + '/details' );
+      },
+
+      userFavourites: function(username, tweetId) {
+        return Restangular.all('api/profiles/' + username + '/tweets/favourites/' + tweetId );
       }
 
     };

@@ -18,14 +18,12 @@ describe('TweetFavouriteCtrl', function() {
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
-      userProfileFactory = $injector.get('userProfileFactory');
-      tweetsFactory = $injector.get('tweetsFactory');
+      apiEndpointFactory = $injector.get('apiEndpointFactory');
       ctrl = $controller('TweetFavouriteCtrl', { 
         $scope: scope,
         $httpBackend: httpBackend,
-        tweetsFactory: tweetsFactory,
-        currentUserFactory: currentUserFactory,
-        userProfileFactory: userProfileFactory
+        apiEndpointFactory: apiEndpointFactory,
+        currentUserFactory: currentUserFactory
       });
 
       tweetId   = '1k2n4jn4mn5l1mn3k4';
@@ -93,7 +91,7 @@ describe('TweetFavouriteCtrl', function() {
 
     });
 
-    describe('new favourite PUT - tweetsFactory', function(){
+    describe('new favourite PUT - apiEndpointFactory', function(){
 
       beforeEach(function(){
         spyOn(Restangular, 'one').and.callThrough();
@@ -102,14 +100,14 @@ describe('TweetFavouriteCtrl', function() {
       });
 
       it('should generate the correct endpoint', function(){
-        expect(tweetsFactory.favourites(tweetId).route).toEqual('api/tweets/' + tweetId + '/favourites');
+        expect(apiEndpointFactory.favourites(tweetId).route).toEqual('api/tweets/' + tweetId + '/favourites');
       });
 
       //todo: how to test restangular customPUT promise?
 
     });
 
-    describe('new favourite PUT - userProfileFactory', function(){
+    describe('new favourite PUT - apiEndpointFactory', function(){
 
       beforeEach(function(){
         spyOn(Restangular, 'all').and.callThrough();
@@ -118,7 +116,7 @@ describe('TweetFavouriteCtrl', function() {
       });
 
       it('should generate the correct endpoint', function(){
-        expect(userProfileFactory.favourites(currentUserFactory.username, tweetId).route).toEqual('api/profiles/' + currentUserFactory.username + '/tweets/favourites/' + tweetId);
+        expect(apiEndpointFactory.userFavourites(currentUserFactory.username, tweetId).route).toEqual('api/profiles/' + currentUserFactory.username + '/tweets/favourites/' + tweetId);
       });
 
       //todo: how to test restangular customPUT promise?
@@ -142,7 +140,7 @@ describe('TweetFavouriteCtrl', function() {
     });
 
 
-    describe('unfavourite REMOVE - tweetsFactory', function(){
+    describe('unfavourite REMOVE - apiEndpointFactory', function(){
 
       beforeEach(function(){
         spyOn(Restangular, 'one').and.callThrough();
@@ -151,14 +149,14 @@ describe('TweetFavouriteCtrl', function() {
       });
 
       it('should generate the correct endpoint', function(){
-        expect(tweetsFactory.singleFavourite(tweetId, favouriteId).route).toEqual('api/tweets/' + tweetId + '/favourites/' + favouriteId);
+        expect(apiEndpointFactory.singleFavourite(tweetId, favouriteId).route).toEqual('api/tweets/' + tweetId + '/favourites/' + favouriteId);
       });
 
       //todo: how to test restangular remove promise?
 
     });
 
-    describe('unfavourite REMOVE - userProfileFactory', function(){
+    describe('unfavourite REMOVE - apiEndpointFactory', function(){
 
       beforeEach(function(){
         spyOn(Restangular, 'all').and.callThrough();
@@ -167,7 +165,7 @@ describe('TweetFavouriteCtrl', function() {
       });
 
       it('should generate the correct endpoint', function(){
-        expect(userProfileFactory.favourites(currentUserFactory.username, tweetId).route).toEqual('api/profiles/' + currentUserFactory.username + '/tweets/favourites/' + tweetId);
+        expect(apiEndpointFactory.userFavourites(currentUserFactory.username, tweetId).route).toEqual('api/profiles/' + currentUserFactory.username + '/tweets/favourites/' + tweetId);
       });
 
       //todo: how to test restangular remove promise?

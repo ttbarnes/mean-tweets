@@ -1,6 +1,6 @@
 //this is used for timeline and public profile
 
-angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFactory, $state, $stateParams, $scope, Restangular, tweetsFactory, userProfileFactory) {
+angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFactory, $state, $stateParams, $scope, apiEndpointFactory) {
 
   if(currentUserFactory && currentUserFactory.username) {
     $scope.loggedInUser = currentUserFactory.username;
@@ -35,11 +35,11 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
   //if not public profile, it's timeline.
   if($state.current.controller === 'ProfilePublicCtrl') {
-    this.apiEndpoint = tweetsFactory.userSpecificTweets($stateParams.username);
+    this.apiEndpoint = apiEndpointFactory.userTweets($stateParams.username);
     var statePublicProfile = true;
   }
   else {
-    this.apiEndpoint = userProfileFactory.user(currentUserFactory.username);
+    this.apiEndpoint = apiEndpointFactory.user(currentUserFactory.username);
   }
 
   var endPoint = this.apiEndpoint;
@@ -79,7 +79,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
         };
 
         //query the api - get only these users's tweets
-        tweetsFactory.timeline(currentUserFollowing).then(function (tweets) {
+        apiEndpointFactory.timeline(currentUserFollowing).then(function (tweets) {
           console.info('got new tweets (user following tweets): ' + currentUserFollowing.userFollowing.length + ' users');
           $scope.tweets = tweets;
           if(tweets.length) {

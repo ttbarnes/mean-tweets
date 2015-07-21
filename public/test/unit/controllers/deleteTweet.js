@@ -16,7 +16,7 @@ describe('DeleteTweetCtrl', function() {
       scope = $injector.get('$rootScope').$new();
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
-      tweetsFactory = $injector.get('tweetsFactory');
+      apiEndpointFactory = $injector.get('apiEndpointFactory');
       ctrl = $controller('DeleteTweetCtrl', { $scope: scope });
     });
 
@@ -50,7 +50,7 @@ describe('DeleteTweetCtrl', function() {
     it('should generate correct api end point', function(){
       spyOn(Restangular, 'one').and.callThrough();
       httpBackend.flush();
-      expect(tweetsFactory.singleTweet(scope.tweetId).route).toEqual('api/tweets/' + scope.tweetId);
+      expect(apiEndpointFactory.singleTweet(scope.tweetId).route).toEqual('api/tweets/' + scope.tweetId);
       scope.$digest();
     });
 

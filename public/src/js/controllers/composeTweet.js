@@ -1,5 +1,5 @@
 angular.module('meanTweetsApp').controller('ComposeTweetCtrl', 
-  function ($rootScope, $scope, Restangular, currentUserFactory, tweetsFactory, ngDialog) {
+  function ($rootScope, $scope, Restangular, currentUserFactory, apiEndpointFactory, ngDialog) {
 
     $scope.postTweet = function(tweet){
       this.newTweet = {
@@ -12,7 +12,7 @@ angular.module('meanTweetsApp').controller('ComposeTweetCtrl',
 
       var newTweet = this.newTweet;
 
-      tweetsFactory.tweets.post(newTweet).then(function(){
+      apiEndpointFactory.tweets.post(newTweet).then(function(){
         console.info('posted a tweet', newTweet);
         $scope.tweet = '';
         ngDialog.closeAll();

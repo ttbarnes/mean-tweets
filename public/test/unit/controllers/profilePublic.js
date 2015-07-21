@@ -46,8 +46,7 @@ describe('ProfilePublicCtrl', function() {
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
-      tweetsFactory = $injector.get('tweetsFactory');
-      userProfileFactory = $injector.get('userProfileFactory');
+      apiEndpointFactory = $injector.get('apiEndpointFactory');
 
       ctrl = $controller('ProfilePublicCtrl', { 
         $scope: scope,

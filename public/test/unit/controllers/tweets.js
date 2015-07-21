@@ -11,7 +11,7 @@ describe('TweetsCtrl', function() {
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
-      userProfileFactory = $injector.get('userProfileFactory');
+      apiEndpointFactory = $injector.get('apiEndpointFactory');
       ctrl = $controller('TweetsCtrl', { 
         $scope: scope, 
         $state: state,
@@ -43,7 +43,7 @@ describe('TweetsCtrl', function() {
       };
 
       tempFactoryRestangularCalls = {
-        userProfileFactory : 'Restangular.all(\'api/profiles/\' + username );'
+        apiEndpointFactory : 'Restangular.all(\'api/profiles/\' + username );'
       };
 
       //controller specific mocks

@@ -1,12 +1,12 @@
 angular.module('meanTweetsApp').controller('TweetSingleCtrl', 
-  function ($stateParams, $scope, Restangular, tweetsFactory) {
+  function ($stateParams, $scope, Restangular, apiEndpointFactory) {
 
     this.tweetId = $stateParams.tweetId;
     var tweetId = this.tweetId;
 
     $scope.getTweet = function() {
       //todo: handle errors
-      tweetsFactory.singleTweet(tweetId).get().then(function (tweet){
+      apiEndpointFactory.singleTweet(tweetId).get().then(function (tweet){
         $scope.tweet = tweet;
         console.info('got the tweet');
       }, function (err){

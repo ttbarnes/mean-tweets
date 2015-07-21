@@ -1,4 +1,4 @@
-angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentUserFactory, $state, $stateParams, $scope, Restangular, userProfileFactory) {
+angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentUserFactory, $state, $stateParams, $scope, Restangular, apiEndpointFactory) {
 
   //temp solution to redirect if user is not auth
   if(!currentUserFactory.isAuth && $state.$current.data.auth.required === true) {
@@ -7,7 +7,7 @@ angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentU
 
   $scope.loggedInUser = currentUserFactory.username;
 
-  userProfileFactory.user($scope.loggedInUser).getList().then(function (profile){
+  apiEndpointFactory.user($scope.loggedInUser).getList().then(function (profile){
     $scope.profile = profile[0];
     $scope.profileDetails = $scope.profile.details[0];
   });
@@ -23,7 +23,7 @@ angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentU
         about      : data.about
       };
 
-      userProfileFactory.userDetails(currentUserFactory.username).customPUT(profileDetails).then(function () {
+      apiEndpointFactory.userDetails(currentUserFactory.username).customPUT(profileDetails).then(function () {
         console.log(currentUserFactory.username + ' just updated their profile details');
         console.log('posted to: ' + 'api/profiles/' + currentUserFactory.username + '/details');
       });

@@ -19,7 +19,7 @@ describe('ProfileEditCtrl', function() {
       state = $injector.get('$state');
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
-      userProfileFactory = $injector.get('userProfileFactory');
+      apiEndpointFactory = $injector.get('apiEndpointFactory');
 
       ctrl = $controller('ProfileEditCtrl', { 
         $scope: scope, 
@@ -49,8 +49,8 @@ describe('ProfileEditCtrl', function() {
       expect(scope.updateProfileDetails).toBeDefined();
     });
 
-    it('should generate correct endpoint with userProfileFactory', function(){
-      expect(userProfileFactory.user(scope.loggedInUser).route).toEqual('api/profiles/' + scope.loggedInUser);
+    it('should generate correct endpoint with apiEndpointFactory', function(){
+      expect(apiEndpointFactory.user(scope.loggedInUser).route).toEqual('api/profiles/' + scope.loggedInUser);
     });
 
     describe('get profile data', function(){
@@ -157,7 +157,7 @@ describe('ProfileEditCtrl', function() {
       });
 
       it('should generate the correct endpoint', function(){
-        expect(userProfileFactory.userDetails(currentUserFactory.username).route).toEqual('api/profiles/' + currentUserFactory.username + '/details');
+        expect(apiEndpointFactory.userDetails(currentUserFactory.username).route).toEqual('api/profiles/' + currentUserFactory.username + '/details');
       });
 
       //todo: how to test restangular customPUT promise?

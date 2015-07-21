@@ -11,12 +11,12 @@ describe('ComposeTweetCtrl', function() {
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
-      tweetsFactory = $injector.get('tweetsFactory');
+      apiEndpointFactory = $injector.get('apiEndpointFactory');
       ctrl = $controller('ComposeTweetCtrl', {
         $scope: scope,
         $httpBackend: httpBackend,
         currentUserFactory: currentUserFactory,
-        tweetsFactory: tweetsFactory
+        apiEndpointFactory: apiEndpointFactory
       });
 
       //prevents 'unexpected request: GET views/*/index.html' error
