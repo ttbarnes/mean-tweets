@@ -1,6 +1,18 @@
 .tweet {
   clear:both;
+  display:inline-block;
+  vertical-align:top;
+  width:100%;
   position:relative;
+  padding:{
+    top:10px;
+    bottom:5px;
+  }
+
+  a {
+    font-weight:normal;
+    color:$blue-light-2;
+  }
 
   .tweets &  {
     @media (min-width:$bp-md) {
@@ -18,20 +30,37 @@
     border-bottom-color:$green-dark-1;
   }
 
+  .col-left {
+    float:left;
+    color:$blue-light-2;
+    i {
+      float:left;
+      margin:{
+        top:3px;
+        right:5px;
+      }
+    }
+  }
+
   .retweet-notice {
-    color:$grey-1;
+    margin-bottom:3px;
+    color:$green-light-1;
     .fa {
-      padding:5px;
-      margin-right:5px;
-      border-radius:$border-radius-sm;
-      background:$green-dark-1;
-      color:rgba(255, 255, 255, 0.9);
+      margin-top:5px;
+      color:$green-light-1;
     }
     span {
       display:inline-block;
       vertical-align:baseline;
       margin-right:5px;
     }
+  }
+
+  .timestamp {
+    float:right;
+    color:$blue-light-1;
+    font-size:0.7em;
+    margin-top:6px;
   }
 
   .img-wrap {
@@ -56,24 +85,60 @@
     }
   }
 
-  .actions {
-    i {
-      font-size:1.3em;
-      &.active {
-        color:$green-dark-1;
-      }
-      &.fa-remove {
-        color:$red-1;
-      }
+  .row-bottom {
+    color:$blue-light-2;
+    p {
+      margin-bottom:0;
     }
+
     button {
       width:auto;
       display:inline-block;
       vertical-align:middle;
-      padding:10px;
+      padding:10px 5px;
       margin-bottom:0;
       background:transparent;
+      color:$blue-light-2;
     }
+    i {
+      font-size:1.3em;
+      &.fa-remove {
+        color:$red-1;
+      }
+    }
+
+    .tweet-favourite,
+    .tweet-retweet {
+      margin-right:5px;
+    }
+
+    .tweet-favourite i.active {
+      color:$orange-1;
+    }
+    .tweet-retweet i.active {
+      color:$green-light-1;
+    }
+
+  }
+
+  .actions {
+    float:left;
+  }
+
+  .view-more {
+    float:right;
+    margin-top:6px;
+    p {
+      display:inline-block;
+    }
+    a,
+    button {
+      color:$blue-light-1;
+    }
+  }
+
+  .tweet-favourite button {
+    padding-left:0;
   }
 
 }

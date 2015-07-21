@@ -8,40 +8,48 @@
     <p>{{profileUsername}} hasn't tweeted yet. <br/><br/> :(</p>
   </div>
 
-  <div ng-repeat="tweet in tweets.slice().reverse() | filter: timestamp" 
+  <div ng-repeat="tweet in tweets.slice().reverse() | filter: timestamp"
        class="panel tweet"
        ng-class="{retweeted : tweet.followingRetweeted}">
 
-    <p ng-show="tweet.followingRetweeted" class="retweet-notice">
-      <small><i class="fa fa-refresh"></i>Retweeted by 
-        <span ng-repeat="retweeter in tweet.retweetedUsernames">{{retweeter.username}}</span>
-      </small>
-    </p>
+    <div class="row row-top">
 
-    <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
-    <p><a ui-sref="profilePublic({username: tweet.username})">@{{tweet.username}}</a></p>
+      <div class="col-left">
 
-    <div ng-if="tweet.image.url" class="img-wrap">
-      <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
+        <p ng-show="tweet.followingRetweeted" class="retweet-notice">
+          <small><i class="fa fa-refresh"></i>Retweeted by 
+            <span ng-repeat="retweeter in tweet.retweetedUsernames">{{retweeter.username}}</span>
+          </small>
+        </p>
+
+        <p><a ui-sref="profilePublic({username: tweet.username})">
+            <i class="fa fa-user"></i>
+            <small>@{{tweet.username}}</small>
+        </a></p>
+      </div>
+      <small class="timestamp"><i>{{tweet.timestamp | amCalendar}}</i></small>
     </div>
 
-    <!--
-    <p ng-if="tweet.favourites.length"><small>favourites <br/>{{tweet.favourites.length}}</small></p>
-    <p ng-if="tweet.retweets.length"><small>retweets <br/>{{tweet.retweets.length}}</small></p>
-    -->
+    <div class="row">
+      <p class="tweet-copy">{{tweet.copy}}</p>
+      <div ng-if="tweet.image.url" class="img-wrap">
+        <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
+      </div>
+    </div>
 
-    <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
+    <div class="row row-bottom">
+      <div ng-if="auth.isAuthenticated" class="actions">
+        <ng-include src="'views/partials/tweet-favourite.html'"></ng-include>
+        <ng-include src="'views/partials/tweet-retweet.html'"></ng-include>
+      </div>
 
-    <div ng-if="auth.isAuthenticated" class="actions">
-
-      <ng-include src="'views/partials/tweet-favourite.html'"></ng-include>
-
-      <ng-include src="'views/partials/tweet-retweet.html'"></ng-include>
-
-      <button ng-if="usersOwnProfile"
-              ng-click="deleteTweetDialog(tweet._id)">
-              <i class="fa fa-trash"></i>
-      </button>
+      <div class="view-more">
+        <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
+        <button ng-if="usersOwnProfile"
+                ng-click="deleteTweetDialog(tweet._id)">
+                <i class="fa fa-trash"></i>
+        </button>
+      </div>
     </div>
 
   </div>

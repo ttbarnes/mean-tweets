@@ -22,6 +22,9 @@ p {
 
 small {
   font-size:0.8em;
+  &.xs {
+    font-size:0.7em;
+  }
 }
 
 a {
