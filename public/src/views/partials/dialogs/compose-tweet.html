@@ -21,6 +21,13 @@
              value="Tweet"
              class="button blue"
              ng-disabled="postTweetForm.$invalid || !tweet.copy.length" />
+
+      <div ng-show="loading" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+      <p ng-show="loadingSuccess">tweet posted!</p>
     </div>
   </form>
 </div>

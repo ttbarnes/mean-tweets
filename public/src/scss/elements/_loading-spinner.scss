@@ -18,6 +18,17 @@
   animation-fill-mode: both;
 }
 
+.spinner.small-blue {
+  width:40px;
+  padding:8px 0;
+  margin:0;
+  > div {
+    width:8px;
+    height:8px;
+    background-color:$blue-light-1;
+  }
+}
+
 .spinner .bounce1 {
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
