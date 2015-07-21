@@ -14,6 +14,8 @@ angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentU
 
   $scope.updateProfileDetails = function(data) {
 
+    $scope.loading = true;
+
     if(currentUserFactory.isAuth) {
 
       var profileDetails = {
@@ -24,6 +26,8 @@ angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentU
       };
 
       apiEndpointFactory.userDetails(currentUserFactory.username).customPUT(profileDetails).then(function () {
+        $scope.loading = false;
+        $scope.loadingSuccess = true;
         console.log(currentUserFactory.username + ' just updated their profile details');
         console.log('posted to: ' + 'api/profiles/' + currentUserFactory.username + '/details');
       });

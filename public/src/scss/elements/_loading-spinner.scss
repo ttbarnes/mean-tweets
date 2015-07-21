@@ -18,10 +18,16 @@
   animation-fill-mode: both;
 }
 
-.spinner.small-blue {
+.spinner.small-inline {
+  display:block;
+  margin:0 auto;
   width:40px;
   padding:8px 0;
-  margin:0;
+  @media (min-width:$bp-sm) {
+    display:inline-block;
+    vertical-align:top;
+    margin:0 15px;
+  }
   > div {
     width:8px;
     height:8px;

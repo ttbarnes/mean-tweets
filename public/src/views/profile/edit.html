@@ -32,6 +32,13 @@
                value="Save"
                class="button blue"
                ng-disabled="profileDetailsForm.$invalid || profileDetailsForm.$pristine" />
+
+        <div ng-show="loading" class="spinner small-inline">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+
       </form>
     </div>
   </div>
