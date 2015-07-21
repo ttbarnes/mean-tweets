@@ -60,6 +60,8 @@ describe('TweetsCtrl', function() {
   });
 
   
+  
+  /*
   describe('loggedInUser', function(){
 
     describe('when unauthorized', function(){
@@ -180,5 +182,7 @@ describe('TweetsCtrl', function() {
     });
 
   });
+
+  */
 
 });
