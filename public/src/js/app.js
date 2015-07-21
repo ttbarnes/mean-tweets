@@ -11,7 +11,9 @@ angular.module('meanTweetsApp', [
   'meanTweetsRoutes',
   'restangular',
   'angularMoment',
-  'ngDialog'
+  'ngDialog',
+  'angulartics', 
+  'angulartics.google.analytics'
 ])
 
 .config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider, ngDialogProvider) {

@@ -55,6 +55,8 @@
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
+    <script src="bower_components/angulartics/src/angulartics.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-ga.js"></script>
     <!-- endbuild -->
 
     <!-- build:js js/main.js -->
@@ -82,6 +84,14 @@
     <script src="js/factories/userProfile.js"></script>
     <script src="js/factories/tweets.js"></script>
     <!-- endbuild -->
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      //ga('create', 'UA-22950550-2', 'tonybarnes.me');
+    </script>
 
   </body>
 </html>

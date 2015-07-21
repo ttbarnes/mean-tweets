@@ -30,6 +30,8 @@ module.exports = function(config) {
       'src/bower_components/moment/moment.js',
       'src/bower_components/angular-moment/angular-moment.js',
       'src/bower_components/ngDialog/js/ngDialog.js',
+      'src/bower_components/angulartics/src/angulartics.js',
+      'src/bower_components/angulartics/src/angulartics-ga.js',
       '../node_modules/karma-read-json/karma-read-json.js',
       'src/js/*.js',
       'src/js/**/*.js',
