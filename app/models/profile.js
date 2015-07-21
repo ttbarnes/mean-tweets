@@ -3,7 +3,6 @@ var Schema       = mongoose.Schema;
 
 var ProfileSchema   = new Schema({
     username: String,
-    avatarUrl: String,
     details: [{
       websiteUrl: String,
       location: String,

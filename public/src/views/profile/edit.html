@@ -6,9 +6,8 @@
 
     <div class="col-30 col-left">
 
-      <div class="avatar-wrap avatar-default" ng-class="{'avatar-default': !profile.avatarUrl}">
-        <img ng-if="profile.avatarUrl" ng-src="{{profile.avatarUrl}}" alt="{{profile.username}}" />
-        <i ng-if="!profile.avatarUrl" class="fa fa-user fa-3x"></i>
+      <div class="avatar-wrap">
+        <i class="fa fa-user fa-3x"></i>
       </div>
 
       <p><strong>Nickname: </strong>{{auth.profile.nickname}}</p>
@@ -18,17 +17,17 @@
     <div class="col-70 col-right">
       <form name="profileDetailsForm" ng-submit="updateProfileDetails(profileDetails)">
 
-        <label for="avatarUrl">avatar URL</label>
-
-        <input type="text" name="avatarUrl" ng-model="profileDetails.avatarUrl" placeholder="http://mywebsite.com/headshot.jpg" />
-
         <label for="websiteUrl">Website URL</label>
         <input type="text" name="websiteUrl" ng-model="profileDetails.websiteUrl" placeholder="http://mywebsite.com" />
+
         <label for="location">Location</label>
         <input type="text" name="location" ng-model="profileDetails.location" placeholder="Location" />
+
         <label for="About">Short Description</label>
         <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" ng-trim="false" maxlength="100"></textarea>
+
         <char-counter input-elm="profileDetails.about.length" max-length="100"></char-counter>
+
         <input type="submit" 
                value="Save"
                class="button blue"

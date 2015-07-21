@@ -68,10 +68,6 @@ describe('ProfileEditCtrl', function() {
         expect(scope.profile.username).toBeDefined();
       });
 
-      it('should return profile data - avatar url', function(){
-        expect(scope.profile.avatarUrl).toBeDefined();
-      });
-
       it('should return profile data - favourites', function(){
         expect(scope.profile.favourites).toBeDefined();
       });
