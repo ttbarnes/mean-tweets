@@ -59,8 +59,11 @@
   .timestamp {
     float:right;
     color:$blue-light-1;
-    font-size:0.7em;
     margin-top:6px;
+    font:{
+      size:0.7em;
+      style:italic;
+    }
   }
 
   .img-wrap {
