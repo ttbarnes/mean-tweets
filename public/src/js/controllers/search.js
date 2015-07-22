@@ -8,6 +8,7 @@ angular.module('meanTweetsApp').controller('SearchCtrl',
       $scope.noSearchResults = true;
     }
     else {
+      console.log('- - - BROADCAST BEING CALLED...')
       $rootScope.$broadcast('searchBoxOkToClear');
     }
 

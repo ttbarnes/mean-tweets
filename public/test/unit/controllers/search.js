@@ -11,15 +11,20 @@ describe('SearchCtrl', function() {
     inject(function($injector) {
       $q = $injector.get('$q');
       var $controller = $injector.get('$controller');
-      scope = $injector.get('$rootScope').$new();
+      scope = $injector.get('$rootScope');
+      httpBackend = $injector.get('$httpBackend');
       state = $injector.get('$state');
       ctrl = $controller('SearchCtrl', { 
         $scope: scope,
+        $httpBackend: httpBackend,
         $state: state,
         searchResults: searchResults
       });
 
+      httpBackend.whenGET(/views.*/).respond(200, '');
+
     });
+
   });
 
   //note: require further investigation.
@@ -33,6 +38,7 @@ describe('SearchCtrl', function() {
   describe('with successful results', function(){
 
     beforeEach(function(){
+      spyOn(scope, '$broadcast').and.callThrough();
       stateParams = {
         searchParam : 'first tweet'
       };
@@ -43,6 +49,8 @@ describe('SearchCtrl', function() {
       if(!mockTweets[0].data) {
         scope.noSearchResults = true;
       }
+
+      httpBackend.flush();
       scope.$digest();
     });
 
@@ -63,6 +71,11 @@ describe('SearchCtrl', function() {
       scope.searchResults = mockTweets;
       scope.tweets = scope.searchResults[0].data;
       expect(scope.noSearchResults).toBeFalsy();
+    });
+
+    it('should broadcast searchBoxOkToClear', function(){
+      expect(scope.$broadcast).toHaveBeenCalled();
+
     });
 
   });
@@ -89,10 +102,6 @@ describe('SearchCtrl', function() {
     });
 
   });
-
-
-  //todo: test broadcast
-
 
 
 
