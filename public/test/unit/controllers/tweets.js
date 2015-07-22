@@ -26,10 +26,6 @@ describe('TweetsCtrl', function() {
 
       httpBackend.whenGET('/api/profiles/undefined').respond(mockTweets);
 
-      ////////////
-      //mocks
-      ////////////
-
       //these will probably be shared helpers when we have more tests. 
       state.params = { username: 'steven' };
 

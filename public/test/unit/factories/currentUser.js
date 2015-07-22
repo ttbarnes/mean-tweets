@@ -8,7 +8,6 @@ describe('currentUserFactory', function() {
       httpBackend = $injector.get('$httpBackend');
       store = $injector.get('store');
 
-      //prevents 'unexpected request: GET views/*/index.html' error
       httpBackend.whenGET(/views.*/).respond(200, '');
     });
 

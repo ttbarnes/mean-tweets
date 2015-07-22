@@ -16,16 +16,12 @@ describe('TweetSingleCtrl', function() {
         $httpBackend: httpBackend
       });
 
-      //prevents 'unexpected request: GET views/*/index.html' error
       httpBackend.whenGET(/views.*/).respond(200, '');
 
       var mockSingleTweet = readJSON('test/unit/mock-data/single-tweet.json');
 
       httpBackend.whenGET('/api/tweets/undefined').respond(mockSingleTweet);
 
-      ////////////
-      //mocks
-      ////////////
       state.params = { tweetId: '00001' };
 
       ctrl.tweetId = state.params.tweetId;

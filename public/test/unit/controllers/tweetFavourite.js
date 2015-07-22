@@ -29,7 +29,6 @@ describe('TweetFavouriteCtrl', function() {
       tweetId   = '1k2n4jn4mn5l1mn3k4';
       favouriteId = '9b7nh7e2j4w9x1m2w3';
 
-      //prevents 'unexpected request: GET views/*/index.html' error
       httpBackend.whenGET(/views.*/).respond(200, '');
 
       httpBackend.whenGET('/api/tweets/' + tweetId + '/favourites').respond(200, '');

@@ -28,7 +28,6 @@ describe('ComposeTweetCtrl', function() {
 
       httpBackend.expect('POST', '/api/tweets');
 
-      //prevents 'unexpected request: GET views/*/index.html' error
       httpBackend.whenGET(/views.*/).respond(200, '');
 
       httpBackend.whenPOST('/api/tweets').respond(200, '');

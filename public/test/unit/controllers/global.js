@@ -19,7 +19,6 @@ describe('GlobalCtrl', function() {
       });
     });
 
-    //prevents 'unexpected request: GET views/*/index.html' error
     httpBackend.whenGET(/views.*/).respond(200, '');
 
   });

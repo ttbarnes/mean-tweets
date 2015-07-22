@@ -67,7 +67,7 @@ describe('SearchCtrl', function() {
 
   });
 
-describe('with no results', function(){
+  describe('with no results', function(){
 
     beforeEach(function(){
       stateParams = {
