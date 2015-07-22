@@ -16,22 +16,18 @@ angular.module('meanTweetsApp').controller('ProfileEditCtrl', function (currentU
 
     $scope.loading = true;
 
-    if(currentUserFactory.isAuth) {
+    var profileDetails = {
+      websiteUrl : data.websiteUrl,
+      location   : data.location,
+      about      : data.about
+    };
 
-      var profileDetails = {
-        avatarUrl  : data.avatarUrl,
-        websiteUrl : data.websiteUrl,
-        location   : data.location,
-        about      : data.about
-      };
-
-      apiEndpointFactory.userDetails(currentUserFactory.username).customPUT(profileDetails).then(function () {
-        $scope.loading = false;
-        $scope.loadingSuccess = true;
-        console.log(currentUserFactory.username + ' just updated their profile details');
-        console.log('posted to: ' + 'api/profiles/' + currentUserFactory.username + '/details');
-      });
-    }
+    apiEndpointFactory.userDetails(currentUserFactory.username).customPUT(profileDetails).then(function () {
+      $scope.loading = false;
+      $scope.loadingSuccess = true;
+      console.log(currentUserFactory.username + ' just updated their profile details');
+      console.log('posted to: ' + 'api/profiles/' + currentUserFactory.username + '/details');
+    });
 
   };
 
