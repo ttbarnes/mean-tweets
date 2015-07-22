@@ -37,19 +37,6 @@ describe('apiEndpointFactory', function(){
 
   });
 
-  describe('user tweets endpoint', function(){
-
-    it('should be defined', inject(function (apiEndpointFactory) {
-      expect(apiEndpointFactory.userTweets).toBeDefined();
-    }));
-
-    it('should generate correct endpoint', inject(function (apiEndpointFactory) {
-      var username = 'humphrey';
-      expect(apiEndpointFactory.userTweets(username).route).toEqual('api/profiles/' + username + '/tweets');
-    }));
-
-  });
-
   describe('singleTweet endpoint', function(){
 
     it('should be defined', inject(function (apiEndpointFactory) {
@@ -66,7 +53,7 @@ describe('apiEndpointFactory', function(){
   describe('favourites endpoint', function(){
 
     it('should be defined', inject(function (apiEndpointFactory) {
-      expect(apiEndpointFactory.userFavourites).toBeDefined();
+      expect(apiEndpointFactory.favourites).toBeDefined();
     }));
 
     it('should generate correct endpoint', inject(function (apiEndpointFactory) {
@@ -113,6 +100,59 @@ describe('apiEndpointFactory', function(){
       var tweetId = '55890abc18923oix5579';
       var retweetId = 'an12lj3l1md0890fdm';
       expect(apiEndpointFactory.singleRetweet(tweetId, retweetId).route).toEqual('api/tweets/' + tweetId + '/retweets/' + retweetId);
+    }));
+
+  });
+
+  describe('user endpoint', function(){
+
+    it('should be defined', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.user).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (apiEndpointFactory) {
+      var username = 'ben';
+      expect(apiEndpointFactory.user(username).route).toEqual('api/profiles/' + username);
+    }));
+
+  });
+
+  describe('user tweets endpoint', function(){
+
+    it('should be defined', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.userTweets).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (apiEndpointFactory) {
+      var username = 'humphrey';
+      expect(apiEndpointFactory.userTweets(username).route).toEqual('api/profiles/' + username + '/tweets');
+    }));
+
+  });
+
+  describe('user details endpoint', function(){
+
+    it('should be defined', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.userDetails).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (apiEndpointFactory) {
+      var username = 'humphrey';
+      expect(apiEndpointFactory.userDetails(username).route).toEqual('api/profiles/' + username + '/details');
+    }));
+
+  });
+
+  describe('user favourites endpoint', function(){
+
+    it('should be defined', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.userFavourites).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (apiEndpointFactory) {
+      var tweetId = '55890abc18923oix5579';
+      var username = 'bill';
+      expect(apiEndpointFactory.userFavourites(username, tweetId).route).toEqual('api/profiles/' + username + '/tweets/favourites/' + tweetId);
     }));
 
   });
