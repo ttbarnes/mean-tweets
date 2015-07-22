@@ -107,7 +107,7 @@ describe('ComposeTweetCtrl', function() {
         expect(scope.tweet).toEqual('');
       });
 
-      it('should brodcast refreshTweets', function(){
+      it('should broadcast refreshTweets', function(){
         expect(scope.$broadcast).toHaveBeenCalledWith('refreshTweets');
       });
 
