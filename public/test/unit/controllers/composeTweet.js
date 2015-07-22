@@ -14,8 +14,7 @@ describe('ComposeTweetCtrl', function() {
     inject(function($injector) {
       $q = $injector.get('$q');
       var $controller = $injector.get('$controller');
-      rootScope = $injector.get('$rootScope').$new();
-      scope = $injector.get('$rootScope').$new();
+      scope = $injector.get('$rootScope');
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
@@ -41,8 +40,6 @@ describe('ComposeTweetCtrl', function() {
           url:'http://randomUrl.com/img.jpg'
         }
       };
-
-      //spyOn(scope, '$broadcast');
 
     });
 
@@ -93,6 +90,7 @@ describe('ComposeTweetCtrl', function() {
     describe('api call/promise success', function(){
 
       beforeEach(function(){
+        spyOn(scope, '$broadcast');
         scope.postTweet(ctrl.mockTweet);
         httpBackend.flush();
         scope.$digest();
@@ -110,19 +108,12 @@ describe('ComposeTweetCtrl', function() {
         expect(scope.tweet).toEqual('');
       });
 
-
-      //why you no work
-      /*
       it('should brodcast refreshTweets', function(){
-        spyOn(rootScope, '$broadcast');
-        expect(rootScope.$broadcast).toHaveBeenCalled();
+        expect(scope.$broadcast).toHaveBeenCalledWith('refreshTweets');
       });
-      */
-
 
     });
 
   });
-
 
 });
