@@ -43,8 +43,20 @@ describe('TweetRetweetCtrl', function() {
       expect(scope.retweetTweet).toBeDefined();
     });
 
+    it('should run retweetTweet when called', function(){
+      spyOn(scope, 'retweetTweet');
+      scope.retweetTweet(tweetId);
+      expect(scope.retweetTweet).toHaveBeenCalled();
+    });
+
     it('should have a removeRetweet function', function(){
       expect(scope.removeRetweet).toBeDefined();
+    });
+
+    it('should run removeRetweet when called', function(){
+      spyOn(scope, 'removeRetweet');
+      scope.removeRetweet(tweetId, retweetId);
+      expect(scope.removeRetweet).toHaveBeenCalled();
     });
 
   });
@@ -62,7 +74,6 @@ describe('TweetRetweetCtrl', function() {
       }
 
       spyOn(scope, 'retweetTweet');
-      scope.retweetTweet(tweetId);
 
     });
 
@@ -86,7 +97,7 @@ describe('TweetRetweetCtrl', function() {
 
     });
 
-    describe('new retweet PUT', function(){
+    describe('new retweet PUT success', function(){
 
       beforeEach(function(){
         spyOn(Restangular, 'one').and.callThrough();
@@ -98,11 +109,12 @@ describe('TweetRetweetCtrl', function() {
         expect(apiEndpointFactory.retweets(tweetId).route).toEqual('api/tweets/' + tweetId + '/retweets');
       });
 
-      //todo: how to test restangular customPUT promise?
+      it('should have loading=false', function(){
+        expect(scope.loading).toBeFalsy();
+      });
 
     });
 
-    
   });
 
 
@@ -111,9 +123,10 @@ describe('TweetRetweetCtrl', function() {
     beforeEach(function(){
       spyOn(scope, 'removeRetweet');
       scope.removeRetweet(tweetId, retweetId);
+      scope.$digest();
     });
 
-    describe('remove retweet REMOVE', function(){
+    describe('remove retweet REMOVE success', function(){
 
       beforeEach(function(){
         spyOn(Restangular, 'one').and.callThrough();
@@ -125,13 +138,12 @@ describe('TweetRetweetCtrl', function() {
         expect(apiEndpointFactory.singleRetweet(tweetId, retweetId).route).toEqual('api/tweets/' + tweetId + '/retweets/' + retweetId);
       });
 
-      //todo: how to test restangular remove promise?
+      it('should have loading=false', function(){
+        expect(scope.loading).toBeFalsy();
+      });
 
     });
 
-
   });
-
-
 
 });
