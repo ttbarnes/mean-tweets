@@ -43,8 +43,20 @@ describe('TweetFavouriteCtrl', function() {
       expect(scope.favouriteTweet).toBeDefined();
     });
 
+    it('should run favouriteTweet when called', function(){
+      spyOn(scope, 'favouriteTweet');
+      scope.favouriteTweet(tweetId);
+      expect(scope.favouriteTweet).toHaveBeenCalled();
+    });
+
     it('should have a unFavouriteTweet function', function(){
       expect(scope.unFavouriteTweet).toBeDefined();
+    });
+
+    it('should run unFavouriteTweet when called', function(){
+      spyOn(scope, 'unFavouriteTweet');
+      scope.unFavouriteTweet(tweetId, favouriteId);
+      expect(scope.unFavouriteTweet).toHaveBeenCalled();
     });
 
   });
@@ -64,10 +76,6 @@ describe('TweetFavouriteCtrl', function() {
       spyOn(scope, 'favouriteTweet');
       scope.favouriteTweet(tweetId);
 
-    });
-
-    it('should have been called', function(){
-      expect(scope.favouriteTweet).toHaveBeenCalledWith(tweetId);
     });
 
     describe('new favourite object', function(){
@@ -90,7 +98,7 @@ describe('TweetFavouriteCtrl', function() {
 
     });
 
-    describe('new favourite PUT - apiEndpointFactory', function(){
+    describe('new favourite PUT success', function(){
 
       beforeEach(function(){
         spyOn(Restangular, 'one').and.callThrough();
@@ -98,82 +106,44 @@ describe('TweetFavouriteCtrl', function() {
         scope.$digest();
       });
 
-      it('should generate the correct endpoint', function(){
+      it('should generate the correct endpoint - route: favourites', function(){
         expect(apiEndpointFactory.favourites(tweetId).route).toEqual('api/tweets/' + tweetId + '/favourites');
       });
 
-      //todo: how to test restangular customPUT promise?
-
-    });
-
-    describe('new favourite PUT - apiEndpointFactory', function(){
-
-      beforeEach(function(){
-        spyOn(Restangular, 'all').and.callThrough();
-        httpBackend.flush();
-        scope.$digest();
-      });
-
-      it('should generate the correct endpoint', function(){
+      it('should generate the correct endpoint - route: userFavourites', function(){
         expect(apiEndpointFactory.userFavourites(currentUserFactory.username, tweetId).route).toEqual('api/profiles/' + currentUserFactory.username + '/tweets/favourites/' + tweetId);
       });
 
-      //todo: how to test restangular customPUT promise?
+      it('should have loading=false', function(){
+        expect(scope.loading).toBeFalsy();
+      });
 
     });
 
   });
 
-
-  describe('unFavourite tweet', function(){
+  describe('unFavourite tweet REMOVE', function(){
 
     beforeEach(function(){
-
       spyOn(scope, 'unFavouriteTweet');
+      spyOn(Restangular, 'one').and.callThrough();
       scope.unFavouriteTweet(tweetId, favouriteId);
-
+      httpBackend.flush();
+      scope.$digest();
     });
 
-    it('should have been called', function(){
-      expect(scope.unFavouriteTweet).toHaveBeenCalledWith(tweetId, favouriteId);
+    it('should generate the correct endpoint - route: singleFavourite', function(){
+      expect(apiEndpointFactory.singleFavourite(tweetId, favouriteId).route).toEqual('api/tweets/' + tweetId + '/favourites/' + favouriteId);
     });
 
-
-    describe('unfavourite REMOVE - apiEndpointFactory', function(){
-
-      beforeEach(function(){
-        spyOn(Restangular, 'one').and.callThrough();
-        httpBackend.flush();
-        scope.$digest();
-      });
-
-      it('should generate the correct endpoint', function(){
-        expect(apiEndpointFactory.singleFavourite(tweetId, favouriteId).route).toEqual('api/tweets/' + tweetId + '/favourites/' + favouriteId);
-      });
-
-      //todo: how to test restangular remove promise?
-
+    it('should generate the correct endpoint - route: userFavourites', function(){
+      expect(apiEndpointFactory.userFavourites(currentUserFactory.username, tweetId).route).toEqual('api/profiles/' + currentUserFactory.username + '/tweets/favourites/' + tweetId);
     });
 
-    describe('unfavourite REMOVE - apiEndpointFactory', function(){
-
-      beforeEach(function(){
-        spyOn(Restangular, 'all').and.callThrough();
-        httpBackend.flush();
-        scope.$digest();
-      });
-
-      it('should generate the correct endpoint', function(){
-        expect(apiEndpointFactory.userFavourites(currentUserFactory.username, tweetId).route).toEqual('api/profiles/' + currentUserFactory.username + '/tweets/favourites/' + tweetId);
-      });
-
-      //todo: how to test restangular remove promise?
-
+    it('should have loading=false', function(){
+      expect(scope.loading).toBeFalsy();
     });
 
   });
-
-
-
 
 });
