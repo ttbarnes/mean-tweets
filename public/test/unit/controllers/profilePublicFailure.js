@@ -1,4 +1,4 @@
-describe('ProfilePublicCtrl', function() {
+describe('ProfilePublicCtrl - failure: user not found', function() {
 
   var state = {
     params: [{
@@ -9,8 +9,8 @@ describe('ProfilePublicCtrl', function() {
   var stateParamsUsername = state.params[0].username;
 
   var currentUserUsername = 'phillip';
-
-  //ui-router resolve data mocks: http://stackoverflow.com/a/21078955/1257504
+  
+  /*
   var profileUsernameDataMockSuccess = {
     profile: [{
       details: [{
@@ -26,16 +26,25 @@ describe('ProfilePublicCtrl', function() {
     username: currentUserUsername,
     success: true
   };
+  */
 
+  var profileUsernameDataMockFailure = {
+    username: stateParamsUsername,
+    success: false
+  };
+
+
+  /*
   var currentUserFactoryMockSuccess = {
     isAuth : true,
-    username : stateParamsUsername
+    username : currentUserUsername
   };
+  */
 
   beforeEach(function() {
 
     module('meanTweetsApp', function ($provide) {
-      $provide.value('profileUsernameData', profileUsernameDataMockSuccess = profileUsernameDataMockSuccess);
+      $provide.value('profileUsernameData', profileUsernameDataMockFailure = profileUsernameDataMockFailure);
     });
 
     inject(function($injector) {
@@ -43,26 +52,50 @@ describe('ProfilePublicCtrl', function() {
       var $controller = $injector.get('$controller');
       scope = $injector.get('$rootScope').$new();
       state = $injector.get('$state');
-      httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
       apiEndpointFactory = $injector.get('apiEndpointFactory');
 
       ctrl = $controller('ProfilePublicCtrl', { 
-        $scope: scope,
-        currentUserFactory: currentUserFactory
+        $scope: scope
+        //currentUserFactory: currentUserFactory
       });
 
-      currentUserFactory = currentUserFactoryMockSuccess;
+      //currentUserFactory = currentUserFactoryMockSuccess;
+
+      //scope.loggedInUser = currentUserFactory.username;
 
       scope.profileUsername = stateParamsUsername;
-
-      scope.loggedInUser = currentUserFactory.username;
 
     });
 
   });
 
+  it('should have profileUsernameData defined', function(){
+    expect(scope.profileUsernameData).toBeDefined();
+  });
+
+  it('should have profileUsernameData username defined', function(){
+    expect(scope.profileUsernameData.username).toBeDefined();
+  });
+
+  it('should have success failure in profileUsernameData', function(){
+    expect(scope.profileUsernameData.success).toBeFalsy();
+  });
+
+  it('should have false profileUser', function(){
+    expect(scope.profileUser).toBeFalsy();
+  });
+
+  it('should have false profileUserDetails', function(){
+    expect(scope.profileUserDetails).toBeFalsy();
+  });
+
+  it('should have true user not found', function(){
+    expect(scope.userNotFound).toBeTruthy();
+  });
+
+  /*
   describe('initilisation', function() {
 
     it('should have the same username in scope and state params', function() {
@@ -117,18 +150,12 @@ describe('ProfilePublicCtrl', function() {
 
         //expect(scope.usersOwnProfile).toBeTruthy();
 
-        /*
-        it('should have the same username in state params and profileUsernameData', function() {
-          expect(scope.profileUsernameData.username).toEqual(stateParamsUsername);
-        });
-        */
-
       });
 
     });
-
+a
 
   });
-
+  */
 
 });
