@@ -32,7 +32,7 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
       });
 
       //follow user
-      //todo: make individual component/controller/directive/something
+      //todo: make individual component/contraoller/directive/something
       $scope.followUser = function(userFollower, userFollowing) {
         if(currentUserFactory.isAuth) {
 
