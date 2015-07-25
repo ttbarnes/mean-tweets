@@ -1,4 +1,4 @@
-angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, apiEndpointFactory, profileUsernameData, ngDialog) {
+angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, profileUsernameData, ngDialog) {
 
   $scope.profileUsernameData = profileUsernameData;  //public profilc data from routes resolve (success, profile data)
   $scope.profileUser = profileUsernameData.profile;  //public profile user's followers, following, favourites
@@ -30,38 +30,6 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
           $scope.loggedInUserFollows = true;
         }
       });
-
-      //follow user
-      //todo: make individual component/contraoller/directive/something
-      /*
-      $scope.followUser = function(userFollower, userFollowing) {
-        if(currentUserFactory.isAuth) {
-
-          console.log(userFollower + ' wants to follow ' + userFollowing);
-
-          var newFollowings = {
-            userFollower: userFollower,
-            userFollowing: userFollowing
-          };
-
-          //PUT in logged-in user's following array
-          Restangular.all('api/profiles/' + userFollower + '/following').customPUT(newFollowings).then(function () {
-            console.info(userFollower + ' followed ' + userFollowing);
-            console.log('posted to:' + 'api/profiles/' + userFollower + '/following');
-          });
-
-          //PUT in 'following' users's followers array
-          Restangular.all('api/profiles/' + userFollowing + '/followers').customPUT(newFollowings).then(function () {
-            console.info(userFollowing + ' has a new follower: ' + userFollower);
-            console.log('posted to:' + 'api/profiles/' + userFollowing + '/following');
-          });
-
-        }
-        else {
-          console.error('unable to follow user - current user is not authenticated');
-        }
-      };
-      */
 
       $scope.deleteTweetDialog = function(tweetId) {
         console.log($scope.loggedInUser + ' want\'s to remove tweet: ' + tweetId);

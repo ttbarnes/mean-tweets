@@ -11,15 +11,15 @@ angular.module('meanTweetsApp').controller('FollowUserCtrl', function (currentUs
       };
 
       //PUT in logged-in user's following array
-      Restangular.all('api/profiles/' + userFollower + '/following').customPUT(newFollowings).then(function () {
+      apiEndpointFactory.userFollowing(userFollower).customPUT(newFollowings).then(function () {
         console.info(userFollower + ' followed ' + userFollowing);
         console.log('posted to:' + 'api/profiles/' + userFollower + '/following');
       });
 
       //PUT in 'following' users's followers array
-      Restangular.all('api/profiles/' + userFollowing + '/followers').customPUT(newFollowings).then(function () {
+      apiEndpointFactory.userFollowers(userFollowing).customPUT(newFollowings).then(function () {
         console.info(userFollowing + ' has a new follower: ' + userFollower);
-        console.log('posted to:' + 'api/profiles/' + userFollowing + '/following');
+        console.log('posted to:' + 'api/profiles/' + userFollowing + '/followers');
       });
 
     }

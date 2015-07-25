@@ -157,5 +157,32 @@ describe('apiEndpointFactory', function(){
 
   });
 
+  describe('user following endpoint', function(){
+
+    it('should be defined', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.userFollowing).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (apiEndpointFactory) {
+      var username = 'dillon';
+      expect(apiEndpointFactory.userFollowing(username).route).toEqual('api/profiles/' + username + '/following');
+    }));
+
+  });
+
+  describe('user followers endpoint', function(){
+
+    it('should be defined', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.userFollowers).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (apiEndpointFactory) {
+      var username = 'dillon';
+      expect(apiEndpointFactory.userFollowers(username).route).toEqual('api/profiles/' + username + '/followers');
+    }));
+
+  });
+
+
 
 });

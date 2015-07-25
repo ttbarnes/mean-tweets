@@ -46,6 +46,14 @@ angular.module('meanTweetsApp').factory('apiEndpointFactory', function (Restangu
 
       userFavourites: function(username, tweetId) {
         return Restangular.all('api/profiles/' + username + '/tweets/favourites/' + tweetId );
+      },
+
+      userFollowing: function(username) {
+        return Restangular.all('api/profiles/' + username + '/following');
+      },
+
+      userFollowers: function(username) {
+        return Restangular.all('api/profiles/' + username + '/followers');
       }
 
     };
