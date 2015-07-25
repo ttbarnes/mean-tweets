@@ -4,8 +4,10 @@ describe('DeleteTweetCtrl', function() {
   var scope;
   var ctrl;
   var tweetIdMock = 'b456789akIJmnHJNkmQIk24449';
+  var ngDialog;
 
   beforeEach(function() {
+
     module('meanTweetsApp', function ($provide) {
       $provide.value('tweetId', tweetIdMock = tweetIdMock);
     });
@@ -17,18 +19,34 @@ describe('DeleteTweetCtrl', function() {
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       apiEndpointFactory = $injector.get('apiEndpointFactory');
-      ctrl = $controller('DeleteTweetCtrl', { $scope: scope });
+
+      ngDialog = {
+        closeAll: jasmine.createSpy('ngDialog.closeAll').and.callThrough()
+      };
+
+      ctrl = $controller('DeleteTweetCtrl', { 
+        $scope: scope,
+        $httpBackend: httpBackend,
+        ngDialog: ngDialog
+      });
     });
 
-    httpBackend.whenGET(/views.*/).respond(200, '');
+    tweetId = tweetIdMock;
 
-    scope.tweetId = tweetIdMock;
+    httpBackend.whenGET(/views.*/).respond(200, '');
+    httpBackend.when('DELETE', '/api/tweets/' + tweetId).respond(200);
+
+    spyOn(Restangular, 'one').and.callThrough();
+    spyOn(scope, 'deleteTweetConfirmation').and.callThrough();
+    scope.deleteTweetConfirmation();
+    httpBackend.flush();
+    scope.$digest();
 
   });
 
   it('should have a tweetId', function(){
-    expect(scope.tweetId).toBeDefined();
-    expect(scope.tweetId).toEqual(tweetIdMock);
+    expect(tweetId).toBeDefined();
+    expect(tweetId).toEqual(tweetIdMock);
   });
 
   it('should have a deleteTweetConfirmation function', function(){
@@ -37,31 +55,22 @@ describe('DeleteTweetCtrl', function() {
 
   describe('when deletion is confirmed', function(){
 
-    beforeEach(function() {
-      spyOn(scope, 'deleteTweetConfirmation');
-      scope.deleteTweetConfirmation();
-      scope.$digest();
-    });
-
     it('should call the deleteTweetConfirmation function', function() {
       expect(scope.deleteTweetConfirmation).toHaveBeenCalled();
     });
 
     it('should generate correct api end point', function(){
-      spyOn(Restangular, 'one').and.callThrough();
-      httpBackend.flush();
       expect(apiEndpointFactory.singleTweet(scope.tweetId).route).toEqual('api/tweets/' + scope.tweetId);
-      //scope.$digest();
     });
 
     it('should have loading=false', function(){
-      spyOn(Restangular, 'one').and.callThrough();
-      httpBackend.flush();
-      scope.$digest();
       expect(scope.loading).toBeFalsy();
     });
 
-  });
+    it('should call ngDialog closeAll', function(){
+      expect(ngDialog.closeAll).toHaveBeenCalled();
+    });
 
+  });
 
 });
