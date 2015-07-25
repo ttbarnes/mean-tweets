@@ -33,6 +33,7 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
 
       //follow user
       //todo: make individual component/contraoller/directive/something
+      /*
       $scope.followUser = function(userFollower, userFollowing) {
         if(currentUserFactory.isAuth) {
 
@@ -60,6 +61,7 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
           console.error('unable to follow user - current user is not authenticated');
         }
       };
+      */
 
       $scope.deleteTweetDialog = function(tweetId) {
         console.log($scope.loggedInUser + ' want\'s to remove tweet: ' + tweetId);

@@ -46,10 +46,7 @@
         </div>
 
         <div class="col-30 align-right">
-          <button ng-hide="usersOwnProfile || loggedInUserFollows" 
-                  ng-click="followUser(loggedInUser, profileUsername)"
-                  class="blue">Follow</button>
-
+          <ng-include src="'views/partials/followUser.html'"></ng-include>
           <a ng-if="usersOwnProfile" 
              ui-sref="profileEdit"
              class="button blue">Edit my profile</a>
