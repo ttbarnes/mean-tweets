@@ -1,4 +1,4 @@
-angular.module('meanTweetsApp').controller('FollowUserCtrl', function (currentUserFactory, $scope, Restangular, apiEndpointFactorY) {
+angular.module('meanTweetsApp').controller('FollowUserCtrl', function (currentUserFactory, $scope, Restangular, apiEndpointFactory) {
 
   $scope.followUser = function(userFollower, userFollowing) {
     if(currentUserFactory.isAuth) {
