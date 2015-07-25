@@ -33,6 +33,8 @@ describe('ProfilePublicCtrl - success: user found', function() {
 
   var tweetIdMock = 'b456789akIJmnHJNkmQIk24449';
 
+  var ngDialog;
+
   beforeEach(function() {
 
     module('meanTweetsApp', function ($provide) {
@@ -49,11 +51,16 @@ describe('ProfilePublicCtrl - success: user found', function() {
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
       apiEndpointFactory = $injector.get('apiEndpointFactory');
+      
+      ngDialog = {
+        open: jasmine.createSpy('ngDialog.open').and.callThrough()
+      };
 
       ctrl = $controller('ProfilePublicCtrl', { 
         $scope: scope,
         $httpBackend: httpBackend,
-        currentUserFactory: currentUserFactory
+        currentUserFactory: currentUserFactory,
+        ngDialog: ngDialog
       });
 
       scope.loggedInUser = currentUserFactory.username;
@@ -84,6 +91,15 @@ describe('ProfilePublicCtrl - success: user found', function() {
     it('should call deleteTweetDialog function when called', function(){
       scope.deleteTweetDialog(tweetIdMock);
       expect(scope.deleteTweetDialog).toHaveBeenCalledWith(tweetIdMock);
+    });
+
+    describe('ngDialog', function(){
+
+      it('should have been called with open method', function(){
+        scope.deleteTweetDialog(tweetIdMock);
+        expect(ngDialog.open).toHaveBeenCalled();
+      });
+
     });
 
   });
