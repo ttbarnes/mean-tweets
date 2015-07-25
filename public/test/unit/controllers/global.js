@@ -72,8 +72,16 @@ describe('GlobalCtrl', function() {
       expect(scope.composeTweet).toHaveBeenCalled();
     });
 
-    it('should call ngDialog open method', function(){
-      expect(ngDialog.open).toHaveBeenCalled();
+    describe('ngDialog', function(){
+
+      it('should have been called with open method', function(){
+        expect(ngDialog.open).toHaveBeenCalled();
+      });
+
+      it('should have been called open method with correct template', function(){
+        expect(ngDialog.open).toHaveBeenCalledWith( {template: '../views/partials/dialogs/compose-tweet.html'} );
+      });
+
     });
 
   });
