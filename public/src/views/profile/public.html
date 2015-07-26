@@ -46,7 +46,9 @@
         </div>
 
         <div class="col-30 align-right">
-          <ng-include src="'views/partials/follow-user.html'"></ng-include>
+          <div ng-if="auth.isAuthenticated">
+            <ng-include src="'views/partials/follow-user.html'"></ng-include>
+          </div>
           <a ng-if="usersOwnProfile" 
              ui-sref="profileEdit"
              class="button blue">Edit my profile</a>
