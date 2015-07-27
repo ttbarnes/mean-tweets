@@ -10,7 +10,7 @@ var methodOverride     = require('method-override');
 
 var routes         = require('./api/routes');
 
-var port = process.env.port || 2000;
+var port = process.env.PORT || 2000;
 mongoose.connect(process.env.db_url || 'ttbarnes:j3zuNAWkwLMz@ds049641.mongolab.com:49641/mean-example-db');
 
 // get all data/stuff of the body (POST) parameters
