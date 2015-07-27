@@ -367,4 +367,9 @@ module.exports = function (grunt) {
     'cssmin',
     'concurrent:server'
   ]);
+
+  grunt.registerTask('heroku:production', [
+    'clean:dist'
+  ]);
+
 };
