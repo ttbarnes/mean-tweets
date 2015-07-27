@@ -37,7 +37,7 @@ describe('ProfileEditCtrl', function() {
 
     httpBackend.when('PUT', endpointPUT).respond(200, '');
 
-    var mockProfile = readJSON('test/unit/mock-data/editProfileProfile.json');
+    var mockProfile = readJSON('test/unit/mock-data/user.json');
 
     httpBackend.whenGET(endpointGET).respond(mockProfile);
 

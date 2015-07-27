@@ -6,7 +6,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
     $scope.loggedInUser = currentUserFactory.username;
   }
 
-  function currentUserTweetsCheck(tweets) {
+  $scope.currentUserTweetsCheck = function(tweets) {
     angular.forEach(tweets, function (tweet) {
 
       //check to see if any of the username fields (in favourites array) equal $scope.loggedInUser.
@@ -44,17 +44,17 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
   var endPoint = this.apiEndpoint;
 
-  /*
   $scope.getTweets = function() {
 
     endPoint.getList().then(function (data) {
-      console.info('got new tweets (p/profile\'s or currentUser\'s). the route: ' + endPoint.route);
+      console.info('got new data (p/profile tweets or currentUser data). the route: ' + endPoint.route);
 
-      $scope.tweets = data;
+      //$scope.tweets = data;
 
       //public profile only needs to check favourite tweets, retweets and return the data.
       if($scope.statePublicProfile) {
-        currentUserTweetsCheck(data);
+        $scope.tweets = data;
+        $scope.currentUserTweetsCheck(data);
       }
 
       //timeline is more complex:
@@ -63,10 +63,10 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
       //check for favourites and retweets, return data
       else {
         var userFollowing = [];
-        currentUser = data; //user's following usernames
+        $scope.currentUser = data[0]; //for following usernames etc
 
-        if(currentUser[0].following && currentUser[0].following.length) {
-          angular.forEach(currentUser[0].following, function (user) {
+        if($scope.currentUser.following && $scope.currentUser.following.length) {
+          angular.forEach($scope.currentUser.following, function (user) {
             userFollowing.push(user.username);
           });
         }
@@ -85,7 +85,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
           $scope.tweets = tweets;
           if(tweets.length) {
 
-            currentUserTweetsCheck(tweets);
+            $scope.currentUserTweetsCheck(tweets);
 
             //remove currentUser from userFollowing for iterating retweets
             //right now we don't want to display a currentUsers's *own retweets* in the timeline.
@@ -118,6 +118,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
         }, function (err) {
           console.warn('oh no, something went wrong with the nested api call for timeline tweets! details: \n', err);
         });
+
       }
 
       }, function (err) {
@@ -127,7 +128,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
   };
 
   $scope.getTweets();
-  */
+  
 
   $scope.$on('refreshTweets', function () {
     console.info('refreshTweets called - getting new tweets');
