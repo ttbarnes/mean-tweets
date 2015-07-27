@@ -1,15 +1,8 @@
 describe('RetweetTweetCtrl', function() {
 
-  var currentUserFactoryMockSuccess = {
-    isAuth : true,
-    username : 'thor'
-  };
-
   beforeEach(function() {
 
-    module('meanTweetsApp', function ($provide) {
-      $provide.value('currentUserFactory', currentUserFactoryMockSuccess);
-    });
+    specHelper();
 
     inject(function($injector) {
       $q = $injector.get('$q');
@@ -26,14 +19,14 @@ describe('RetweetTweetCtrl', function() {
         currentUserFactory: currentUserFactory,
       });
 
-      tweetId   = '1k2n4jn4mn5l1mn3k4';
-      retweetId = '9b7nh7e2j4w9x1m2w3';
-
-      httpBackend.whenGET(/views.*/).respond(200, '');
-
-      httpBackend.whenGET('/api/tweets/' + tweetId + '/retweets').respond(200, '');
-
     });
+
+    tweetId   = '1k2n4jn4mn5l1mn3k4';
+    retweetId = '9b7nh7e2j4w9x1m2w3';
+
+    httpBackend.whenGET(/views.*/).respond(200, '');
+
+    httpBackend.whenGET('/api/tweets/' + tweetId + '/retweets').respond(200, '');
 
   });
 

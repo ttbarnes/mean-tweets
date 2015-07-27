@@ -27,7 +27,6 @@ describe('ProfilePublicCtrl - failure: user not found', function() {
       scope = $injector.get('$rootScope').$new();
       state = $injector.get('$state');
       Restangular = $injector.get('Restangular');
-      currentUserFactory = $injector.get('currentUserFactory');
       apiEndpointFactory = $injector.get('apiEndpointFactory');
 
       ctrl = $controller('ProfilePublicCtrl', { 

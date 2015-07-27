@@ -1,15 +1,8 @@
 describe('ProfileEditCtrl', function() {
 
-  var currentUserFactoryMockSuccess = {
-    isAuth : true,
-    username : 'ryan'
-  };
-
   beforeEach(function() {
 
-    module('meanTweetsApp', function ($provide) {
-      $provide.value('currentUserFactory', currentUserFactoryMockSuccess);
-    });
+    specHelper();
 
     inject(function($injector) {
       $q = $injector.get('$q');

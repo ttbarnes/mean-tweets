@@ -21,9 +21,9 @@ describe('SearchCtrl', function() {
         searchResults: searchResults
       });
 
-      httpBackend.whenGET(/views.*/).respond(200, '');
-
     });
+
+    httpBackend.whenGET(/views.*/).respond(200, '');
 
   });
 

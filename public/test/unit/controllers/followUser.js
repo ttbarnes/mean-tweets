@@ -1,15 +1,8 @@
 describe('FollowUserCtrl', function() {
 
-  var currentUserFactoryMockSuccess = {
-    isAuth : true,
-    username : 'wally'
-  };
-
   beforeEach(function() {
 
-    module('meanTweetsApp', function ($provide) {
-      $provide.value('currentUserFactory', currentUserFactoryMockSuccess);
-    });
+    specHelper();
 
     inject(function($injector) {
       $q = $injector.get('$q');
@@ -27,16 +20,17 @@ describe('FollowUserCtrl', function() {
         apiEndpointFactory: apiEndpointFactory
       });
 
-      userFollowerMock = currentUserFactory.username;
-
-      userFollowingMock = 'hans';
-
     });
+
+    httpBackend.whenGET(/views.*/).respond(200, '');
+
+    userFollowerMock = currentUserFactory.username;
+
+    userFollowingMock = 'hans';
 
     var endpointPUTFollowing = '/api/profiles/' + userFollowerMock + '/following'
     var endpointPUTFollowers = '/api/profiles/' + userFollowingMock + '/followers'
 
-    httpBackend.whenGET(/views.*/).respond(200, '');
     httpBackend.when('PUT', endpointPUTFollowing).respond(200, '');
     httpBackend.when('PUT', endpointPUTFollowers).respond(200, '');
 

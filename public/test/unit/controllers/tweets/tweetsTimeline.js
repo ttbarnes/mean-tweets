@@ -2,11 +2,6 @@ describe('TweetsCtrl - timeline context', function() {
 
   var publicProfileUsername = 'steven';
 
-  var currentUserFactoryMockSuccess = {
-    isAuth : true,
-    username : 'wally'
-  };
-
   //home route/view is timeline context, there is no controller for this
   var stateMock = {
     params: {
@@ -21,6 +16,8 @@ describe('TweetsCtrl - timeline context', function() {
   var currentUserFollowingMock = 'userFollowing=ben&userFollowing=hellotest333&userFollowing=hellotest4444&userFollowing=wally'
 
   beforeEach(function() {
+
+    specHelper();
 
     module('meanTweetsApp', function ($provide){
       $provide.value('currentUserFactory', currentUserFactoryMockSuccess);

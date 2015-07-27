@@ -8,15 +8,15 @@ describe('ProfilePublicCtrl - success: user found', function() {
 
   var stateParamsUsername = state.params[0].username;
 
-  var currentUserUsername = 'phillip';
+  var currentUserUsername = 'wally';
   
   var profileUsernameDataMockSuccess = {
     profile: [{
       details: [{
         _id: '1234',
         about: 'I love tweeting about things',
-        location: 'Newcastle',
-        websiteUrl: 'http://steven.newcastle.com'
+        location: 'Sometimes even I do not know',
+        websiteUrl: 'http://whereswally.com'
       }],
       favourites: [],
       followers: [],
@@ -26,20 +26,16 @@ describe('ProfilePublicCtrl - success: user found', function() {
     success: true
   };
 
-  var currentUserFactoryMockSuccess = {
-    isAuth : true,
-    username : currentUserUsername
-  };
-
   var tweetIdMock = 'b456789akIJmnHJNkmQIk24449';
 
   var ngDialog;
 
   beforeEach(function() {
 
+    specHelper();
+
     module('meanTweetsApp', function ($provide) {
       $provide.value('profileUsernameData', profileUsernameDataMockSuccess = profileUsernameDataMockSuccess);
-      $provide.value('currentUserFactory', currentUserFactoryMockSuccess);
     });
 
     inject(function($injector) {

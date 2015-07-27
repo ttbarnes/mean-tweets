@@ -7,11 +7,6 @@ describe('TweetsCtrl - public profile context', function() {
     username: publicProfileUsername
   };
 
-  var currentUserFactoryMockSuccess = {
-    isAuth : true,
-    username : 'wally'
-  };
-
   var stateMock = {
     current: {
       controller: publicProfileCtrlName
@@ -20,8 +15,9 @@ describe('TweetsCtrl - public profile context', function() {
 
   beforeEach(function() {
 
+    specHelper();
+
     module('meanTweetsApp', function ($provide){
-      $provide.value('currentUserFactory', currentUserFactoryMockSuccess);
       $provide.value('$state', state = stateMock);
       $provide.value('$stateParams', stateParams = stateParamsMock);
     }); 
