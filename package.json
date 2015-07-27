@@ -1,5 +1,8 @@
 {
   "name": "mean-tweets",
+  "version": "1.0.0",
+  "description": "Mini Twitter with MEAN",
+  "repository": "https://github.com/ttbarnes/mean-tweets",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -40,5 +43,10 @@
   },
   "peerDevDependencies": {
     "karma": "0.9"
+  },
+  "author": "Tony Barnes - @ttbarnes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ttbarnes/mean-tweets/issues"
   }
 }
