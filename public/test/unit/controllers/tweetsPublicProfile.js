@@ -47,6 +47,11 @@ describe('TweetsCtrl - public profile context', function() {
 
       httpBackend.whenGET('/api/profiles/' + currentUserFactory.username).respond(mockTweets);
 
+      ctrl.endPoint = {
+        route : 'api/profiles/' + state.params.username + '/tweets'
+      };
+
+
       scope.$digest();
 
     });
@@ -71,7 +76,7 @@ describe('TweetsCtrl - public profile context', function() {
     //change to scope.currentUserTweetsCheck ?
     //expect(ctrl.currentUserTweetsCheck).toBeDefined();
 
-    describe('state check', function(){
+    describe('after state check', function(){
 
       it('should have ProfilePublicCtrl as current controller', function(){
         expect(state.current.controller).toEqual(publicProfileCtrlName);
@@ -79,6 +84,10 @@ describe('TweetsCtrl - public profile context', function() {
 
       it('should declare true statePublicProfile', function (){
         expect(scope.statePublicProfile).toBeTruthy();
+      });
+
+      it('should generate the correct endpoint', function(){
+        expect(ctrl.endPoint.route).toEqual('api/profiles/' + state.params.username + '/tweets');
       });
 
     });

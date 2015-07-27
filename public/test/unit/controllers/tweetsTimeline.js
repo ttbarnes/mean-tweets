@@ -48,6 +48,10 @@ describe('TweetsCtrl - timeline context', function() {
 
       //httpBackend.whenGET('/api/profiles/' + currentUserFactory.username).respond(mockTweets);
 
+      ctrl.endPoint = {
+        route : 'api/profiles/' + currentUserFactory.username
+      };
+
       scope.$digest();
 
     });
@@ -72,10 +76,14 @@ describe('TweetsCtrl - timeline context', function() {
     //change to scope.currentUserTweetsCheck ?
     //expect(ctrl.currentUserTweetsCheck).toBeDefined();
 
-    describe('state check', function(){
+    describe('after state check', function(){
 
       it('should have false statePublicProfile', function (){
         expect(scope.statePublicProfile).toBeFalsy();
+      });
+
+      it('should generate the correct endpoint', function(){
+        expect(ctrl.endPoint.route).toEqual('api/profiles/' + currentUserFactory.username);
       });
 
     });
