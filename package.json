@@ -1,6 +1,9 @@
 {
   "name": "mean-tweets",
   "version": "1.0.0",
+   "engines": {
+    "node": ">0.10.35"
+  },
   "description": "Mini Twitter with MEAN",
   "repository": "https://github.com/ttbarnes/mean-tweets",
   "main": "server.js",
