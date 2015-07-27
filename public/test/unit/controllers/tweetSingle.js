@@ -18,8 +18,6 @@ describe('TweetSingleCtrl', function() {
 
       httpBackend.whenGET(/views.*/).respond(200, '');
 
-      var mockSingleTweet = readJSON('test/unit/mock-data/single-tweet.json');
-
       httpBackend.whenGET('/api/tweets/undefined').respond(mockSingleTweet);
 
       state.params = { tweetId: '00001' };

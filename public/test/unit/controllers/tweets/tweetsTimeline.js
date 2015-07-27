@@ -41,9 +41,6 @@ describe('TweetsCtrl - timeline context', function() {
 
     });
 
-    var mockUser = readJSON('test/unit/mock-data/user.json');
-    var mockTimelineTweets = readJSON('test/unit/mock-data/tweets.json');
-
     var apiRoutesInit = {
       profiles: '/api/profiles/',
       timeline: '/api/tweetsTimeline?' + currentUserFollowingMock

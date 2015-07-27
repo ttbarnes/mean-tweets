@@ -1,11 +1,9 @@
 describe('SearchCtrl', function() {
 
-  var mockTweets = readJSON('test/unit/mock-data/tweets-search.json');
-
   beforeEach(function() {
 
     module('meanTweetsApp', function ($provide) {
-      $provide.value('searchResults', searchResults = mockTweets);
+      $provide.value('searchResults', searchResults = mockSearchTweets);
     });
 
     inject(function($injector) {
@@ -43,10 +41,10 @@ describe('SearchCtrl', function() {
         searchParam : 'first tweet'
       };
       scope.searchQuery = stateParams.searchParam;
-      scope.searchResults = mockTweets;
-      scope.tweets = mockTweets[0].data;
+      scope.searchResults = mockSearchTweets;
+      scope.tweets = mockSearchTweets[0].data;
       scope.noSearchResults = false;
-      if(!mockTweets[0].data) {
+      if(!mockSearchTweets[0].data) {
         scope.noSearchResults = true;
       }
 
@@ -68,7 +66,7 @@ describe('SearchCtrl', function() {
     });
 
     it('should have false noSearchResults', function(){
-      scope.searchResults = mockTweets;
+      scope.searchResults = mockSearchTweets;
       scope.tweets = scope.searchResults[0].data;
       expect(scope.noSearchResults).toBeFalsy();
     });

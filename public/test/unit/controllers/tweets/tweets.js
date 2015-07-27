@@ -41,8 +41,6 @@ describe('TweetsCtrl - public profile and timeline context', function() {
 
     });
 
-    var mockTweets = readJSON('test/unit/mock-data/tweets.json');
-
     var apiRoutes = {
       userTweets: 'api/profiles/' + stateParams.username + '/tweets'
     }
