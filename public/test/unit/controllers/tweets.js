@@ -1,4 +1,4 @@
-describe('TweetsCtrl - public profile context', function() {
+describe('TweetsCtrl - public profile and timeline context', function() {
 
   var publicProfileCtrlName = 'ProfilePublicCtrl';
   var publicProfileUsername = 'steven';
@@ -47,8 +47,6 @@ describe('TweetsCtrl - public profile context', function() {
 
     var mockTweets = readJSON('test/unit/mock-data/tweets.json');
 
-                  'api/profiles/' + stateParams.username + '/tweets'
-
     var apiRoutes = {
       userTweets: 'api/profiles/' + stateParams.username + '/tweets'
     }
@@ -57,6 +55,7 @@ describe('TweetsCtrl - public profile context', function() {
     httpBackend.whenGET('/' + apiRoutes.userTweets).respond(mockTweets);
 
     ctrl.endPoint = apiRoutes.userTweets;
+    spyOn(scope, 'currentUserTweetsCheck');
     spyOn(scope, 'getTweets');
     spyOn(Restangular, 'all').and.callThrough();
     httpBackend.flush();
@@ -64,37 +63,45 @@ describe('TweetsCtrl - public profile context', function() {
 
   });
 
-  describe('after state check', function(){
+  describe('current user (if exists)', function(){
 
-    it('should have ProfilePublicCtrl as current controller', function(){
-      expect(state.current.controller).toEqual(publicProfileCtrlName);
+    it('should be assigned to scope', function(){
+      expect(scope.loggedInUser).toBeDefined();
     });
 
-    it('should declare true statePublicProfile', function (){
-      expect(scope.statePublicProfile).toBeTruthy();
+    it('should equal currentUserFactory username', function(){
+      expect(scope.loggedInUser).toEqual(currentUserFactory.username);
     });
 
-    it('should generate the correct endpoint', function(){
-      expect(ctrl.endPoint).toEqual('api/profiles/' + stateParams.username + '/tweets');
+    it('should have a currentUserTweetsCheck function', function(){
+      expect(scope.currentUserTweetsCheck).toBeDefined();
+    });
+
+  });
+
+
+  describe('getTweets function', function(){
+
+    it('should be defined', function(){
+      expect(scope.getTweets).toBeDefined();
+    });
+
+    it('should execute when called', function(){
+      scope.getTweets();
+      expect(scope.getTweets).toHaveBeenCalled();
+    });
+
+    describe('after timeline tweets are returned', function(){
+
+      it('should call currentUserTweetsCheck', function(){
+        expect(scope.currentUserTweetsCheck).toHaveBeenCalled();
+      });
+
     });
 
   });
 
-  describe('after initial api call', function(){
+  //todo: test currentUserTweetsCheck specifics
 
-    it('should apply the data to scope', function(){
-      expect(scope.tweets).toBeDefined();
-    });
-
-    it('should have some tweet objects', function(){
-      expect(scope.tweets[0]).toBeDefined();
-      expect(scope.tweets[1]).toBeDefined();
-    });
-
-    it('should have false userNotTweeted', function(){
-      expect(scope.userNotTweeted).toBeFalsy();
-    });
-
-  });
 
 });

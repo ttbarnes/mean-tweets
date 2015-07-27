@@ -62,7 +62,6 @@ describe('TweetsCtrl - timeline context', function() {
       route : 'api/profiles/' + currentUserFactory.username
     };
 
-    spyOn(scope, 'currentUserTweetsCheck');
     spyOn(scope, 'getTweets');
     spyOn(Restangular, 'all').and.callThrough();
     httpBackend.flush();
@@ -70,86 +69,42 @@ describe('TweetsCtrl - timeline context', function() {
 
   });
 
-  describe('initialization', function(){
+  describe('after state check', function(){
 
-    describe('current user (if exists)', function(){
-      
-      it('should be assigned to scope', function(){
-        expect(scope.loggedInUser).toBeDefined();
-      });
-
-      it('should equal currentUserFactory username', function(){
-        expect(scope.loggedInUser).toEqual(currentUserFactory.username);
-      });
-
-      it('should have a currentUserTweetsCheck function', function(){
-        expect(scope.currentUserTweetsCheck).toBeDefined();
-      });
-
+    it('should have false statePublicProfile', function (){
+      expect(scope.statePublicProfile).toBeFalsy();
     });
 
-
-    describe('after state check', function(){
-
-      it('should have false statePublicProfile', function (){
-        expect(scope.statePublicProfile).toBeFalsy();
-      });
-
-      it('should generate the correct endpoint', function(){
-        expect(ctrl.initialEndPoint.route).toEqual('api/profiles/' + currentUserFactory.username);
-      });
-
+    it('should generate the correct endpoint', function(){
+      expect(ctrl.initialEndPoint.route).toEqual('api/profiles/' + currentUserFactory.username);
     });
 
-    describe('getTweets function', function(){
+  });
 
-      it('should be defined', function(){
-        expect(scope.getTweets).toBeDefined();
+  describe('after initial api call', function(){
+
+    it('should apply user data to scope', function(){
+      expect(scope.currentUser).toBeDefined();
+    });
+
+    it('should have some user objects/fields', function(){
+      expect(scope.currentUser.username).toBeDefined();
+      expect(scope.currentUser.favourites).toBeDefined();
+      expect(scope.currentUser.followers).toBeDefined();
+      expect(scope.currentUser.following).toBeDefined();
+    });
+
+    it('should have false userNotTweeted', function(){
+      expect(scope.userNotTweeted).toBeFalsy();
+    });
+
+    //todo: test customGET route (how?)
+
+    describe('after timeline tweets are returned', function(){
+
+      it('should have false userNoFollowings', function(){
+        expect(scope.userNoFollowings).toBeFalsy();
       });
-
-      it('should execute when called', function(){
-        scope.getTweets();
-        expect(scope.getTweets).toHaveBeenCalled();
-      });
-
-      describe('after initial api call', function(){
-
-        it('should apply user data to scope', function(){
-          expect(scope.currentUser).toBeDefined();
-        });
-
-        it('should have some user objects/fields', function(){
-          expect(scope.currentUser.username).toBeDefined();
-          expect(scope.currentUser.favourites).toBeDefined();
-          expect(scope.currentUser.followers).toBeDefined();
-          expect(scope.currentUser.following).toBeDefined();
-        });
-
-        it('should have false userNotTweeted', function(){
-          expect(scope.userNotTweeted).toBeFalsy();
-        });
-
-        //todo: test customGET route (how?)
-
-        //todo: test currentUserTweetsCheck specifics
-
-        describe('after timeline tweets are returned', function(){
-
-          it('should call currentUserTweetsCheck', function(){
-            expect(scope.currentUserTweetsCheck).toHaveBeenCalled();
-          });
-
-          it('should have false userNoFollowings', function(){
-            expect(scope.userNoFollowings).toBeFalsy();
-          });
-
-        });
-
-
-      });
-
-
-
 
     });
 
