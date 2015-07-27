@@ -35,28 +35,26 @@ describe('TweetsCtrl - public profile context', function() {
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
-      apiEndpointFactory = $injector.get('apiEndpointFactory');
       ctrl = $controller('TweetsCtrl', { 
         $scope: scope, 
         $stateParams: stateParams,
         $state: state,
         $httpBackend: httpBackend,
-        currentUserFactory: currentUserFactory,
-        apiEndpointFactory: apiEndpointFactory
+        currentUserFactory: currentUserFactory
       });
 
     });
 
-    httpBackend.whenGET(/views.*/).respond(200, '');
-
     var mockTweets = readJSON('test/unit/mock-data/tweets.json');
 
-    httpBackend.whenGET('/api/profiles/' + stateParams.username + '/tweets').respond(mockTweets);
+    var apiRoutes = {
+      userTweets: 'api/profiles/' + stateParams.username + '/tweets'
+    }
 
-    ctrl.endPoint = {
-      route : 'api/profiles/' + stateParams.username + '/tweets'
-    };
+    httpBackend.whenGET(/views.*/).respond(200, '');
+    httpBackend.whenGET('/' + apiRoutes.userTweets).respond(mockTweets);
 
+    ctrl.endPoint = apiRoutes.userTweets;
     spyOn(scope, 'currentUserTweetsCheck');
     spyOn(scope, 'getTweets');
     spyOn(Restangular, 'all').and.callThrough();
@@ -110,7 +108,7 @@ describe('TweetsCtrl - public profile context', function() {
         expect(scope.getTweets).toHaveBeenCalled();
       });
 
-      describe('after api call', function(){
+      describe('after initial api call', function(){
 
         it('should apply the data to scope', function(){
           expect(scope.tweets).toBeDefined();
@@ -123,6 +121,10 @@ describe('TweetsCtrl - public profile context', function() {
 
         it('should run currentUserTweetsCheck', function(){
           expect(scope.currentUserTweetsCheck).toHaveBeenCalled();
+        });
+
+        it('should have false userNotTweeted', function(){
+          expect(scope.userNotTweeted).toBeFalsy();
         });
 
         //todo: test currentUserTweetsCheck specifics

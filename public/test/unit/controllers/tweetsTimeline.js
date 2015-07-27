@@ -1,7 +1,5 @@
-
 describe('TweetsCtrl - timeline context', function() {
 
-  //var publicProfileCtrlName = 'ProfilePublicCtrl';
   var publicProfileUsername = 'steven';
 
   var currentUserFactoryMockSuccess = {
@@ -19,6 +17,9 @@ describe('TweetsCtrl - timeline context', function() {
     }
   };
 
+  //this is generated inside the controller without scope 
+  var currentUserFollowingMock = 'userFollowing=ben&userFollowing=hellotest333&userFollowing=hellotest4444&userFollowing=wally'
+
   beforeEach(function() {
 
     module('meanTweetsApp', function ($provide){
@@ -34,24 +35,30 @@ describe('TweetsCtrl - timeline context', function() {
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
-      apiEndpointFactory = $injector.get('apiEndpointFactory');
       ctrl = $controller('TweetsCtrl', { 
         $scope: scope, 
         $state: state,
         $httpBackend: httpBackend,
-        currentUserFactory: currentUserFactory,
-        apiEndpointFactory: apiEndpointFactory
+        currentUserFactory: currentUserFactory
       });
 
     });
 
+    var mockUser = readJSON('test/unit/mock-data/user.json');
+    var mockTimelineTweets = readJSON('test/unit/mock-data/tweets.json');
+
+    var apiRoutesInit = {
+      profiles: '/api/profiles/',
+      timeline: '/api/tweetsTimeline?' + currentUserFollowingMock
+    }
+
     httpBackend.whenGET(/views.*/).respond(200, '');
 
-    var mockUser = readJSON('test/unit/mock-data/user.json');
+    httpBackend.whenGET(apiRoutesInit.profiles + currentUserFactory.username).respond(mockUser);
 
-    httpBackend.whenGET('/api/profiles/' + currentUserFactory.username).respond(mockUser);
+    httpBackend.whenGET(apiRoutesInit.timeline).respond(mockTimelineTweets);
 
-    ctrl.endPoint = {
+    ctrl.initialEndPoint = {
       route : 'api/profiles/' + currentUserFactory.username
     };
 
@@ -89,7 +96,7 @@ describe('TweetsCtrl - timeline context', function() {
       });
 
       it('should generate the correct endpoint', function(){
-        expect(ctrl.endPoint.route).toEqual('api/profiles/' + currentUserFactory.username);
+        expect(ctrl.initialEndPoint.route).toEqual('api/profiles/' + currentUserFactory.username);
       });
 
     });
@@ -105,11 +112,7 @@ describe('TweetsCtrl - timeline context', function() {
         expect(scope.getTweets).toHaveBeenCalled();
       });
 
-      describe('after api call', function(){
-
-        it('should not apply the data to tweets scope', function(){
-          expect(scope.tweets).toBeFalsy();
-        });
+      describe('after initial api call', function(){
 
         it('should apply user data to scope', function(){
           expect(scope.currentUser).toBeDefined();
@@ -122,12 +125,33 @@ describe('TweetsCtrl - timeline context', function() {
           expect(scope.currentUser.following).toBeDefined();
         });
 
+        it('should have false userNotTweeted', function(){
+          expect(scope.userNotTweeted).toBeFalsy();
+        });
+
+        //todo: test customGET route (how?)
+
         //todo: test currentUserTweetsCheck specifics
+
+        describe('after timeline tweets are returned', function(){
+
+          it('should call currentUserTweetsCheck', function(){
+            expect(scope.currentUserTweetsCheck).toHaveBeenCalled();
+          });
+
+          it('should have false userNoFollowings', function(){
+            expect(scope.userNoFollowings).toBeFalsy();
+          });
+
+        });
+
 
       });
 
-    });
 
+
+
+    });
 
   });
 
