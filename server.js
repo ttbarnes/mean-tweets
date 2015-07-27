@@ -5,14 +5,13 @@ var morgan             = require('morgan')
 var mongoose           = require('mongoose');
 var bodyParser         = require('body-parser');
 var methodOverride     = require('method-override');
-var dotenv             = require('dotenv').load();
 
 // configuration ===========================================
 
 var routes         = require('./api/routes');
 
-var port = process.env.port;
-mongoose.connect(process.env.db_url);
+var port = process.env.port || 2000;
+mongoose.connect(process.env.db_url || 'ttbarnes:j3zuNAWkwLMz@ds049641.mongolab.com:49641/mean-example-db');
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
