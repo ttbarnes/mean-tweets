@@ -1,6 +1,9 @@
 {
   "name": "mean-tweets",
   "main": "server.js",
+  "scripts": { 
+    "start": "server.js" 
+  },
   "dependencies": {
     "body-parser": "~1.4.2",
     "express": "~4.5.1",
