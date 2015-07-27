@@ -1,7 +1,7 @@
 {
   "name": "mean-tweets",
   "version": "1.0.0",
-   "engines": {
+  "engines": {
     "node": ">0.10.35"
   },
   "description": "Mini Twitter with MEAN",
@@ -18,7 +18,8 @@
     "morgan": "^1.5.1"
   },
   "devDependencies": {
-    "grunt": "*",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
     "grunt-concurrent": "*",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "^0.5.1",
