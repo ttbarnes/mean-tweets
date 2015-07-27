@@ -1,15 +1,16 @@
+var jsonMockPath = 'test/unit/mock-data/';
+
 var currentUserFactoryMockSuccess = {
   isAuth : true,
   username : 'wally'
 };
 
-
-var mockTweets         = readJSON('test/unit/mock-data/tweets.json');
-var mockSearchTweets   = readJSON('test/unit/mock-data/tweets-search.json');
-var mockSingleTweet    = readJSON('test/unit/mock-data/single-tweet.json');
-var mockProfile        = readJSON('test/unit/mock-data/user.json');
-var mockUser           = readJSON('test/unit/mock-data/user.json');
-var mockTimelineTweets = readJSON('test/unit/mock-data/tweets.json');
+var mockTweets         = readJSON(jsonMockPath + 'tweets.json');
+var mockSearchTweets   = readJSON(jsonMockPath + 'tweets-search.json');
+var mockSingleTweet    = readJSON(jsonMockPath + 'single-tweet.json');
+var mockProfile        = readJSON(jsonMockPath + 'user.json');
+var mockUser           = readJSON(jsonMockPath + 'user.json');
+var mockTimelineTweets = readJSON(jsonMockPath + 'tweets.json');
 
 
 function specHelper(){
