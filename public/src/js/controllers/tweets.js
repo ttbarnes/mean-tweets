@@ -36,7 +36,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
   //if not public profile, it's timeline.
   if($state.current.controller === 'ProfilePublicCtrl') {
     this.apiEndpoint = apiEndpointFactory.userTweets($stateParams.username);
-    var statePublicProfile = true;
+    $scope.statePublicProfile = true;
   }
   else {
     this.apiEndpoint = apiEndpointFactory.user(currentUserFactory.username);
@@ -44,6 +44,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
 
   var endPoint = this.apiEndpoint;
 
+  /*
   $scope.getTweets = function() {
 
     endPoint.getList().then(function (data) {
@@ -52,7 +53,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
       $scope.tweets = data;
 
       //public profile only needs to check favourite tweets, retweets and return the data.
-      if(statePublicProfile) {
+      if($scope.statePublicProfile) {
         currentUserTweetsCheck(data);
       }
 
@@ -126,6 +127,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
   };
 
   $scope.getTweets();
+  */
 
   $scope.$on('refreshTweets', function () {
     console.info('refreshTweets called - getting new tweets');
