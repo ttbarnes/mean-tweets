@@ -1,4 +1,4 @@
-angular.module('meanTweetsApp').controller('TweetRetweetCtrl', function (currentUserFactory, apiEndpointFactory, $scope) {
+angular.module('meanTweetsApp').controller('RetweetTweetCtrl', function (currentUserFactory, apiEndpointFactory, $scope) {
 
   $scope.retweetTweet = function(tweetId) {
 

@@ -1,4 +1,4 @@
-describe('TweetFavouriteCtrl', function() {
+describe('FavouriteTweetCtrl', function() {
 
   var currentUserFactoryMockSuccess = {
     isAuth : true,
@@ -19,7 +19,7 @@ describe('TweetFavouriteCtrl', function() {
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
       apiEndpointFactory = $injector.get('apiEndpointFactory');
-      ctrl = $controller('TweetFavouriteCtrl', { 
+      ctrl = $controller('FavouriteTweetCtrl', { 
         $scope: scope,
         $httpBackend: httpBackend,
         apiEndpointFactory: apiEndpointFactory,

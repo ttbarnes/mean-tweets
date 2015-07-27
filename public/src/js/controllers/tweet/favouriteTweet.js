@@ -1,4 +1,4 @@
-angular.module('meanTweetsApp').controller('TweetFavouriteCtrl', function (currentUserFactory, apiEndpointFactory, $scope) {
+angular.module('meanTweetsApp').controller('FavouriteTweetCtrl', function (currentUserFactory, apiEndpointFactory, $scope) {
 
   $scope.favouriteTweet = function(tweetId) {
 

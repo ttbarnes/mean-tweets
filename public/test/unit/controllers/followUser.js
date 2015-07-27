@@ -18,11 +18,13 @@ describe('FollowUserCtrl', function() {
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
+      apiEndpointFactory = $injector.get('apiEndpointFactory');
 
       ctrl = $controller('FollowUserCtrl', { 
         $scope: scope,
         $httpBackend: httpBackend,
-        currentUserFactory: currentUserFactory
+        currentUserFactory: currentUserFactory,
+        apiEndpointFactory: apiEndpointFactory
       });
 
       userFollowerMock = currentUserFactory.username;

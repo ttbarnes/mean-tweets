@@ -1,4 +1,4 @@
-describe('TweetRetweetCtrl', function() {
+describe('RetweetTweetCtrl', function() {
 
   var currentUserFactoryMockSuccess = {
     isAuth : true,
@@ -19,7 +19,7 @@ describe('TweetRetweetCtrl', function() {
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
       apiEndpointFactory = $injector.get('apiEndpointFactory');
-      ctrl = $controller('TweetRetweetCtrl', { 
+      ctrl = $controller('RetweetTweetCtrl', { 
         $scope: scope,
         $httpBackend: httpBackend,
         apiEndpointFactory: apiEndpointFactory,
