@@ -8,6 +8,7 @@
   "repository": "https://github.com/ttbarnes/mean-tweets",
   "main": "server.js",
   "scripts": {
+    "build": "bower install",
     "start": "node server.js"
   },
   "dependencies": {
