@@ -71,7 +71,7 @@ module.exports = function (grunt) {
     sass: {
       dist: {
         files: {
-          'public/src/dist/css/main.css' : 'public/src/scss/main.scss'
+          'public/src/dist/main.css' : 'public/src/scss/main.scss'
         }
       }
     },
@@ -218,9 +218,9 @@ module.exports = function (grunt) {
        add_banner: { // jshint ignore:line
         files: [{
           expand: true,
-          cwd: 'public/src/dist/css/',
+          cwd: 'public/src/dist/',
           src: ['main.css'],
-          dest: 'public/src/dist/css/',
+          dest: 'public/src/dist/',
           ext: '.min.css'
         }]
       }
