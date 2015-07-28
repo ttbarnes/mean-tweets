@@ -14,11 +14,11 @@
   },
   "dependencies": {
     "body-parser": "~1.4.2",
+    "bower": "*",
     "express": "~4.5.1",
     "method-override": "~2.0.2",
-    "mongoose": "~3.8.0",
-    "morgan": "^1.5.1",
-    "bower": "*"
+    "mongoose": "^3.8.34",
+    "morgan": "^1.5.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
