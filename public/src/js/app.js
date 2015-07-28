@@ -5,7 +5,6 @@ angular.module('meanTweetsApp', [
   'auth0',
   'angular-storage',
   'angular-jwt',
-  'ngRoute',
   'ui.router',
   'ui.router.title',
   'meanTweetsRoutes',
@@ -16,7 +15,10 @@ angular.module('meanTweetsApp', [
   'angulartics.google.analytics'
 ])
 
-.config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider, ngDialogProvider) {
+.config(function (authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider, ngDialogProvider, $analyticsProvider) {
+
+  //angulartics
+  $analyticsProvider.firstPageview(false); //turns off to avoid automatic tracking in unit tests
 
   //auth0 config
   authProvider.init({
