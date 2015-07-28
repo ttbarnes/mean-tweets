@@ -368,7 +368,7 @@ module.exports = function (grunt) {
     'concurrent:server'
   ]);
 
-  grunt.registerTask('heroku:production', [
+  grunt.registerTask('heroku:', [
     'clean:dist'
   ]);
 
