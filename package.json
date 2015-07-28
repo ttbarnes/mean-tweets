@@ -17,7 +17,9 @@
     "method-override": "~2.0.2",
     "mongoose": "~3.8.0",
     "morgan": "^1.5.1",
-    "bower": "*",
+    "bower": "*"
+  },
+  "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-concurrent": "*",
@@ -45,10 +47,7 @@
     "time-grunt": "^1.2.1",
     "phantomjs": "*"
   },
-  "devDependencies": {
-    "karma": ">0.9"
-  },
-  "peerDependencies": {
+  "peerDevDependencies": {
     "karma": "0.9"
   },
   "author": "Tony Barnes - @ttbarnes",
