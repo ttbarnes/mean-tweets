@@ -1,5 +1,6 @@
 # mean-tweets
 
+[Demo](http://mean-tweets.herokuapp.com)
 
 WIP - soon there will be a real readme file, for the time being here are some notes.
 
@@ -9,17 +10,9 @@ WIP - soon there will be a real readme file, for the time being here are some no
 
 1) Install the dependencies: `npm install && bower install`
 
-2) Create .env file: `touch .env && open .env`
+2) Start the server: `grunt` or `node server.js` (port 2000)
 
-3) Add DB URL to .env. eg:
-
-```
-port=2000
-db_url=username:asdf@1234.mongolab.com:6789/my-db
-```
-
-4) Run the server: `grunt` or `node server.js` (port 2000)
-
+If you want to use your own db, update the url in `server.js` or use [dotenv](https://github.com/motdotla/dotenv)
 
 ##tech
 
@@ -36,17 +29,21 @@ db_url=username:asdf@1234.mongolab.com:6789/my-db
 - Jasmine
 - ngDialog
 - Font awesome
+- Heroku
 
 
 ##quick notes
+
+- Start server: `grunt`
 
 - Run unit tests: `grunt karma` or `karma start public/karma.conf.js`
 
 ###test credentials
 
 - test1@test.com
-
 - test2@test.com
+- bill@test.com
+- ben@test.com
 
 password is the obvious.
 
