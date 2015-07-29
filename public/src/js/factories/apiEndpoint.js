@@ -4,14 +4,6 @@ angular.module('meanTweetsApp').factory('apiEndpointFactory', function (Restangu
 
       tweets: Restangular.all('api/tweets'),
 
-      timeline: function(userFollowing) {
-        return Restangular.all('api/').customGET('timeline',  userFollowing);
-      },
-
-      search: function(searchQuery) {
-        return Restangular.all('api/search/' + searchQuery);
-      },
-
       singleTweet: function(tweetId) {
         return Restangular.one('api/tweets/' + tweetId);
       },
@@ -30,6 +22,14 @@ angular.module('meanTweetsApp').factory('apiEndpointFactory', function (Restangu
 
       singleRetweet: function(tweetId, retweetId) {
         return Restangular.one('api/tweets/' + tweetId + '/retweets/' + retweetId);
+      },
+
+      timeline: function(userFollowing) {
+        return Restangular.all('api/').customGET('timeline',  userFollowing);
+      },
+
+      search: function(searchQuery) {
+        return Restangular.all('api/search/' + searchQuery);
       },
 
       user: function(username) {

@@ -14,29 +14,6 @@ describe('apiEndpointFactory', function(){
 
   });
 
-  describe('timeline endpoint', function(){
-
-    it('should be defined', inject(function (apiEndpointFactory) {
-      expect(apiEndpointFactory.timeline).toBeDefined();
-    }));
-
-    //todo: test customGET route (how?)
-
-  });
-
-  describe('search endpoint', function(){
-
-    it('should be defined', inject(function (apiEndpointFactory) {
-      expect(apiEndpointFactory.search).toBeDefined();
-    }));
-
-    it('should generate correct endpoint', inject(function (apiEndpointFactory) {
-      var searchQuery = 'starWarsFilm';
-      expect(apiEndpointFactory.search(searchQuery).route).toEqual('api/search/' + searchQuery);
-    }));
-
-  });
-
   describe('singleTweet endpoint', function(){
 
     it('should be defined', inject(function (apiEndpointFactory) {
@@ -100,6 +77,29 @@ describe('apiEndpointFactory', function(){
       var tweetId = '55890abc18923oix5579';
       var retweetId = 'an12lj3l1md0890fdm';
       expect(apiEndpointFactory.singleRetweet(tweetId, retweetId).route).toEqual('api/tweets/' + tweetId + '/retweets/' + retweetId);
+    }));
+
+  });
+
+  describe('timeline endpoint', function(){
+
+    it('should be defined', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.timeline).toBeDefined();
+    }));
+
+    //todo: test customGET route (how?)
+
+  });
+
+  describe('search endpoint', function(){
+
+    it('should be defined', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.search).toBeDefined();
+    }));
+
+    it('should generate correct endpoint', inject(function (apiEndpointFactory) {
+      var searchQuery = 'starWarsFilm';
+      expect(apiEndpointFactory.search(searchQuery).route).toEqual('api/search/' + searchQuery);
     }));
 
   });

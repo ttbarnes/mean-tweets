@@ -33,23 +33,6 @@ router.route('/tweets')
     });
   });
 
-router.route('/search/:searchstring')
-
-  //search tweets
-  .get(function (req, res) {
-
-    Tweet.find({copy: new RegExp(req.params.searchstring, "i")}, function (err, tweets) {
-      if (err)
-          res.send(err);
-        if (!tweets.length) {
-          res.status(404).send('No tweets found with your search criteria. Please try something else.');
-        } else {
-          res.json(tweets);
-        }
-    });
-
-  });
-
 router.route('/tweets/:tweet_id')
 
   //get the tweet with that tweet id
@@ -165,7 +148,6 @@ router.route('/tweets/:tweet_id/retweets/:retweet_id')
   });
 
 
-//temporary route - need to refactor other routes.
 router.route('/timeline')
 
   .get(function (req, res) {
@@ -186,24 +168,40 @@ router.route('/timeline')
 
   });
 
-  router.route('/profiles/:profile')
+router.route('/search/:searchstring')
+
+  .get(function (req, res) {
+
+    Tweet.find({copy: new RegExp(req.params.searchstring, "i")}, function (err, tweets) {
+      if (err)
+          res.send(err);
+        if (!tweets.length) {
+          res.status(404).send('No tweets found with your search criteria. Please try something else.');
+        } else {
+          res.json(tweets);
+        }
+    });
+
+  });
+
+  router.route('/profiles/:username')
     .get(function (req, res) {
 
-      Profile.find({username: new RegExp(req.params.profile, "i")}, function (err, profile) {
+      Profile.find({username: new RegExp(req.params.username, "i")}, function (err, username) {
         if (err)
             res.send(err);
-          if (!profile.length) {
-            res.status(404).send('No-one found with the username \'' + req.params.profile + '\'');
+          if (!username.length) {
+            res.status(404).send('No-one found with the username \'' + req.params.username + '\'');
           } else {
-            res.json(profile);
+            res.json(username);
           }
       });
     })
 
     .post(function (req, res) {
-      Profile.find({username: new RegExp(req.params.profile, "i")}, function (err, profile) {
-        if (!profile.length) {
-          res.send('No-one found with the username \'' + req.params.profile + '\'');
+      Profile.find({username: new RegExp(req.params.username, "i")}, function (err, username) {
+        if (!username.length) {
+          res.send('No-one found with the username \'' + req.params.username + '\'');
           console.log('post new user');
 
           var profile = new Profile();
@@ -216,6 +214,61 @@ router.route('/timeline')
           })
         }
       });
+    });
+
+  router.route('/profiles/:username/details')
+
+    .put(function (req, res) {
+
+      username = req.params.username;
+      detailWebsiteUrl = req.body.websiteUrl;
+      detailLocation = req.body.location;
+      detailAbout = req.body.about;
+
+      Profile.update( {username: username},{ $set : {
+                                 details: { 
+                                   websiteUrl: detailWebsiteUrl,
+                                   location: detailLocation,
+                                   about: detailAbout,
+                                 } } }, function (err, details) {
+        if (err)
+            res.send(err);
+          res.json(details);
+          console.log('user ' + username + ' profile details posted');
+      });
+
+    });
+
+  router.route('/profiles/:username/following')
+
+    .put(function (req, res) {
+
+      userFollowing = req.params.username;
+      userToFollow  = req.body.userFollowing;
+
+      Profile.findOneAndUpdate( {username: userFollowing},{ $push : {  following: { username: userToFollow } } }, function (err, profile) {
+        if (err)
+          res.send(err);
+        res.json(profile);
+        console.log('User ' + userFollowing + ' is now following ' + userToFollow);
+      });
+
+    });
+
+  router.route('/profiles/:username/followers')
+
+    .put(function (req, res) {
+
+      userFollowers = req.params.username;
+      userFollowing = req.body.userFollower;
+
+      Profile.findOneAndUpdate( {username: userFollowers},{ $push : {  followers: { username: userFollowing } } }, function (err, profile) {
+        if (err)
+          res.send(err);
+        res.json(profile);
+        console.log('User ' + userFollowers + ' has a new follower: ' + userFollowing);
+      });
+
     });
 
   router.route('/profiles/:username/tweets')
@@ -284,61 +337,5 @@ router.route('/timeline')
       });
 
     });
-
-  router.route('/profiles/:username/details')
-
-    .put(function (req, res) {
-
-      username = req.params.username;
-      detailWebsiteUrl = req.body.websiteUrl;
-      detailLocation = req.body.location;
-      detailAbout = req.body.about;
-
-      Profile.update( {username: username},{ $set : {
-                                 details: { 
-                                   websiteUrl: detailWebsiteUrl,
-                                   location: detailLocation,
-                                   about: detailAbout,
-                                 } } }, function (err, details) {
-        if (err)
-            res.send(err);
-          res.json(details);
-          console.log('user ' + username + ' profile details posted');
-      });
-
-    });
-
-  router.route('/profiles/:username/following')
-
-    .put(function (req, res) {
-
-      userFollowing = req.params.username;
-      userToFollow  = req.body.userFollowing;
-
-      Profile.findOneAndUpdate( {username: userFollowing},{ $push : {  following: { username: userToFollow } } }, function (err, profile) {
-        if (err)
-          res.send(err);
-        res.json(profile);
-        console.log('User ' + userFollowing + ' is now following ' + userToFollow);
-      });
-
-    });
-
-  router.route('/profiles/:username/followers')
-
-    .put(function (req, res) {
-
-      userFollowers = req.params.username;
-      userFollowing = req.body.userFollower;
-
-      Profile.findOneAndUpdate( {username: userFollowers},{ $push : {  followers: { username: userFollowing } } }, function (err, profile) {
-        if (err)
-          res.send(err);
-        res.json(profile);
-        console.log('User ' + userFollowers + ' has a new follower: ' + userFollowing);
-      });
-
-    });
-
 
 module.exports = router;
