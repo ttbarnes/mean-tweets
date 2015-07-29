@@ -79,9 +79,15 @@ body {
 @media (min-width: 768px) {
   .col-25,
   .col-30,
+  .col-60,
   .col-70 {
     float: left;
     min-height: 1px; } }
+
+@media (min-width: 768px) {
+  .col-60 {
+    width: 50%;
+    padding-right: 15px; } }
 
 @media (min-width: 768px) {
   .col-70 {
@@ -196,11 +202,6 @@ header {
       padding-top: 8px; }
     .dropdown-menu li:last-child a {
       padding-bottom: 8px; }
-
-@media (min-width: 768px) {
-  .form-wrap {
-    width: 50%;
-    text-align: left; } }
 
 label {
   display: inline-block;
