@@ -30,7 +30,7 @@ describe('ProfileEditCtrl', function() {
 
     httpBackend.when('PUT', endpointPUT).respond(200, '');
 
-    httpBackend.whenGET(endpointGET).respond(mockProfile);
+    httpBackend.whenGET(endpointGET).respond(mockUser);
 
     ctrl.mockData = {
        websiteUrl : 'ryanNewSite.co.uk',

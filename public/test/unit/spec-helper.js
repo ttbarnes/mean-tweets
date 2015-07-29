@@ -8,10 +8,8 @@ var currentUserFactoryMockSuccess = {
 var mockTweets         = readJSON(jsonMockPath + 'tweets.json');
 var mockSearchTweets   = readJSON(jsonMockPath + 'tweets-search.json');
 var mockSingleTweet    = readJSON(jsonMockPath + 'single-tweet.json');
-var mockProfile        = readJSON(jsonMockPath + 'user.json');
 var mockUser           = readJSON(jsonMockPath + 'user.json');
-var mockTimelineTweets = readJSON(jsonMockPath + 'tweets.json');
-
+var mockTimelineTweets = mockTweets;
 
 function specHelper(){
 
