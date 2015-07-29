@@ -1,5 +1,8 @@
 .profile-public {
 
+  /*
+  
+
   .col-left {
     @media(min-width:$bp-md) {
       padding:{
@@ -17,19 +20,59 @@
       }
     }
   }
+  */
 
-  .profile-details {
+  .col-left {
+    .panel {
+      @media(min-width:$bp-md) {
+        border-top-right-radius:0;
+        border-right:solid 6px $blue-light-2;
+      }
+    }
+  }
+
+  .profile-details-left {
     .fa {
       margin-right:5px; 
     }
   }
   
+  .profile-details-right {
+    display:inline-block;
+    vertical-align:top;
+    @media(min-width:$bp-md) {
+      margin-bottom:40px;
+      border-top-right-radius:$border-radius-md;
+      border-bottom-right-radius:$border-radius-md;
+      border-top-left-radius:0;
+      border-bottom-left-radius:0;
+    }
+
+    .button {
+      margin-bottom:0;
+    }
+  }
+
   .stat {
     padding:0px 6px;
-    text-align:center;
+    @media(min-width:$bp-md) {
+      text-align:center;
+    }
+    h6,
+    p {
+      margin:0;
+    }
     h6 {
-      font-size:16px;
-      margin:0 0 5px 0;
+      font:{
+        size:13px;
+        weight:normal;
+      }
+    }
+  }
+
+  .tweets {
+    @media(min-width:$bp-md) {
+      padding:0 0 0 40px;
     }
   }
 

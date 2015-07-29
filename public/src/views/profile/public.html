@@ -9,38 +9,39 @@
 
     <div class="col-30 col-left">
 
-      <div class="panel placeholder-box profile-details">
+      <div class="panel placeholder-box profile-details-left">
         <h3>{{profileUsername}}</h3>
-        <p>{{profileUserDetails.about}}</p>
-        <p><small><i class="fa fa-map-marker"></i>{{profileUserDetails.location}}</small></p>
-        <p><small><a ng-href="{{profileUserDetails.websiteUrl}}" target="_blank"><i class="fa fa-link"></i>{{profileUserDetails.websiteUrl}}</a></small></p>
+        <p ng-if="!profileUserDetails.about && !profileUserDetails.location && !profileUserDetails.websiteUrl" class="no-margin"><small>Apparently, {{profileUsername}} prefers to keep an air of mystery about them.</small></p>
+        <p ng-if="profileUserDetails.about">{{profileUserDetails.about}}</p>
+        <p ng-if="profileUserDetails.location"><small><i class="fa fa-map-marker"></i>{{profileUserDetails.location}}</small></p>
+        <p ng-if="profileUserDetails.websiteUrl"><small><a ng-href="{{profileUserDetails.websiteUrl}}" target="_blank"><i class="fa fa-link"></i>{{profileUserDetails.websiteUrl}}</a></small></p>
       </div>
 
     </div>
 
     <div class="col-70 col-right">
 
-      <div class="row">
+      <div class="row panel profile-details-right">
 
         <div class="col-70">
 
           <div class="col-25 stat">
-            <h6>tweets</h6>
             <p ng-if="tweets.length">{{tweets.length}}</p>
             <p ng-if="!tweets.length">0</p>
+            <h6>tweets</h6>
           </div>
           <div class="col-25 stat">
-            <h6>followers</h6>
             <p>{{profileUser.followers.length}}</p>
+            <h6>followers</h6>
           </div>
           <div class="col-25 stat">
-            <h6>following</h6>
             <p>{{profileUser.following.length}}</p>
+            <h6>following</h6>
             <p ng-if="!profileUser.following.length">0</p>
           </div>
-          <div ng-if="profileUser.favourites.length" <div class="col-25 stat">
-            <h6>favourites</h6>
+          <div ng-if="profileUser.favourites.length" class="col-25 stat">
             <p>{{profileUser.favourites.length}}</p>
+            <h6>following</h6>
           </div>
 
         </div>
