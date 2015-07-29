@@ -166,7 +166,7 @@ router.route('/tweets/:tweet_id/retweets/:retweet_id')
 
 
 //temporary route - need to refactor other routes.
-router.route('/tweetsTimeline')
+router.route('/timeline')
 
   .get(function (req, res) {
 

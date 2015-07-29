@@ -43,7 +43,7 @@ describe('TweetsCtrl - timeline context', function() {
 
     var apiRoutesInit = {
       profiles: '/api/profiles/',
-      timeline: '/api/tweetsTimeline?' + currentUserFollowingMock
+      timeline: '/api/timeline?' + currentUserFollowingMock
     }
 
     httpBackend.whenGET(/views.*/).respond(200, '');

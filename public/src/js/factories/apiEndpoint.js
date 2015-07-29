@@ -5,7 +5,7 @@ angular.module('meanTweetsApp').factory('apiEndpointFactory', function (Restangu
       tweets: Restangular.all('api/tweets'),
 
       timeline: function(userFollowing) {
-        return Restangular.all('api/').customGET('tweetsTimeline',  userFollowing);
+        return Restangular.all('api/').customGET('timeline',  userFollowing);
       },
 
       search: function(searchQuery) {
