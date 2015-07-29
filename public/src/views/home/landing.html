@@ -1,8 +1,19 @@
 <div class="home-welcome">
-  <div class="wrapper-max-width box">
-    <p><a ui-sref="login">login</a> or <a ng-click="loginOrSignup()">signup</a></p>
+  <div class="wrapper-max-width box" ng-controller="LoginCtrl">
 
-    <br/>
+    <div class="row panel form-wrap">
+      <form ng-submit="submit()">
+        <input type="text" name="user" ng-model="user" placeholder="bill@test.com" ng-disabled="loading" autofocus/>
+        <br>
+        <input type="password" name="pass" ng-model="pass" placeholder="password" ng-disabled="loading" />
+        <br>
+        <button type="submit" class="blue" ng-disabled="loading">log in</button>
+      </form>
+    </div>
+
+    <p ng-show="message.text"><small>{{message.text}}</small></p>
+    <p><small><span ng-click="doGoogleAuthWithPopup()">log in with google</span> or <span ng-click="loginOrSignup()">signup</span></small></p>
+
   </div>
   <img src="img/home-bg.jpg" />
 </div>

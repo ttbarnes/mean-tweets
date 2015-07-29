@@ -20,10 +20,6 @@ angular.module('meanTweetsRoutes', ['ui.router'])
     profilePublic: {
       name: 'profilePublic'
     },
-    login: {
-      name: 'login',
-      pageTitle: 'Login'
-    },
     logout: {
       name: 'logout',
       pageTitle: 'Logout'
@@ -60,14 +56,6 @@ angular.module('meanTweetsRoutes', ['ui.router'])
         controller: 'TweetSingleCtrl',
         resolve: {
           $title: function() { return states.tweetSingle.pageTitle; }
-        }
-      })
-      .state(states.login.name, {
-        url: '/login',
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
-        resolve: {
-          $title: function() { return states.login.pageTitle; }
         }
       })
       .state(states.search.name, {
