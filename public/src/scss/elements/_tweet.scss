@@ -12,6 +12,14 @@
   a {
     font-weight:normal;
     color:$blue-light-2;
+    &:hover,
+    &:focus {
+      color:$blue-dark-1;
+      text-decoration:none;
+    }
+    @media (min-width:$bp-md) {
+      @include transitionQuick;
+    }
   }
 
   .tweets &  {
@@ -46,7 +54,7 @@
     margin-bottom:3px;
     color:$green-light-1;
     .fa {
-      margin-top:5px;
+      margin-top:6px;
       color:$green-light-1;
     }
     span {
@@ -113,19 +121,55 @@
     .tweet-favourite,
     .tweet-retweet {
       margin-right:5px;
+      button {
+        @media (min-width:$bp-md) {
+          @include transitionQuick;
+          &:hover,
+          &:focus {
+            transform:rotate(360deg);
+          }
+        }
+      }
     }
 
-    .tweet-favourite i.active {
-      color:$orange-1;
+    .tweet-favourite {
+      i.active {
+        color:$orange-1;
+      }
+      button {
+        @media (min-width:$bp-md) {
+          &:hover,
+          &:focus {
+            i { color:$orange-1; }
+          }
+        }
+      }
     }
-    .tweet-retweet i.active {
-      color:$green-light-1;
+    .tweet-retweet {
+      i.active {
+        color:$green-light-1;
+      }
+      button {
+        @media (min-width:$bp-md) {
+          &:hover,
+          &:focus {
+            i { color:$green-light-1; }
+          }
+        }
+      }
     }
 
   }
 
   .actions {
     float:left;
+    small {
+      display:none;
+      @media (min-width:$bp-sm) {
+        display:inline-block;
+        vertical-align:middle;
+      }
+    }
   }
 
   .view-more {
@@ -134,7 +178,7 @@
     p {
       display:inline-block;
     }
-    a,
+
     button {
       color:$blue-light-1;
     }

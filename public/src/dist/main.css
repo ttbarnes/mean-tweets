@@ -411,6 +411,12 @@ body.ngdialog-open {
   .tweet a {
     font-weight: normal;
     color: #B8C5D9; }
+    .tweet a:hover, .tweet a:focus {
+      color: #718BB6;
+      text-decoration: none; }
+    @media (min-width: 768px) {
+      .tweet a {
+        transition: all 0.3s ease; } }
   @media (min-width: 768px) {
     .tweets .tweet {
       transition: all 0.3s ease;
@@ -432,7 +438,7 @@ body.ngdialog-open {
     margin-bottom: 3px;
     color: #B5CA8D; }
     .tweet .retweet-notice .fa {
-      margin-top: 5px;
+      margin-top: 6px;
       color: #B5CA8D; }
     .tweet .retweet-notice span {
       display: inline-block;
@@ -476,18 +482,37 @@ body.ngdialog-open {
     .tweet .row-bottom .tweet-favourite,
     .tweet .row-bottom .tweet-retweet {
       margin-right: 5px; }
+      @media (min-width: 768px) {
+        .tweet .row-bottom .tweet-favourite button,
+        .tweet .row-bottom .tweet-retweet button {
+          transition: all 0.3s ease; }
+          .tweet .row-bottom .tweet-favourite button:hover, .tweet .row-bottom .tweet-favourite button:focus,
+          .tweet .row-bottom .tweet-retweet button:hover,
+          .tweet .row-bottom .tweet-retweet button:focus {
+            transform: rotate(360deg); } }
     .tweet .row-bottom .tweet-favourite i.active {
       color: #E9C555; }
+    @media (min-width: 768px) {
+      .tweet .row-bottom .tweet-favourite button:hover i, .tweet .row-bottom .tweet-favourite button:focus i {
+        color: #E9C555; } }
     .tweet .row-bottom .tweet-retweet i.active {
       color: #B5CA8D; }
+    @media (min-width: 768px) {
+      .tweet .row-bottom .tweet-retweet button:hover i, .tweet .row-bottom .tweet-retweet button:focus i {
+        color: #B5CA8D; } }
   .tweet .actions {
     float: left; }
+    .tweet .actions small {
+      display: none; }
+      @media (min-width: 600px) {
+        .tweet .actions small {
+          display: inline-block;
+          vertical-align: middle; } }
   .tweet .view-more {
     float: right;
     margin-top: 6px; }
     .tweet .view-more p {
       display: inline-block; }
-    .tweet .view-more a,
     .tweet .view-more button {
       color: #C4CFE1; }
   .tweet .tweet-favourite button {
