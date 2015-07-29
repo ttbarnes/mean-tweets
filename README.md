@@ -2,15 +2,13 @@
 
 [Demo](http://mean-tweets.herokuapp.com)
 
-WIP - soon there will be a real readme file, for the time being here are some notes.
-
-<img src="http://g.recordit.co/Y97XFWSgPF.gif" />
+WIP :-)
 
 ##quick start
 
 1) Install the dependencies: `npm install && bower install`
 
-2) Start the server: `grunt` or `node server.js` (port 2000)
+2) Start the server: `grunt` (port 2000)
 
 If you want to use your own db, update the url in `server.js` or use [dotenv](https://github.com/motdotla/dotenv).
 
@@ -32,13 +30,15 @@ If you want to use your own db, update the url in `server.js` or use [dotenv](ht
 - Heroku
 
 
-##quick notes
+##grunt tasks
 
-- Start server: `grunt`
+- start server: `grunt serve` (watches for changes). Without grunt: `node server.js`
 
-- Run unit tests: `grunt karma` or `karma start public/karma.conf.js`
+- run tests, start server: `grunt`
 
-###test credentials
+- run unit tests: `grunt karma` or `karma start public/karma.conf.js`
+
+##test credentials
 
 - test1@test.com
 - test2@test.com
@@ -48,7 +48,7 @@ If you want to use your own db, update the url in `server.js` or use [dotenv](ht
 password is the obvious.
 
 
-###api
+##api
 
 ####tweets
 
