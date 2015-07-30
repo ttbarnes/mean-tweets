@@ -27,11 +27,7 @@ angular.module('meanTweetsApp', [
     $analyticsProvider.firstPageview(true);
   }
 
-  //var configValue = 'undefined' || 'default value';
-
   angularticsDev()
-
-
 
 
 

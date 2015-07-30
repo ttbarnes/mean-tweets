@@ -408,7 +408,6 @@ module.exports = function (grunt) {
   */
 
   grunt.registerTask('heroku:', [
-    'clean:dist',
     'copy:jsDist',
     'preprocess:prod',
     'cssmin'
