@@ -27,13 +27,12 @@ angular.module('meanTweetsApp', [
     $analyticsProvider.firstPageview(true);
   }
 
-  // @ifdef DEVELOPMENT
-  angularticsDev()
-  // @endif
+  //var configValue = 'undefined' || 'default value';
 
-  // @ifdef PRODUCTION
-  angularticsProd()
-  // @endif
+  angularticsDev()
+
+
+
 
 
   //auth0 config

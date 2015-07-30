@@ -286,7 +286,19 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      }
+      },
+      jsDist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/js',
+          dest: '<%= yeoman.dist %>',
+          src: [
+            'app.js'
+          ]
+        }]
+      },
+
     },
 
     // Run some tasks in parallel to speed up the build process
@@ -313,7 +325,29 @@ module.exports = function (grunt) {
         configFile: 'public/karma.conf.js',
         singleRun: true
       }
+    },
+
+    preprocess : {
+      dev : {
+        src : [ 'public/src/dist/app.js' ],
+        options: {
+          inline : true,
+          context : {
+            DEVELOPMENT: true
+          }
+        }
+      },
+      prod : {
+        src : [ 'public/src/dist/app.js' ],
+        options: {
+          inline : true,
+          context : {
+            PRODUCTION: true
+          }
+        }
+      },
     }
+
   });
 
 
@@ -323,9 +357,13 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
-      'concurrent:server',
-      //'connect:livereload',
+      'clean:dist',
+      'copy:jsDist',
+      'preprocess:dev',
+      'sass',
+      'cssmin',
+      'jshint',
+      'karma',
       'nodemon',
       'watch'
     ]);
@@ -338,7 +376,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-
     'concurrent:test',
     //'connect:test',
     'nodemon',
@@ -359,6 +396,7 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
+  /*
   grunt.registerTask('default', [
     'jshint',
     'karma',
@@ -367,8 +405,12 @@ module.exports = function (grunt) {
     'cssmin',
     'concurrent:server'
   ]);
+  */
 
   grunt.registerTask('heroku:', [
+    'clean:dist',
+    'copy:jsDist',
+    'preprocess:prod',
     'cssmin'
   ]);
 

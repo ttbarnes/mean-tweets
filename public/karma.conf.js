@@ -32,6 +32,7 @@ module.exports = function(config) {
       '../node_modules/karma-read-json/karma-read-json.js',
       'src/bower_components/angulartics/src/angulartics.js',
       'src/bower_components/angulartics/src/angulartics-ga.js',
+      'src/dist/app.js',
       'src/js/*.js',
       'src/js/**/*.js',
       'src/views/*.html',
@@ -43,6 +44,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+    'src/js/app.js'
     ],
 
 
