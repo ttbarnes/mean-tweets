@@ -1,34 +1,38 @@
+'use strict';
+
 describe('ProfilePublicCtrl - success: user found', function() {
 
-  var state = {
-    params: [{
-      username: 'steven'
-    }]
-  };
-
-  var stateParamsUsername = state.params[0].username;
-
-  var currentUserUsername = 'wally';
-  
-  var profileUsernameDataMockSuccess = {
-    profile: [{
-      details: [{
-        _id: '1234',
-        about: 'I love tweeting about things',
-        location: 'Sometimes even I do not know',
-        websiteUrl: 'http://whereswally.com'
-      }],
-      favourites: [],
-      followers: [],
-      following: []
-    }],
-    username: currentUserUsername,
-    success: true
-  };
-
-  var tweetIdMock = 'b456789akIJmnHJNkmQIk24449';
-
-  var ngDialog;
+  var $q,
+      scope,
+      httpBackend,
+      state = {
+        params: [{
+          username: 'steven'
+        }]
+      },
+      Restangular,
+      currentUserFactory,
+      apiEndpointFactory,
+      ctrl,
+      stateParamsUsername = state.params[0].username,
+      currentUserUsername = 'wally',
+      profileUsernameDataMockSuccess = {
+        profile: [{
+          details: [{
+            _id: '1234',
+            about: 'I love tweeting about things',
+            location: 'Sometimes even I do not know',
+            websiteUrl: 'http://whereswally.com'
+          }],
+          favourites: [],
+          followers: [],
+          following: []
+        }],
+        username: currentUserUsername,
+        success: true
+      },
+      tweetIdMock = 'b456789akIJmnHJNkmQIk24449',
+      ngDialog;
 
   beforeEach(function() {
 

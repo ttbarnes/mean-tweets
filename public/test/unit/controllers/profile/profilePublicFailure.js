@@ -1,19 +1,22 @@
+'use strict';
+
 describe('ProfilePublicCtrl - failure: user not found', function() {
 
-  var state = {
-    params: [{
-      username: 'steven'
-    }]
-  };
-
-  var stateParamsUsername = state.params[0].username;
-
-  var currentUserUsername = 'phillip';
-
-  var profileUsernameDataMockFailure = {
-    username: stateParamsUsername,
-    success: false
-  };
+  var $q,
+      scope,
+      state = {
+        params: [{
+          username: 'steven'
+        }]
+      },
+      Restangular,
+      apiEndpointFactory,
+      ctrl,
+      stateParamsUsername = state.params[0].username,
+      profileUsernameDataMockFailure = {
+        username: stateParamsUsername,
+        success: false
+      };
 
   beforeEach(function() {
 
