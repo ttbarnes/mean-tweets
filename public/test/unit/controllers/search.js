@@ -1,5 +1,3 @@
-/*
-
 'use strict';
 
 describe('SearchCtrl', function() {
@@ -10,13 +8,12 @@ describe('SearchCtrl', function() {
       state,
       ctrl,
       stateParams,
-      searchResults,
-      mockSearchTweets;
+      searchResults;
 
   beforeEach(function() {
 
     module('meanTweetsApp', function ($provide) {
-      $provide.value('searchResults', searchResults = mockSearchTweets);
+      $provide.value('searchResults', searchResults = mockSearchTweets); //jshint ignore:line
     });
 
     inject(function($injector) {
@@ -33,6 +30,9 @@ describe('SearchCtrl', function() {
       });
 
     });
+
+    httpBackend.whenGET(/views.*/).respond(200, '');
+
 
   });
 
@@ -114,4 +114,3 @@ describe('SearchCtrl', function() {
 
 });
 
-*/
