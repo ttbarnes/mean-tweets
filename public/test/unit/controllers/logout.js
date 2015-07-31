@@ -1,8 +1,9 @@
+'use strict';
+
 describe('LogoutCtrl', function() {
 
   var $q;
   var scope;
-  var auth;
   var ctrl;
 
   beforeEach(function() {
@@ -25,10 +26,10 @@ describe('LogoutCtrl', function() {
     expect(auth.signout).toBeDefined();
   }));
 
-  it('should have empty parent message', inject(function (auth){
+  it('should have empty parent message', function(){
     expect(scope.$parent.message).toEqual('');
     expect(scope.$parent.message).not.toEqual(' ');
-  }));
+  });
 
   it('should have correct location path', function (){
     expect(ctrl.locationPath).toEqual('/see-you-soon');
