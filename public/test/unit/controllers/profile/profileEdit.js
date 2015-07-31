@@ -1,4 +1,15 @@
+'use strict';
+
 describe('ProfileEditCtrl', function() {
+
+  var $q,
+      scope,
+      httpBackend,
+      state,
+      Restangular,
+      currentUserFactory,
+      apiEndpointFactory,
+      ctrl;
 
   beforeEach(function() {
 
@@ -30,19 +41,19 @@ describe('ProfileEditCtrl', function() {
 
     httpBackend.when('PUT', endpointPUT).respond(200, '');
 
-    httpBackend.whenGET(endpointGET).respond(mockUser);
+    httpBackend.whenGET(endpointGET).respond(mockUser); //jshint ignore:line
 
     ctrl.mockData = {
        websiteUrl : 'ryanNewSite.co.uk',
        location : 'Liverpool',
        about : 'Tweeting 24/7'
-    }
+    };
 
     ctrl.profileDetails = {
       websiteUrl : ctrl.mockData.websiteUrl,
       location : ctrl.mockData.location,
       about : ctrl.mockData.about
-    }
+    };
 
   });
 
