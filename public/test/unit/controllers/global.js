@@ -2,12 +2,12 @@
 
 describe('GlobalCtrl', function() {
 
-  var $q;
-  var scope;
-  var auth;
-  var httpBackend;
-  var ngDialog;
-  var ctrl;
+  var $q,
+      scope,
+      auth,
+      httpBackend,
+      ngDialog,
+      ctrl;
 
   beforeEach(function() {
     module('meanTweetsApp');

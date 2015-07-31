@@ -2,9 +2,9 @@
 
 describe('LogoutCtrl', function() {
 
-  var $q;
-  var scope;
-  var ctrl;
+  var $q,
+      scope,
+      ctrl;
 
   beforeEach(function() {
     module('meanTweetsApp');

@@ -1,16 +1,17 @@
 'use strict';
 
 describe('FollowUserCtrl', function() {
-  var specHelper;
-  var $q;
-  var scope;
-  var httpBackend;
-  var Restangular;
-  var currentUserFactory;
-  var apiEndpointFactory;
-  var ctrl;
-  var userFollowerMock;
-  var userFollowingMock;
+
+  var specHelper,
+      $q,
+      scope,
+      httpBackend,
+      Restangular,
+      currentUserFactory,
+      apiEndpointFactory,
+      ctrl,
+      userFollowerMock,
+      userFollowingMock;
 
   beforeEach(function() {
 
