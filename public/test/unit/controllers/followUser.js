@@ -2,8 +2,7 @@
 
 describe('FollowUserCtrl', function() {
 
-  var specHelper,
-      $q,
+  var $q,
       scope,
       httpBackend,
       Restangular,
@@ -15,7 +14,7 @@ describe('FollowUserCtrl', function() {
 
   beforeEach(function() {
 
-    specHelper();
+    specHelper(); //jshint ignore:line
 
     inject(function($injector) {
       $q = $injector.get('$q');

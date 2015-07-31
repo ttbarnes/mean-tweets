@@ -149,7 +149,8 @@ module.exports = function (grunt) {
       },
       test: {
         options: {
-          jshintrc: 'public/test/.jshintrc'
+          jshintrc: 'public/test/.jshintrc',
+          ignores: ['public/test/unit/spec-helper.js']
         },
         src: ['public/test/unit/{,*/}*.js']
       }

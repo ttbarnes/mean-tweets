@@ -15,7 +15,7 @@ describe('TweetsCtrl - public profile context', function() {
 
   beforeEach(function() {
 
-    specHelper();
+    specHelper(); //jshint ignore:line
 
     module('meanTweetsApp', function ($provide){
       $provide.value('$state', state = stateMock);

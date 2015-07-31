@@ -32,7 +32,7 @@ describe('ProfilePublicCtrl - success: user found', function() {
 
   beforeEach(function() {
 
-    specHelper();
+    specHelper(); //jshint ignore:line
 
     module('meanTweetsApp', function ($provide) {
       $provide.value('profileUsernameData', profileUsernameDataMockSuccess = profileUsernameDataMockSuccess);

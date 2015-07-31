@@ -17,7 +17,7 @@ describe('TweetsCtrl - timeline context', function() {
 
   beforeEach(function() {
 
-    specHelper();
+    specHelper(); //jshint ignore:line
 
     module('meanTweetsApp', function ($provide){
       $provide.value('currentUserFactory', currentUserFactoryMockSuccess);

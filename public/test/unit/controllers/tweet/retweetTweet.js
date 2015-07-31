@@ -2,7 +2,7 @@ describe('RetweetTweetCtrl', function() {
 
   beforeEach(function() {
 
-    specHelper();
+    specHelper(); //jshint ignore:line
 
     inject(function($injector) {
       $q = $injector.get('$q');
