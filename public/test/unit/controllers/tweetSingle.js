@@ -7,11 +7,11 @@ describe('TweetSingleCtrl', function() {
       state,
       httpBackend,
       Restangular,
-      ctrl,
-      mockSingleTweet;
+      ctrl;
 
   beforeEach(function() {
-    module('meanTweetsApp');
+
+    specHelper(); //jshint ignore:line
 
     inject(function($injector) {
       $q = $injector.get('$q');
@@ -28,7 +28,7 @@ describe('TweetSingleCtrl', function() {
 
       httpBackend.whenGET(/views.*/).respond(200, '');
 
-      httpBackend.whenGET('/api/tweets/undefined').respond(mockSingleTweet);
+      httpBackend.whenGET('/api/tweets/undefined').respond(mockSingleTweet); //jshint ignore:line
 
       state.params = { tweetId: '00001' };
 
