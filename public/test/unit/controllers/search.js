@@ -52,10 +52,15 @@ describe('SearchCtrl', function() {
         searchParam : 'first tweet'
       };
       scope.searchQuery = stateParams.searchParam;
+
+      /* jshint ignore:start */
       scope.searchResults = mockSearchTweets;
       scope.tweets = mockSearchTweets[0].data;
+      /* jshint ignore:end */
+      
       scope.noSearchResults = false;
-      if(!mockSearchTweets[0].data) {
+      
+      if(!mockSearchTweets[0].data) { //jshint ignore:line
         scope.noSearchResults = true;
       }
 
@@ -77,7 +82,7 @@ describe('SearchCtrl', function() {
     });
 
     it('should have false noSearchResults', function(){
-      scope.searchResults = mockSearchTweets;
+      scope.searchResults = mockSearchTweets; //jshint ignore:line
       scope.tweets = scope.searchResults[0].data;
       expect(scope.noSearchResults).toBeFalsy();
     });
