@@ -1,4 +1,12 @@
+'use strict';
+
 describe('SearchBoxCtrl', function() {
+
+  var $q,
+      scope,
+      state,
+      ctrl,
+      mockQuery;
 
   beforeEach(function() {
 
@@ -32,6 +40,7 @@ describe('SearchBoxCtrl', function() {
 
   describe('do query', function(){
     beforeEach(function(){
+
       mockQuery = 'taken3';
 
       spyOn(scope, 'doQuery').and.callThrough();
@@ -63,7 +72,7 @@ describe('SearchBoxCtrl', function() {
         beforeEach(function(){
           scope.search = {
             query : mockQuery
-          }
+          };
           scope.$broadcast('searchBoxOkToClear');
         });
 
