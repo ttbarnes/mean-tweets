@@ -1,8 +1,18 @@
+'use strict';
+
 describe('ComposeTweetCtrl', function() {
+
+  var $q, 
+      scope,
+      httpBackend,
+      Restangular,
+      currentUserFactory,
+      apiEndpointFactory,
+      ctrl;
 
   beforeEach(function() {
 
-    specHelper();
+    specHelper(); //jshint ignore:line
 
     inject(function($injector) {
       $q = $injector.get('$q');
