@@ -1,6 +1,7 @@
 angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, $location, store, Restangular) {
-  $scope.user = '';
-  $scope.pass = '';
+  $scope.user = 'test1@test.com';
+  $scope.pass = 'password';
+  
   $scope.message = {text: ''};
 
   function onLoginSuccess(profile, token) {
