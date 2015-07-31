@@ -1,6 +1,16 @@
 <div class="home-welcome">
   <div class="wrapper-max-width box" ng-controller="LoginCtrl">
 
+    <div class="col-30 col-right test-creds">
+      <p>test usernames</p>
+      <ul>
+        <li><small>test1@test.com</small></li>
+        <li><small>test2@test.com</small></li>
+        <li><small>bill@test.com</small></li>
+        <li><small>ben@test.com</small></li>
+      </ul>
+    </div>
+
     <div class="col-60 col-left">
 
       <div class="row panel">
@@ -14,17 +24,8 @@
       </div>
 
       <p ng-show="message.text"><small>{{message.text}}</small></p>
-      <p><small><span ng-click="doGoogleAuthWithPopup()">log in with google</span> or <span ng-click="loginOrSignup()">signup</span></small></p>
+      <p class="fake-link"><small><span ng-click="doGoogleAuthWithPopup()">log in with google</span></p>
 
-    </div>
-    <div class="col-30 col-right" style="float:right">
-      <p>test usernames</p>
-      <ul>
-        <li>test1@test.com</li>
-        <li>test2@test.com</li>
-        <li>bill@test.com</li>
-        <li>ben@test.com</li>
-      </ul>
     </div>
 
   </div>

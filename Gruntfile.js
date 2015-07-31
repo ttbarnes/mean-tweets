@@ -364,8 +364,7 @@ module.exports = function (grunt) {
       'cssmin',
       'jshint',
       'karma',
-      'nodemon',
-      'watch'
+      'concurrent:server'
     ]);
   });
 

@@ -52,18 +52,37 @@
   p {
     margin-bottom:0;
     color:#1D110F;
-    font:{
-      weight:bold;
-      size:1em;
-    }
-    @media (min-width:$bp-sm) {
-      font-size:1.2em;
-    }
   }
   a {
     cursor:pointer;
     padding:0 0.2em;
     color:#1D110F;
+  }
+
+  .test-creds {
+    @media (min-width:$bp-md) {
+      float:right;
+      padding-top:35px;
+    }
+    li {
+      list-style-type:none;
+      color:$blue-dark-1;
+      display:inline-block;
+      vertical-align:top;
+      margin-right:10px;
+      @media (min-width:$bp-md) {
+        display:block;
+        margin-right:0;
+      }
+    }
+  }
+
+  .fake-link {
+    cursor:pointer;
+    &:hover,
+    &:focus {
+      text-decoration:underline;
+    }
   }
 
 }
