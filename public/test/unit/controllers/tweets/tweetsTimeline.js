@@ -1,34 +1,39 @@
+'use strict';
+
 describe('TweetsCtrl - timeline context', function() {
 
-  var publicProfileUsername = 'steven';
-
-  //home route/view is timeline context, there is no controller for this
-  var stateMock = {
-    params: {
-      username: publicProfileUsername
-    },
-    current: {
-      controller: ''
-    }
-  };
-
-  //this is generated inside the controller without scope 
-  var currentUserFollowingMock = 'userFollowing=ben&userFollowing=hellotest333&userFollowing=hellotest4444&userFollowing=wally'
+  var $q,
+      scope,
+      state,
+      httpBackend,
+      Restangular,
+      currentUserFactory,
+      ctrl,
+      publicProfileUsername = 'steven',
+      stateMock = {
+        params: {
+          username: publicProfileUsername
+        },
+        current: {
+          controller: ''//home route/view is timeline context, there is no controller for this
+        }
+      },
+      currentUserFollowingMock = 'userFollowing=ben&userFollowing=hellotest333&userFollowing=hellotest4444&userFollowing=wally'; //this is generated inside the controller without scope 
 
   beforeEach(function() {
 
     specHelper(); //jshint ignore:line
 
     module('meanTweetsApp', function ($provide){
-      $provide.value('currentUserFactory', currentUserFactoryMockSuccess);
+      $provide.value('currentUserFactory', currentUserFactoryMockSuccess); //jshint ignore:line
       $provide.value('$state', state = stateMock);
-    }); 
+    });
 
     inject(function($injector) {
       $q = $injector.get('$q');
       var $controller = $injector.get('$controller');
       scope = $injector.get('$rootScope').$new();
-      state = $injector.get('$state')
+      state = $injector.get('$state');
       httpBackend = $injector.get('$httpBackend');
       Restangular = $injector.get('Restangular');
       currentUserFactory = $injector.get('currentUserFactory');
@@ -44,13 +49,13 @@ describe('TweetsCtrl - timeline context', function() {
     var apiRoutesInit = {
       profiles: '/api/profiles/',
       timeline: '/api/timeline?' + currentUserFollowingMock
-    }
+    };
 
     httpBackend.whenGET(/views.*/).respond(200, '');
 
-    httpBackend.whenGET(apiRoutesInit.profiles + currentUserFactory.username).respond(mockUser);
+    httpBackend.whenGET(apiRoutesInit.profiles + currentUserFactory.username).respond(mockUser); //jshint ignore:line
 
-    httpBackend.whenGET(apiRoutesInit.timeline).respond(mockTimelineTweets);
+    httpBackend.whenGET(apiRoutesInit.timeline).respond(mockTimelineTweets); //jshint ignore:line
 
     ctrl.initialEndPoint = {
       route : 'api/profiles/' + currentUserFactory.username

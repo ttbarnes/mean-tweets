@@ -4,8 +4,8 @@ describe('ProfileEditCtrl', function() {
 
   var $q,
       scope,
-      httpBackend,
       state,
+      httpBackend,
       Restangular,
       currentUserFactory,
       apiEndpointFactory,

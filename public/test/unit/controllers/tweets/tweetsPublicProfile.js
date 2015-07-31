@@ -1,17 +1,26 @@
+'use strict';
+
 describe('TweetsCtrl - public profile context', function() {
 
-  var publicProfileCtrlName = 'ProfilePublicCtrl';
-  var publicProfileUsername = 'steven';
-
-  var stateParamsMock = {
-    username: publicProfileUsername
-  };
-
-  var stateMock = {
-    current: {
-      controller: publicProfileCtrlName
-    }
-  };
+  var $q,
+      scope,
+      state,
+      stateParams,
+      httpBackend,
+      Restangular,
+      currentUserFactory,
+      ctrl,
+      publicProfileCtrlName = 'ProfilePublicCtrl',
+      publicProfileUsername = 'steven',
+      stateParamsMock = {
+        username: publicProfileUsername
+      },
+      stateMock = {
+        current: {
+          controller: publicProfileCtrlName
+        }
+      },
+      apiRoutes;
 
   beforeEach(function() {
 
@@ -41,12 +50,12 @@ describe('TweetsCtrl - public profile context', function() {
 
     });
 
-    var apiRoutes = {
+    apiRoutes = {
       userTweets: 'api/profiles/' + stateParams.username + '/tweets'
-    }
+    };
 
     httpBackend.whenGET(/views.*/).respond(200, '');
-    httpBackend.whenGET('/' + apiRoutes.userTweets).respond(mockTweets);
+    httpBackend.whenGET('/' + apiRoutes.userTweets).respond(mockTweets); //jshint ignore:line
 
     ctrl.endPoint = apiRoutes.userTweets;
     spyOn(scope, 'getTweets');
