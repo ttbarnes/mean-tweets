@@ -1,9 +1,13 @@
+'use strict';
+
 describe('GlobalCtrl', function() {
 
   var $q;
   var scope;
-  var target;
+  var auth;
+  var httpBackend;
   var ngDialog;
+  var ctrl;
 
   beforeEach(function() {
     module('meanTweetsApp');
@@ -19,7 +23,7 @@ describe('GlobalCtrl', function() {
         open: jasmine.createSpy('ngDialog.open').and.callThrough()
       };
 
-      target = $controller('GlobalCtrl', { 
+      ctrl = $controller('GlobalCtrl', { 
         $scope: scope,
         ngDialog: ngDialog
       });
