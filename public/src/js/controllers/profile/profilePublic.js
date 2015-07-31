@@ -1,4 +1,4 @@
-angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (currentUserFactory, $stateParams, $scope, Restangular, profileUsernameData, ngDialog) {
+angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (currentUserFactory, apiEndpointFactory, $stateParams, $scope, Restangular, profileUsernameData, ngDialog) {
 
   $scope.profileUsernameData = profileUsernameData;  //public profilc data from routes resolve (success, profile data)
   $scope.profileUser = profileUsernameData.profile;  //public profile user's followers, following, favourites
@@ -15,6 +15,14 @@ angular.module('meanTweetsApp').controller('ProfilePublicCtrl', function (curren
 
   else {
     //user found
+
+    //temporary solution to display users's tweet count.
+    //ideally, tweet count and other profile details should be
+    //fetched and returned with one api call.
+    //for the time being, we could do this, or use $emit/$broadcast.
+    apiEndpointFactory.userTweets($scope.profileUsername).getList().then(function (tweets){
+      $scope.tweetsCount = tweets.length;
+    });
 
     //loggedIn user specifics - follow/following this user, delete tweet
     if(currentUserFactory.isAuth) {

@@ -25,9 +25,8 @@
 
         <div class="col-70">
 
-          <div class="col-25 stat">
-            <p ng-if="tweets.length">{{tweets.length}}</p>
-            <p ng-if="!tweets.length">0</p>
+          <div class="col-25 stat" ng-if="tweetsCount">
+            <p>{{tweetsCount}}</p>
             <h6>tweets</h6>
           </div>
           <div class="col-25 stat">

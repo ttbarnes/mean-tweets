@@ -69,10 +69,30 @@ describe('ProfilePublicCtrl - success: user found', function() {
 
       httpBackend.whenGET(/views.*/).respond(200, '');
 
+      httpBackend.whenGET('/api/profiles/undefined/tweets').respond(mockTweets); //jshint ignore:line
+
     });
 
   });
 
+  describe('tweets count', function(){
+
+    beforeEach(function(){
+      spyOn(Restangular, 'all').and.callThrough();
+      httpBackend.flush();
+      scope.$digest();
+    });
+
+    it('should generate the correct route', function(){
+      expect(apiEndpointFactory.userTweets(scope.profileUsername).route).toEqual('api/profiles/' + scope.profileUsername + '/tweets');
+    });
+
+    it('sla dlk sldfkj klsdf jksfd', function(){
+      expect(scope.tweetsCount).toBeDefined();
+      expect(scope.tweetsCount).toEqual(jasmine.any(Number));
+    });
+
+  });
 
   it('should apply currentUserFactory.username to scope', function(){
     expect(scope.loggedInUser).toEqual(currentUserFactory.username);
