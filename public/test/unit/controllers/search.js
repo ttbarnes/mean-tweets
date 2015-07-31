@@ -1,4 +1,15 @@
+'use strict';
+
 describe('SearchCtrl', function() {
+
+  var $q,
+      scope,
+      httpBackend,
+      state,
+      ctrl,
+      stateParams,
+      searchResults,
+      mockSearchTweets;
 
   beforeEach(function() {
 
@@ -54,11 +65,11 @@ describe('SearchCtrl', function() {
 
     it('should have state params search parameter/query defined', function(){
       expect(stateParams.searchParam).toBeDefined();
-    })
+    });
 
     it('should have the search parameter/query applied to scope', function(){
       expect(scope.searchQuery).toEqual(stateParams.searchParam);
-    })
+    });
 
     it('should render tweets in scope.tweets from mock resolve/provide data', function(){
       expect(scope.tweets).toBeDefined();
@@ -89,18 +100,16 @@ describe('SearchCtrl', function() {
 
     it('should have state params search parameter/query defined', function(){
       expect(stateParams.searchParam).toBeDefined();
-    })
+    });
 
     it('should have the search parameter/query applied to scope', function(){
       expect(scope.searchQuery).toEqual(stateParams.searchParam);
-    })
+    });
 
     it('should have true noSearchResults', function(){
       expect(scope.noSearchResults).toBeTruthy();
     });
 
   });
-
-
 
 });
