@@ -1,4 +1,14 @@
+'use strict';
+
 describe('TweetSingleCtrl', function() {
+
+  var $q,
+      scope,
+      state,
+      httpBackend,
+      Restangular,
+      ctrl,
+      mockSingleTweet;
 
   beforeEach(function() {
     module('meanTweetsApp');
