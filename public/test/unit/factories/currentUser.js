@@ -5,9 +5,8 @@ describe('currentUserFactory', function() {
   var $q,
       httpBackend,
       store,
-      auth,
       mockUsername,
-      authUsername;
+      auth;
 
   beforeEach(function() {
     module('meanTweetsApp');
@@ -54,22 +53,20 @@ describe('currentUserFactory', function() {
 
       mockUsername = 'jeff';
 
+      /* jshint ignore:start */
       auth.isAuthenticated = true;
 
-      auth.profile = {
+      auth.profile = {  
         nickname: mockUsername
       };
+      /* jshint ignore:end */
 
     });
 
-    it('should do this that and the other', inject(function (currentUserFactory){
-      expect(currentUserFactory.isAuth).toBeTruthy();
+    it('should have mockUsername defined', inject(function (currentUserFactory) {
+      expect(currentUserFactory.username).toBeDefined();
+      expect(currentUserFactory.username).toEqual(mockUsername);
     }));
-
-    it('shuld have mockUsername defined', function(){
-      expect(authUsername).toBeDefined();
-      expect(authUsername).toEqual(mockUsername);
-    });
 
     describe('user object creation', function(){
 
