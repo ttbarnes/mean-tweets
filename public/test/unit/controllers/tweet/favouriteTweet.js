@@ -1,4 +1,16 @@
+'use strict';
+
 describe('FavouriteTweetCtrl', function() {
+
+  var $q, 
+      scope,
+      httpBackend,
+      Restangular,
+      currentUserFactory,
+      apiEndpointFactory,
+      ctrl,
+      tweetId,
+      favouriteId;
 
   beforeEach(function() {
 
@@ -60,11 +72,11 @@ describe('FavouriteTweetCtrl', function() {
 
       ctrl.mockNewFavourite = {
         username : currentUserFactory.username
-      }
+      };
 
       ctrl.newFavourite = {
         username : ctrl.mockNewFavourite.username
-      }
+      };
 
       spyOn(scope, 'favouriteTweet');
       scope.favouriteTweet(tweetId);

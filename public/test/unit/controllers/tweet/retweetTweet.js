@@ -1,4 +1,16 @@
+'use strict';
+
 describe('RetweetTweetCtrl', function() {
+
+  var $q, 
+      scope,
+      httpBackend,
+      Restangular,
+      currentUserFactory,
+      apiEndpointFactory,
+      ctrl,
+      tweetId,
+      retweetId;
 
   beforeEach(function() {
 
@@ -60,11 +72,11 @@ describe('RetweetTweetCtrl', function() {
 
       ctrl.mockNewRetweet = {
         username : currentUserFactory.username
-      }
+      };
 
       ctrl.newRetweet = {
         username : ctrl.mockNewRetweet.username
-      }
+      };
 
       spyOn(scope, 'retweetTweet');
 

@@ -1,10 +1,16 @@
+'use strict';
+
 describe('DeleteTweetCtrl', function() {
 
-  var $q;
-  var scope;
-  var ctrl;
-  var tweetIdMock = 'b456789akIJmnHJNkmQIk24449';
-  var ngDialog;
+  var $q,
+      scope,
+      httpBackend,
+      Restangular,
+      apiEndpointFactory,
+      ctrl,
+      tweetId,
+      tweetIdMock = 'b456789akIJmnHJNkmQIk24449',
+      ngDialog;
 
   beforeEach(function() {
 
