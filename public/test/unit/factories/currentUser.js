@@ -1,4 +1,13 @@
+'use strict';
+
 describe('currentUserFactory', function() {
+
+  var $q,
+      httpBackend,
+      store,
+      auth,
+      mockUsername,
+      authUsername;
 
   beforeEach(function() {
     module('meanTweetsApp');
@@ -49,7 +58,7 @@ describe('currentUserFactory', function() {
 
       auth.profile = {
         nickname: mockUsername
-      }
+      };
 
     });
 
@@ -57,10 +66,10 @@ describe('currentUserFactory', function() {
       expect(currentUserFactory.isAuth).toBeTruthy();
     }));
 
-    it('shuld have mockUsername defined', inject(function (currentUserFactory){
+    it('shuld have mockUsername defined', function(){
       expect(authUsername).toBeDefined();
       expect(authUsername).toEqual(mockUsername);
-    }));
+    });
 
     describe('user object creation', function(){
 

@@ -1,3 +1,5 @@
+'use strict';
+
 describe('copyGlobalFactory', function(){
 
   beforeEach(module('meanTweetsApp'));

@@ -1,3 +1,5 @@
+'use strict';
+
 describe('apiEndpointFactory', function(){
 
   beforeEach(module('meanTweetsApp'));
