@@ -1,4 +1,16 @@
+'use strict';
+
 describe('FollowUserCtrl', function() {
+  var specHelper;
+  var $q;
+  var scope;
+  var httpBackend;
+  var Restangular;
+  var currentUserFactory;
+  var apiEndpointFactory;
+  var ctrl;
+  var userFollowerMock;
+  var userFollowingMock;
 
   beforeEach(function() {
 
@@ -28,8 +40,8 @@ describe('FollowUserCtrl', function() {
 
     userFollowingMock = 'hans';
 
-    var endpointPUTFollowing = '/api/profiles/' + userFollowerMock + '/following'
-    var endpointPUTFollowers = '/api/profiles/' + userFollowingMock + '/followers'
+    var endpointPUTFollowing = '/api/profiles/' + userFollowerMock + '/following';
+    var endpointPUTFollowers = '/api/profiles/' + userFollowingMock + '/followers';
 
     httpBackend.when('PUT', endpointPUTFollowing).respond(200, '');
     httpBackend.when('PUT', endpointPUTFollowers).respond(200, '');
