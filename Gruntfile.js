@@ -243,7 +243,7 @@ module.exports = function (grunt) {
 
     preprocess : {
       dev : {
-        src : [ 'public/src/dist/app.js' ],
+        src : [ 'server.js', 'app/routes.js', 'public/src/dist/app.js' ],
         options: {
           inline : true,
           context : {
@@ -252,7 +252,7 @@ module.exports = function (grunt) {
         }
       },
       prod : {
-        src : [ 'public/src/dist/app.js' ],
+        src : [ 'server.js', 'app/routes.js', 'public/src/dist/app.js' ],
         options: {
           inline : true,
           context : {

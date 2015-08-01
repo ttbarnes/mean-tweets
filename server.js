@@ -19,7 +19,15 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
-app.use(express.static(__dirname + '/public/src')); // set the static files location
+
+// @ifdef DEVELOPMENT
+app.use(express.static(__dirname + '/public/src')); //set the static files location
+// @endif
+
+// @ifdef PRODUCTION
+app.use(express.static(__dirname + '/public/src/dist')); //set the static files location
+// @endif
+
 
 //enable server logging
 app.use(morgan('dev'));
