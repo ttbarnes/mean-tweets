@@ -32,11 +32,10 @@ If you want to use your own db, update the url in `server.js` or use [dotenv](ht
 
 ##grunt tasks
 
-- start server: `grunt serve` (watches for changes). Without grunt: `node server.js`
+- start server: `grunt` (runs tests, watches for changes). Without grunt: `node server.js`
 
-- run tests, start server: `grunt`
+- run tests:`grunt test`
 
-- run unit tests: `grunt karma` or `karma start public/karma.conf.js`
 
 ##test credentials
 

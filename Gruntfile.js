@@ -1,19 +1,10 @@
 'use strict';
 
-// this gruntfile is adapted from yeoman generator
-
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
+//this gruntfile is adapted from yeoman generator
 
 module.exports = function (grunt) {
 
-  // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
-
-  // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
   // Configurable paths for the application
@@ -28,25 +19,10 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
-    // Watches files for changes and runs tasks based on the changed files
     watch: {
-      /*
-      bower: {
-        files: ['bower.json']
-      },
-      */
       js: {
         files: ['public/src/js/**/*.js', 'public/test/unit/{,*/}*.js'],
-        tasks: ['jshint', 'karma'],
-        /*
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
-        */
-      },
-      jsTest: {
-        files: ['public/test/unit/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
+        tasks: ['jshint', 'karma']
       },
       css: {
         files: ['public/src/scss/*.scss', 'public/src/scss/**/*.scss'],
@@ -54,18 +30,7 @@ module.exports = function (grunt) {
       },
       gruntfile: {
         files: ['Gruntfile.js']
-      },
-      //livereload: {
-        //options: {
-          //livereload: '<%= connect.options.livereload %>'
-        //},
-        //files: [
-          //'<%= yeoman.app %>/{,*/}*.html',
-          //'.tmp/styles/{,*/}*.css',
-          //'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        //]
-      //}
-      //
+      }
     },
 
     sass: {
@@ -76,66 +41,12 @@ module.exports = function (grunt) {
       }
     },
 
-
     nodemon: {
       dev: {
         script: 'server.js'
       }
     },
 
-    // The actual grunt server settings
-    /*connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
-      livereload: {
-        options: {
-          open: true,
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
-              ),
-              connect.static(appConfig.app)
-            ];
-          }
-        }
-      },
-      test: {
-        options: {
-          port: 9001,
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect.static(appConfig.app)
-            ];
-          }
-        }
-      },
-      dist: {
-        options: {
-          open: true,
-          base: '<%= yeoman.dist %>'
-        }
-      }
-    },
-    */
-
-    // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
         jshintrc: '.jshintrc',
@@ -144,7 +55,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/public/src/js/{,*/}*.js'
+          'public/src/js/{,*/}*.js'
         ]
       },
       test: {
@@ -214,9 +125,8 @@ module.exports = function (grunt) {
     
     //TB: jhint ignore:line required due to grunt task name
     //TB: jhint wants this to be camelCase
-
-     cssmin: {
-       add_banner: { // jshint ignore:line
+    cssmin: {
+      add_banner: { // jshint ignore:line
         files: [{
           expand: true,
           cwd: 'public/src/dist/',
@@ -225,8 +135,9 @@ module.exports = function (grunt) {
           ext: '.min.css'
         }]
       }
-     },
-     concat: {
+    },
+
+    concat: {
       options: {
         separator: ';',
       },
@@ -235,13 +146,14 @@ module.exports = function (grunt) {
         dest: '<%= yeoman.dist %>/js/main.js'
       }
     },
-     uglify: {
-       dist: {
-         files: {
-           '<%= yeoman.dist %>/js/main.js': [ '<%= yeoman.app %>/js/{,*/}*.js' ]
-         }
-       }
-     },
+
+    uglify: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/js/main.js': [ '<%= yeoman.app %>/js/{,*/}*.js' ]
+        }
+      }
+    },
 
     htmlmin: {
       dist: {
@@ -298,8 +210,7 @@ module.exports = function (grunt) {
             'app.js'
           ]
         }]
-      },
-
+      }
     },
 
     // Run some tasks in parallel to speed up the build process
@@ -308,7 +219,6 @@ module.exports = function (grunt) {
         logConcurrentOutput: true
       },
       server: [
-        //'copy:styles'
         'nodemon', 
         'watch'
       ],
@@ -320,7 +230,6 @@ module.exports = function (grunt) {
       ]
     },
 
-    // Test settings
     karma: {
       unit: {
         configFile: 'public/karma.conf.js',
@@ -351,20 +260,15 @@ module.exports = function (grunt) {
 
   });
 
-
-  grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
-    }
-
+  grunt.registerTask('serve', function () {
     grunt.task.run([
       'clean:dist',
       'copy:jsDist',
       'preprocess:dev',
-      'sass',
-      'cssmin',
       'jshint',
       'karma',
+      'sass',
+      'cssmin',
       'concurrent:server'
     ]);
   });
@@ -375,10 +279,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    //'connect:test',
-    'nodemon',
+    'jshint',
     'karma'
   ]);
 
@@ -396,16 +297,9 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  /*
   grunt.registerTask('default', [
-    'jshint',
-    'karma',
-    'clean:dist',
-    'sass',
-    'cssmin',
-    'concurrent:server'
+    grunt.task.run('serve');
   ]);
-  */
 
   grunt.registerTask('heroku:', [
     'copy:jsDist',
