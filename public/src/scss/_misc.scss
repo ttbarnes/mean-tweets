@@ -15,3 +15,11 @@ img {
 .no-margin {
   margin:0;
 }
+
+.fake-link {
+  cursor:pointer;
+  &:hover,
+  &:focus {
+    text-decoration:underline;
+  }
+}

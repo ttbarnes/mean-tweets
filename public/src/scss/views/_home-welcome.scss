@@ -77,12 +77,4 @@
     }
   }
 
-  .fake-link {
-    cursor:pointer;
-    &:hover,
-    &:focus {
-      text-decoration:underline;
-    }
-  }
-
 }
