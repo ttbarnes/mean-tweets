@@ -26,7 +26,8 @@ module.exports = function (grunt) {
       },
       css: {
         files: ['public/src/scss/*.scss', 'public/src/scss/**/*.scss'],
-        tasks: ['sass', 'cssmin']
+        //tasks: ['sass', 'cssmin']
+        tasks: ['sass']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -83,9 +84,6 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      cssDist: {
-        src: ['<%= yeoman.dist %>/css/main.css']
-      },
       server: '.tmp'
     },
 
@@ -126,6 +124,7 @@ module.exports = function (grunt) {
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
 
+    /*
     cssmin: {
       target: {
         files: [{
@@ -137,6 +136,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+    */
 
     concat: {
       options: {
@@ -171,7 +171,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'public/src/views/{,*/}*.html'],
+          src: ['*.html', 'public/src/views/**/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -189,7 +189,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'views/{,*/}*.html'
+            'views/**/*.html'
           ]
         }, {
           expand: true,
@@ -272,7 +272,6 @@ module.exports = function (grunt) {
       'jshint',
       'karma',
       'sass',
-      'cssmin',
       'concurrent:server'
     ]);
   });
@@ -299,8 +298,6 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'copy:dist',
     'sass',
-    'cssmin',
-    'clean:cssDist',
     'concat',
     'uglify',
     'filerev',

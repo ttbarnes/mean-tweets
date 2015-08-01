@@ -1,7 +1,6 @@
 node_modules
 public/src/bower_components
-public/src/dist/main.css
+public/src/dist
 .env
 .sass-cache
-dist
 .tmp
