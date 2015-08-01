@@ -10,7 +10,7 @@ WIP :-)
 
 2) Start the server: `grunt` (port 2000)
 
-If you want to use your own db, update the url in `server.js` or use [dotenv](https://github.com/motdotla/dotenv).
+If you have your own mongo db, update the url in `server.js` or use [dotenv](https://github.com/motdotla/dotenv).
 
 ##tech
 
