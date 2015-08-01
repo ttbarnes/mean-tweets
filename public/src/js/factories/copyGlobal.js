@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanTweetsApp').factory('copyGlobalFactory', function (){
 
     var factory = {

@@ -1,3 +1,5 @@
+'use strict';
+
 //this is used for timeline and public profile
 
 angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFactory, $state, $stateParams, $scope, apiEndpointFactory) {
@@ -31,7 +33,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
         });
       }
     });
-  }
+  };
 
   //if not public profile, it's timeline.
   if($state.current.controller === 'ProfilePublicCtrl') {

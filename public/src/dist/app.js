@@ -1,3 +1,4 @@
+'use strict';
 //var meanTweetsApp = angular.module('meanTweetsApp');
 
 angular.module('meanTweetsApp', [
@@ -27,8 +28,13 @@ angular.module('meanTweetsApp', [
     $analyticsProvider.firstPageview(true);
   }
 
-  angularticsDev()
+  // @ifdef DEVELOPMENT
+  angularticsDev();
+  // @endif
 
+  // @ifdef PRODUCTION
+  angularticsProd();
+  // @endif
 
 
   //auth0 config
@@ -52,7 +58,7 @@ angular.module('meanTweetsApp', [
 
 })
 
-.run(function ($rootScope, auth, store, jwtHelper, $location, Restangular, $state) {
+.run(function ($rootScope, auth, store, jwtHelper, $location, Restangular) {
 
   //auth
   $rootScope.$on('$locationChangeStart', function() {
@@ -85,7 +91,7 @@ angular.module('meanTweetsApp', [
   //the promise doesn't return. Therefore $rootScope.restLoading is still loading 
   //and the public profile promise errors aren't honoured.
   //this ensures the 404 is honoured. Not the most elegant - require further investigation.
-  Restangular.setErrorInterceptor(function (response, deferred, responseHandler) {
+  Restangular.setErrorInterceptor(function (response) {
     if(response.status === 404) {
       $rootScope.restLoading = false;
       return true;

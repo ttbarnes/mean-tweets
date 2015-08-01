@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanTweetsApp').factory('apiEndpointFactory', function (Restangular){
 
     return {

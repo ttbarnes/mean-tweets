@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanTweetsApp').controller('GlobalCtrl', function (auth, $scope, $location, store, copyGlobalFactory, ngDialog) {
 
   $scope.appName = copyGlobalFactory.appName;
@@ -5,12 +7,12 @@ angular.module('meanTweetsApp').controller('GlobalCtrl', function (auth, $scope,
   $scope.auth = auth;
 
   $scope.loginOrSignup = function() {
-    auth.signin({}, function(profile, token) {
+    auth.signin({}, function (profile, token) {
       store.set('profile', profile);
       store.set('token', token);
-      $location.path("/");
+      $location.path('/');
     }, function(error) {
-      console.error("There was an error logging in", error);
+      console.error('There was an error logging in', error);
     });
   };
 

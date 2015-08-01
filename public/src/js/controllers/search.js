@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanTweetsApp').controller('SearchCtrl', 
   function ($rootScope, $scope, $stateParams, searchResults) {
 

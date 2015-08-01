@@ -1,3 +1,5 @@
+'use strict';
+
 //usage eg:
 //
 //currentUserFactory.username
@@ -5,12 +7,12 @@
 
 angular.module('meanTweetsApp').factory('currentUserFactory', function (auth){
 
-    var isAuth = false;
+    var isAuth = false; //jshint ignore:line
     var user = false;
 
     if(auth.isAuthenticated === true) {
 
-      authUsername = auth.profile.nickname;
+      var authUsername = auth.profile.nickname;
 
       console.info('currentUser: ' + authUsername);
 

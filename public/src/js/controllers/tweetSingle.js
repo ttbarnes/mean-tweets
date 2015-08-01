@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanTweetsApp').controller('TweetSingleCtrl', 
   function ($stateParams, $scope, Restangular, apiEndpointFactory) {
 

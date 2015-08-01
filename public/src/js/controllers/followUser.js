@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanTweetsApp').controller('FollowUserCtrl', function (currentUserFactory, $scope, Restangular, apiEndpointFactory) {
 
   $scope.followUser = function(userFollower, userFollowing) {

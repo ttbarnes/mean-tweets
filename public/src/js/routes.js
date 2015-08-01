@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanTweetsRoutes', ['ui.router'])
 
   .constant('states', {

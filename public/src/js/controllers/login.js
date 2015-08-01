@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, $location, store, Restangular) {
   $scope.user = 'test1@test.com';
   $scope.pass = 'password';
@@ -17,7 +19,7 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
 
     Restangular.all('api/profiles/' + newUser.username).post(newUser).then(function(){
       console.info('posted a new user: ', newUser.username);
-    }, function (reason){
+    }, function (){
       console.info('user has logged in previously.');
     });
 

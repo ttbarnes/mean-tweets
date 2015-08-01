@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanTweetsApp').controller('SearchBoxCtrl', function ($scope, $state) {
 
   $scope.doQuery = function(query){
