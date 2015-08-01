@@ -36,7 +36,7 @@ module.exports = function (grunt) {
     sass: {
       dist: {
         files: {
-          'public/src/dist/main.css' : 'public/src/scss/main.scss'
+          'public/src/dist/css/main.css' : 'public/src/scss/main.scss'
         }
       }
     },
@@ -83,6 +83,9 @@ module.exports = function (grunt) {
           ]
         }]
       },
+      cssDist: {
+        src: ['<%= yeoman.dist %>/css/main.css']
+      },
       server: '.tmp'
     },
 
@@ -122,16 +125,14 @@ module.exports = function (grunt) {
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
-    
-    //TB: jhint ignore:line required due to grunt task name
-    //TB: jhint wants this to be camelCase
+
     cssmin: {
-      add_banner: { // jshint ignore:line
+      target: {
         files: [{
           expand: true,
-          cwd: 'public/src/dist/',
+          cwd: 'public/src/dist/css/',
           src: ['main.css'],
-          dest: 'public/src/dist/',
+          dest: 'public/src/dist/css/',
           ext: '.min.css'
         }]
       }
@@ -148,6 +149,9 @@ module.exports = function (grunt) {
     },
 
     uglify: {
+      options:{
+        mangle: false
+      },
       dist: {
         files: {
           '<%= yeoman.dist %>/js/main.js': [ '<%= yeoman.app %>/js/{,*/}*.js' ]
@@ -198,7 +202,7 @@ module.exports = function (grunt) {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
-        src: '{,*/}*.css'
+        src: '{,*/}*.styles'
       },
       jsDist: {
         files: [{
@@ -273,6 +277,10 @@ module.exports = function (grunt) {
     ]);
   });
 
+  grunt.registerTask('default', function () {
+    grunt.task.run('serve');
+  });
+
   grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
@@ -285,11 +293,14 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'copy:jsDist',
+    'preprocess:dev',
     'useminPrepare',
     'concurrent:dist',
     'copy:dist',
     'sass',
     'cssmin',
+    'clean:cssDist',
     'concat',
     'uglify',
     'filerev',
@@ -297,14 +308,12 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('default', [
-    grunt.task.run('serve')
-  ]);
-
   grunt.registerTask('heroku:', [
     'copy:jsDist',
     'preprocess:prod',
     'cssmin'
+    
   ]);
+
 
 };
