@@ -277,7 +277,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('default', function () {
+  grunt.registerTask('default', function(){
     grunt.task.run('serve');
   });
 
@@ -294,7 +294,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'copy:jsDist',
-    'preprocess:dev',
+    'preprocess:prod',
     'useminPrepare',
     'concurrent:dist',
     'copy:dist',
@@ -308,12 +308,9 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('heroku:', [
-    'copy:jsDist',
-    'preprocess:prod',
-    'cssmin'
-    
-  ]);
+  grunt.registerTask('heroku:', function(){
+    grunt.task.run('build');
+  });
 
 
 };
