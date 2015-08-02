@@ -17,6 +17,16 @@
          "id":"559b014492f75441cce38a58"
       }
    ],
+   "retweets":[  
+      {  
+         "username":"fred",
+         "id":"5019aad5a261b04656d018afx"
+      },
+      {  
+         "username":"rachel",
+         "id":"299b014492f75441cce38a32"
+      }
+   ],
    "image":{  
       "url":"http://www.mrscottmcallister.com/images/javascript-logo.png"
    }

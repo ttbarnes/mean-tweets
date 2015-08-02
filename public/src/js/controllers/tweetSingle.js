@@ -3,6 +3,8 @@
 angular.module('meanTweetsApp').controller('TweetSingleCtrl', 
   function ($stateParams, $scope, Restangular, apiEndpointFactory) {
 
+    $scope.singleTweet = true;
+
     this.tweetId = $stateParams.tweetId;
     var tweetId = this.tweetId;
 

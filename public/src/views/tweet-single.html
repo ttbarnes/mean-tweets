@@ -1,11 +1,10 @@
-<div ng-if="tweetNotFound" class="panel panel-notice">
-  <p>This tweet doesn't exist. <br/><br/>:(</p>
-</div>
-
-<div ng-if="tweet" class="row panel tweet">
-  <h4 class="tweet-copy">{{tweet.copy}} &nbsp;<small><i>{{tweet.timestamp | amCalendar}}</i></small> </h4>
-  <p>@{{tweet.username}}</p>
-  <div ng-if="tweet.image.url" class="img-wrap">
-    <img ng-src="{{tweet.image.url}}" alt="{{tweet.image.url}}" />
+<div class="tweet-single">
+  <div ng-if="tweetNotFound" class="panel panel-notice">
+    <p>This tweet doesn't exist. <br/><br/>:(</p>
+  </div>
+  <div ng-if="tweet" class="row col-70">
+    <div class="panel tweet">
+      <ng-include src="'views/partials/tweet-single.html'"></ng-include>
+    </div>
   </div>
 </div>

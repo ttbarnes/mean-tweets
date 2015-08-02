@@ -34,6 +34,11 @@
       }
     }
   }
+  .tweet-single & {
+    .view-more {
+      display:none;
+    }
+  }
 
   &.retweeted {
     border-bottom-color:$green-dark-1;
@@ -127,6 +132,12 @@
       }
     }
 
+    .tweet-action {
+      @media (min-width:$bp-md) {
+        @include transitionQuick;
+      }
+    }
+
     .tweet-favourite,
     .tweet-retweet {
       margin-right:5px;
@@ -164,6 +175,15 @@
           &:focus {
             i { color:$green-light-1; }
           }
+        }
+      }
+    }
+
+    .tweet-delete {
+      @media (min-width:$bp-md) {
+        &:hover,
+        &:focus {
+          i { color:$red-1; }
         }
       }
     }

@@ -38,14 +38,23 @@ describe('TweetSingleCtrl', function() {
 
   });
 
+  it('should have true singleTweet in scope', function(){
+    expect(scope.singleTweet).toBeTruthy();
+  });
 
   it('should get the correct tweet id from state.params', function(){
     expect(ctrl.tweetId).toBeDefined();
     expect(ctrl.tweetId).toEqual(state.params.tweetId);
   });
 
-  it('should have a get tweet function', function(){
+  it('should have a getTweet function', function(){
     expect(scope.getTweet).toBeDefined();
+  });
+
+  it('should run getTweet when called', function(){
+    spyOn(scope, 'getTweet');
+    scope.getTweet();
+    expect(scope.getTweet).toHaveBeenCalled();
   });
 
   it('should have called the get tweet function', function(){
@@ -57,16 +66,41 @@ describe('TweetSingleCtrl', function() {
     expect(scope.tweet).toBeDefined();
   });
 
-  it('should return some single tweet fields', function(){
-    httpBackend.flush();
-    expect(scope.tweet).toBeDefined();
-    expect(scope.tweet.id).toBeDefined();
-    expect(scope.tweet.copy).toBeDefined();
-    expect(scope.tweet.image).toBeDefined();
-    expect(scope.tweet.image.url).toBeDefined();
-    expect(scope.tweet.favourites).toBeDefined();
-    expect(scope.tweet.favourites[0].username).toBeTruthy();
-    expect(scope.tweet.favourites[0].id).toBeTruthy();
+  describe('tweet fields', function(){
+    beforeEach(function(){
+      httpBackend.flush();
+    });
+
+    it('should have tweet', function(){
+      expect(scope.tweet).toBeDefined();
+    });
+
+    it('should have id', function(){
+      expect(scope.tweet.id).toBeDefined();
+    });
+
+    it('should have copy', function(){
+      expect(scope.tweet.copy).toBeDefined();
+    });
+
+    it('should have image', function(){
+      expect(scope.tweet.image).toBeDefined();
+      expect(scope.tweet.image.url).toBeDefined();
+    });
+
+    it('should have favourites', function(){
+      expect(scope.tweet.favourites).toBeDefined();
+      expect(scope.tweet.favourites[0].username).toBeTruthy();
+      expect(scope.tweet.favourites[0].id).toBeTruthy();
+    });
+
+    it('should have retweets', function(){
+      expect(scope.tweet.retweets).toBeDefined();
+      expect(scope.tweet.retweets[0].username).toBeTruthy();
+      expect(scope.tweet.retweets[0].id).toBeTruthy();
+    });
+
   });
+
 
 });
