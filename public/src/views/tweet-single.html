@@ -2,8 +2,11 @@
   <div ng-if="tweetNotFound" class="panel panel-notice">
     <p>This tweet doesn't exist. <br/><br/>:(</p>
   </div>
+  <h3 ng-if="tweet && tweet._id">
+    #{{tweet._id}}
+  </h3>
   <div ng-if="tweet" class="row col-70">
-    <div class="panel tweet">
+    <div class="tweet">
       <ng-include src="'views/partials/tweet-single.html'"></ng-include>
     </div>
   </div>

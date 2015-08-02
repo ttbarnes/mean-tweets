@@ -7,16 +7,30 @@
   <form name="profileDetailsForm" ng-submit="updateProfileDetails(profileDetails)">
 
     <label for="email">Email</label>
-    <input type="text" name="email" placeholder="{{auth.profile.email}}" disabled />
+    <input type="text" 
+           name="email" 
+           placeholder="{{auth.profile.email}}" 
+           disabled />
 
     <label for="websiteUrl">Website URL</label>
-    <input type="text" name="websiteUrl" ng-model="profileDetails.websiteUrl" placeholder="http://mywebsite.com" />
+    <input type="text" 
+           name="websiteUrl" 
+           ng-model="profileDetails.websiteUrl" 
+           placeholder="http://mywebsite.com" />
 
     <label for="location">Location</label>
-    <input type="text" name="location" ng-model="profileDetails.location" placeholder="Location" />
+    <input type="text"
+           name="location" 
+           ng-model="profileDetails.location" 
+           placeholder="Location" />
 
     <label for="About">Short Description</label>
-    <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" ng-trim="false" maxlength="100"></textarea>
+    <textarea name="about" 
+              msd-elastic
+              ng-model="profileDetails.about" 
+              placeholder="Short description" 
+              ng-trim="false" 
+              maxlength="100"></textarea>
 
     <char-counter input-elm="profileDetails.about.length" max-length="100"></char-counter>
 

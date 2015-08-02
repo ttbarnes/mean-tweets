@@ -4,9 +4,14 @@
   vertical-align:top;
   width:100%;
   position:relative;
-  padding:{
-    top:10px;
-    bottom:5px;
+  .panel {
+    display:inline-block;
+    vertical-align:top;
+    width:100%;
+    padding:{
+      top:10px;
+      bottom:5px;
+    }
   }
 
   a {
@@ -23,14 +28,16 @@
   }
 
   .tweets &  {
-    @media (min-width:$bp-md) {
-      @include transitionQuick;
-      background:rgba(255, 255, 255, 0.9);
-      &:hover {
-        background:rgba(255, 255, 255, 1);
-        border-bottom-color:$blue-dark-1;
-        border-bottom-right-radius:6px;
-        border-bottom-left-radius:6px;
+    .panel {
+      @media (min-width:$bp-md) {
+        @include transitionQuick;
+        background:rgba(255, 255, 255, 0.9);
+        &:hover {
+          background:rgba(255, 255, 255, 1);
+          border-bottom-color:$blue-dark-1;
+          border-bottom-right-radius:6px;
+          border-bottom-left-radius:6px;
+        }
       }
     }
   }
@@ -197,6 +204,7 @@
       @media (min-width:$bp-sm) {
         display:inline-block;
         vertical-align:middle;
+        margin-top:-2px;
       }
     }
   }

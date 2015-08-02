@@ -9,7 +9,7 @@
   </div>
 
   <div ng-repeat="tweet in tweets.slice().reverse() | filter: timestamp"
-       class="panel tweet"
+       class="tweet"
        ng-class="{retweeted : tweet.followingRetweeted}">
 
     <ng-include src="'views/partials/tweet-single.html'"></ng-include>
