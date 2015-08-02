@@ -18,6 +18,17 @@ label {
   }
 }
 
+a,
+button,
+.button,
+input,
+textarea {
+  border:solid 2px transparent;
+  &:focus {
+    outline:0 none;
+    border:solid 2px $blue-dark-1;
+  }
+}
 
 input,
 textarea,
@@ -27,7 +38,6 @@ button,
   width:100%;
   margin-bottom:$form-elm-margin-bottom;
   font-weight:normal;
-  border:0 none;
   border-radius:$border-radius-sm;
   text-decoration:none;
   -webkit-appearance:none;
@@ -40,11 +50,13 @@ textarea {
 
 button,
 .button {
-  border:0 none;
+  @include transitionQuick;
   display:block;
   padding:10px 20px;
   font-size:14px;
-  @include transitionQuick;
+  &:focus {
+    border-color:$white-full;
+  }
   @media (min-width:$bp-sm) {
     width:auto;
     display:inline-block;
@@ -52,6 +64,9 @@ button,
   }
   &:disabled {
     opacity:0.5;
+  }
+  &.button-small {
+    font-size:12px;
   }
 }
 
@@ -62,18 +77,8 @@ input[type="submit"] {
   cursor:pointer;
   
   &.blue {
-    //background:#3498D4;
     background:$blue-dark-1;
     color:#FFF;
-  }
-}
-
-a,
-button,
-input,
-textarea {
-  &:focus {
-    outline:solid 2px $blue-dark-1;
   }
 }
 

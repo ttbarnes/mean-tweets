@@ -1,21 +1,22 @@
+@mixin iconRotate {
+  + button .fa {
+    opacity:0.7;
+    transform:rotate(0deg);
+  }
+}
+
 .search-box {
   position:relative;
   width:100%;
-  margin:7px 0;
   border-radius:$border-radius-sm;
 
   input,
   button {
     vertical-align:top;
-    margin:0;
-    &:focus {
-      outline:solid 2px $blue-light-1;
-    }
   }
 
   input[type="text"] {
     padding-right:30px;
-    border:solid 2px $white-2;
     width:100%;
     @include transitionQuickest;
   }
@@ -27,6 +28,9 @@
     right:0;
     z-index:2;
     background:none;
+    &:focus {
+      border-color:$blue-dark-1;
+    }
   }
   .fa {
     color:$black;
@@ -35,10 +39,14 @@
     opacity:0.4;
   }
 
-  input[type="text"]:focus {
-    + button .fa {
-      opacity:0.7;
-      transform:rotate(0deg);
+  input[type="text"] {
+    &:focus {
+      @include iconRotate;
+    }
+    @media(min-width:$bp-md) {
+      &:hover {
+        @include iconRotate;
+      }
     }
   }
 }

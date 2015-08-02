@@ -1,0 +1,11 @@
+.timeline {
+  .col-right {
+    padding-top:40px;
+    @media(min-width:$bp-sm) {
+      padding-top:45px;
+    }
+    @media(min-width:$bp-md) {
+      padding-top:55px;
+    }
+  }
+}

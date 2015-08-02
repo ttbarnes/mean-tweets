@@ -29,7 +29,8 @@
       &:hover {
         background:rgba(255, 255, 255, 1);
         border-bottom-color:$blue-dark-1;
-        border-bottom-right-radius:2em;
+        border-bottom-right-radius:6px;
+        border-bottom-left-radius:6px;
       }
     }
   }
@@ -77,6 +78,15 @@
   .img-wrap {
     max-height:350px;
     overflow:hidden;
+    img {
+      opacity:0.95;
+      @media(min-width:$bp-md) {
+        @include transitionQuick;
+        &:hover {
+          opacity:1;
+        }
+      }
+    }
   }
 
   .tweet-copy,

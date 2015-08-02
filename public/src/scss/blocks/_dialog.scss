@@ -14,7 +14,7 @@ body.ngdialog-open {
   padding:15px;
   background:$white-2;
   border-radius:$border-radius-sm;
-  box-shadow:0 22px 60px $blue-dark-2;
+  box-shadow:0 4px 20px rgba(21, 27, 38, 0.68);
   @media (min-width:$bp-sm) {
     max-width:600px;
   }
