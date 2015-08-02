@@ -13,8 +13,8 @@
         <h3>{{profileUsername}}</h3>
         <p ng-if="!profileUserDetails.about && !profileUserDetails.location && !profileUserDetails.websiteUrl" class="no-margin"><small>Apparently, {{profileUsername}} prefers to keep an air of mystery about them.</small></p>
         <p ng-if="profileUserDetails.about">{{profileUserDetails.about}}</p>
-        <p ng-if="profileUserDetails.location"><small><i class="fa fa-map-marker"></i>{{profileUserDetails.location}}</small></p>
-        <p ng-if="profileUserDetails.websiteUrl"><small><a ng-href="{{profileUserDetails.websiteUrl}}" target="_blank"><i class="fa fa-link"></i>{{profileUserDetails.websiteUrl}}</a></small></p>
+        <p ng-if="profileUserDetails.location"><i class="fa fa-map-marker"></i><small>{{profileUserDetails.location}}</small></p>
+        <p ng-if="profileUserDetails.websiteUrl"><a ng-href="{{profileUserDetails.websiteUrl}}" target="_blank"><i class="fa fa-link"></i><small>{{profileUserDetails.websiteUrl}}</small></a></p>
       </div>
 
     </div>
@@ -24,7 +24,6 @@
       <div class="row panel profile-details-right">
 
         <div class="col-70">
-
           <div class="col-25 stat" ng-if="tweetsCount">
             <p>{{tweetsCount}}</p>
             <h6>tweets</h6>
@@ -40,12 +39,11 @@
           </div>
           <div ng-if="profileUser.favourites.length" class="col-25 stat">
             <p>{{profileUser.favourites.length}}</p>
-            <h6>following</h6>
+            <h6>favourites</h6>
           </div>
-
         </div>
 
-        <div class="col-30 align-right">
+        <div class="col-30 col-right">
           <div ng-if="auth.isAuthenticated">
             <ng-include src="'views/partials/follow-user.html'"></ng-include>
           </div>
@@ -53,8 +51,8 @@
              ui-sref="profileEdit"
              class="button blue button-small">Edit my profile</a>
         </div>
-      </div>
 
+      </div>
 
       <ng-include src="'views/partials/tweets.html'"></ng-include>
 

@@ -2,6 +2,17 @@
   box-sizing:border-box;
 }
 
+::-moz-selection {
+  background:$blue-dark-1;
+  color:$white-full;
+  text-shadow:none;
+}
+::selection {
+  background:$blue-dark-1;
+  color:$white-full;
+  text-shadow:none;
+}
+
 img {
   display:block;
   max-width:100%;

@@ -1,7 +1,13 @@
 @mixin iconRotate {
-  + button .fa {
+  .fa {
     opacity:0.7;
     transform:rotate(0deg);
+  }
+}
+
+@mixin makeIconRotate {
+  + button {
+    @include iconRotate;
   }
 }
 
@@ -31,6 +37,11 @@
     &:focus {
       border-color:$blue-dark-1;
     }
+    @media(min-width:$bp-md) {
+      &:hover {
+        @include iconRotate;
+      }
+    }
   }
   .fa {
     color:$black;
@@ -41,11 +52,11 @@
 
   input[type="text"] {
     &:focus {
-      @include iconRotate;
+      @include makeIconRotate;
     }
     @media(min-width:$bp-md) {
       &:hover {
-        @include iconRotate;
+        @include makeIconRotate;
       }
     }
   }

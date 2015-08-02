@@ -24,12 +24,13 @@ h5 {
 
 p {
   margin:0 0 15px 0;
+  font-size:$font-size-paragraph;
 }
 
 small {
-  font-size:0.8em;
+  font-size:$font-size-small;
   &.xs {
-    font-size:0.7em;
+    font-size:$font-size-x-small;
   }
 }
 

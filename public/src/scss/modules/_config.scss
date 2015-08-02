@@ -32,6 +32,9 @@ $form-elm-margin-bottom:20px;
 $border-radius-sm:7px;
 $border-radius-md:12px;
 
-$font-size-small:.8em;
+$font-size-base:16px;
+$font-size-paragraph:$font-size-base - 2px;
+$font-size-small:.9em;
+$font-size-x-small:.8em;
 
 $font-family-default:'Noto Sans', sans-serif;

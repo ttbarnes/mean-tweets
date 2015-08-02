@@ -1,50 +1,67 @@
 .profile-public {
 
-  .col-left {
-    .panel {
-      @media(min-width:$bp-md) {
-        border-top-right-radius:0;
-        border-right:solid 6px $blue-light-2;
-      }
-    }
-  }
-
   .profile-details-left {
+    padding-bottom:0;
+    margin-bottom:0;
+    border-bottom:0 none;
+    border-bottom-right-radius:0;
+    border-bottom-left-radius:0;
+    @media(min-width:$bp-md) {
+      padding-bottom:15px;
+      margin-bottom:20px;
+      border-top-right-radius:0;
+      border-right:solid 6px $blue-light-2;
+      border-bottom:solid 6px $blue-light-2;
+      border-bottom-right-radius:$border-radius-md;
+      border-bottom-left-radius:$border-radius-md;
+    }
     .fa {
-      margin-right:5px; 
+      margin-right:5px;
+      min-width:16px;
     }
     h3,
     p {
-      margin-bottom:5px;
+      margin-bottom:10px;
+    }
+    small {
+      font-size:100%;
+      @media(min-width:$bp-md) {
+        font-size:$font-size-small;
+      }
+    }
+    //failsafe
+    p:last-child {
+      display:inline-block;
     }
   }
   
   .profile-details-right {
     display:inline-block;
     vertical-align:top;
+    padding-top:0;
+    border-top-right-radius:0;
+    border-top-left-radius:0;
     @media(min-width:$bp-md) {
+      padding-top:15px;
       margin-bottom:40px;
       border-top-right-radius:$border-radius-md;
       border-bottom-right-radius:$border-radius-md;
       border-top-left-radius:0;
       border-bottom-left-radius:0;
     }
-
-  }
-
-  .stat {
-    padding:0px 6px;
-    @media(min-width:$bp-md) {
-      text-align:center;
+    .col-right {
+      clear:both;
+      @media(min-width:$bp-md) {
+        clear:none;
+        text-align:right;
+      }
     }
-    h6,
-    p {
-      margin:0;
-    }
-    h6 {
-      font:{
-        size:13px;
-        weight:normal;
+    .button {
+      display:inline-block;
+      vertical-align:top;
+      margin-top:10px;
+      @media(min-width:$bp-md) {
+        margin-top:0;
       }
     }
   }
@@ -55,4 +72,39 @@
     }
   }
 
+}
+
+.stat {
+  float:left;
+  padding:0 12px 6px 0;
+  @media(min-width:$bp-md) {
+    padding:0 6px;
+    text-align:center;
+  }
+  h6,
+  p {
+    margin:0;
+    float:left;
+    font-size:$font-size-paragraph;
+    @media(min-width:$bp-md) {
+      float:none;
+    }
+  }
+  h6 {
+    font-weight:normal;
+    @media(min-width:$bp-md) {
+      font-size:$font-size-x-small;
+    }
+  }
+  p {
+    margin-right:5px;
+    font-weight:bold;
+    @media(min-width:$bp-md) {
+      margin-right:0;
+      font:{
+        size:15px;
+        weight:normal;
+      }
+    }
+  }
 }
