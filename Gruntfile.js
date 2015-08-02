@@ -92,7 +92,10 @@ module.exports = function (grunt) {
       dist: {
         src: [
           '<%= yeoman.dist %>/js/{,*/}*.js',
-          '<%= yeoman.dist %>/css/{,*/}*.css'
+          '<%= yeoman.dist %>/css/{,*/}*.css',
+          '<%= yeoman.dist %>/img/{,*/}*.jpg',
+          '<%= yeoman.dist %>/img/{,*/}*.png',
+          '<%= yeoman.dist %>/img/{,*/}*.gif'
         ]
       }
     },
@@ -109,12 +112,13 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/index.html'],
+      html: ['<%= yeoman.dist %>/index.html', '<%= yeoman.dist %>/views/**/*.html'],
       css: ['<%= yeoman.dist %>/css/{,*/}*.css'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
-          '<%= yeoman.dist %>/css'
+          '<%= yeoman.dist %>/css',
+          '<%= yeoman.dist %>/img'
         ]
       }
     },
@@ -217,6 +221,17 @@ module.exports = function (grunt) {
       }
     },
 
+    imagemin: {
+      dynamic: {
+        files: [{
+          expand: true,
+          cwd: 'public/src/img/',
+          src: ['**/*.{png,jpg,gif}'],
+          dest: 'public/src/dist/img/'
+        }]
+      }
+    },
+
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       options: {
@@ -300,6 +315,7 @@ module.exports = function (grunt) {
     'sass',
     'concat',
     'uglify',
+    'imagemin',
     'filerev',
     'usemin',
     'htmlmin'
