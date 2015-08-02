@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, $location, store, Restangular) {
+
   $scope.user = 'test1@test.com';
   $scope.pass = 'password';
   
@@ -30,14 +31,6 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
     $scope.loading = false;
   }
 
-  $scope.reset = function() {
-    auth.reset({
-      email: 'hello@bye.com',
-      password: 'hello',
-      connection: 'Username-Password-Authentication'
-    });
-  };
-
   $scope.submit = function () {
     $scope.message.text = 'loading...';
     $scope.loading = true;
@@ -52,6 +45,7 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
 
   };
 
+  /*
   $scope.doGoogleAuthWithPopup = function () {
     $scope.message.text = 'loading...';
     $scope.loading = true;
@@ -62,5 +56,6 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
       scope: 'openid name email'
     }, onLoginSuccess, onLoginFailed);
   };
+  */
 
 });
