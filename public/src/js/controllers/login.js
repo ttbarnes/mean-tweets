@@ -7,7 +7,7 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
   
   $scope.message = {text: ''};
 
-  function onLoginSuccess(profile, token) {
+  $scope.onLoginSuccess = function(profile, token) {
     $scope.message.text = '';
     store.set('profile', profile);
     store.set('token', token);
@@ -23,13 +23,12 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
     }, function (){
       console.info('user has logged in previously.');
     });
+  };
 
-  }
-
-  function onLoginFailed() {
+  $scope.onLoginFailed = function() {
     $scope.message.text = 'invalid credentials';
     $scope.loading = false;
-  }
+  };
 
   $scope.submit = function () {
     $scope.message.text = 'loading...';
@@ -41,8 +40,7 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
       authParams: {
         scope: 'openid name email'
       }
-    }, onLoginSuccess, onLoginFailed);
-
+    }, $scope.onLoginSuccess, $scope.onLoginFailed);
   };
 
   /*
