@@ -28,11 +28,9 @@
 .col-30 {
   @media(min-width:$bp-md) {
     width:30%;
-    padding-left:15px;
   }
   &.col-xs {
     width:30%;
-    padding-left:15px;
   }
 }
 
@@ -44,8 +42,6 @@
     width:40%;
   }
 }
-
-
 
 .col-50 {
   @media(min-width:$bp-md) {

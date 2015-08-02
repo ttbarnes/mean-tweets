@@ -18,6 +18,14 @@
   animation-fill-mode: both;
 }
 
+.spinner.small {
+  text-align:center;
+  > div {
+    width:8px;
+    height:8px;
+    background-color:$blue-light-1;
+  }
+}
 .spinner.small-inline {
   display:block;
   margin:0 auto;
@@ -27,11 +35,6 @@
     display:inline-block;
     vertical-align:top;
     margin:0 15px;
-  }
-  > div {
-    width:8px;
-    height:8px;
-    background-color:$blue-light-1;
   }
 }
 

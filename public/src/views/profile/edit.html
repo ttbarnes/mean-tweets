@@ -1,45 +1,37 @@
-<div class="profile-edit">
+<div class="col-50 profile-edit">
 
-  <div class="panel child-cols">
+  <h3>Edit profile @{{auth.profile.nickname}}</h3>
 
-    <h3>Edit profile</h3>
+  <div class="panel">
 
-    <div class="col-30 col-left">
+  <form name="profileDetailsForm" ng-submit="updateProfileDetails(profileDetails)">
 
-      <div class="avatar-wrap">
-        <i class="fa fa-user fa-3x"></i>
-      </div>
+    <label for="email">Email</label>
+    <input type="text" name="email" placeholder="{{auth.profile.email}}" disabled />
 
-      <p><strong>Nickname: </strong>{{auth.profile.nickname}}</p>
-      <p><strong>Email: </strong>{{auth.profile.email}}</p>
+    <label for="websiteUrl">Website URL</label>
+    <input type="text" name="websiteUrl" ng-model="profileDetails.websiteUrl" placeholder="http://mywebsite.com" />
+
+    <label for="location">Location</label>
+    <input type="text" name="location" ng-model="profileDetails.location" placeholder="Location" />
+
+    <label for="About">Short Description</label>
+    <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" ng-trim="false" maxlength="100"></textarea>
+
+    <char-counter input-elm="profileDetails.about.length" max-length="100"></char-counter>
+
+    <input type="submit" 
+           value="Save"
+           class="button blue"
+           ng-disabled="profileDetailsForm.$invalid || profileDetailsForm.$pristine" />
+
+    <div ng-show="loading" class="spinner small">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
     </div>
 
-    <div class="col-70 col-right">
-      <form name="profileDetailsForm" ng-submit="updateProfileDetails(profileDetails)">
+  </form>
 
-        <label for="websiteUrl">Website URL</label>
-        <input type="text" name="websiteUrl" ng-model="profileDetails.websiteUrl" placeholder="http://mywebsite.com" />
-
-        <label for="location">Location</label>
-        <input type="text" name="location" ng-model="profileDetails.location" placeholder="Location" />
-
-        <label for="About">Short Description</label>
-        <textarea name="about" ng-model="profileDetails.about" placeholder="Short description" ng-trim="false" maxlength="100"></textarea>
-
-        <char-counter input-elm="profileDetails.about.length" max-length="100"></char-counter>
-
-        <input type="submit" 
-               value="Save"
-               class="button blue"
-               ng-disabled="profileDetailsForm.$invalid || profileDetailsForm.$pristine" />
-
-        <div ng-show="loading" class="spinner small-inline">
-          <div class="bounce1"></div>
-          <div class="bounce2"></div>
-          <div class="bounce3"></div>
-        </div>
-
-      </form>
-    </div>
   </div>
 </div>

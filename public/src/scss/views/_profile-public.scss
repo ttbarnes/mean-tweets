@@ -1,27 +1,5 @@
 .profile-public {
 
-  /*
-  
-
-  .col-left {
-    @media(min-width:$bp-md) {
-      padding:{
-        right:15px;
-        left:0;
-      }
-    }
-  }
-
-  .col-right {
-    @media(min-width:$bp-md) {
-      padding:{
-        right:0;
-        left:15px;
-      }
-    }
-  }
-  */
-
   .col-left {
     .panel {
       @media(min-width:$bp-md) {

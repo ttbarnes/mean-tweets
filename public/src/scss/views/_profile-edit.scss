@@ -1,0 +1,30 @@
+.profile-edit {
+
+  .panel {
+    display:inline-block;
+    vertical-align:top;
+    width:100%;
+  }
+  textarea {
+    margin-bottom:0;
+  }
+  char-counter {
+    float:right;
+  }
+  input[type="submit"] {
+    clear:both;
+    float:right;
+    margin-top:15px;
+  }
+
+  .spinner {
+    clear:both;
+    padding-top:17px;
+    @media(min-width:$bp-sm) {
+      clear:none;
+      float:right;
+      padding-top:23px;
+    }
+  }
+
+}

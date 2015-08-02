@@ -83,6 +83,10 @@ input[type="submit"] {
   }
 }
 
+input[disabled] {
+  cursor:not-allowed;
+}
+
 textarea {
   max-width:100%;
   resize:none;
