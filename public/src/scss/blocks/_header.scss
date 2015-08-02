@@ -5,7 +5,7 @@ header {
   border-bottom:solid 3px $blue-light-2;
   box-shadow:0 12px 42px $blue-light-2;
   position:fixed;
-  z-index:2;
+  z-index:3;
   top:0;
   left:0;
   @media (min-width:$bp-sm) {
@@ -48,7 +48,10 @@ header {
   margin:0;
   font:{
     weight:normal;
-    size:19px;
+    size:17px;
+  }
+  @media (min-width:$bp-xs) {
+    font-size:19px;
   }
   @media (min-width:$bp-sm) {
     font-size:26px;
@@ -74,19 +77,37 @@ header {
 .btn-compose-tweet {
   background-color:$blue-dark-1;
   color:$white-full;
-  font-size:20px;
-  padding:5px 4px 5px 7px;
-  margin:-2px 0 0 0;
+  font-size:16px;
+  padding:5px 6px 5px 8px;
+  margin:0;
+  @media (min-width:$bp-md) {
+    &:hover,
+    &:focus {
+      transform:rotate(90deg);
+      padding:5px 7px 4px 7px;
+    }
+  }
 }
 
 .dropdown-menu-wrap {
   position:relative;
-  margin:0 15px;
+  margin:0 10px;
   z-index:2;
   cursor:pointer;
-  font-size:13px;
+  font-size:12px;
+  color:$blue-light-1;
+  @media (min-width:$bp-xs) {
+    font-size:13px;
+    margin:0 15px;
+  }
+  @media (min-width:$bp-md) {
+    color:$blue-dark-1;
+  }
   .fa {
-    margin-left:5px;
+    margin-left:3px;
+    @media (min-width:$bp-xs) {
+      margin-left:5px;
+    }
   }
 }
 
@@ -102,13 +123,16 @@ header {
     display:block;
     padding:8px 10px;
     font-weight:normal;
-    color:$black;
+    color:$blue-dark-1;
+    &:hover,
+    &:focus {
+      text-decoration:none;
+    }
     @media (min-width:$bp-md) {
       @include transitionQuick;
       &:hover,
       &:focus {
         background:$white-2;
-        text-decoration:none;
       }
     }
   }
