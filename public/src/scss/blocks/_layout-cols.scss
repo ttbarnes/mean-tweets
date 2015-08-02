@@ -1,5 +1,6 @@
 .col-25,
 .col-30,
+.col-40,
 .col-50,
 .col-70,
 .col-75 {
@@ -34,6 +35,17 @@
     padding-left:15px;
   }
 }
+
+.col-40 {
+  @media(min-width:$bp-md) {
+    width:40%;
+  }
+  &.col-xs {
+    width:40%;
+  }
+}
+
+
 
 .col-50 {
   @media(min-width:$bp-md) {

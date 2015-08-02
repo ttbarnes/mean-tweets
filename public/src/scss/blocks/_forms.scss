@@ -46,6 +46,7 @@ button,
 input,
 textarea {
   padding:10px;
+  border-color:$grey-2;
 }
 
 button,
@@ -55,7 +56,7 @@ button,
   padding:10px 20px;
   font-size:14px;
   &:focus {
-    border-color:$white-full;
+    border-color:$blue-dark-2;
   }
   @media (min-width:$bp-sm) {
     width:auto;

@@ -1,33 +1,21 @@
 <div class="home-welcome">
   <div class="wrapper-max-width box" ng-controller="LoginCtrl">
+    <div class="col-40">
 
-    <div class="col-30 col-right test-creds">
-      <p>test usernames</p>
-      <ul>
-        <li><small>test1@test.com</small></li>
-        <li><small>test2@test.com</small></li>
-        <li><small>bill@test.com</small></li>
-        <li><small>ben@test.com</small></li>
-      </ul>
-    </div>
-
-    <div class="col-60 col-left">
-
-      <div class="row panel">
+      <div class="panel">
+        <h3>Log in (test user)</h3>
         <form ng-submit="submit()">
           <input type="text" name="user" ng-model="user" placeholder="bill@test.com" ng-disabled="loading"/>
           <br/>
           <input type="password" name="pass" ng-model="pass" placeholder="password" ng-disabled="loading" />
           <br/>
-          <button type="submit" class="blue no-margin" ng-disabled="loading" autofocus>log in</button>
+          <button type="submit" class="blue no-margin" ng-disabled="loading">log in</button>
         </form>
+        <p ng-show="message.text"><small>{{message.text}}</small></p>
       </div>
-
-      <p ng-show="message.text"><small>{{message.text}}</small></p>
-      <p class="fake-link"><small><span ng-click="doGoogleAuthWithPopup()">log in with google</span></p>
-
+      <p class="fake-link"><small><span ng-click="doGoogleAuthWithPopup()">log in with google</span></small></p>
     </div>
-
+    
   </div>
   <img src="img/home-bg.jpg" />
 </div>
