@@ -28,6 +28,7 @@ module.exports = function(config) {
       'src/bower_components/restangular/dist/restangular.js',
       'src/bower_components/moment/moment.js',
       'src/bower_components/angular-moment/angular-moment.js',
+      'src/bower_components/angular-elastic/elastic.js',
       'src/bower_components/ngDialog/js/ngDialog.js',
       '../node_modules/karma-read-json/karma-read-json.js',
       'src/bower_components/angulartics/src/angulartics.js',

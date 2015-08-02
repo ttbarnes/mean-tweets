@@ -12,6 +12,7 @@ angular.module('meanTweetsApp', [
   'restangular',
   'angularMoment',
   'ngDialog',
+  'monospaced.elastic',
   'angulartics', 
   'angulartics.google.analytics'
 ])

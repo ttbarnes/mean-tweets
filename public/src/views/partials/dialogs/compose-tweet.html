@@ -1,33 +1,39 @@
 <div ng-controller="ComposeTweetCtrl" class="row compose-tweet">
-  <form name="composeTweetForm" ng-submit="postTweet(tweet)">
-    <div class="col-70">
-      <input type="text" 
-             name="copy"
-             placeholder="My tweet"
-             ng-model="tweet.copy" 
-             maxlength="140" />
-      <div class="add-image">
-        <p class="add-image-copy" ng-click="addImage = !addImage">add image</p>
-        <char-counter input-elm="tweet.copy.length" max-length="140"></char-counter>
-        <input ng-show="addImage"
-               type="url" 
-               name="imageUrl"
-               placeholder="Image URL"
-               ng-model="tweet.image.url" />
+  <h5>New tweet</h5>
+  <char-counter input-elm="tweet.copy.length" max-length="140"></char-counter>
+  <div class="row">
+    <form name="composeTweetForm" ng-submit="postTweet(tweet)">
+      <div class="row textarea-wrap">
+        <textarea name="copy" 
+                  msd-elastic
+                  placeholder="Tweeting all the things"
+                  ng-model="tweet.copy" 
+                  maxlength="140" 
+                  autofocus></textarea>
       </div>
-    </div>
-    <div class="col-30">
-      <input type="submit" 
-             value="Tweet"
-             class="button blue"
-             ng-disabled="postTweetForm.$invalid || !tweet.copy.length" />
-
-      <div ng-show="loading" class="spinner small-inline">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
+      <div class="row">
+        <div class="col-50 col-xs add-image">
+          <input type="url" 
+                 name="imageUrl"
+                 placeholder="Image URL (optional)"
+                 ng-model="tweet.image.url" />
+        </div>
+        <div class="col-25 col-xs submit-wrap">
+          <char-counter input-elm="tweet.copy.length" max-length="140"></char-counter>
+          <input type="submit" 
+                 value="Tweet"
+                 class="button blue"
+                 ng-disabled="postTweetForm.$invalid || !tweet.copy.length" />
+        </div>
       </div>
-      <p ng-show="loadingSuccess">tweet posted!</p>
-    </div>
-  </form>
+      <div class="row">
+        <div ng-show="loading" class="spinner small-inline">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <p ng-show="loadingSuccess">tweet posted!</p>
+      </div>
+    </form>
+  </div>
 </div>

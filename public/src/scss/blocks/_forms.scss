@@ -1,39 +1,49 @@
+form {
+  font-size:14px;
+}
+
+label,
+input,
+textarea {
+  font-size:100%;
+}
+
 label {
   display:inline-block;
   width:100%;
-  font:{
-    weight:bold;
-    size:13px;
-  }
+  font-weight:bold;
   padding:0 0 5px 0;
   @media (min-width:$bp-md) {
     padding:0 10px 5px 10px;
   }
 }
 
-button,
-.button,
+
 input,
-textarea {
+textarea,
+button,
+.button {
   font-family:'Noto Sans', sans-serif;
   width:100%;
-  padding:10px;
   margin-bottom:$form-elm-margin-bottom;
-  font:{
-    size:13px;
-    weight:normal;
-  }
+  font-weight:normal;
   border:0 none;
   border-radius:$border-radius-sm;
   text-decoration:none;
   -webkit-appearance:none;
 }
 
+input,
+textarea {
+  padding:10px;
+}
 
 button,
 .button {
   border:0 none;
   display:block;
+  padding:10px 20px;
+  font-size:14px;
   @include transitionQuick;
   @media (min-width:$bp-sm) {
     width:auto;
@@ -48,6 +58,7 @@ button,
 button,
 .button,
 input[type="submit"] {
+  margin:0;
   cursor:pointer;
   
   &.blue {
@@ -68,6 +79,5 @@ textarea {
 
 textarea {
   max-width:100%;
-  min-height:100px;
   resize:none;
 }

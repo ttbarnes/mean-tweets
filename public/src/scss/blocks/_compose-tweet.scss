@@ -2,15 +2,73 @@
   display:inline-block;
   vertical-align:top;
   width:100%;
-  .add-image-copy {
+
+  h5,
+  h5 + char-counter {
     float:left;
   }
-  .char-counter {
-    float:right;
-  }
-  input[type="submit"] {
-    @media (min-width:$bp-md) {
-      width:auto;
+
+  h5 {
+    @media (min-width:$bp-sm) {
+      float:none;
+    }
+    + char-counter {
+      float:right;
+      @media (min-width:$bp-sm) {
+        display:none;
+      }
     }
   }
+
+  .textarea-wrap {
+    font-size:14px;
+  }
+
+  textarea {
+    min-height:100px;
+    font-size:100%;
+    vertical-align:top;
+    overflow:auto;
+
+    @media (min-width:$bp-xs) {
+      min-height:40px;
+      box-sizing:initial;
+      width:96%;
+    }
+  }
+
+  .add-image {
+    width:100%;
+    padding:0;
+    @media (min-width:$bp-sm) {
+      width:50%;
+      input {
+        margin-bottom:0;
+      }
+    }
+  }
+
+  char-counter,
+  input[type="submit"] {
+    display:inline-block;
+    vertical-align:middle;
+  }
+
+  .submit-wrap {
+    width:100%;
+    text-align:right;
+    padding-left:0;
+    @media (min-width:$bp-sm) {
+      float:right;
+      width:25%;
+      padding-left:15px;
+    }
+    char-counter {
+      display:none;
+      @media (min-width:$bp-sm) {
+        display:inline-block;
+      }
+    }
+  }
+
 }
