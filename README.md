@@ -64,52 +64,78 @@ password is the obvious.
 
 ####tweets
 
-POST   `/api/tweets` - post a single tweet. Accepts: copy, username, image.url. Timestamp is generated in back-end.
+- post a single tweet
+  - POST `/api/tweets`
 
-GET    `/api/tweets/username` - return all tweets by username.
+- get all tweets by username
+  - GET `/api/tweets/:username`
+  - eg: `/api/tweets/whereswally`
 
-GET    `/api/tweets/tweet_id` - return a single tweet with the tweet_id param.
+- get a single tweet witH tweet_id param.
+  - GET `/api/tweets/:tweet_id`
 
-PUT    `/api/tweets/tweet_id` - update a tweet with the tweet_id param.
+- update a tweet with tweet_id param
+  - PUT `/api/tweets/:tweet_id`
 
-DELETE `/api/tweets/tweet_id` - delete a tweet with the tweet_id param.
+- delete a tweet with tweet_id param.
+  - DELETE `/api/tweets/:tweet_id`
 
-PUT    `/api/tweets/:tweet_id/favourites`
+- add a username to a tweet's favourites array
+  - PUT `/api/tweets/:tweet_id/favourites`
 
-DELETE `/api/tweets/:tweet_id/favourites/fav_tweet_id` 
+- delete a favourite from a tweet
+  - DELETE `/api/tweets/:tweet_id/favourites/:fav_tweet_id` 
+  - eg: `/api/tweets/1a2b3c4d/favourites/q5w6e7r8` 
 
-PUT    `/api/tweets/:tweet_id/retweets`
+- add a username to a tweet's retweets array
+  - PUT `/api/tweets/:tweet_id/retweets`
 
-DELETE `/api/tweets/:tweet_id/retweets/retweet_id`
+- delete a retweet from a tweet
+  - DELETE `/api/tweets/:tweet_id/retweets/:retweet_id`
+
 
 ####timeline
 
+- search and return tweets with usernames from a query
+  - GET `/api/timeline`
+  - eg: `/api/timeline?userFollowing=bill&userFollowing=ben`
 
-GET    `/api/timeline` - searches and returns tweets with usernames from a query: `?userFollowing=bill&userFollowing=ben`
 
 ####search
-
-
-GET    `/api/search/someString` - searches and returns tweets containing someString.
+- search and return tweets containing someString
+  - GET `/api/search/someString`
+  - eg: `/api/search/hotWeather`
 
 
 ####profiles
 
-GET    `/api/profiles/username` - return a single user with the provided username param.
+- get a single user
+  - GET `/api/profiles/:username` 
+  - eg: `/api/profiles/whereswally` 
 
-POST   `/api/profiles/username` - post a new user object: username: String, following: `[{ username: String }], followers: [{ username: String }]`
+- add a single new username
+  - POST `/api/profiles/:username` 
+  - eg: `{ username: String }`
 
-POST   `/api/profiles/username/details` - public profile details
+- add public profile details
+  - POST `/api/profiles/:username/:details` 
+  - eg: 
 
-PUT    `/api/profiles/username/following` - post a new following with username param.
+- add a new following username to a user's profile
+  - PUT `/api/profiles/:username/following` 
 
-PUT    `/api/profiles/username/followers` - post a new follower with username param.
+- add a new follower username to a user's profile
+  - PUT `/api/profiles/:username/followers` 
 
-PUT    `/api/profiles/username/tweets/favourites/tweet_id`
+- add a username to a user's favourites array
+  - PUT `/api/profiles/:username/tweets/favourites/:tweet_id`
 
-DELETE `/api/profiles/username/tweets/favourites/tweet_id`
+- delete a username from a user's favourites array
+  - DELETE `/api/profiles/:username/tweets/favourites/:tweet_id`
 
-PUT    `/api/profiles/username/tweets/retweets/tweet_id`
+- add a username to a user's retweets array
+  - PUT `/api/profiles/:username/tweets/retweets/:tweet_id`
+
 
 
 ##Contributions
