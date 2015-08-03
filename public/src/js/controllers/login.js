@@ -42,17 +42,4 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
     }, $scope.onLoginSuccess, $scope.onLoginFailed);
   };
 
-  /*
-  $scope.doGoogleAuthWithPopup = function () {
-    $scope.message.text = 'loading...';
-    $scope.loading = true;
-
-    auth.signin({
-      popup: true,
-      connection: 'google-oauth2',
-      scope: 'openid name email'
-    }, onLoginSuccess, onLoginFailed);
-  };
-  */
-
 });
