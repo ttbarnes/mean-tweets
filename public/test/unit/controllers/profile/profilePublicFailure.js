@@ -42,6 +42,10 @@ describe('ProfilePublicCtrl - failure: user not found', function() {
 
   });
 
+  it('should instantiate the controller', function(){
+    expect(ctrl).not.toBeUndefined();
+  });
+
   it('should have profileUsernameData defined', function(){
     expect(scope.profileUsernameData).toBeDefined();
   });

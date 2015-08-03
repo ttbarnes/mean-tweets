@@ -9,8 +9,8 @@ describe('FavouriteTweetCtrl', function() {
       currentUserFactory,
       apiEndpointFactory,
       ctrl,
-      tweetId,
-      favouriteId;
+      tweetId = '1k2n4jn4mn5l1mn3k4',
+      favouriteId = '9b7nh7e2j4w9x1m2w3';
 
   beforeEach(function() {
 
@@ -33,9 +33,6 @@ describe('FavouriteTweetCtrl', function() {
 
     });
 
-    tweetId   = '1k2n4jn4mn5l1mn3k4';
-    favouriteId = '9b7nh7e2j4w9x1m2w3';
-
     httpBackend.whenGET(/views.*/).respond(200, '');
 
     httpBackend.whenGET('/api/tweets/' + tweetId + '/favourites').respond(200, '');
@@ -43,6 +40,10 @@ describe('FavouriteTweetCtrl', function() {
   });
 
   describe('initialization', function(){
+
+    it('should instantiate the controller', function(){
+      expect(ctrl).not.toBeUndefined();
+    });
 
     it('should have a favouriteTweet function', function(){
       expect(scope.favouriteTweet).toBeDefined();

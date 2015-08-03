@@ -18,7 +18,11 @@ describe('TweetsCtrl - timeline context', function() {
           controller: ''//home route/view is timeline context, there is no controller for this
         }
       },
-      currentUserFollowingMock = 'userFollowing=ben&userFollowing=hellotest333&userFollowing=hellotest4444&userFollowing=wally'; //this is generated inside the controller without scope 
+      currentUserFollowingMock = 'userFollowing=ben&userFollowing=hellotest333&userFollowing=hellotest4444&userFollowing=wally', //this is generated inside the controller without scope 
+      apiRoutesInit = {
+        profiles: '/api/profiles/',
+        timeline: '/api/timeline?' + currentUserFollowingMock
+      };
 
   beforeEach(function() {
 
@@ -45,11 +49,6 @@ describe('TweetsCtrl - timeline context', function() {
       });
 
     });
-
-    var apiRoutesInit = {
-      profiles: '/api/profiles/',
-      timeline: '/api/timeline?' + currentUserFollowingMock
-    };
 
     httpBackend.whenGET(/views.*/).respond(200, '');
 

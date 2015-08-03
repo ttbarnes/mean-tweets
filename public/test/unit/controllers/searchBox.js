@@ -27,6 +27,10 @@ describe('SearchBoxCtrl', function() {
 
   describe('initialization', function(){
 
+    it('should instantiate the controller', function(){
+      expect(ctrl).not.toBeUndefined();
+    });
+
     it('should have a doQuery function', function(){
       expect(scope.doQuery).toBeDefined();
     });

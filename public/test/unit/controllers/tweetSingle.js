@@ -38,6 +38,10 @@ describe('TweetSingleCtrl', function() {
 
   });
 
+  it('should instantiate the controller', function(){
+    expect(ctrl).not.toBeUndefined();
+  });
+
   it('should have true singleTweet in scope', function(){
     expect(scope.singleTweet).toBeTruthy();
   });
@@ -67,6 +71,7 @@ describe('TweetSingleCtrl', function() {
   });
 
   describe('tweet fields', function(){
+
     beforeEach(function(){
       httpBackend.flush();
     });
@@ -90,17 +95,28 @@ describe('TweetSingleCtrl', function() {
 
     it('should have favourites', function(){
       expect(scope.tweet.favourites).toBeDefined();
+    });
+
+    it('should have favourites username', function(){
       expect(scope.tweet.favourites[0].username).toBeTruthy();
+    });
+
+    it('should have favourites id', function(){
       expect(scope.tweet.favourites[0].id).toBeTruthy();
     });
 
     it('should have retweets', function(){
       expect(scope.tweet.retweets).toBeDefined();
+    });
+
+    it('should have retweets username', function(){
       expect(scope.tweet.retweets[0].username).toBeTruthy();
+    });
+
+    it('should have retweets id', function(){
       expect(scope.tweet.retweets[0].id).toBeTruthy();
     });
 
   });
-
 
 });

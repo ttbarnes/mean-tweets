@@ -35,6 +35,10 @@ describe('GlobalCtrl', function() {
 
   describe('initialization', function(){
 
+    it('should instantiate the controller', function(){
+      expect(ctrl).not.toBeUndefined();
+    });
+
     it('should have the correct app name', function(){
       expect(scope.appName).toEqual('Mean tweets');
     });

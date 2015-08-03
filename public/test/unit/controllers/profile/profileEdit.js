@@ -59,6 +59,10 @@ describe('ProfileEditCtrl', function() {
 
   describe('initilisation', function(){
 
+    it('should instantiate the controller', function(){
+      expect(ctrl).not.toBeUndefined();
+    });
+
     it('should apply currentUserFactory username to scope', function(){
       expect(currentUserFactory.username).toEqual(scope.loggedInUser);
     });
@@ -75,7 +79,6 @@ describe('ProfileEditCtrl', function() {
       spyOn(scope, 'updateProfileDetails');
       expect(scope.updateProfileDetails).not.toHaveBeenCalled();
     });
-
 
     describe('get profile data', function(){
 

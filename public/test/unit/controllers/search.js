@@ -33,7 +33,6 @@ describe('SearchCtrl', function() {
 
     httpBackend.whenGET(/views.*/).respond(200, '');
 
-
   });
 
   //note: require further investigation.
@@ -66,6 +65,10 @@ describe('SearchCtrl', function() {
 
       httpBackend.flush();
       scope.$digest();
+    });
+
+    it('should instantiate the controller', function(){
+      expect(ctrl).not.toBeUndefined();
     });
 
     it('should have state params search parameter/query defined', function(){
@@ -118,4 +121,3 @@ describe('SearchCtrl', function() {
   });
 
 });
-

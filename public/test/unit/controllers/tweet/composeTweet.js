@@ -49,6 +49,10 @@ describe('ComposeTweetCtrl', function() {
 
   describe('initialization', function(){
 
+    it('should instantiate the controller', function(){
+      expect(ctrl).not.toBeUndefined();
+    });
+
     it('should have a postTweet function', function(){
       expect(scope.postTweet).toBeDefined();
     });

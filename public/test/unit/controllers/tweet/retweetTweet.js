@@ -9,8 +9,8 @@ describe('RetweetTweetCtrl', function() {
       currentUserFactory,
       apiEndpointFactory,
       ctrl,
-      tweetId,
-      retweetId;
+      tweetId = '1k2n4jn4mn5l1mn3k4',
+      retweetId = '9b7nh7e2j4w9x1m2w3';
 
   beforeEach(function() {
 
@@ -28,13 +28,10 @@ describe('RetweetTweetCtrl', function() {
         $scope: scope,
         $httpBackend: httpBackend,
         apiEndpointFactory: apiEndpointFactory,
-        currentUserFactory: currentUserFactory,
+        currentUserFactory: currentUserFactory
       });
 
     });
-
-    tweetId   = '1k2n4jn4mn5l1mn3k4';
-    retweetId = '9b7nh7e2j4w9x1m2w3';
 
     httpBackend.whenGET(/views.*/).respond(200, '');
 
@@ -43,6 +40,10 @@ describe('RetweetTweetCtrl', function() {
   });
 
   describe('initialization', function(){
+
+    it('should instantiate the controller', function(){
+      expect(ctrl).not.toBeUndefined();
+    });
 
     it('should have a retweetTweet function', function(){
       expect(scope.retweetTweet).toBeDefined();
@@ -121,7 +122,6 @@ describe('RetweetTweetCtrl', function() {
     });
 
   });
-
 
   describe('remove retweet', function(){
 

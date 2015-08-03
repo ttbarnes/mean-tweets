@@ -18,6 +18,10 @@ describe('LogoutCtrl', function() {
 
   });
 
+  it('should instantiate the controller', function(){
+    expect(ctrl).not.toBeUndefined();
+  });
+
   it('should have auth defined', inject(function (auth){
     expect(auth).toBeDefined();
   }));
@@ -35,6 +39,5 @@ describe('LogoutCtrl', function() {
     expect(ctrl.locationPath).toEqual('/see-you-soon');
 
   });
-
 
 });

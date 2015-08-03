@@ -36,6 +36,10 @@ describe('LoginCtrl', function() {
 
   });
 
+  it('should instantiate the controller', function(){
+    expect(ctrl).not.toBeUndefined();
+  });
+
   describe('default login credentials', function(){
     
     it('should have user/email defined', function(){
@@ -103,7 +107,6 @@ describe('LoginCtrl', function() {
     });
 
   });
-
 
   describe('onLoginFailed function', function(){
 

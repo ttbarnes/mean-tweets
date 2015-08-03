@@ -48,6 +48,10 @@ describe('FollowUserCtrl', function() {
 
   });
 
+  it('should instantiate the controller', function(){
+    expect(ctrl).not.toBeUndefined();
+  });
+
   it('should have a followUser function', function(){
     expect(scope.followUser).toBeDefined();
   });

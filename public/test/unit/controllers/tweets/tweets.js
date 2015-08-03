@@ -67,6 +67,10 @@ describe('TweetsCtrl - public profile and timeline context', function() {
 
   });
 
+  it('should instantiate the controller', function(){
+    expect(ctrl).not.toBeUndefined();
+  });
+
   describe('current user (if exists)', function(){
 
     it('should be assigned to scope', function(){
@@ -82,7 +86,6 @@ describe('TweetsCtrl - public profile and timeline context', function() {
     });
 
   });
-
 
   describe('getTweets function', function(){
 
@@ -106,6 +109,5 @@ describe('TweetsCtrl - public profile and timeline context', function() {
   });
 
   //todo: test currentUserTweetsCheck specifics
-
 
 });
