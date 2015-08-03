@@ -1,7 +1,7 @@
 .spinner {
   margin:0 auto;
   width:70px;
-  padding:15px 0;
+  padding:$spacing-sm 0;
 }
 
 .spinner > div {
@@ -34,7 +34,7 @@
   @media (min-width:$bp-sm) {
     display:inline-block;
     vertical-align:top;
-    margin:0 15px;
+    margin:0 $spacing-sm;
   }
 }
 

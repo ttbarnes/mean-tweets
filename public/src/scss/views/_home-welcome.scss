@@ -42,18 +42,19 @@
       max-width:100%;
     }
   }
+
   .box {
     z-index:2;
     position:relative;
     margin:20% auto;
-    padding:10px;
+    padding:$spacing-xs;
     @media (min-width:$bp-md) {
       margin:15% auto;
     }
   }
 
   .fake-link {
-    margin-left:15px;
+    margin-left:$spacing-sm;
   }
 
 }

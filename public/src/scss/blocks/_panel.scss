@@ -1,13 +1,13 @@
 .panel {
   background:$white-1;
-  margin-bottom:20px;
-  padding:15px;
+  margin-bottom:$spacing-md;
+  padding:$spacing-sm;
   border-radius:$border-radius-md;
   border-bottom:solid 6px $blue-light-2;
 
   ul,
   ol,
   dl {
-    margin-left:15px;
+    margin-left:$spacing-sm;
   }
 }

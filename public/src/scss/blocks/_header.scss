@@ -32,10 +32,10 @@ header {
     display:inline-block;
     vertical-align:middle;
     a {
-      padding:8px 10px;
+      padding:8px $spacing-xs;
       display:block;
       @media (min-width:$bp-sm) {
-        padding:9px 10px;
+        padding:$spacing-xs - 1px $spacing-xs;
       }
     }
   }
@@ -51,7 +51,7 @@ header {
   .col-right {
     float:right;
     text-align:right;
-    margin:5.5px 10px;
+    margin:5.5px $spacing-xs;
     @media (min-width:$bp-sm) {
       margin:10.5px 20px;
     }
@@ -59,102 +59,7 @@ header {
 
 }
 
-.logo {
-  float:left;
-  margin:0;
-  font:{
-    weight:normal;
-    size:17px;
-  }
-  @media (min-width:$bp-xs) {
-    font-size:19px;
-  }
-  @media (min-width:$bp-sm) {
-    font-size:26px;
-  }
-  a {
-    display:inline-block;
-    padding:10px;
-    color:#333;
-    @media (min-width:$bp-sm) {
-      padding:{
-        right:20px;
-        left:20px;
-      }
-    }
-    @media (min-width:$bp-md) {
-      @include transitionQuick;
-      &:hover,
-      &:focus {
-        background:$blue-dark-1;
-        color:$white-full;
-      }
-    }
-  }
-}
-
-
-.button-compose-tweet {
-  background-color:$blue-dark-1;
-  color:$white-full;
-  font-size:16px;
-  padding:5px 6px 5px 8px;
-  margin-bottom:0;
-  outline:0 none;
-  @media (min-width:$bp-md) {
-    &:hover,
-    &:focus {
-      transform:rotate(90deg);
-      padding:5px 7px 4px 7px;
-    }
-  }
-}
-
-.dropdown-menu-wrap {
-  position:relative;
-  z-index:2;
-  cursor:pointer;
-  margin:0 10px;
-  @media (min-width:$bp-xs) {
-    margin:0 15px;
-  }
-  .fa {
-    margin-left:3px;
-    @media (min-width:$bp-xs) {
-      margin-left:5px;
-    }
-  }
-}
-
-.dropdown-menu {
-  background:$white-full;
-  box-shadow:0 12px 42px $blue-light-2;
-  position:absolute;
-  top:30px;
-  right:-9px;
-  width:100px;
-  z-index:3;
-  a {
-    display:block;
-    padding:8px 10px;
-    color:$blue-dark-1;
-    @media (min-width:$bp-md) {
-      @include transitionQuick;
-      &:hover,
-      &:focus {
-        background:$white-2;
-      }
-    }
-  }
-  li {
-    display:block;
-    font-size:13px;
-    &:first-child a {
-      padding-top:8px;
-    }
-    &:last-child a {
-      padding-bottom:8px;
-    }
-  }
-}
+@import '../elements/header-logo';
+@import '../elements/header-dropdown-menu';
+@import '../elements/header-compose-tweet';
 

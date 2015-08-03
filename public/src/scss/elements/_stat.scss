@@ -26,7 +26,7 @@
     @media(min-width:$bp-md) {
       margin-right:0;
       font:{
-        size:15px;
+        size:$spacing-sm;
         weight:normal;
       }
     }

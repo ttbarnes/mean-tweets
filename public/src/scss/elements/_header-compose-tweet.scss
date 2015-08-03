@@ -1,0 +1,15 @@
+.button-compose-tweet {
+  background-color:$blue-dark-1;
+  color:$white-full;
+  font-size:16px;
+  padding:5px 6px 5px 8px;
+  margin-bottom:0;
+  outline:0 none;
+  @media (min-width:$bp-md) {
+    &:hover,
+    &:focus {
+      transform:rotate(90deg);
+      padding:5px 7px 4px 7px;
+    }
+  }
+}

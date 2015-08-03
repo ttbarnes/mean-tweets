@@ -64,7 +64,7 @@
     @media (min-width:$bp-sm) {
       float:right;
       width:50%;
-      padding-left:15px;
+      padding-left:$spacing-sm;
     }
     char-counter {
       display:none;

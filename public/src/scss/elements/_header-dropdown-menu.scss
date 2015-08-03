@@ -1,0 +1,47 @@
+.dropdown-menu-wrap {
+  position:relative;
+  z-index:2;
+  cursor:pointer;
+  margin:0 $spacing-xs;
+  @media (min-width:$bp-xs) {
+    margin:0 $spacing-sm;
+  }
+  .fa {
+    margin-left:3px;
+    @media (min-width:$bp-xs) {
+      margin-left:5px;
+    }
+  }
+}
+
+.dropdown-menu {
+  background:$white-full;
+  box-shadow:0 12px 42px $blue-light-2;
+  position:absolute;
+  top:30px;
+  right:-9px;
+  width:100px;
+  z-index:3;
+  a {
+    display:block;
+    padding:8px $spacing-xs;
+    color:$blue-dark-1;
+    @media (min-width:$bp-md) {
+      @include transitionQuick;
+      &:hover,
+      &:focus {
+        background:$white-2;
+      }
+    }
+  }
+  li {
+    display:block;
+    font-size:13px;
+    &:first-child a {
+      padding-top:8px;
+    }
+    &:last-child a {
+      padding-bottom:8px;
+    }
+  }
+}

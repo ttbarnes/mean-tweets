@@ -32,15 +32,15 @@ img {
 
 .short-message h3 {
   font-size:$font-size-h1 - 5px;
-  margin-bottom:15px;
+  margin-bottom:$spacing-sm;
 }
 
 .inline-message {
   background:$red-1;
   color:$white-full;
-  padding:5px 10px;
+  padding:5px $spacing-xs;
   margin:{
-    top:15px;
+    top:$spacing-sm;
     bottom:0;
   }
   text-align:center;

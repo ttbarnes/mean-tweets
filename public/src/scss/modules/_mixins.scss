@@ -1,3 +1,14 @@
+@mixin createCol($width) {
+  @media(min-width:$bp-md) {
+    float:left;
+    width:$width;
+    min-height:1px;
+  }
+  &.col-xs {
+    float:left;
+    min-height:1px;
+  }
+}
 @mixin transitionQuickest {
   transition:all 0.2s ease;
 }
@@ -5,3 +16,4 @@
 @mixin transitionQuick {
   transition:all 0.3s ease;
 }
+

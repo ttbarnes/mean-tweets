@@ -7,8 +7,8 @@
     border-bottom-right-radius:0;
     border-bottom-left-radius:0;
     @media(min-width:$bp-md) {
-      padding-bottom:15px;
-      margin-bottom:20px;
+      padding-bottom:$spacing-sm;
+      margin-bottom:$spacing-md;
       border-top-right-radius:0;
       border-right:solid 6px $blue-light-2;
       border-bottom:solid 6px $blue-light-2;
@@ -21,7 +21,7 @@
     }
     h3,
     p {
-      margin-bottom:10px;
+      margin-bottom:$spacing-xs;
     }
     small {
       font-size:100%;
@@ -42,7 +42,7 @@
     border-top-right-radius:0;
     border-top-left-radius:0;
     @media(min-width:$bp-md) {
-      padding-top:15px;
+      padding-top:$spacing-sm;
       margin-bottom:40px;
       border-top-right-radius:$border-radius-md;
       border-bottom-right-radius:$border-radius-md;
@@ -59,7 +59,7 @@
     .button {
       display:inline-block;
       vertical-align:top;
-      margin-top:10px;
+      margin-top:$spacing-xs;
       @media(min-width:$bp-md) {
         margin-top:0;
       }
@@ -72,39 +72,4 @@
     }
   }
 
-}
-
-.stat {
-  float:left;
-  padding:0 12px 6px 0;
-  @media(min-width:$bp-md) {
-    padding:0 6px;
-    text-align:center;
-  }
-  h6,
-  p {
-    margin:0;
-    float:left;
-    font-size:$font-size-paragraph;
-    @media(min-width:$bp-md) {
-      float:none;
-    }
-  }
-  h6 {
-    font-weight:normal;
-    @media(min-width:$bp-md) {
-      font-size:$font-size-x-small;
-    }
-  }
-  p {
-    margin-right:5px;
-    font-weight:bold;
-    @media(min-width:$bp-md) {
-      margin-right:0;
-      font:{
-        size:15px;
-        weight:normal;
-      }
-    }
-  }
 }

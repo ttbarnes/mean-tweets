@@ -11,7 +11,7 @@ body.ngdialog-open {
   position:relative;
   max-width:90%;
   margin:5% auto;
-  padding:15px;
+  padding:$spacing-sm;
   background:$white-2;
   border-radius:$border-radius-sm;
   box-shadow:0 4px 20px rgba(21, 27, 38, 0.68);

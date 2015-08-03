@@ -20,11 +20,11 @@ body {
 }
 
 .main-wrapper {
-  padding:10px;
+  padding:$spacing-xs;
   margin-top:70px;
   z-index:1;
   @media (min-width:$bp-sm) {
-    padding:20px;
+    padding:$spacing-md;
     margin-top:80px;
   }
   @media (min-width:$bp-md) {
