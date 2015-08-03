@@ -1,6 +1,6 @@
 #Mean tweets
 
-Mini Twitter with MEAN. [Demo](http://mean-tweets.herokuapp.com)
+Mini Twitter with MEAN. [Demo](https://mean-tweets.herokuapp.com)
 
 
 ##Prerequisites
