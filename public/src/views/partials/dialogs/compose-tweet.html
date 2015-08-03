@@ -18,21 +18,18 @@
                  placeholder="Image URL (optional)"
                  ng-model="tweet.image.url" />
         </div>
-        <div class="col-25 col-xs submit-wrap">
+        <div class="col-50 col-xs submit-wrap">
+          <div ng-show="loading" class="spinner small small-inline">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
           <char-counter input-elm="tweet.copy.length" max-length="140"></char-counter>
           <input type="submit" 
                  value="Tweet"
                  class="button blue"
                  ng-disabled="postTweetForm.$invalid || !tweet.copy.length" />
         </div>
-      </div>
-      <div class="row">
-        <div ng-show="loading" class="spinner small-inline">
-          <div class="bounce1"></div>
-          <div class="bounce2"></div>
-          <div class="bounce3"></div>
-        </div>
-        <p ng-show="loadingSuccess">tweet posted!</p>
       </div>
     </form>
   </div>
