@@ -10,7 +10,7 @@
     width:100%;
     padding:{
       top:10px;
-      bottom:5px;
+      bottom:0;
     }
   }
 
@@ -222,7 +222,7 @@
     }
   }
 
-  .tweet-favourite button {
+  .tweet-favourite .button {
     padding-left:0;
   }
 

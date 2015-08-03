@@ -1,6 +1,6 @@
 <div class="tweet-single">
-  <div ng-if="tweetNotFound" class="panel panel-notice">
-    <p>This tweet doesn't exist. <br/><br/>:(</p>
+  <div ng-if="tweetNotFound" class="panel">
+    <p class="no-margin">This tweet doesn't exist. :(</p>
   </div>
   <h3 ng-if="tweet && tweet._id">
     #{{tweet._id}}

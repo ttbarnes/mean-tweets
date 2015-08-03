@@ -1,7 +1,7 @@
 <div class="profile-public">
-  <div ng-show="userNotFound" class="col-70 no-float-margin-auto">
-    <div class="panel panel-notice align-center">
-      <p>Sorry, {{profileUsername}} doesn't exist. <br/><br/> :(</p>
+  <div ng-show="userNotFound" class="col-50">
+    <div class="panel">
+      <p class="no-margin">Sorry, {{profileUsername}} doesn't exist. :(</p>
     </div>
   </div>
 
@@ -56,8 +56,8 @@
 
       <ng-include src="'views/partials/tweets.html'"></ng-include>
 
-      <div ng-if="!loadingTweets && errorMessage" class="panel align-center">
-        <p><strong>{{errorMessage}}</strong></p>
+      <div ng-if="!loadingTweets && errorMessage" class="panel">
+        <p class="no-margin"><strong>{{errorMessage}}</strong></p>
       </div>
 
     </div>

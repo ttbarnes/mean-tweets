@@ -27,7 +27,7 @@
 
 
     <div ng-if="noSearchResults">
-      <p>Nothing found with  &lsquo;{{searchQuery}}&rsquo;. <br/><br/>:(</p>
+      <p>Nothing found with  &lsquo;{{searchQuery}}&rsquo;. :(</p>
     </div>
 
     <div ng-if="!noSearchResults">
@@ -36,12 +36,12 @@
 
     <div class="row tweets">
 
-      <div ng-if="userNoFollowings" class="panel panel-notice">
-        <p>You're not following anyone right now. <br/><br/>:(</p>
+      <div ng-if="userNoFollowings" class="panel">
+        <p class="no-margin">You're not following anyone right now. :(</p>
       </div>
 
-      <div ng-if="userNotTweeted" class="panel panel-notice">
-        <p>{{profileUsername}} hasn't tweeted yet. <br/><br/> :(</p>
+      <div ng-if="userNotTweeted" class="panel">
+        <p class="no-margin">{{profileUsername}} hasn't tweeted yet. :(</p>
       </div>
 
 

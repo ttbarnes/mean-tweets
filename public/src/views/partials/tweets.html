@@ -1,11 +1,11 @@
 <div class="row tweets" ng-controller="TweetsCtrl">
 
-  <div ng-if="userNoFollowings" class="panel panel-notice">
-    <p>You're not following anyone right now. <br/><br/>:(</p>
+  <div ng-if="userNoFollowings" class="panel">
+    <p class="no-margin">You're not following anyone right now. <br/><br/>:(</p>
   </div>
 
-  <div ng-if="userNotTweeted" class="panel panel-notice">
-    <p>{{profileUsername}} hasn't tweeted yet. <br/><br/> :(</p>
+  <div ng-if="userNotTweeted" class="panel">
+    <p class="no-margin">{{profileUsername}} hasn't tweeted yet. :(</p>
   </div>
 
   <div ng-repeat="tweet in tweets.slice().reverse() | filter: timestamp"
