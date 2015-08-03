@@ -37,7 +37,5 @@ img {
 
 .short-message h3 {
   font-size:$font-size-h1 - 5px;
-  @media(min-width:$bp-sm) {
-    font-size:$font-size-h1;
-  }
+  margin-bottom:15px;
 }
