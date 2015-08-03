@@ -2,14 +2,16 @@
   <button ng-click="favouriteTweet(tweet._id);
                     newFavouriteTweet = true;
                     tweet.favourites.length = tweet.favourites.length + 1;" 
-          ng-hide="newFavouriteTweet || tweet.alreadyFavourited">
+          ng-hide="newFavouriteTweet || tweet.alreadyFavourited"
+          class="button">
           <i class="fa fa-star"></i>
   </button>
   <button ng-click="unFavouriteTweet(tweet._id, tweet.usersFavId);
                     newFavouriteTweet = false; 
                     tweet.alreadyFavourited = false;
                     tweet.favourites.length = tweet.favourites.length - 1;" 
-          ng-show="newFavouriteTweet || tweet.alreadyFavourited">
+          ng-show="newFavouriteTweet || tweet.alreadyFavourited"
+          class="button">
           <i class="fa fa-star active"></i>
   </button>
   <small ng-show="tweet.favourites.length > 0" class="xs">{{tweet.favourites.length}}</small>

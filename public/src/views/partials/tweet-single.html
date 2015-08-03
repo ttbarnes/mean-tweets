@@ -32,7 +32,7 @@
 
     <div class="view-more" ng-hide="singleTweet">
       <p><a ui-sref="tweetSingle({tweetId: tweet._id})"><small>view more</small></a></p>
-      <button class="tweet-action tweet-delete"
+      <button class="button tweet-action tweet-delete"
               ng-if="usersOwnProfile"
               ng-click="deleteTweetDialog(tweet._id)">
               <i class="fa fa-trash"></i>

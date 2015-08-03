@@ -6,7 +6,7 @@
 }
 
 @mixin makeIconRotate {
-  + button {
+  + .button {
     @include iconRotate;
   }
 }
@@ -17,8 +17,9 @@
   border-radius:$border-radius-sm;
 
   input,
-  button {
+  .button {
     vertical-align:top;
+    margin-bottom:0;
   }
 
   input[type="text"] {
@@ -27,7 +28,7 @@
     @include transitionQuickest;
   }
 
-  button {
+  .button {
     width:auto;
     position:absolute;
     top:0;

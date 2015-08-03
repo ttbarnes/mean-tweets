@@ -2,14 +2,16 @@
   <button ng-click="retweetTweet(tweet._id);
                     newRetweet = true;
                     tweet.retweets.length = tweet.retweets.length + 1;"
-          ng-hide="newRetweet || tweet.loggedinUserRetweeted">
+          ng-hide="newRetweet || tweet.loggedinUserRetweeted"
+          class="button">
           <i class="fa fa-refresh"></i>
   </button>
   <button ng-click="removeRetweet(tweet._id, tweet.usersRetweetId);
                     newRetweet = false;
                     tweet.loggedinUserRetweeted = false;
                     tweet.retweets.length = tweet.retweets.length - 1;"
-          ng-show="newRetweet || tweet.loggedinUserRetweeted">
+          ng-show="newRetweet || tweet.loggedinUserRetweeted"
+          class="button">
           <i class="fa fa-refresh active"></i>
   </button>
   <small ng-show="tweet.retweets.length > 0" class="xs">{{tweet.retweets.length}}</small>
