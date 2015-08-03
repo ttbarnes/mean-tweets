@@ -4,19 +4,14 @@
 
     <h3>Search</h3>
 
-    <!--
-    <div class="row form-wrap bg-grey">
-      <input type="text" 
-             ng-model="search.query"
-             placeholder="Enter search criteria, eg #taken3"
-             autofocus/>
-      <button ng-click="getTweets(search.query)" 
-              class="blue">Go</button>
+    <div class="search-box">
+      <form>
+        <input type="text" 
+               ng-model="search.query"
+               placeholder="javascript" />
+        <button class="button" ng-click="doQuery(search.query);"><i class="fa fa-search"></i></button>
+      </form>
     </div>
-    -->
-
-
-    <p ng-show="errorMessage">{{errorMessage}}</p>
 
     <!--<ng-include src="'views/partials/tweets.html'"></ng-include>-->
 
@@ -26,12 +21,12 @@
     -->
 
 
-    <div ng-if="noSearchResults">
-      <p>Nothing found with  &lsquo;{{searchQuery}}&rsquo;. :(</p>
+    <div ng-show="noSearchResults">
+      <p>Nothing found with  &lsquo;<strong>{{searchQuery}}</strong>&rsquo;. :(</p>
     </div>
 
-    <div ng-if="!noSearchResults">
-      <p><small>{{tweets.length}} tweets found with the query &lsquo;{{searchQuery}}&rsquo;.</small></p>
+    <div ng-show="tweets">
+      <p><small>{{tweets.length}} tweets found with &lsquo;<strong>{{searchQuery}}</strong>&rsquo;.</small></p>
     </div>
 
     <div class="row tweets">

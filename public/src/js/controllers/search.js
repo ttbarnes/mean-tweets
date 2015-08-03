@@ -1,16 +1,20 @@
 'use strict';
 
 angular.module('meanTweetsApp').controller('SearchCtrl', 
-  function ($rootScope, $scope, $stateParams, searchResults) {
+  function ($rootScope, $scope, $stateParams, apiEndpointFactory) {
 
-    $scope.searchQuery = $stateParams.searchParam;
-    $scope.tweets = searchResults.data;
+    $scope.doQuery = function(query){
+      $scope.tweets = false;
+      $scope.searchQuery = query;
 
-    if(!$scope.tweets || !$scope.tweets.length) {
-      $scope.noSearchResults = true;
-    }
-    else {
-      $rootScope.$broadcast('searchBoxOkToClear');
-    }
+      apiEndpointFactory.search(query).getList().then(function (data) {
+        if(data.length) {
+          $scope.noSearchResults = false;
+          $scope.tweets = data;
+        }
+      }, function(){
+        $scope.noSearchResults = true;
+      });
+    };
 
 });

@@ -65,22 +65,6 @@ angular.module('meanTweetsRoutes', ['ui.router'])
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl',
         resolve: {
-          searchResults: function(Restangular, $stateParams) {
-            return Restangular.all('api/search/' + $stateParams.searchParam ).getList().then(function (data) {
-              var searchResults = {
-                success: true,
-                data: data
-              };
-              return searchResults;
-
-            }, function () {
-              console.warn('no search results found with the query ' + $stateParams.searchParam);
-              var searchResults = {
-                success: false
-              };
-              return searchResults;
-            });
-          },
           $title: function() { return states.search.pageTitle; }
         }
       })

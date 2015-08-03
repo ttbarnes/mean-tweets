@@ -16,19 +16,35 @@ header {
     margin-bottom:0;
   }
 
+  li,
+  li a {
+    font-size:12px;
+    color:$blue-light-1;
+    @media (min-width:$bp-xs) {
+      font-size:13px;
+    }
+    @media (min-width:$bp-md) {
+      color:$blue-dark-1;
+    }
+  }
+
   li {
     display:inline-block;
     vertical-align:middle;
     a {
-      padding:13px 10px;
+      padding:8px 10px;
       display:block;
-      color:$blue-dark-1;
       @media (min-width:$bp-sm) {
-        padding:16px 10px;
+        padding:9px 10px;
       }
     }
-    &:first-child a {
-      padding:10px;
+  }
+
+  a {
+    font-weight:normal;
+    &:hover,
+    &:focus {
+      text-decoration:none;
     }
   }
 
@@ -60,8 +76,6 @@ header {
     display:inline-block;
     padding:10px;
     color:#333;
-    font-weight:normal;
-    text-decoration:none;
     @media (min-width:$bp-sm) {
       padding:{
         right:20px;
@@ -98,17 +112,11 @@ header {
 
 .dropdown-menu-wrap {
   position:relative;
-  margin:0 10px;
   z-index:2;
   cursor:pointer;
-  font-size:12px;
-  color:$blue-light-1;
+  margin:0 10px;
   @media (min-width:$bp-xs) {
-    font-size:13px;
     margin:0 15px;
-  }
-  @media (min-width:$bp-md) {
-    color:$blue-dark-1;
   }
   .fa {
     margin-left:3px;
@@ -129,12 +137,7 @@ header {
   a {
     display:block;
     padding:8px 10px;
-    font-weight:normal;
     color:$blue-dark-1;
-    &:hover,
-    &:focus {
-      text-decoration:none;
-    }
     @media (min-width:$bp-md) {
       @include transitionQuick;
       &:hover,
