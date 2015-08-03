@@ -1,10 +1,16 @@
-# mean-tweets
+#Mean tweets
 
-[Demo](http://mean-tweets.herokuapp.com)
+Mini Twitter with MEAN. [Demo](http://mean-tweets.herokuapp.com)
 
-WIP :-)
 
-##quick start
+##Prerequisites
+
+- [ruby](https://www.ruby-lang.org/en/documentation/installation/)
+- [node.js](http://nodejs.org/)
+- [bower](http://bower.io/)
+
+
+##Quick start
 
 1) Install the dependencies: `npm install && bower install`
 
@@ -12,7 +18,8 @@ WIP :-)
 
 If you have your own mongo db, update the url in `server.js` or use [dotenv](https://github.com/motdotla/dotenv).
 
-##tech
+
+##Tech
 
 - MEAN stack: MongoDB, Express, Angular, Node.js
 - Angular services/modules
@@ -26,18 +33,24 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 - Karma
 - Jasmine
 - ngDialog
+- Angular elastic
 - Font awesome
-- Heroku
 
 
-##grunt tasks
+##Grunt tasks
 
 - start server: `grunt` (runs tests, watches for changes). Without grunt: `node server.js`
 
 - run tests:`grunt test`
 
+##Notes
 
-##test credentials
+- Currently for v1, authentication is done with [auth0](https://auth0.com/). It would be great to use [Passport](http://passportjs.org/) instead.
+
+- Ruby, grunt and grunt-cli are included as dependencies for heroku deployment.
+
+
+##Test credentials
 
 - test1@test.com
 - test2@test.com
@@ -47,7 +60,7 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 password is the obvious.
 
 
-##api
+##API
 
 ####tweets
 
@@ -99,3 +112,6 @@ DELETE `/api/profiles/username/tweets/favourites/tweet_id`
 PUT    `/api/profiles/username/tweets/retweets/tweet_id`
 
 
+##Contributions
+
+Always welcome, please submit a PR :-)
