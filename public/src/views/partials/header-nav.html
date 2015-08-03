@@ -2,7 +2,7 @@
   <div class="wrapper-max-width">
     <h1 class="logo"><a ui-sref="home">{{appName}}</a></h1>
     <ul class="col-right">
-      <li><a ui-sref="search">search</a></li>
+      <li class="search"><a ui-sref="search">search</a></li>
       <li ng-if="auth.profile" ng-click="showMenu = !showMenu" class="dropdown-menu-wrap">
         @{{auth.profile.nickname}}<i class="fa fa-user"></i>
         <ul ng-show="showMenu" class="dropdown-menu">

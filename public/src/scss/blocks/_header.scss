@@ -57,6 +57,13 @@ header {
     }
   }
 
+  .search {
+    display:none;
+    @media(min-width:$bp-xs) {
+      display:inline-block;
+    }
+  }
+
 }
 
 @import '../elements/header-logo';
