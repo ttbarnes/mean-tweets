@@ -147,8 +147,8 @@ describe('LoginCtrl', function() {
       expect(scope.submit).toHaveBeenCalled();
     });
 
-    it('should add a message to scope', function(){
-      expect(scope.message.text).toEqual('loading...');
+    it('should not add a message to scope', function(){
+      expect(scope.message.text).toEqual('');
     });
 
     it('should declare loading true', function(){

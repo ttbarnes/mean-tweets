@@ -31,7 +31,6 @@ angular.module('meanTweetsApp').controller('LoginCtrl', function (auth, $scope, 
   };
 
   $scope.submit = function () {
-    $scope.message.text = 'loading...';
     $scope.loading = true;
     auth.signin({
       connection: 'Username-Password-Authentication',

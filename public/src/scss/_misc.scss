@@ -39,3 +39,25 @@ img {
   font-size:$font-size-h1 - 5px;
   margin-bottom:15px;
 }
+
+.inline-message {
+  background:$red-1;
+  color:$white-full;
+  padding:5px 10px;
+  margin:{
+    top:15px;
+    bottom:0;
+  }
+  text-align:center;
+  border-radius:$border-radius-sm;
+  @media(min-width:$bp-sm){
+    display:inline-block;
+    vertical-align:baseline;
+    margin:{
+      top:0;
+      left:5px;
+    }
+
+  }
+
+}

@@ -15,8 +15,11 @@
     top:-28%;
     left:-25%;
     transition:all .5s ease;
-    @media (max-width:$bp-xs + 50px) and (min-height:630px) {
+    @media (max-width:$bp-xs + 50px) and (min-height:$bp-sm + 30px) {
       top:-23%;
+    }
+    @media (max-width:$bp-xs + 50px) and (min-height:$bp-sm + 50px) {
+      top:-17%;
     }
     @media (min-width:$bp-xs) {
       top:-19%;

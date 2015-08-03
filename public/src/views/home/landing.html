@@ -9,9 +9,17 @@
           <br/>
           <input type="password" name="pass" ng-model="pass" placeholder="password" ng-disabled="loading" />
           <br/>
-          <button type="submit" class="blue no-margin" ng-disabled="loading">log in</button>
+          <button type="submit" class="button blue no-margin" ng-disabled="loading">log in</button>
+
+          <div ng-show="loading" class="spinner small small-inline">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
+
+          <p ng-show="message.text" class="inline-message"><small>{{message.text}}</small></p>
+
         </form>
-        <p ng-show="message.text"><small>{{message.text}}</small></p>
       </div>
       <p class="fake-link"><small><span ng-click="doGoogleAuthWithPopup()">log in with google</span></small></p>
     </div>
