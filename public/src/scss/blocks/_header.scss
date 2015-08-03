@@ -85,6 +85,7 @@ header {
   color:$white-full;
   font-size:16px;
   padding:5px 6px 5px 8px;
+  margin-bottom:0;
   outline:0 none;
   @media (min-width:$bp-md) {
     &:hover,
