@@ -100,8 +100,8 @@ describe('TweetsCtrl - timeline context', function() {
 
     describe('after timeline tweets are returned', function(){
 
-      it('should have false userNoFollowings', function(){
-        expect(scope.userNoFollowings).toBeFalsy();
+      it('should have false userFollowingsNoTweets', function(){
+        expect(scope.userFollowingsNoTweets).toBeFalsy();
       });
 
     });

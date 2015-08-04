@@ -114,7 +114,7 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
             });
 
           } else {
-            $scope.userNoFollowings = true;
+            $scope.userFollowingsNoTweets = true;
           }
 
         }, function (err) {

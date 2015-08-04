@@ -1,7 +1,7 @@
 <div class="row tweets" ng-controller="TweetsCtrl">
 
-  <div ng-if="userNoFollowings" class="panel">
-    <p class="no-margin">You're not following anyone right now. <br/><br/>:(</p>
+  <div ng-if="userFollowingsNoTweets" class="panel">
+    <p class="no-margin">You're not following anyone who has tweeted yet. <br/><br/>:(</p>
   </div>
 
   <div ng-if="userNotTweeted" class="panel">
