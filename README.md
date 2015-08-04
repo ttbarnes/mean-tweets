@@ -44,14 +44,6 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 
 - run tests:`grunt test`
 
-##Notes
-
-- Currently for v1, authentication is done with [auth0](https://auth0.com/). It would be great to use [Passport](http://passportjs.org/) instead.
-
-- Currently no e2e tests, only unit tests.
-
-- Ruby, grunt and grunt-cli are included as dependencies for heroku deployment.
-
 
 ##Test credentials
 
@@ -61,6 +53,15 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 - ben@test.com
 
 password is the obvious.
+
+
+##Notes
+
+- Currently for v1, authentication is done with [auth0](https://auth0.com/). It would be great to use [Passport](http://passportjs.org/) instead.
+
+- Currently no e2e tests, only unit tests.
+
+- Ruby, grunt and grunt-cli are included as dependencies for heroku deployment.
 
 
 ##API
