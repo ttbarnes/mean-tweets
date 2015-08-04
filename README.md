@@ -2,6 +2,7 @@
 
 Mini Twitter with MEAN. [Demo](https://mean-tweets.herokuapp.com)
 
+I built this app in order to learn more about Node, Express and MongoDB. I hope it helps others do the same :-)
 
 ##Prerequisites
 
@@ -12,7 +13,7 @@ Mini Twitter with MEAN. [Demo](https://mean-tweets.herokuapp.com)
 
 ##Quick start
 
-1) Install the dependencies: `npm install && bower install`
+1) Install the dependencies: `npm install`
 
 2) Start the server: `grunt` (port 2000)
 
@@ -47,6 +48,8 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 
 - Currently for v1, authentication is done with [auth0](https://auth0.com/). It would be great to use [Passport](http://passportjs.org/) instead.
 
+- Currently no e2e tests, only unit tests.
+
 - Ruby, grunt and grunt-cli are included as dependencies for heroku deployment.
 
 
@@ -69,7 +72,7 @@ password is the obvious.
 
 - get all tweets by username
   - GET `/api/tweets/:username`
-  - eg: `/api/tweets/whereswally`
+  - eg: [/api/tweets/whereswally](/api/tweets/whereswally)
 
 - get a single tweet by tweet_id
   - GET `/api/tweets/:tweet_id`
@@ -85,7 +88,7 @@ password is the obvious.
 
 - delete a favourite from a tweet
   - DELETE `/api/tweets/:tweet_id/favourites/:fav_tweet_id` 
-  - eg: `/api/tweets/1a2b3c4d/favourites/q5w6e7r8` 
+  - eg: [/api/tweets/1a2b3c4d/favourites/q5w6e7r8](/api/tweets/1a2b3c4d/favourites/q5w6e7r8) 
 
 - add a username to a tweet's retweets array
   - PUT `/api/tweets/:tweet_id/retweets`
@@ -98,28 +101,27 @@ password is the obvious.
 
 - search and return tweets with usernames from a query
   - GET `/api/timeline`
-  - eg: `/api/timeline?userFollowing=bill&userFollowing=ben`
+  - eg: [/api/timeline?userFollowing=bill&userFollowing=ben](/api/timeline?userFollowing=bill&userFollowing=ben)
 
 
 ####search
 - search and return tweets containing someString
   - GET `/api/search/:someString`
-  - eg: `/api/search/hotWeather`
+  - eg: [/api/search/hotWeather](/api/search/hotWeather)
 
 
 ####profiles
 
 - get a single user
-  - GET `/api/profiles/:username` 
-  - eg: `/api/profiles/whereswally` 
+  - GET `/api/profiles/:username`
+  - eg: [/api/profiles/whereswally](/api/profiles/whereswally)
 
 - add a single new username
-  - POST `/api/profiles/:username` 
+  - POST `/api/profiles/:username`
   - eg: `{ username: String }`
 
 - add public profile details
   - POST `/api/profiles/:username/:details` 
-  - eg: 
 
 - add a new following username to a user's profile
   - PUT `/api/profiles/:username/following` 
