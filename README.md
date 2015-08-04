@@ -39,7 +39,7 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 
 ##Grunt tasks
 
-- start server: `grunt` (runs tests, watches for changes). Without grunt: `node server.js`
+- start server: `grunt` (runs tests, watches for changes).
 
 - run tests:`grunt test`
 
@@ -71,13 +71,13 @@ password is the obvious.
   - GET `/api/tweets/:username`
   - eg: `/api/tweets/whereswally`
 
-- get a single tweet witH tweet_id param.
+- get a single tweet by tweet_id
   - GET `/api/tweets/:tweet_id`
 
-- update a tweet with tweet_id param
+- update a tweet by tweet_id
   - PUT `/api/tweets/:tweet_id`
 
-- delete a tweet with tweet_id param.
+- delete a tweet by tweet_id
   - DELETE `/api/tweets/:tweet_id`
 
 - add a username to a tweet's favourites array
@@ -103,7 +103,7 @@ password is the obvious.
 
 ####search
 - search and return tweets containing someString
-  - GET `/api/search/someString`
+  - GET `/api/search/:someString`
   - eg: `/api/search/hotWeather`
 
 
