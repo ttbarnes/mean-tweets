@@ -119,6 +119,7 @@
   }
 
   .row-bottom {
+    min-height:43px;
     color:$blue-light-2;
     p {
       margin-bottom:0;
@@ -212,12 +213,18 @@
 
   .view-more {
     float:right;
+    p,
+    button {
+      vertical-align:middle;
+    }
     p {
       display:inline-block;
+      margin-top:7px;
     }
 
     button {
       color:$blue-light-1;
+      padding-top:0;
     }
   }
 
@@ -227,6 +234,11 @@
 
   .button.tweet-delete {
     padding-right:0;
+    padding:{
+      top:10px;
+      right:0;
+      bottom:0;
+    }
   }
 
 }
