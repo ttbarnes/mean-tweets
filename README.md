@@ -44,6 +44,12 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 
 - run tests:`grunt test`
 
+##api tests (WIP)
+
+- start the server: `node server.js`
+- in new terminal window, run the mocha tests: `grunt mochaTest`
+- Eventually these will simplified, 'regular' grunt tasks
+
 
 ##Test credentials
 
