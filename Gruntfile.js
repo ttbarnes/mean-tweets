@@ -249,6 +249,15 @@ module.exports = function (grunt) {
       ]
     },
 
+    mocha: {
+      test: {
+        src: ['test/**/*.js'],
+        options:{
+          run: true
+        }
+      },
+    },
+
     karma: {
       unit: {
         configFile: 'public/karma.conf.js',
