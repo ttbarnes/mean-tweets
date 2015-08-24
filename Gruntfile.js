@@ -249,13 +249,13 @@ module.exports = function (grunt) {
       ]
     },
 
-    mocha: {
+    mochaTest: {
       test: {
-        src: ['test/**/*.js'],
-        options:{
-          run: true
-        }
-      },
+        options: {
+          reporter: 'spec'
+        },
+        src: ['test/**/*.js']
+      }
     },
 
     karma: {
