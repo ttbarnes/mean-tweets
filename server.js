@@ -14,7 +14,13 @@ var port = process.env.PORT || 2000;
 
 //mongoose.connect(process.env.db_url || 'ttbarnes:j3zuNAWkwLMz@ds049641.mongolab.com:49641/mean-example-db');
 
+// @ifdef DEVELOPMENT
 mongoose.connect('ttbarnes:j3zuNAWkwLMz@ds035633.mongolab.com:35633/mean-tweets-test');
+// @endif
+
+// @ifdef PRODUCTION
+mongoose.connect('ttbarnes:j3zuNAWkwLMz@ds049641.mongolab.com:49641/mean-example-db');
+// @endif
 
 
 // get all data/stuff of the body (POST) parameters

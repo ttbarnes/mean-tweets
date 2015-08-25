@@ -251,7 +251,7 @@ module.exports = function (grunt) {
 
     shell: {
       serverNewTab: {
-        command: ' osascript -e \'tell application "Terminal" to activate\' -e \'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down\' -e \'tell application "Terminal" to do script "node server.js" in selected tab of the front window\' ',
+        command: 'osascript -e \'tell application "Terminal" to activate\' -e \'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down\' -e \'tell application "Terminal" to do script "node server.js" in selected tab of the front window\'',
         options: {
           stderr: false
         },
@@ -265,7 +265,7 @@ module.exports = function (grunt) {
       pause: {
         options:{
           before: function(options) {
-            console.log('pausing %dms', options.delay);
+            console.log('pausing %dms', options.delay + ' to ensure server is running');
           },
           after: function() {
             console.log('pause end');
@@ -340,6 +340,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('testApi', function(){
+    grunt.task.run('preprocess:dev');
     grunt.task.run('shell:serverNewTab');
     grunt.task.run('wait:pause');
     grunt.task.run('mochaTest');
