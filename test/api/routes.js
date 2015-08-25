@@ -16,12 +16,6 @@ describe('tweets', function() {
 
   var url = 'http://localhost:2000/';
 
-  before(function(done) {
-    mongoose.connect('ttbarnes:j3zuNAWkwLMz@ds049641.mongolab.com:49641/mean-example-db');
-    done();
-  });
-
-
   describe('POST', function(){
 
     it('should be successful have return a message', function (done){

@@ -11,7 +11,11 @@ var methodOverride     = require('method-override');
 var routes         = require('./api/routes');
 
 var port = process.env.PORT || 2000;
-mongoose.connect(process.env.db_url || 'ttbarnes:j3zuNAWkwLMz@ds049641.mongolab.com:49641/mean-example-db');
+
+//mongoose.connect(process.env.db_url || 'ttbarnes:j3zuNAWkwLMz@ds049641.mongolab.com:49641/mean-example-db');
+
+mongoose.connect('ttbarnes:j3zuNAWkwLMz@ds035633.mongolab.com:35633/mean-tweets-test');
+
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
