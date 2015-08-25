@@ -249,6 +249,31 @@ module.exports = function (grunt) {
       ]
     },
 
+    shell: {
+      serverNewTab: {
+        command: ' osascript -e \'tell application "Terminal" to activate\' -e \'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down\' -e \'tell application "Terminal" to do script "node server.js" in selected tab of the front window\' ',
+        options: {
+          stderr: false
+        },
+      }
+    },
+
+    wait: {
+      options: {
+        delay: 2000
+      },
+      pause: {
+        options:{
+          before: function(options) {
+            console.log('pausing %dms', options.delay);
+          },
+          after: function() {
+            console.log('pause end');
+          }
+        }
+      },
+    },
+
     mochaTest: {
       test: {
         options: {
@@ -313,6 +338,12 @@ module.exports = function (grunt) {
     'jshint',
     'karma'
   ]);
+
+  grunt.registerTask('testApi', function(){
+    grunt.task.run('shell:serverNewTab');
+    grunt.task.run('wait:pause');
+    grunt.task.run('mochaTest');
+  });
 
   grunt.registerTask('build', [
     'clean:dist',
