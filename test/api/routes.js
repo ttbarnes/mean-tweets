@@ -8,7 +8,8 @@ var url                         = 'http://localhost:2000/',
     tweetIdFailure              = 'asdf1234wxyz',                //random, hardcoded tweet ID that would never be generated
     tweetIdToUpdate             = '55dc55f1cbb2bb2c1bb7d241',   //random tweet ID from test db that will be used for testing updates
     mockUsernameTweeter         = 'bill',
-    mockUsernameFavouritee      = 'james';
+    mockUsernameFavouriter      = 'james',
+    mockUsernameRetweeter       = 'john';
 
 
 var testTweet = {
@@ -151,10 +152,13 @@ describe('tweets', function() {
     });
 
     //todo: test delete tweet
-    //how to handle tweet ids for this scenario?
+    //how to handle tweet ids for such a scenario?
     //I think we want to add some pre test functions/methods or helpers here:
     //eg create 4 new tweets for: POST success and failure, PUT, DELETE
     //otherwise, if we delete tweet id X, next time the tests run tweet id X will 404.
+    //test functions would also need tweets from different usernames, and follower/following data, especially for the timeline.
+    //maybe this should be done with shell script
+
 
     describe('favourites', function(){
 
@@ -162,7 +166,7 @@ describe('tweets', function() {
 
         it('should successfully put a username in the tweet\'s favourites array', function (done){
           var mockNewFavourite = {
-            username: mockUsernameFavouritee
+            username: mockUsernameFavouriter
           };
           request(url)
           .put('api/tweets/' + tweetIdToUpdate + '/favourites')
@@ -173,14 +177,42 @@ describe('tweets', function() {
             }
             res.should.have.property('status', 200);
             res.body.should.have.property('username', mockUsernameTweeter);
-            res.body.favourites[0].should.have.property('username', mockUsernameFavouritee);
+            res.body.favourites[0].should.have.property('username', mockUsernameFavouriter);
             done();
           });
         });
 
       });
 
-      //todo:test delete favourite tweet id
+      //todo:test delete favourite id
+
+    });
+
+    describe('retweets', function(){
+
+      describe('PUT success', function(){
+
+        it('should successfully put a username in the tweet\'s retweets array', function (done){
+          var mockNewRetweet = {
+            username: mockUsernameRetweeter
+          };
+          request(url)
+          .put('api/tweets/' + tweetIdToUpdate + '/retweets')
+          .send(mockNewRetweet)
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            res.should.have.property('status', 200);
+            res.body.should.have.property('username', mockUsernameTweeter);
+            res.body.retweets[0].should.have.property('username', mockUsernameRetweeter);
+            done();
+          });
+        });
+
+      });
+
+      //todo:test delete retweet id
 
     });
 
