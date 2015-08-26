@@ -3,10 +3,16 @@ var assert = require('assert');
 var request = require('supertest');
 var mongoose = require('mongoose');
 
-var url = 'http://localhost:2000/';
+var url                         = 'http://localhost:2000/',
+    tweetIdSuccess              = '55dc55f1cbb2bb2c1bb7d240',    //random tweet ID from test db
+    tweetIdFailure              = 'asdf1234wxyz',                //random, hardcoded tweet ID that would never be generated
+    tweetIdToUpdate             = '55dc55f1cbb2bb2c1bb7d241',   //random tweet ID from test db that will be used for testing updates
+    mockUsernameTweeter         = 'bill',
+    mockUsernameFavouritee      = 'james';
+
 
 var testTweet = {
-  username: 'bill',
+  username: mockUsernameTweeter,
   copy: 'api test tweet!',
   image:{
     url: 'http://random.org/someimage.jpg'
@@ -15,7 +21,7 @@ var testTweet = {
 };
 
 var testTweetPutCopy = {
-  username: 'bill',
+  username: mockUsernameTweeter,
   copy: 'some new text - I did not like my previous version.',
   image:{
     url: 'http://random.org/someimage.jpg'
@@ -60,10 +66,6 @@ describe('tweets', function() {
   });
 
   describe('tweet_id', function(){
-
-    var tweetIdSuccess = '55dc55f1cbb2bb2c1bb7d240',    //random tweet ID from test db
-        tweetIdFailure = 'asdf1234wxyz',                //random, hardcoded tweet ID that would never be generated
-        tweetIdToUpdate = '55dc55f1cbb2bb2c1bb7d241'    //random tweet ID from test db that will be used for testing updates
 
     describe('GET success', function(){
 
@@ -148,6 +150,41 @@ describe('tweets', function() {
 
     });
 
+    //todo: test delete tweet
+    //how to handle tweet ids for this scenario?
+    //I think we want to add some pre test functions/methods or helpers here:
+    //eg create 4 new tweets for: POST success and failure, PUT, DELETE
+    //otherwise, if we delete tweet id X, next time the tests run tweet id X will 404.
+
+    describe('favourites', function(){
+
+      describe('PUT success', function(){
+
+        it('should successfully put a username in the tweet\'s favourites array', function (done){
+          var mockNewFavourite = {
+            username: mockUsernameFavouritee
+          };
+          request(url)
+          .put('api/tweets/' + tweetIdToUpdate + '/favourites')
+          .send(mockNewFavourite)
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            res.should.have.property('status', 200);
+            res.body.should.have.property('username', mockUsernameTweeter);
+            res.body.favourites[0].should.have.property('username', mockUsernameFavouritee);
+            done();
+          });
+        });
+
+      });
+
+      //todo:test delete favourite tweet id
+
+    });
+
   });
+
 
 });
