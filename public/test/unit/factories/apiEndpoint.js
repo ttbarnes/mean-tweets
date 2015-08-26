@@ -185,6 +185,9 @@ describe('apiEndpointFactory', function(){
 
   });
 
-
+  it('should not have a delete or remove all function', function(){
+    expect(apiEndpointFactory.deleteAll).toBeUndefined();
+    expect(apiEndpointFactory.removeAll).toBeUndefined();
+  });
 
 });

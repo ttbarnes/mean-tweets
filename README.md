@@ -105,6 +105,9 @@ password is the obvious.
 - delete a retweet from a tweet
   - DELETE `/api/tweets/:tweet_id/retweets/:retweet_id`
 
+- delete all tweets (used for testing db)
+  - DELETE `/api/tweets/delete/all`
+
 
 ####timeline
 

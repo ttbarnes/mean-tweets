@@ -79,6 +79,18 @@ router.route('/tweets/:tweet_id')
     });
   });
 
+router.route('/tweets/all/delete')
+
+  .delete(function (req, res){
+    Tweet.remove({}, function (err, tweet){
+      if (err)
+        res.send(err);
+      res.json(tweet);
+      console.log('removed all tweets');
+    })
+
+  });
+
 router.route('/tweets/:tweet_id/favourites')
 
   .put(function (req, res) {

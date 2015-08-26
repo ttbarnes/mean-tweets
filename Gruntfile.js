@@ -260,12 +260,12 @@ module.exports = function (grunt) {
 
     wait: {
       options: {
-        delay: 2000
+        delay: 4000
       },
       pause: {
         options:{
           before: function(options) {
-            console.log('pausing' + options.delay + ' to ensure server is running');
+            console.log('pausing ' + options.delay + ' to ensure server is running');
           },
           after: function() {
             console.log('pause end');

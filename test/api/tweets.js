@@ -31,7 +31,19 @@ var testTweets = function(){
     timestamp: new Date().toISOString()
   };
 
+
   describe('tweets', function() {
+
+    before(function(){
+      //delete all tweets
+      request(url)
+      .delete('api/tweets/all/delete')
+      .end(function (err, res){
+        if (err) {
+          throw err;
+        }
+      })
+    });
 
     describe('POST', function(){
 
@@ -66,7 +78,7 @@ var testTweets = function(){
       });
 
     });
-
+/*
     describe('tweet_id', function(){
 
       describe('GET success', function(){
@@ -218,7 +230,7 @@ var testTweets = function(){
       });
 
     });
-
+  */
     //todo: timeline tests (require initial db data tasks)
     //describe('timeline', function(){ });
 
