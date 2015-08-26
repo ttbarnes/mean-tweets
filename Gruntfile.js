@@ -265,7 +265,7 @@ module.exports = function (grunt) {
       pause: {
         options:{
           before: function(options) {
-            console.log('pausing %dms', options.delay + ' to ensure server is running');
+            console.log('pausing' + options.delay + ' to ensure server is running');
           },
           after: function() {
             console.log('pause end');
