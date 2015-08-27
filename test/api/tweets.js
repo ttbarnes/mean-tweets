@@ -5,42 +5,45 @@ var mongoose = require('mongoose');
 
 var testTweets = function(){
 
-  var url                         = 'http://localhost:2000/',
-      tweetIdFailure              = 'asdf1234qwer', //random, hardcoded tweet ID that would never be generated
-      mockUsernameTweeterA        = 'bill',
-      mockUsernameTweeterB        = 'ben',
-      mockUsernameTweeterC        = 'boris',
-      mockUsernameFavouriter      = 'james',
-      mockUsernameRetweeter       = 'john',
+  var url = 'http://localhost:2000/',
+      tweetIdFailure = 'asdf1234qwer', //random, hardcoded tweet ID that would never be generated
+      mockImageUrl = 'http://random.org/someimage.jpg',
+      mockUsername = {
+        tweeterA  : 'bill',
+        tweeterB  : 'ben',
+        tweeterC  : 'boris',
+        favouriter: 'james',
+        retweeter : 'john'
+      },
       mockTweets = {
         post: {
-          username: mockUsernameTweeterA,
+          username: mockUsername.tweeterA,
           copy: 'api test tweet!',
           image:{
-            url: 'http://random.org/someimage.jpg'
+            url: mockImageUrl
           },
           timestamp: new Date().toISOString()
         },
         put: {
-          username: mockUsernameTweeterA,
+          username: mockUsername.tweeterA,
           copy: 'some new text - I did not like my previous version.',
           image:{
-            url: 'http://random.org/someimage.jpg'
+            url: mockImageUrl
           },
           timestamp: new Date().toISOString()
         },
         a: {
-          username: mockUsernameTweeterA,
+          username: mockUsername.tweeterA,
           copy: 'hi guys',
           timestamp: new Date().toISOString()
         },
         b: {
-          username: mockUsernameTweeterB,
+          username: mockUsername.tweeterB,
           copy: 'hello world',
           timestamp: new Date().toISOString()
         },
         c: {
-          username: mockUsernameTweeterC,
+          username: mockUsername.tweeterC,
           copy: 'whats up',
           timestamp: new Date().toISOString()
         }
@@ -222,7 +225,7 @@ var testTweets = function(){
 
           it('should successfully put a username in the tweet\'s favourites array', function (done){
             var mockNewFavourite = {
-              username: mockUsernameFavouriter
+              username: mockUsername.favouriter
             };
             request(url)
             .put('api/tweets/' + tweetIdToFavRetweet + '/favourites')
@@ -232,7 +235,7 @@ var testTweets = function(){
                 throw err;
               }
               res.should.have.property('status', 200);
-              res.body.should.have.property('username', mockUsernameTweeterA);
+              res.body.should.have.property('username', mockUsername.tweeterA);
 
               request(url)
                 .get('api/tweets/' + tweetIdToFavRetweet)
@@ -240,7 +243,7 @@ var testTweets = function(){
                   if (err) {
                     throw err;
                   }
-                  res.body.favourites[0].should.have.property('username', mockUsernameFavouriter);
+                  res.body.favourites[0].should.have.property('username', mockUsername.favouriter);
                   done();
                 })
 
@@ -259,7 +262,7 @@ var testTweets = function(){
 
           it('should successfully put a username in the tweet\'s retweets array', function (done){
             var mockNewRetweet = {
-              username: mockUsernameRetweeter
+              username: mockUsername.retweeter
             };
             request(url)
             .put('api/tweets/' + tweetIdToFavRetweet + '/retweets')
@@ -269,7 +272,7 @@ var testTweets = function(){
                 throw err;
               }
               res.should.have.property('status', 200);
-              res.body.should.have.property('username', mockUsernameTweeterA);
+              res.body.should.have.property('username', mockUsername.tweeterA);
               
               request(url)
                 .get('api/tweets/' + tweetIdToFavRetweet)
@@ -277,7 +280,7 @@ var testTweets = function(){
                   if (err) {
                     throw err;
                   }
-                  res.body.retweets[0].should.have.property('username', mockUsernameRetweeter);
+                  res.body.retweets[0].should.have.property('username', mockUsername.retweeter);
                   done();
                 })
 
