@@ -7,24 +7,41 @@ var testTweets = function(){
 
   var url                         = 'http://localhost:2000/',
       tweetIdFailure              = 'asdf1234qwer', //random, hardcoded tweet ID that would never be generated
-      mockUsernameTweeter         = 'bill',
+      mockUsernameTweeterA        = 'bill',
+      mockUsernameTweeterB        = 'ben',
+      mockUsernameTweeterC        = 'boris',
       mockUsernameFavouriter      = 'james',
       mockUsernameRetweeter       = 'john',
       mockTweets = {
-        compose : {
-          username: mockUsernameTweeter,
+        post: {
+          username: mockUsernameTweeterA,
           copy: 'api test tweet!',
           image:{
             url: 'http://random.org/someimage.jpg'
           },
           timestamp: new Date().toISOString()
         },
-        update: {
-          username: mockUsernameTweeter,
+        put: {
+          username: mockUsernameTweeterA,
           copy: 'some new text - I did not like my previous version.',
           image:{
             url: 'http://random.org/someimage.jpg'
           },
+          timestamp: new Date().toISOString()
+        },
+        a: {
+          username: mockUsernameTweeterA,
+          copy: 'hi guys',
+          timestamp: new Date().toISOString()
+        },
+        b: {
+          username: mockUsernameTweeterB,
+          copy: 'hello world',
+          timestamp: new Date().toISOString()
+        },
+        c: {
+          username: mockUsernameTweeterC,
+          copy: 'whats up',
           timestamp: new Date().toISOString()
         }
       };
@@ -32,22 +49,32 @@ var testTweets = function(){
   describe('tweets', function() {
 
     before(function(){
-      //post some tweets
+      //post some tweets - how to do bulk post/import with mongoose?
       request(url)
       .post('api/tweets')
-        .send(mockTweets.compose)
-        .send(mockTweets.compose)
+        .send(mockTweets.post)
+        .send(mockTweets.post)
         .end(function (err){
           if (err) {
             throw err;
           }
+          request(url)
+          .post('api/tweets')
+            .send(mockTweets.a)
+            .send(mockTweets.b)
+            .send(mockTweets.c)
+            .end(function (err){
+              if (err) {
+                throw err;
+              }
+            })
         })
     });
 
     beforeEach(function(){
       //get some tweets
       request(url)
-        .get('api/profiles/' + mockTweets.compose.username + '/tweets')
+        .get('api/profiles/' + mockTweets.post.username + '/tweets')
           .end(function (err, res){
             if (err) {
               throw err;
@@ -76,7 +103,7 @@ var testTweets = function(){
       it('should be successful and return a message', function (done){
         request(url)
           .post('api/tweets')
-          .send(mockTweets.compose)
+          .send(mockTweets.post)
           .end(function (err, res){
             if (err) {
               throw err;
@@ -90,15 +117,15 @@ var testTweets = function(){
       it('should have the correct properties', function (done){
         request(url)
           .post('api/tweets')
-          .send(mockTweets.compose)
+          .send(mockTweets.post)
           .end(function (err, res){
             if (err) {
               throw err;
             }
-            res.request._data.should.have.property('username', mockTweets.compose.username);
-            res.request._data.should.have.property('copy', mockTweets.compose.copy);
+            res.request._data.should.have.property('username', mockTweets.post.username);
+            res.request._data.should.have.property('copy', mockTweets.post.copy);
             res.request._data.should.have.property('timestamp');
-            res.request._data.should.have.propertyByPath('image', 'url').eql(mockTweets.compose.image.url);
+            res.request._data.should.have.propertyByPath('image', 'url').eql(mockTweets.post.image.url);
             done();
           })
       });
@@ -129,10 +156,10 @@ var testTweets = function(){
             if (err) {
               throw err;
             }
-            res.body.should.have.property('username', mockTweets.compose.username);
-            res.body.should.have.property('copy', mockTweets.compose.copy);
+            res.body.should.have.property('username', mockTweets.post.username);
+            res.body.should.have.property('copy', mockTweets.post.copy);
             res.body.should.have.property('timestamp');
-            res.body.should.have.propertyByPath('image', 'url').eql(mockTweets.compose.image.url);
+            res.body.should.have.propertyByPath('image', 'url').eql(mockTweets.post.image.url);
             res.body.should.have.property('favourites');
             res.body.should.have.property('retweets');
             done();
@@ -175,13 +202,13 @@ var testTweets = function(){
         it('should successfully update a tweets copy and return a message', function (done){
           request(url)
           .put('api/tweets/' + tweetIdToUpdate)
-          .send(mockTweets.update)
+          .send(mockTweets.put)
           .end(function (err, res){
             if (err) {
               throw err;
             }
             res.should.have.property('status', 200);
-            res.request._data.copy.should.equal(mockTweets.update.copy);
+            res.request._data.copy.should.equal(mockTweets.put.copy);
             res.body.should.have.property('message', 'Tweet updated!');
             done();
           });
@@ -205,7 +232,7 @@ var testTweets = function(){
                 throw err;
               }
               res.should.have.property('status', 200);
-              res.body.should.have.property('username', mockUsernameTweeter);
+              res.body.should.have.property('username', mockUsernameTweeterA);
 
               request(url)
                 .get('api/tweets/' + tweetIdToFavRetweet)
@@ -242,7 +269,7 @@ var testTweets = function(){
                 throw err;
               }
               res.should.have.property('status', 200);
-              res.body.should.have.property('username', mockUsernameTweeter);
+              res.body.should.have.property('username', mockUsernameTweeterA);
               
               request(url)
                 .get('api/tweets/' + tweetIdToFavRetweet)
