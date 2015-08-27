@@ -32,16 +32,6 @@ var testTweets = function(){
   describe('tweets', function() {
 
     before(function(){
-
-      //delete all tweets
-      request(url)
-        .delete('api/test/tweets/all')
-        .end(function (err){
-          if (err) {
-            throw err;
-          }
-        })
-
       //post some tweets
       request(url)
       .post('api/tweets')
@@ -51,9 +41,7 @@ var testTweets = function(){
           if (err) {
             throw err;
           }
-
         })
-
     });
 
     beforeEach(function(){
@@ -65,11 +53,23 @@ var testTweets = function(){
               throw err;
             }
             tweetIdSuccess        = res.body[0]._id;
-            tweetIdToUpdate       = tweetIdSuccess;
             tweetIdToFavRetweet   = res.body[1]._id;
+            if(res.body[2]){
+              tweetIdToUpdate     = res.body[2]._id;
+            }
           })
     });
 
+    after(function(){
+      //delete all tweets
+      request(url)
+        .delete('api/test/tweets/all')
+        .end(function (err){
+          if (err) {
+            throw err;
+          }
+        })
+    });
 
     describe('POST', function(){
 
@@ -214,7 +214,7 @@ var testTweets = function(){
                     throw err;
                   }
                   res.body.favourites[0].should.have.property('username', mockUsernameFavouriter);
-                  done()
+                  done();
                 })
 
             });
@@ -251,7 +251,7 @@ var testTweets = function(){
                     throw err;
                   }
                   res.body.retweets[0].should.have.property('username', mockUsernameRetweeter);
-                  done()
+                  done();
                 })
 
             });
