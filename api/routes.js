@@ -21,7 +21,9 @@ router.route('/tweets')
     var tweet = new Tweet();  //create a new instance of the Tweet model
     tweet.username = req.body.username;  //set the tweets username (comes from the request)
     tweet.copy = req.body.copy;  //set the tweets name (comes from the request)
-    tweet.image.url = req.body.image.url;
+    if(req.body.image && req.body.image.url){
+      tweet.image.url = req.body.image.url;
+    }
     tweet.timestamp = new Date().toISOString(); //create new date
 
     //save the tweet and check for errors
@@ -77,18 +79,6 @@ router.route('/tweets/:tweet_id')
         res.json(tweet);
         console.log('removed tweet: ' + req.params.tweet_id)
     });
-  });
-
-router.route('/tweets/all/delete')
-
-  .delete(function (req, res){
-    Tweet.remove({}, function (err, tweet){
-      if (err)
-        res.send(err);
-      res.json(tweet);
-      console.log('removed all tweets');
-    })
-
   });
 
 router.route('/tweets/:tweet_id/favourites')
@@ -349,5 +339,17 @@ router.route('/search/:searchstring')
       });
 
     });
+
+  router.route('/test/tweets/all')
+
+    .delete(function (req, res){
+      Tweet.remove({}, function (err, tweet){
+        if (err)
+          res.send(err);
+        res.json(tweet);
+        console.log('removed all tweets');
+      })
+    });
+
 
 module.exports = router;

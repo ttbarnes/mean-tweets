@@ -6,51 +6,77 @@ var mongoose = require('mongoose');
 var testTweets = function(){
 
   var url                         = 'http://localhost:2000/',
-      tweetIdSuccess              = '55dc55f1cbb2bb2c1bb7d240',    //random tweet ID from test db
-      tweetIdFailure              = 'asdf1234wxyz',                //random, hardcoded tweet ID that would never be generated
-      tweetIdToUpdate             = '55dc55f1cbb2bb2c1bb7d241',   //random tweet ID from test db that will be used for testing updates
+      tweetIdFailure              = 'asdf1234qwer', //random, hardcoded tweet ID that would never be generated
       mockUsernameTweeter         = 'bill',
       mockUsernameFavouriter      = 'james',
-      mockUsernameRetweeter       = 'john';
-
-  var testTweet = {
-    username: mockUsernameTweeter,
-    copy: 'api test tweet!',
-    image:{
-      url: 'http://random.org/someimage.jpg'
-    },
-    timestamp: new Date().toISOString()
-  };
-
-  var testTweetPutCopy = {
-    username: mockUsernameTweeter,
-    copy: 'some new text - I did not like my previous version.',
-    image:{
-      url: 'http://random.org/someimage.jpg'
-    },
-    timestamp: new Date().toISOString()
-  };
-
+      mockUsernameRetweeter       = 'john',
+      mockTweets = {
+        compose : {
+          username: mockUsernameTweeter,
+          copy: 'api test tweet!',
+          image:{
+            url: 'http://random.org/someimage.jpg'
+          },
+          timestamp: new Date().toISOString()
+        },
+        update: {
+          username: mockUsernameTweeter,
+          copy: 'some new text - I did not like my previous version.',
+          image:{
+            url: 'http://random.org/someimage.jpg'
+          },
+          timestamp: new Date().toISOString()
+        }
+      };
 
   describe('tweets', function() {
 
     before(function(){
+
       //delete all tweets
       request(url)
-      .delete('api/tweets/all/delete')
-      .end(function (err, res){
-        if (err) {
-          throw err;
-        }
-      })
+        .delete('api/test/tweets/all')
+        .end(function (err){
+          if (err) {
+            throw err;
+          }
+        })
+
+      //post some tweets
+      request(url)
+      .post('api/tweets')
+        .send(mockTweets.compose)
+        .send(mockTweets.compose)
+        .end(function (err){
+          if (err) {
+            throw err;
+          }
+
+        })
+
     });
+
+    beforeEach(function(){
+      //get some tweets
+      request(url)
+        .get('api/profiles/' + mockTweets.compose.username + '/tweets')
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            tweetIdSuccess        = res.body[0]._id;
+            tweetIdToUpdate       = tweetIdSuccess;
+            tweetIdToFavRetweet   = res.body[1]._id;
+          })
+    });
+
 
     describe('POST', function(){
 
       it('should be successful and return a message', function (done){
         request(url)
           .post('api/tweets')
-          .send(testTweet)
+          .send(mockTweets.compose)
           .end(function (err, res){
             if (err) {
               throw err;
@@ -64,21 +90,21 @@ var testTweets = function(){
       it('should have the correct properties', function (done){
         request(url)
           .post('api/tweets')
-          .send(testTweet)
+          .send(mockTweets.compose)
           .end(function (err, res){
             if (err) {
               throw err;
             }
-            res.request._data.should.have.property('username', testTweet.username);
-            res.request._data.should.have.property('copy', testTweet.copy);
+            res.request._data.should.have.property('username', mockTweets.compose.username);
+            res.request._data.should.have.property('copy', mockTweets.compose.copy);
             res.request._data.should.have.property('timestamp');
-            res.request._data.should.have.propertyByPath('image', 'url').eql(testTweet.image.url);
+            res.request._data.should.have.propertyByPath('image', 'url').eql(mockTweets.compose.image.url);
             done();
           })
       });
 
     });
-/*
+
     describe('tweet_id', function(){
 
       describe('GET success', function(){
@@ -103,10 +129,10 @@ var testTweets = function(){
             if (err) {
               throw err;
             }
-            res.body.should.have.property('username', testTweet.username);
-            res.body.should.have.property('copy', testTweet.copy);
+            res.body.should.have.property('username', mockTweets.compose.username);
+            res.body.should.have.property('copy', mockTweets.compose.copy);
             res.body.should.have.property('timestamp');
-            res.body.should.have.propertyByPath('image', 'url').eql(testTweet.image.url);
+            res.body.should.have.propertyByPath('image', 'url').eql(mockTweets.compose.image.url);
             res.body.should.have.property('favourites');
             res.body.should.have.property('retweets');
             done();
@@ -140,7 +166,6 @@ var testTweets = function(){
             res.body.should.be.empty();
             done();
           })
-
         });
 
       });
@@ -150,28 +175,19 @@ var testTweets = function(){
         it('should successfully update a tweets copy and return a message', function (done){
           request(url)
           .put('api/tweets/' + tweetIdToUpdate)
-          .send(testTweetPutCopy)
+          .send(mockTweets.update)
           .end(function (err, res){
             if (err) {
               throw err;
             }
             res.should.have.property('status', 200);
-            res.request._data.copy.should.equal(testTweetPutCopy.copy);
+            res.request._data.copy.should.equal(mockTweets.update.copy);
             res.body.should.have.property('message', 'Tweet updated!');
             done();
           });
         });
 
       });
-
-      //todo: test delete tweet
-      //how to handle tweet ids for such a scenario?
-      //I think we want to add some pre test functions/methods or helpers here:
-      //eg create 4 new tweets for: POST success and failure, PUT, DELETE
-      //otherwise, if we delete tweet id X, next time the tests run tweet id X will 404.
-      //test functions would also need tweets from different usernames, and follower/following data, especially for the timeline.
-      //maybe this should be done with shell script
-
 
       describe('favourites', function(){
 
@@ -182,7 +198,7 @@ var testTweets = function(){
               username: mockUsernameFavouriter
             };
             request(url)
-            .put('api/tweets/' + tweetIdToUpdate + '/favourites')
+            .put('api/tweets/' + tweetIdToFavRetweet + '/favourites')
             .send(mockNewFavourite)
             .end(function (err, res){
               if (err) {
@@ -190,8 +206,17 @@ var testTweets = function(){
               }
               res.should.have.property('status', 200);
               res.body.should.have.property('username', mockUsernameTweeter);
-              res.body.favourites[0].should.have.property('username', mockUsernameFavouriter);
-              done();
+
+              request(url)
+                .get('api/tweets/' + tweetIdToFavRetweet)
+                .end(function (err, res){
+                  if (err) {
+                    throw err;
+                  }
+                  res.body.favourites[0].should.have.property('username', mockUsernameFavouriter);
+                  done()
+                })
+
             });
           });
 
@@ -210,7 +235,7 @@ var testTweets = function(){
               username: mockUsernameRetweeter
             };
             request(url)
-            .put('api/tweets/' + tweetIdToUpdate + '/retweets')
+            .put('api/tweets/' + tweetIdToFavRetweet + '/retweets')
             .send(mockNewRetweet)
             .end(function (err, res){
               if (err) {
@@ -218,8 +243,17 @@ var testTweets = function(){
               }
               res.should.have.property('status', 200);
               res.body.should.have.property('username', mockUsernameTweeter);
-              res.body.retweets[0].should.have.property('username', mockUsernameRetweeter);
-              done();
+              
+              request(url)
+                .get('api/tweets/' + tweetIdToFavRetweet)
+                .end(function (err, res){
+                  if (err) {
+                    throw err;
+                  }
+                  res.body.retweets[0].should.have.property('username', mockUsernameRetweeter);
+                  done()
+                })
+
             });
           });
 
@@ -230,7 +264,7 @@ var testTweets = function(){
       });
 
     });
-  */
+
     //todo: timeline tests (require initial db data tasks)
     //describe('timeline', function(){ });
 

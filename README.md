@@ -105,9 +105,6 @@ password is the obvious.
 - delete a retweet from a tweet
   - DELETE `/api/tweets/:tweet_id/retweets/:retweet_id`
 
-- delete all tweets (used for testing db)
-  - DELETE `/api/tweets/delete/all`
-
 
 ####timeline
 
@@ -150,6 +147,11 @@ password is the obvious.
 - add a username to a user's retweets array
   - PUT `/api/profiles/:username/tweets/retweets/:tweet_id`
 
+
+####routes for api tests
+
+- delete all tweets (used for testing db)
+  - DELETE `/api/test/tweets/all`
 
 
 ##Contributions
