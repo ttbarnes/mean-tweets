@@ -295,8 +295,50 @@ var testTweets = function(){
 
     });
 
-    //todo: timeline tests (require initial db data tasks)
-    //describe('timeline', function(){ });
+
+    describe('timeline', function(){ 
+
+      describe('GET success', function(){
+
+        it('should aquire a query with a list of usernames', function (done){
+          var uf = '&userFollowing=';
+          var queryFollowing = '?userFollowing=' + mockUsername.tweeterB + 
+                               uf + mockUsername.tweeterC + 
+                               uf + mockUsername.favouriter + 
+                               uf + mockUsername.retweeter;
+          request(url)
+          .get('api/timeline' + queryFollowing)
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            res.should.have.property('status', 200);
+            res.request.qs.should.have.property('userFollowing');
+            res.request.qs.userFollowing.should.be.an.Array();
+            res.request.qs.userFollowing.length.should.be.above(2);
+            res.request.url.should.equal(url + 'api/timeline' + queryFollowing);
+            done();
+          });
+        });
+
+      });
+
+      describe('GET failure', function(){
+
+        it('should throw a 404', function (done){
+          request(url)
+          .get('api/timeline')
+          .expect(404)
+          .end(function (err, res){
+            res.should.have.property('status', 404);
+            res.body.should.be.empty();
+            done();
+          });
+        });
+
+      });
+
+    });
 
     //todo: search tests (require initial db data tasks)
     //describe('search', function(){ });

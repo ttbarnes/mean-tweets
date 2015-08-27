@@ -156,16 +156,18 @@ router.route('/timeline')
 
     var userFollowing = req.query.userFollowing;
 
-    console.log('current user follows ' + userFollowing.length + ' people: \n' + userFollowing + ' \n (this includes themself)');
+    if(userFollowing && userFollowing.length) {
+      console.log('current user follows ' + userFollowing.length + ' people: \n' + userFollowing + ' \n (this includes themself)');
+    }
 
     Tweet.find( { username: { $in: userFollowing  } }, function (err, tweets) {
-      console.log('finding tweets with these usernames only');
-      if (err) {
-        res.send(err);
-      } else {
-        res.json(tweets);
-      }
-      
+      if (err)
+          res.send(err);
+        if (!tweets.length) {
+          res.status(404).send(err);
+        } else {
+          res.json(tweets);
+        }
     });
 
   });
