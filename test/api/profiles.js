@@ -16,8 +16,16 @@ var testProfiles = function(){
         },
         boris: {
           username: 'boris'
+        },
+        put:{
+          details: {
+            about: 'I do not like flower pots',
+            location: 'Various gardens',
+            websiteUrl: 'http://billnotben.com'
+          }
         }
-      };
+      },
+      profileToUpdate = mockProfiles.bill.username;
 
   describe('profiles', function() {
 
@@ -52,6 +60,8 @@ var testProfiles = function(){
         })
     });
 
+    //todo: test GET 
+
     describe('POST success', function(){
 
       var mockNewUser = {
@@ -84,10 +94,34 @@ var testProfiles = function(){
           .send(mockProfiles.bill)
           .end(function (err, res){
             res.should.have.property('status', 404);
-            //res.body.should.be.empty();
             res.request._data.should.have.property('username', mockUsername);
             done();
           })
+      });
+
+    });
+
+    describe('details', function(){
+
+      describe('PUT success', function(){
+
+        it('should be successful', function (done){
+          request(url)
+          .put('api/profiles/' + mockProfiles.bill.username + '/details')
+          .send(mockProfiles.put.details)
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            res.should.have.property('status', 200);
+            res.request._data.should.have.properties('about', 'location', 'websiteUrl');
+            res.request._data.should.have.property('about', mockProfiles.put.details.about);
+            res.request._data.should.have.property('location', mockProfiles.put.details.location);
+            res.request._data.should.have.property('websiteUrl', mockProfiles.put.details.websiteUrl);
+            done();
+          });
+        });
+
       });
 
     });

@@ -50,9 +50,9 @@ describe('ProfileEditCtrl', function() {
     };
 
     ctrl.profileDetails = {
-      websiteUrl : ctrl.mockData.websiteUrl,
+      about : ctrl.mockData.about,
       location : ctrl.mockData.location,
-      about : ctrl.mockData.about
+      websiteUrl : ctrl.mockData.websiteUrl
     };
 
   });

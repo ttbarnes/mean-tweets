@@ -228,20 +228,22 @@ router.route('/search/:searchstring')
     .put(function (req, res) {
 
       username = req.params.username;
-      detailWebsiteUrl = req.body.websiteUrl;
-      detailLocation = req.body.location;
       detailAbout = req.body.about;
+      detailLocation = req.body.location;
+      detailWebsiteUrl = req.body.websiteUrl;
 
       Profile.update( {username: username},{ $set : {
                                  details: { 
-                                   websiteUrl: detailWebsiteUrl,
-                                   location: detailLocation,
                                    about: detailAbout,
+                                   location: detailLocation,
+                                   websiteUrl: detailWebsiteUrl
                                  } } }, function (err, details) {
-        if (err)
+          if (err) {
             res.send(err);
-          res.json(details);
-          console.log('user ' + username + ' profile details posted');
+          } else {
+            res.json(details);
+            console.log('user ' + username + ' profile details posted');
+          }
       });
 
     });
