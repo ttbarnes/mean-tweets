@@ -345,11 +345,22 @@ router.route('/search/:searchstring')
   router.route('/test/tweets/all')
 
     .delete(function (req, res){
-      Tweet.remove({}, function (err, tweet){
+      Tweet.remove({}, function (err, tweets){
         if (err)
           res.send(err);
-        res.json(tweet);
+        res.json(tweets);
         console.log('removed all tweets');
+      })
+    });
+
+  router.route('/test/profiles/all')
+
+    .delete(function (req, res){
+      Tweet.remove({}, function (err, profiles){
+        if (err)
+          res.send(err);
+        res.json(profiles);
+        console.log('removed all profiles');
       })
     });
 
