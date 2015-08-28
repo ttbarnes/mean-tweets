@@ -2,6 +2,7 @@ var should   = require('should');
 var assert   = require('assert');
 var request  = require('supertest');
 var mongoose = require('mongoose');
+var _        = require('lodash-node');
 
 var testTweets = function(){
 
@@ -65,12 +66,31 @@ var testTweets = function(){
           .post('api/tweets')
             .send(mockTweets.a)
             .send(mockTweets.b)
-            .send(mockTweets.c)
             .end(function (err){
               if (err) {
                 throw err;
               }
             })
+            request(url)
+            .post('api/tweets')
+              .send(mockTweets.c)
+              .end(function (err){
+                if (err) {
+                  throw err;
+                }
+              })
+        })
+    });
+
+
+    after(function(){
+      //delete all tweets
+      request(url)
+        .delete('api/test/tweets/all')
+        .end(function (err){
+          if (err) {
+            throw err;
+          }
         })
     });
 
@@ -88,17 +108,6 @@ var testTweets = function(){
               tweetIdToUpdate     = res.body[2]._id;
             }
           })
-    });
-
-    after(function(){
-      //delete all tweets
-      request(url)
-        .delete('api/test/tweets/all')
-        .end(function (err){
-          if (err) {
-            throw err;
-          }
-        })
     });
 
     describe('POST', function(){
@@ -299,13 +308,13 @@ var testTweets = function(){
     describe('timeline', function(){ 
 
       describe('GET success', function(){
+        var ufStart = '?userFollowing=';
+        var uf = '&userFollowing=';
+        var queryFollowing = ufStart + mockUsername.tweeterA + 
+                             uf      + mockUsername.tweeterB + 
+                             uf      + mockUsername.tweeterC;
 
         it('should aquire a query with a list of usernames', function (done){
-          var uf = '&userFollowing=';
-          var queryFollowing = '?userFollowing=' + mockUsername.tweeterB + 
-                               uf + mockUsername.tweeterC + 
-                               uf + mockUsername.favouriter + 
-                               uf + mockUsername.retweeter;
           request(url)
           .get('api/timeline' + queryFollowing)
           .end(function (err, res){
@@ -321,7 +330,30 @@ var testTweets = function(){
           });
         });
 
+        it('should only return tweets containing the requested usernames', function (done){
+          request(url)
+          .get('api/timeline' + queryFollowing)
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            //todo: cleanup: DRY
+            var tempMockUsers = [
+              'bill',
+              'ben',
+              'boris'
+            ];
+            res.body.should.not.be.empty();
+            var names = _.uniq(_.pluck(res.body, 'username'));
+            tempMockUsers.should.containDeep(names);
+            //todo: test for nested usernames in favourites/retweets.
+            done();
+          });
+
+        });
+
       });
+
 
       describe('GET failure', function(){
 
