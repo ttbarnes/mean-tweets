@@ -372,8 +372,51 @@ var testTweets = function(){
 
     });
 
-    //todo: search tests (require initial db data tasks)
-    //describe('search', function(){ });
+    describe('search', function(){ 
+
+      describe('GET success', function(){
+        var searchString = 'test tweet';
+
+        it('should return tweet data', function (done){
+          request(url)
+          .get('api/search/' + searchString)
+          .end(function (err, res){
+            res.should.have.property('status', 200);
+            res.body.should.not.be.empty();
+            done();
+          });
+        });
+
+        it('should only return relevant tweet data', function (done){
+          request(url)
+          .get('api/search/' + searchString)
+          .end(function (err, res){
+            var resCopy = _.uniq(_.pluck(res.body, 'copy'));
+            mockTweets.post.copy.should.containDeep(resCopy);
+            done();
+          });
+        });
+
+      });
+
+      describe('GET failure', function(){
+        var searchString = 'asdf';
+
+        it('should throw a 404 and not return any data', function(){
+          request(url)
+          .get('api/search/'+ searchString)
+          .expect(404)
+          .end(function (err, res){
+            res.should.have.property('status', 404);
+            res.body.should.be.empty();
+            res.body.should.have.property('message', 'No tweets found with your search criteria. Please try something else.');
+            done();
+          });
+        });
+
+      });
+
+    });
 
   });
 
