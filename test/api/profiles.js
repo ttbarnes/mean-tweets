@@ -38,7 +38,6 @@ var testProfiles = function(){
                 throw err;
               }
             })
-
         })
     });
 
@@ -53,10 +52,45 @@ var testProfiles = function(){
         })
     });
 
-    
+    describe('POST success', function(){
 
+      var mockNewUser = {
+        username: 'boris'
+      }
 
+      it('should be successful', function (done){
+        request(url)
+          .post('api/profiles/' + mockNewUser.username)
+          .send(mockNewUser)
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            res.should.have.property('status', 200);
+            res.request._data.should.have.property('username', mockNewUser.username);
+            done();
+          })
+      });
 
+    });
+
+    describe('POST failure', function(){
+
+      it('should throw a 404', function (done){
+        var mockUsername = 'bill'; //username already exists
+        request(url)
+          .post('api/profiles/' + mockUsername)
+          .expect(404)
+          .send(mockProfiles.bill)
+          .end(function (err, res){
+            res.should.have.property('status', 404);
+            //res.body.should.be.empty();
+            res.request._data.should.have.property('username', mockUsername);
+            done();
+          })
+      });
+
+    });
 
   });
 

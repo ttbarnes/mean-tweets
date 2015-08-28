@@ -204,19 +204,22 @@ router.route('/search/:searchstring')
 
     .post(function (req, res) {
       Profile.find({username: new RegExp(req.params.username, "i")}, function (err, username) {
-        if (!username.length) {
-          res.send('No-one found with the username \'' + req.params.username + '\'');
-          console.log('post new user');
 
-          var profile = new Profile();
-          profile.username = req.body.username;
+        if (err)
+          res.send(err);
+          if (username.length) {
+            res.status(404).send(err);
+          } else {
+            console.log('no existing username. Posting new user with the username ' + req.body.username);
 
-          profile.save(function(err) {
-            console.log('User added to db!');
-            if (err)
-              res.send(err);
-          })
-        }
+            var profile = new Profile();
+            profile.username = req.body.username;
+            profile.save(function (err) {
+              res.json({ message: 'User added to db!' });
+            });
+            res.json(username);
+          }
+
       });
     });
 
@@ -356,7 +359,7 @@ router.route('/search/:searchstring')
   router.route('/test/profiles/all')
 
     .delete(function (req, res){
-      Tweet.remove({}, function (err, profiles){
+      Profile.remove({}, function (err, profiles){
         if (err)
           res.send(err);
         res.json(profiles);
