@@ -191,13 +191,13 @@ router.route('/search/:searchstring')
   router.route('/profiles/:username')
     .get(function (req, res) {
 
-      Profile.find({username: new RegExp(req.params.username, "i")}, function (err, username) {
+      Profile.find({username: new RegExp(req.params.username, "i")}, function (err, profile) {
         if (err)
             res.send(err);
-          if (!username.length) {
+          if (!profile.length) {
             res.status(404).send('No-one found with the username \'' + req.params.username + '\'');
           } else {
-            res.json(username);
+            res.json(profile);
           }
       });
     })

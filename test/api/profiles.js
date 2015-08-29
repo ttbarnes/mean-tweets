@@ -126,6 +126,41 @@ var testProfiles = function(){
 
     });
 
+    describe('following', function(){
+
+      describe('PUT success', function(){
+
+        it('should be successful', function (done){
+
+          var newFollowings = {
+            userFollower: mockProfiles.bill.username,
+            userFollowing: mockProfiles.ben.username
+          };
+
+          request(url)
+          .put('api/profiles/' + newFollowings.userFollower + '/following')
+          .send(newFollowings)
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            res.should.have.property('status', 200);
+            request(url)
+            .get('api/profiles/' + newFollowings.userFollower)
+            .end(function (err, res){
+              if (err) {
+                throw err;
+              }
+              res.body[0].following[0].should.have.property('username', newFollowings.userFollowing);
+              done();
+            })
+          });
+        });
+
+      });
+
+    });
+
   });
 
 };
