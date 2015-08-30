@@ -41,13 +41,55 @@ var url      = 'http://localhost:2000/',
         copy: 'whats up',
         timestamp: newDate
       }
-    };
+    },
+    mockProfiles = {
+      bill: {
+        username: 'bill'
+      },
+      ben: {
+        username: 'ben'
+      },
+      boris: {
+        username: 'boris'
+      },
+      put:{
+        details: {
+          about: 'I do not like flower pots',
+          location: 'Various gardens',
+          websiteUrl: 'http://billnotben.com'
+        }
+      }
+    },
+    profileToUpdate = mockProfiles.bill.username;
 
 exports.url = url;
 exports.imageUrl = imageUrl;
 exports.mockUsernames = mockUsernames;
 exports.mockTweets = mockTweets;
+exports.mockProfiles = mockProfiles;
 
+
+//how to do bulk post/import with mongoose?
+exports.postProfiles = function(data){
+  request(url)
+  .post('api/profiles/' + mockProfiles.bill.username)
+    .send(mockProfiles.bill)
+    .end(function (err){
+      if (err) {
+        throw err;
+      }
+      request(url)
+      .post('api/profiles/' + mockProfiles.ben.username)
+      .send(mockProfiles.ben)
+        .end(function (err){
+          if (err) {
+            throw err;
+          }
+        })
+    })
+};
+
+//how to do bulk post/import with mongoose?
 exports.postAndGetTweets = function(data){
   request(url)
   .post('api/tweets')
@@ -84,6 +126,17 @@ exports.postAndGetTweets = function(data){
     })
   })
 };
+
+exports.deleteProfiles = function(){
+  request(url)
+  .delete('api/test/profiles/all')
+  .end(function (err){
+    if (err) {
+      throw err;
+    }
+  })
+};
+
 
 exports.deleteTweets = function(){
   request(url)
