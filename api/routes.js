@@ -180,7 +180,7 @@ router.route('/search/:searchstring')
       if (err)
           res.send(err);
         if (!tweets.length) {
-          res.status(404).send('No tweets found with your search criteria. Please try something else.');
+          res.status(404).json({ message: 'No tweets found with your search criteria. Please try something else.' });
         } else {
           res.json(tweets);
         }
@@ -348,6 +348,14 @@ router.route('/search/:searchstring')
     });
 
   router.route('/test/tweets/all')
+
+   .get(function (req, res){
+      Tweet.find({}, function (err, tweets){
+        if (err)
+          res.send(err);
+        res.json(tweets);
+      })
+    })
 
     .delete(function (req, res){
       Tweet.remove({}, function (err, tweets){

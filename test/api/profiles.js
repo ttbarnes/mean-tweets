@@ -3,6 +3,7 @@ var assert   = require('assert');
 var request  = require('supertest');
 var mongoose = require('mongoose');
 var _        = require('lodash-node');
+var helpers  = require('./helpers');
 
 var testProfiles = function(){
 
@@ -85,16 +86,20 @@ var testProfiles = function(){
     });
 
     describe('POST failure', function(){
+      
+      var mockNewUser = {
+        username: 'boris'
+      }
+
 
       it('should throw a 404', function (done){
-        var mockUsername = 'bill'; //username already exists
         request(url)
-          .post('api/profiles/' + mockUsername)
+          .post('api/profiles/' + mockNewUser.username)
           .expect(404)
-          .send(mockProfiles.bill)
+          .send(mockNewUser)
           .end(function (err, res){
             res.should.have.property('status', 404);
-            res.request._data.should.have.property('username', mockUsername);
+            res.request._data.should.have.property('username', mockNewUser.username);
             done();
           })
       });
@@ -126,17 +131,16 @@ var testProfiles = function(){
 
     });
 
-    describe('following', function(){
+    describe('following, followers', function(){
 
-      describe('PUT success', function(){
+      var newFollowings = {
+        userFollower: mockProfiles.bill.username,
+        userFollowing: mockProfiles.ben.username
+      };
+
+      describe('following PUT success', function(){
 
         it('should be successful', function (done){
-
-          var newFollowings = {
-            userFollower: mockProfiles.bill.username,
-            userFollowing: mockProfiles.ben.username
-          };
-
           request(url)
           .put('api/profiles/' + newFollowings.userFollower + '/following')
           .send(newFollowings)
@@ -154,12 +158,46 @@ var testProfiles = function(){
               res.body[0].following[0].should.have.property('username', newFollowings.userFollowing);
               done();
             })
+
+          });
+        });
+
+      });
+
+      describe('followers PUT success', function(){
+
+        it('should be successful', function (done){
+
+          var newFollowings = {
+            userFollower: mockProfiles.bill.username,
+            userFollowing: mockProfiles.ben.username
+          };
+
+          request(url)
+          .put('api/profiles/' + newFollowings.userFollowing + '/followers')
+          .send(newFollowings)
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            res.should.have.property('status', 200);
+            request(url)
+            .get('api/profiles/' + newFollowings.userFollowing)
+            .end(function (err, res){
+              if (err) {
+                throw err;
+              }
+              res.body[0].followers[0].should.have.property('username', newFollowings.userFollower);
+              done();
+            })
           });
         });
 
       });
 
     });
+
+    //describe('username tweets', function(){ });
 
   });
 
