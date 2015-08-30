@@ -10,13 +10,8 @@ var ProfileSchema   = new Schema({
     }],
     following: [{username: String}],
     followers: [{username: String}],
-    favourites: [{tweetId: String}]
+    favourites: [{tweetId: String}],
+    retweets: [{tweetId: String}]
 });
-/* 
-{
-  collection : 'tweets' 
-});
-*/
 
 module.exports = mongoose.model('Profile', ProfileSchema);
-

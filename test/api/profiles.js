@@ -222,6 +222,31 @@ var testProfiles = function(){
 
         //todo: test delete
 
+      });
+
+      describe('retweets', function(){
+
+        describe('PUT success', function(){
+
+          it('should successfully put a tweet\'s id in a user\'s retweets array', function (done){
+            request(helpers.url)
+            .put('api/profiles/' + helpers.mockUsernames.tweeterC + '/tweets/retweets/' + tweetIdToFavRetweet)
+            .end(function (err, res){
+              res.should.have.property('status', 200);
+              request(helpers.url)
+              .get('api/profiles/' + helpers.mockUsernames.tweeterC)
+              .end(function (err, res){
+                if(err) {
+                  throw err;
+                }
+                res.body[0].retweets[0].should.have.property('tweetId', tweetIdToFavRetweet);
+                done();
+              })
+            })
+
+          });
+
+        });
 
       });
 
