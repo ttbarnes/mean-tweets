@@ -292,7 +292,7 @@ router.route('/search/:searchstring')
         if (err)
             res.send(err);
           if (!tweets.length) {
-            res.status(404).send(req.params.username + ' hasn\'t tweeted yet.');
+            res.status(404).json({ message: req.params.username + ' hasn\'t tweeted yet.' });
           } else {
             res.json(tweets);
           }

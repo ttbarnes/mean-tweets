@@ -11,7 +11,8 @@ var url      = 'http://localhost:2000/',
       tweeterB  : 'ben',
       tweeterC  : 'boris',
       favouriter: 'james',
-      retweeter : 'john'
+      retweeter : 'john',
+      fail      : 'a1s3fd9v'
     },
     mockTweets = {
       post: {

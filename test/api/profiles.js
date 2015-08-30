@@ -146,7 +146,54 @@ var testProfiles = function(){
 
     });
 
-    //describe('username tweets', function(){ });
+    describe('username tweets', function(){
+
+      before(function (done){
+        helpers.postAndGetTweets(function (data) {
+          done();
+        });
+      });
+
+      describe('GET success', function(){
+
+        it('should be successful', function (done){
+          request(helpers.url)
+          .get('api/profiles/' + helpers.mockUsernames.tweeterC + '/tweets')
+          .end(function (err, res){
+            if (err) {
+              throw err;
+            }
+            res.should.have.property('status', 200);
+            res.body.should.not.be.empty();
+            res.body.should.be.an.Array();
+            res.body[0].should.be.an.Object();
+            var resUsernames = _.uniq(_.pluck(res.body, 'username'));
+            helpers.mockUsernames.tweeterC.should.containDeep(resUsernames);
+            done();
+          })
+
+        });
+
+      });
+
+      describe('GET failure', function(){
+
+        it('should throw a 404', function (done){
+          request(helpers.url)
+          .get('api/profiles/' + helpers.mockUsernames.fail + '/tweets')
+          .expect(404)
+          .end(function (err, res){
+            res.should.have.property('status', 404);
+            res.body.should.have.property('message', helpers.mockUsernames.fail + ' hasn\'t tweeted yet.' );
+            done();
+          })
+
+        });
+
+      });
+
+
+    });
 
   });
 
