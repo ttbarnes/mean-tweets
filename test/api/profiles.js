@@ -7,6 +7,8 @@ var helpers  = require('./helpers');
 
 var testProfiles = function(){
 
+  var tweetIdToFavRetweet;
+
   describe('profiles', function() {
 
     before(function (done){
@@ -16,6 +18,7 @@ var testProfiles = function(){
 
     after(function (done){
       helpers.deleteProfiles();
+      helpers.deleteTweets();
       done();
     });
 
@@ -150,6 +153,7 @@ var testProfiles = function(){
 
       before(function (done){
         helpers.postAndGetTweets(function (data) {
+          tweetIdToFavRetweet = data[1]._id;
           done();
         });
       });
@@ -192,6 +196,34 @@ var testProfiles = function(){
 
       });
 
+      describe('favourites', function(){
+
+        describe('PUT success', function(){
+
+          it('should successfully put a tweet\'s id in a user\'s favourites array', function (done){
+            request(helpers.url)
+            .put('api/profiles/' + helpers.mockUsernames.tweeterC + '/tweets/favourites/' + tweetIdToFavRetweet)
+            .end(function (err, res){
+              res.should.have.property('status', 200);
+              request(helpers.url)
+              .get('api/profiles/' + helpers.mockUsernames.tweeterC)
+              .end(function (err, res){
+                if(err) {
+                  throw err;
+                }
+                res.body[0].favourites[0].should.have.property('tweetId', tweetIdToFavRetweet);
+                done();
+              })
+            })
+
+          });
+
+        });
+
+        //todo: test delete
+
+
+      });
 
     });
 
