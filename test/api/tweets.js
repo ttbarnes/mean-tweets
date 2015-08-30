@@ -15,6 +15,7 @@ var testTweets = function(){
   describe('tweets', function() {
 
     before(function (done){
+      helpers.deleteTweets();
       helpers.postAndGetTweets(function (data) {
         tweetIdSuccess      = data[0]._id;
         tweetIdToFavRetweet = data[1]._id;

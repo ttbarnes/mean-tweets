@@ -12,6 +12,8 @@ var testProfiles = function(){
   describe('profiles', function() {
 
     before(function (done){
+      helpers.deleteProfiles();
+      helpers.deleteTweets();
       helpers.postProfiles();
       done();
     });
