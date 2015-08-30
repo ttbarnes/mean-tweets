@@ -56,6 +56,9 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
       //public profile only needs to check favourite tweets, retweets and return the data.
       if($scope.statePublicProfile) {
         $scope.tweets = data;
+        if($scope.userNotTweeted) {
+          $scope.userNotTweeted = false;
+        }
         $scope.currentUserTweetsCheck(data);
       }
 
@@ -87,6 +90,10 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
           $scope.tweets = tweets;
           if(tweets.length) {
 
+            if($scope.userFollowingsNoTweets) {
+              $scope.userFollowingsNoTweets = false;
+            }
+
             $scope.currentUserTweetsCheck(tweets);
 
             //remove currentUser from userFollowing for iterating retweets
@@ -117,20 +124,21 @@ angular.module('meanTweetsApp').controller('TweetsCtrl', function (currentUserFa
             $scope.userFollowingsNoTweets = true;
           }
 
-        }, function (err) {
-          console.warn('oh no, something went wrong with the nested api call for timeline tweets! details: \n', err);
+        }, function () {
+          $scope.userFollowingsNoTweets = true;
         });
 
       }
 
       }, function (err) {
+        if($scope.statePublicProfile) {
+          $scope.userNotTweeted = true;
+        }
         console.warn('oh no, something went wrong with top/parent level api call! details: \n', err);
-        $scope.userNotTweeted = true;
       });
   };
 
   $scope.getTweets();
-  
 
   $scope.$on('refreshTweets', function () {
     console.info('refreshTweets called - getting new tweets');
