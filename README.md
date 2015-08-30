@@ -27,15 +27,16 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
   - ui-router
   - restangular
   - angular-moment
+  - angular-elastic
   - ui-router-title
-- MongoDB, Mongoose
-- Auth0
-- Grunt
-- Karma
-- Jasmine
-- ngDialog
-- Angular elastic
-- Font awesome
+  - ngDialog
+  - auth0
+- mongoDB, mongoose
+- grunt
+- karma, jasmine (front end tests)
+- mocha, should.js (api tests)
+- lodash
+- fontawesome
 
 
 ##Grunt tasks
@@ -144,8 +145,14 @@ password is the obvious.
 
 ####routes for api tests
 
-- delete all tweets (used for testing db)
+- get all tweets
+  - GET `/api/test/tweets/all`
+
+- delete all tweets
   - DELETE `/api/test/tweets/all`
+
+- delete all profiles
+  - DELETE `/api/test/profiles/all`
 
 
 ##Contributions
