@@ -1,2 +1,2 @@
-var tweets = require('./tweets');
-var profiles = require('./profiles');
+var tweets = require('./spec/tweets');
+var profiles = require('./spec/profiles');

@@ -138,7 +138,6 @@ exports.deleteProfiles = function(){
   })
 };
 
-
 exports.deleteTweets = function(){
   request(url)
   .delete('api/test/tweets/all')
