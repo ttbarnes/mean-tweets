@@ -334,16 +334,20 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask('test', [
-    'jshint',
-    'karma'
-  ]);
+  grunt.registerTask('test', function (target) {
+    if (target === 'api') {
+      grunt.task.run('preprocess:dev');
+      grunt.task.run('shell:serverNewTab');
+      grunt.task.run('wait:pause');
+      grunt.task.run('mochaTest');
 
-  grunt.registerTask('testApi', function(){
-    grunt.task.run('preprocess:dev');
-    grunt.task.run('shell:serverNewTab');
-    grunt.task.run('wait:pause');
-    grunt.task.run('mochaTest');
+    }
+    else {
+      grunt.task.run([
+        'jshint',
+        'karma'
+      ]);
+    }
   });
 
   grunt.registerTask('build', [

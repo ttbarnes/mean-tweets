@@ -42,9 +42,9 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 
 - start server: `grunt` (runs tests, watches for changes).
 
-- run tests: `grunt test`
+- run front end tests: `grunt test`
 
-- run api tests: `grunt testApi`
+- run api tests: `grunt test:api`
 
 
 ##Test credentials
