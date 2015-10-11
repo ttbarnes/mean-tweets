@@ -27,22 +27,25 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
   - ui-router
   - restangular
   - angular-moment
+  - angular-elastic
   - ui-router-title
-- MongoDB, Mongoose
-- Auth0
-- Grunt
-- Karma
-- Jasmine
-- ngDialog
-- Angular elastic
-- Font awesome
+  - ngDialog
+  - auth0
+- mongoDB, mongoose
+- grunt
+- karma, jasmine (front end tests)
+- mocha, should.js (api tests)
+- lodash
+- fontawesome
 
 
 ##Grunt tasks
 
 - start server: `grunt` (runs tests, watches for changes).
 
-- run tests:`grunt test`
+- run front end tests: `grunt test`
+
+- run api tests: `grunt test:api`
 
 
 ##Test credentials
@@ -139,6 +142,17 @@ password is the obvious.
 - add a username to a user's retweets array
   - PUT `/api/profiles/:username/tweets/retweets/:tweet_id`
 
+
+####routes for api tests
+
+- get all tweets
+  - GET `/api/test/tweets/all`
+
+- delete all tweets
+  - DELETE `/api/test/tweets/all`
+
+- delete all profiles
+  - DELETE `/api/test/profiles/all`
 
 
 ##Contributions

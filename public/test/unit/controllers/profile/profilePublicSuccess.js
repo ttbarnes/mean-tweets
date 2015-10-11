@@ -87,7 +87,7 @@ describe('ProfilePublicCtrl - success: user found', function() {
       expect(apiEndpointFactory.userTweets(scope.profileUsername).route).toEqual('api/profiles/' + scope.profileUsername + '/tweets');
     });
 
-    it('sla dlk sldfkj klsdf jksfd', function(){
+    it('shoudl have a tweets count', function(){
       expect(scope.tweetsCount).toBeDefined();
       expect(scope.tweetsCount).toEqual(jasmine.any(Number));
     });

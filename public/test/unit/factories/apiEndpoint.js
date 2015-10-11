@@ -185,6 +185,17 @@ describe('apiEndpointFactory', function(){
 
   });
 
+  describe('test api endpoint double checks', function(){
 
+    it('should not have any functions called test', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.test).toBeUndefined();
+    }));
+
+    it('should not have a delete or remove all function', inject(function (apiEndpointFactory) {
+      expect(apiEndpointFactory.deleteAll).toBeUndefined();
+      expect(apiEndpointFactory.removeAll).toBeUndefined();
+    }));
+
+  });
 
 });

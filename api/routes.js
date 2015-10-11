@@ -21,7 +21,9 @@ router.route('/tweets')
     var tweet = new Tweet();  //create a new instance of the Tweet model
     tweet.username = req.body.username;  //set the tweets username (comes from the request)
     tweet.copy = req.body.copy;  //set the tweets name (comes from the request)
-    tweet.image.url = req.body.image.url;
+    if(req.body.image && req.body.image.url){
+      tweet.image.url = req.body.image.url;
+    }
     tweet.timestamp = new Date().toISOString(); //create new date
 
     //save the tweet and check for errors
@@ -154,16 +156,18 @@ router.route('/timeline')
 
     var userFollowing = req.query.userFollowing;
 
-    console.log('current user follows ' + userFollowing.length + ' people: \n' + userFollowing + ' \n (this includes themself)');
+    if(userFollowing && userFollowing.length) {
+      console.log('current user follows ' + userFollowing.length + ' people: \n' + userFollowing + ' \n (this includes themself)');
+    }
 
     Tweet.find( { username: { $in: userFollowing  } }, function (err, tweets) {
-      console.log('finding tweets with these usernames only');
-      if (err) {
-        res.send(err);
-      } else {
-        res.json(tweets);
-      }
-      
+      if (err)
+          res.send(err);
+        if (!tweets.length) {
+          res.status(404).send(err);
+        } else {
+          res.json(tweets);
+        }
     });
 
   });
@@ -176,7 +180,7 @@ router.route('/search/:searchstring')
       if (err)
           res.send(err);
         if (!tweets.length) {
-          res.status(404).send('No tweets found with your search criteria. Please try something else.');
+          res.status(404).json({ message: 'No tweets found with your search criteria. Please try something else.' });
         } else {
           res.json(tweets);
         }
@@ -187,32 +191,35 @@ router.route('/search/:searchstring')
   router.route('/profiles/:username')
     .get(function (req, res) {
 
-      Profile.find({username: new RegExp(req.params.username, "i")}, function (err, username) {
+      Profile.find({username: new RegExp(req.params.username, "i")}, function (err, profile) {
         if (err)
             res.send(err);
-          if (!username.length) {
+          if (!profile.length) {
             res.status(404).send('No-one found with the username \'' + req.params.username + '\'');
           } else {
-            res.json(username);
+            res.json(profile);
           }
       });
     })
 
     .post(function (req, res) {
       Profile.find({username: new RegExp(req.params.username, "i")}, function (err, username) {
-        if (!username.length) {
-          res.send('No-one found with the username \'' + req.params.username + '\'');
-          console.log('post new user');
 
-          var profile = new Profile();
-          profile.username = req.body.username;
+        if (err)
+          res.send(err);
+          if (username.length) {
+            res.status(404).send(err);
+          } else {
+            console.log('no existing username. Posting new user with the username ' + req.body.username);
 
-          profile.save(function(err) {
-            console.log('User added to db!');
-            if (err)
-              res.send(err);
-          })
-        }
+            var profile = new Profile();
+            profile.username = req.body.username;
+            profile.save(function (err) {
+              res.json({ message: 'User added to db!' });
+            });
+            res.json(username);
+          }
+
       });
     });
 
@@ -221,20 +228,22 @@ router.route('/search/:searchstring')
     .put(function (req, res) {
 
       username = req.params.username;
-      detailWebsiteUrl = req.body.websiteUrl;
-      detailLocation = req.body.location;
       detailAbout = req.body.about;
+      detailLocation = req.body.location;
+      detailWebsiteUrl = req.body.websiteUrl;
 
       Profile.update( {username: username},{ $set : {
                                  details: { 
-                                   websiteUrl: detailWebsiteUrl,
-                                   location: detailLocation,
                                    about: detailAbout,
+                                   location: detailLocation,
+                                   websiteUrl: detailWebsiteUrl
                                  } } }, function (err, details) {
-        if (err)
+          if (err) {
             res.send(err);
-          res.json(details);
-          console.log('user ' + username + ' profile details posted');
+          } else {
+            res.json(details);
+            console.log('user ' + username + ' profile details posted');
+          }
       });
 
     });
@@ -283,7 +292,7 @@ router.route('/search/:searchstring')
         if (err)
             res.send(err);
           if (!tweets.length) {
-            res.status(404).send(req.params.username + ' hasn\'t tweeted yet.');
+            res.status(404).json({ message: req.params.username + ' hasn\'t tweeted yet.' });
           } else {
             res.json(tweets);
           }
@@ -337,5 +346,36 @@ router.route('/search/:searchstring')
       });
 
     });
+
+  router.route('/test/tweets/all')
+
+   .get(function (req, res){
+      Tweet.find({}, function (err, tweets){
+        if (err)
+          res.send(err);
+        res.json(tweets);
+      })
+    })
+
+    .delete(function (req, res){
+      Tweet.remove({}, function (err, tweets){
+        if (err)
+          res.send(err);
+        res.json(tweets);
+        console.log('removed all tweets');
+      })
+    });
+
+  router.route('/test/profiles/all')
+
+    .delete(function (req, res){
+      Profile.remove({}, function (err, profiles){
+        if (err)
+          res.send(err);
+        res.json(profiles);
+        console.log('removed all profiles');
+      })
+    });
+
 
 module.exports = router;

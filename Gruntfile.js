@@ -249,6 +249,40 @@ module.exports = function (grunt) {
       ]
     },
 
+    shell: {
+      serverNewTab: {
+        command: 'osascript -e \'tell application "Terminal" to activate\' -e \'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down\' -e \'tell application "Terminal" to do script "node server.js" in selected tab of the front window\'',
+        options: {
+          stderr: false
+        },
+      }
+    },
+
+    wait: {
+      options: {
+        delay: 4000
+      },
+      pause: {
+        options:{
+          before: function(options) {
+            console.log('pausing ' + options.delay + ' to ensure server is running');
+          },
+          after: function() {
+            console.log('pause end');
+          }
+        }
+      },
+    },
+
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['test/*/routes.js']
+      }
+    },
+
     karma: {
       unit: {
         configFile: 'public/karma.conf.js',
@@ -300,10 +334,21 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask('test', [
-    'jshint',
-    'karma'
-  ]);
+  grunt.registerTask('test', function (target) {
+    if (target === 'api') {
+      grunt.task.run('preprocess:dev');
+      grunt.task.run('shell:serverNewTab');
+      grunt.task.run('wait:pause');
+      grunt.task.run('mochaTest');
+
+    }
+    else {
+      grunt.task.run([
+        'jshint',
+        'karma'
+      ]);
+    }
+  });
 
   grunt.registerTask('build', [
     'clean:dist',
