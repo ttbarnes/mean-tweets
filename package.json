@@ -21,7 +21,7 @@
     "morgan": "^1.5.1"
   },
   "devDependencies": {
-    "grunt": "*",
+    "grunt": "0.4.1",
     "grunt-cli": "^0.1.13",
     "grunt-concurrent": "*",
     "grunt-contrib-clean": "^0.6.0",
