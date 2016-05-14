@@ -36,7 +36,6 @@
           <div class="col-25 stat">
             <p>{{profileUser.following.length}}</p>
             <h6>following</h6>
-            <p ng-if="!profileUser.following.length">0</p>
           </div>
           <div ng-if="profileUser.favourites.length" class="col-25 stat">
             <p>{{profileUser.favourites.length}}</p>
@@ -48,7 +47,7 @@
           <div ng-if="auth.isAuthenticated">
             <ng-include src="'views/partials/follow-user.html'"></ng-include>
           </div>
-          <a ng-if="usersOwnProfile" 
+          <a ng-if="usersOwnProfile"
              ui-sref="profileEdit"
              class="button blue button-small">Edit my profile</a>
         </div>
