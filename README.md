@@ -1,17 +1,17 @@
-#Mean tweets
+# Mean tweets
 
 Mini Twitter with MEAN. [Demo](https://mean-tweets.herokuapp.com)
 
 I built this app in order to learn more about Node, Express and MongoDB. I hope it helps others do the same :-)
 
-##Prerequisites
+## Prerequisites
 
 - [ruby](https://www.ruby-lang.org/en/documentation/installation/)
 - [node.js](http://nodejs.org/)
 - [bower](http://bower.io/)
 
 
-##Quick start
+## Quick start
 
 1) Install the dependencies: `npm install`
 
@@ -20,7 +20,7 @@ I built this app in order to learn more about Node, Express and MongoDB. I hope 
 If you have your own mongo db, update the url in `server.js` or use [dotenv](https://github.com/motdotla/dotenv).
 
 
-##Tech
+## Tech
 
 - MEAN stack: MongoDB, Express, Angular, Node.js
 - Angular services/modules
@@ -39,7 +39,7 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 - fontawesome
 
 
-##Grunt tasks
+## Grunt tasks
 
 - start server: `grunt` (runs tests, watches for changes).
 
@@ -48,7 +48,7 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 - run api tests: `grunt test:api`
 
 
-##Test credentials
+## Test credentials
 
 - test1@test.com
 - test2@test.com
@@ -58,7 +58,7 @@ If you have your own mongo db, update the url in `server.js` or use [dotenv](htt
 password is the obvious.
 
 
-##Notes
+## Notes
 
 - Currently for v1, authentication is done with [auth0](https://auth0.com/). It would be great to use [Passport](http://passportjs.org/) instead.
 
@@ -67,9 +67,9 @@ password is the obvious.
 - Ruby, grunt and grunt-cli are included as dependencies for heroku deployment.
 
 
-##API
+## API
 
-####tweets
+#### tweets
 
 - post a single tweet
   - POST `/api/tweets`
@@ -101,20 +101,20 @@ password is the obvious.
   - DELETE `/api/tweets/:tweet_id/retweets/:retweet_id`
 
 
-####timeline
+#### timeline
 
 - search and return tweets with usernames from a query
   - GET `/api/timeline`
   - eg: [/api/timeline?userFollowing=bill&userFollowing=ben](/api/timeline?userFollowing=bill&userFollowing=ben)
 
 
-####search
+#### search
 - search and return tweets containing someString
   - GET `/api/search/:someString`
   - eg: [/api/search/hotWeather](/api/search/hotWeather)
 
 
-####profiles
+#### profiles
 
 - get a single user
   - GET `/api/profiles/:username`
@@ -143,7 +143,7 @@ password is the obvious.
   - PUT `/api/profiles/:username/tweets/retweets/:tweet_id`
 
 
-####routes for api tests
+#### routes for api tests
 
 - get all tweets
   - GET `/api/test/tweets/all`
@@ -155,6 +155,6 @@ password is the obvious.
   - DELETE `/api/test/profiles/all`
 
 
-##Contributions
+## Contributions
 
 Always welcome, please submit a PR :-)
