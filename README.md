@@ -1,5 +1,7 @@
 # Mean tweets
 
+NOTE: This is old and no longer maintained.
+
 Mini Twitter with MEAN. [Demo](https://mean-tweets.herokuapp.com)
 
 I built this app in order to learn more about Node, Express and MongoDB. I hope it helps others do the same :-)
