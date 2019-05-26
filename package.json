@@ -16,7 +16,7 @@
     "body-parser": "~1.4.2",
     "bower": "*",
     "express": "~4.5.1",
-    "method-override": "~2.0.2",
+    "method-override": "~2.3.10",
     "mongoose": "^4.1.9",
     "morgan": "^1.5.1"
   },
