@@ -6,7 +6,6 @@ I built this app in order to learn more about Node, Express and MongoDB. I hope 
 
 ## Prerequisites
 
-- [ruby](https://www.ruby-lang.org/en/documentation/installation/)
 - [node.js](http://nodejs.org/)
 - [bower](http://bower.io/)
 
