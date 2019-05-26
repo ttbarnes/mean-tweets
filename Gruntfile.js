@@ -365,10 +365,4 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
-
-  grunt.registerTask('heroku:', function(){
-    grunt.task.run('build');
-  });
-
-
 };

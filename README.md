@@ -1,8 +1,6 @@
-# Mean tweets
+# Mean tweets - Mini Twitter with MEAN
 
 NOTE: This is old and no longer maintained.
-
-Mini Twitter with MEAN. [Demo](https://mean-tweets.herokuapp.com)
 
 I built this app in order to learn more about Node, Express and MongoDB. I hope it helps others do the same :-)
 
@@ -64,9 +62,6 @@ password is the obvious.
 - Currently for v1, authentication is done with [auth0](https://auth0.com/). It would be great to use [Passport](http://passportjs.org/) instead.
 
 - Currently no e2e tests, only unit tests.
-
-- Ruby, grunt and grunt-cli are included as dependencies for heroku deployment.
-
 
 ## API
 
